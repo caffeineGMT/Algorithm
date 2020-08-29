@@ -1,0 +1,26 @@
+{
+  "name": "java-learning",
+  "version": "0.1.0",
+  "description": "This is Java Learning code log. It incorporates a grunt automation task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caffeineGMT/JavaScript_Learning.git"
+  },
+  "author": "Maitao Guo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caffeineGMT/JavaScript_Learning/issues"
+  },
+  "homepage": "https://github.com/caffeineGMT/JavaScript_Learning.git",
+  "devDependencies": {
+    "grunt": "^1.2.1",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-responsive-images": "^1.10.1"
+  },
+  "dependencies": {}
+}

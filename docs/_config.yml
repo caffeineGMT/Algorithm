@@ -1,0 +1,16 @@
+theme: jekyll-theme-leap-day
+title: Java Learning
+description: by Maitao Guo
+google_analytics: UA-121627234-4
+
+exclude:
+  [
+    Gemfile,
+    Gemfile.lock,
+    node_modules/,
+    gruntfile.js,
+    package-lock.json,
+    package.json,
+    src/,
+  ]
+# url: http://localhost:4000

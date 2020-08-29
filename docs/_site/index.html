@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>JavaScript Note
+    by Maitao Guo</title>
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="JavaScript Note" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="by Maitao Guo" />
+<meta property="og:description" content="by Maitao Guo" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="100 Days of Code Log Round 1" />
+<script type="application/ld+json">
+{"headline":"JavaScript Note","url":"http://localhost:4000/","name":"100 Days of Code Log Round 1","description":"by Maitao Guo","@type":"WebSite","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css?v=7eeea78d9fcf94f9287a1533b3cb4d0c3fafb319">
+  <script src="https://code.jquery.com/jquery-3.3.0.min.js"
+    integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
+  <script src="/assets/js/main.js"></script>
+  <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <style>
+    body {
+      background: {
+          {
+          page.pg_bk_color
+        }
+      }
+
+      ;
+    }
+
+    header {
+      background: {
+          {
+          page.header_bk_color
+        }
+      }
+
+      ;
+    }
+
+    a {
+      color: {
+          {
+          page.link_color
+        }
+      }
+
+      ;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    
+    <h1>JavaScript Note</h1>
+    <p></p>
+    
+  </header>
+
+  <div id="banner">
+    <span id="logo"></span>
+
+    <a href="https://github.com/caffeineGMT/JavaScript_Learning" class="button fork"><strong>View On GitHub</strong></a>
+    
+  </div><!-- end banner -->
+
+  <div class="wrapper">
+    <nav>
+      <ul></ul>
+    </nav>
+    <section>
+      <h1 id="javascript-note">JavaScript Note</h1>
+
+<p>This is a repo recording any important note or thought when learning JavaScript. Most of the note/solution will be based on MOOC course “Code with Mosh” JavaScript Series.</p>
+
+<h2 id="prototypes---note-from-code-with-mosh">Prototypes - Note from Code with Mosh</h2>
+
+<h3 id="august-9th-2020---sunday">August 9th, 2020 - Sunday</h3>
+
+<p><strong>project:</strong> transfer all code note for Prototype section</p>
+
+<p><strong>note:</strong></p>
+
+<ul>
+  <li>classical inheritance vs prototypical inheritance
+    <ul>
+      <li>Object prototype doesn’t have a parent proto</li>
+      <li>prototype is an object, it could save method/property that could be shared in instance</li>
+      <li>when accessing an property or method of an object, it will look up in this object first, if not found, it will look up in its direct parent(prototype), all the way until root object, which is Object prototype.</li>
+    </ul>
+  </li>
+  <li>property descriptors</li>
+  <li>constructor prototype</li>
+  <li>don’t modify built-in object</li>
+  <li>instance member and prototype member</li>
+  <li>iterating instance property and prototype property</li>
+  <li>prototype only have access to public member of instance created by constructor, it doesnt have access to constructor’s local variable. In other word, because method in prototype is not defined inside a constructor, it does not contain the closure scope as the method defined inside the constructor</li>
+</ul>
+
+<p><strong>link:</strong> <a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/prototypes.js">solution repo</a></p>
+
+<h2 id="prototypical-inheritance---note-from-code-with-mosh">Prototypical Inheritance - Note from Code with Mosh</h2>
+
+<h3 id="august-9th-2020---sunday-1">August 9th, 2020 - Sunday</h3>
+
+<p><strong>project:</strong> transfer all code note for Prototypical Inheritance section</p>
+
+<p><strong>note:</strong></p>
+
+<ul>
+  <li>reset constructor</li>
+</ul>
+
+<p><strong>link:</strong><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/inheritance.js">solution repo</a></p>
+
+<h2 id="es6-class---note-from-code-with-mosh">ES6 Class - Note from Code with Mosh</h2>
+
+<h3 id="august-9th-2020---sunday-2">August 9th, 2020 - Sunday</h3>
+
+<p><strong>project:</strong> transfer all code note for Class section</p>
+
+<p><strong>note:</strong></p>
+
+<ul>
+  <li>function hoisting</li>
+  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/classes.js">instance method and static method</a></li>
+  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/classes.js">private members</a>:
+    <ul>
+      <li>symbol</li>
+      <li>getter and setter</li>
+      <li>weakMap</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/classes.js">method overriding</a>: prototypical path to find a method, from child to parent</li>
+  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/classes.js">inheritance</a></li>
+  <li><code class="highlighter-rouge">this</code> keyword:
+    <ul>
+      <li><code class="highlighter-rouge">this</code> keyword - <code class="highlighter-rouge">use strict</code> mode will be used as default setting in ES6 class</li>
+      <li>in Java class, <code class="highlighter-rouge">this</code> is used when there is a need to clear ambiguity, such as the instance member’s name is the same as the parameter’s name passed into the method. if not the case, there is no need to use <code class="highlighter-rouge">this</code></li>
+      <li>in JS class, <code class="highlighter-rouge">this</code> points to current object, we have to use <code class="highlighter-rouge">this</code> in function to provide running context,see <a href="https://www.youtube.com/watch?v=zE9iro4r918">very useful link</a>
+        <ul>
+          <li>implicit binding</li>
+          <li>explicit binding: bind(),call(),apply()</li>
+          <li>new binding: <code class="highlighter-rouge">new</code> keyword will implicitly bind function/field to object when creating the instance</li>
+          <li>window</li>
+        </ul>
+      </li>
+      <li>there is a clear demo of using class to create instance vs traditional way of creating an instance: <a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/stopWatch.js">link</a>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">closure</a></li>
+          <li>class is the syntactic sugar over old constructor function</li>
+        </ul>
+      </li>
+      <li>getter and setter</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="object---note-from-code-with-mosh">Object - Note from Code with Mosh</h2>
+
+<h3 id="august-9th-2020---sunday-3">August 9th, 2020 - Sunday</h3>
+
+<p><strong>project:</strong> transfer all code note for Object section</p>
+
+<p><strong>note:</strong></p>
+
+<ul>
+  <li>object literal: this can have issue when object have “behavior”, function would be duplicated in different object</li>
+  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/factoryFunction&amp;constructorFunction.js">factory function</a></li>
+  <li>when using constructor function to create an object, <code class="highlighter-rouge">this</code> will point to an empty object and attach property to it. And we don’t need to explicitly return <code class="highlighter-rouge">this</code> because it will do it automatically</li>
+  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/constructorProperty.js">constructor property</a>: if using object literal, the constructor property will be using Object constructor</li>
+  <li>value/primitives types: number,string,boolean,symbol,undefined,null</li>
+  <li>reference types: object, function, array</li>
+  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/add&amp;removeProperties.js">adding/removing property</a>: js object can dynamically add/remove properties on the fly</li>
+  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/enumerateProperty.js">enumerate property</a></li>
+  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/functionObject.js">function object</a>:
+    <ul>
+      <li>function object constructor</li>
+      <li><code class="highlighter-rouge">func.call()</code> and <code class="highlighter-rouge">func.apply()</code> and <code class="highlighter-rouge">func.bind()</code></li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/privateMethod&amp;property.js">private method and property</a>: scope and closure
+    <ul>
+      <li>scope is block scope, <code class="highlighter-rouge">let</code> variable initialize and die in lifecycle of the function</li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">closure</a>: an inner function can access parent variable</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/getter&amp;setter.js">getter and setter</a>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">using defineProperty</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="function---note-from-code-with-mosh">Function - Note from Code with Mosh</h2>
+
+<h3 id="august-8th-2020---saturday">August 8th, 2020 - Saturday</h3>
+
+<p><strong>project:</strong> transfer all code note for Object section</p>
+
+<p><strong>note:</strong></p>
+
+<ul>
+  <li>function</li>
+</ul>
+
+<h2 id="function---arraymap-and-arrayfilter">Function - Array.map() and Array.filter()</h2>
+
+<h3 id="august-8th-2020---friday">August 8th, 2020 - Friday</h3>
+
+<p><strong>project:</strong> understand map and filter func, compare them with Java’s similar function</p>
+
+<p><strong>note:</strong></p>
+
+<ul>
+  <li>In Java, map function is <code class="highlighter-rouge">function interface</code>, and filter function is <code class="highlighter-rouge">predicates interface</code>.</li>
+  <li>In Java, the above two interface requires a concrete implementation. In order to use the function, it has to generate from a class which implement the interface. This is called functional interface. Anonymous class and lambda expression are used to quickly provide implementation detail.</li>
+  <li>In JS, the above two methods are very similar to Java’s concept but the function itself is an object and expect an function object being passed as argument.</li>
+</ul>
+
+<p><strong>link:</strong></p>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">filter</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">map</a></li>
+</ul>
+
+<h2 id="function---how-to-read-javascript-document">Function - How to read JavaScript document</h2>
+
+<h3 id="august-8th-2020---saturday-1">August 8th, 2020 - Saturday</h3>
+
+<p><strong>project:</strong> It is a bit weird to read MDN’s JavaScript document. Especially <code class="highlighter-rouge">[,</code> symbol is very hard to understand</p>
+
+<p><strong>note:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">[,xxx]</code>is optional argument</li>
+</ul>
+
+<p><strong>link:</strong> <a href="http://cassandrawilcox.me/beginners-guide-developer-documentation/">detailed explaination</a></p>
+
+<h2 id="modules---note-from-code-with-mosh">Modules - Note from Code with Mosh</h2>
+
+<h3 id="august-7th-2020---thursday">August 7th, 2020 - Thursday</h3>
+
+<p><strong>project:</strong> Question: what is Node.JS?</p>
+
+<p><strong>note:</strong></p>
+
+<ul>
+  <li>CommonJS: module.export is an object, we could export the whole class, or attach some object to the export object as properties</li>
+  <li>ES6: can use export&amp;export default, when importing, need to use import/import {}</li>
+  <li>there is an issue importing the module, that can be fixe in <a href="https://ui.dev/javascript-modules-iifes-commonjs-esmodules/">index.js</a></li>
+</ul>
+
+<p><strong>link:</strong> <a href="../module">solution repo</a></p>
+
+<h2 id="modules---nodejs-npm-v8-term-kick-off">Modules - Node.JS, npm, V8: term kick-off</h2>
+
+<h3 id="august-7th-2020---thursday-1">August 7th, 2020 - Thursday</h3>
+
+<p><strong>project:</strong> Question: what is Node.JS?</p>
+
+<p><strong>note:</strong></p>
+
+<ul>
+  <li>Node.js is a javascript runtime built on JavaScript V8 Engine, written in C++</li>
+  <li>JS can only access browser, with NodeJs, it can access local machine and can be used for building utilities, web server, file control, etc</li>
+  <li><code class="highlighter-rouge">npm init</code> can package the dependencies and create a package.json file for providing dependency info, <code class="highlighter-rouge">npm install</code> will use this json file to install the required package</li>
+  <li>V8 is a high-performance interpreter, help transferring JS code to machine code. It is running in browser but Node.js wraps it and make it run in local machine</li>
+  <li><code class="highlighter-rouge">package-lock.json</code> is another package version control file, usually we only need to adjust <code class="highlighter-rouge">package.json</code></li>
+</ul>
+
+<p><strong>link:</strong> <a href="https://www.youtube.com/watch?v=pU9Q6oiQNd0">youtube</a></p>
+
+
+    </section>
+    <footer>
+      
+      <p>Project maintained by <a href="https://github.com/caffeineGMT">caffeineGMT</a></p>
+      
+      <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/mattgraham">mattgraham</a></small>
+      </p>
+    </footer>
+  </div>
+
+  
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-121627234-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</body>
+
+</html>
