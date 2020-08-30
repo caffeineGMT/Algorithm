@@ -27,10 +27,10 @@ This is a repo recording any important note or thought when learning Algorithm. 
     - not connected:0
     - connected: n-1
   - max edges for a graph:
-    - simple: n*(n-1)
+    - simple: n\*(n-1)
     - not simple:infinity
   - sum of degree in a graph: 2m (because every inbound edge will have a corresponding outbound edge)
-- edge list(simple graph):one hash table maintain node, one hash table maintain edges 
+- edge list(simple graph):one hash table maintain node, one hash table maintain edges
 
 | operation                         | time complexity                                            |
 | --------------------------------- | ---------------------------------------------------------- |
@@ -55,7 +55,7 @@ This is a repo recording any important note or thought when learning Algorithm. 
 | removeEdge                        | O(1)(hash table lookup,turn 1 to 0)                 |
 
 - adjacency list(simple graph):one hash table maintain node, one array of linked list maintain edges
-  
+
 | operation                         | time complexity                                          |
 | --------------------------------- | -------------------------------------------------------- |
 | space                             | O(n+m)(n node in hash table & m edges in linked list)    |
@@ -72,8 +72,7 @@ This is a repo recording any important note or thought when learning Algorithm. 
 
 # Heaps
 
-
-- requirement: 
+- requirement:
   - complete tree:
   - heap property
 - type:max heap, min heap,binary heap
@@ -84,12 +83,12 @@ This is a repo recording any important note or thought when learning Algorithm. 
 # Tree
 
 good binary search tree:
-| insert   | lookup   | delete   |
+| insert | lookup | delete |
 | -------- | -------- | -------- |
 | O(log n) | O(log n) | O(log n) |
 
 bad tree:
-| insert   | lookup   | delete   |
+| insert | lookup | delete |
 | -------- | -------- | -------- |
 | O(log n) | O(log n) | O(log n) |
 
@@ -102,10 +101,10 @@ bad tree:
     - in-order(left,root,right): the traversal result is incremental/decremental
     - post-order(left,right,root): walk thru leaf node first, then its parent
 - depth and height:
+
   - depth of node: calculating the number of edges for a node from top-down
   - height of sub tree: calculating the number of edges for a node from bottom-up
 
-  
 # Hash Table
 
 | insert | lookup | delete |
@@ -123,7 +122,6 @@ bad tree:
 
 - app: printer,operating system, web servers, live support system
 
-
 # Stack
 
 | push | pop  | peek | isEmpty |
@@ -133,20 +131,17 @@ bad tree:
 - app: undo feature, syntax checking in compiler, evaluate math expression, build navigation(forward/back)
 - can be implemented by array, arraylist or linked list internally
 
-
-
 # Linked List
 
-| lookup                 | insert                            | delete                   |
-| ---------------------- | --------------------------------- | ------------------------ |
-| index: O(n) value:O(n) | start:O(1) middle: O(n) end: O(1) | singly:O(n)  doubly:O(1) |
+| lookup                 | insert                            | delete                  |
+| ---------------------- | --------------------------------- | ----------------------- |
+| index: O(n) value:O(n) | start:O(1) middle: O(n) end: O(1) | singly:O(n) doubly:O(1) |
 
 - LinkedList from java.util package could be `LinkedList generic = new LinkedList();`. In this case, one node could host String, another node could host Integer
-- type: 
+- type:
   - singly: O(n) on deleting the end item
   - doubly: O(1) on deleting the end item
   - circular: song playlist loop,
-
 
 # Array
 

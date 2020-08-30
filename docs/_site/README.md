@@ -1,159 +1,158 @@
-# JavaScript Note
+<!-- markdownlint-disable MD025-->
 
-This is a repo recording any important note or thought when learning JavaScript. Most of the note/solution will be based on MOOC course "Code with Mosh" JavaScript Series.
+# Algorithm Note
 
-## Prototypes - Note from Code with Mosh
+This is a repo recording any important note or thought when learning Algorithm. Most of the note/solution will be based on MOOC course "Code with Mosh" Algorithm Series.
 
-### August 9th, 2020 - Sunday
+# Undirected Graph
 
-**project:** transfer all code note for Prototype section
+-
 
-**note:**
+# Graph
 
-- classical inheritance vs prototypical inheritance
-  - Object prototype doesn’t have a parent proto
-  - prototype is an object, it could save method/property that could be shared in instance
-  - when accessing an property or method of an object, it will look up in this object first, if not found, it will look up in its direct parent(prototype), all the way until root object, which is Object prototype.
-- property descriptors
-- constructor prototype
-- don’t modify built-in object
-- instance member and prototype member
-- iterating instance property and prototype property
-- prototype only have access to public member of instance created by constructor, it doesnt have access to constructor's local variable. In other word, because method in prototype is not defined inside a constructor, it does not contain the closure scope as the method defined inside the constructor
+- app: network connection, social media, path finding
+- basic concept:
+  - vertex: V/n
+  - edge: E/m
+  - incident edges: immediate edges connecting to a node
+  - degree of node: how many incident node
+  - adjacent node/vertices
+  - path: sequence of vertices connect by edges
+  - cycle: path with a common start and end
+  - simple graph: no self loop or multi-edges
+  - directed graph
+  - undirected graph
+- edges numbers:
+  - min edges for a graph:
+    - not connected:0
+    - connected: n-1
+  - max edges for a graph:
+    - simple: n\*(n-1)
+    - not simple:infinity
+  - sum of degree in a graph: 2m (because every inbound edge will have a corresponding outbound edge)
+- edge list(simple graph):one hash table maintain node, one hash table maintain edges
 
-**link:** [solution repo](https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/prototypes.js)
+| operation                         | time complexity                                            |
+| --------------------------------- | ---------------------------------------------------------- |
+| space                             | O(n+m)(n node in hash table & total m edges in hash table) |
+| insertVertex(K key)               | O(1)(hash table lookup)                                    |
+| removeVertex(Vertex v)            | O(m)(hash table lookup, walk thru every edge)              |
+| areAdjacent(Vertex v1, Vertex v2) | O(m)(walk thru every edge)                                 |
+| incidentEdges(Vertex)             | O(m)(hash table lookup, walk thru every edge)              |
+| addEdge                           | O(1)(hash table lookup)                                    |
+| removeEdge                        | O(1)(hash table lookup)                                    |
 
-## Prototypical Inheritance - Note from Code with Mosh
+- adjacency matrix(simple graph):one hash table maintain node, one 2D array maintain edges
 
-### August 9th, 2020 - Sunday
+| operation                         | time complexity                                     |
+| --------------------------------- | --------------------------------------------------- |
+| space                             | O(n^2)(n node in hash table & n by n 2D matrix)     |
+| insertVertex(K key)               | O(n^2)(need to copy the whole matrix)               |
+| removeVertex(Vertex v)            | O(n^2)(need to shrink the whole matrix)             |
+| areAdjacent(Vertex v1, Vertex v2) | O(1)(hash table lookup)                             |
+| incidentEdges(Vertex)             | O(n)(hash table look up & walk down one row/column) |
+| addEdge                           | O(1)(hash table lookup,turn 0 to 1)                 |
+| removeEdge                        | O(1)(hash table lookup,turn 1 to 0)                 |
 
-**project:** transfer all code note for Prototypical Inheritance section
+- adjacency list(simple graph):one hash table maintain node, one array of linked list maintain edges
 
-**note:**
+| operation                         | time complexity                                          |
+| --------------------------------- | -------------------------------------------------------- |
+| space                             | O(n+m)(n node in hash table & m edges in linked list)    |
+| insertVertex(K key)               | O(1)(hash table lookup)                                  |
+| removeVertex(Vertex v)            | O(deg(V))(hash table lookup, link lookup, relink)        |
+| areAdjacent(Vertex v1, Vertex v2) | O(min(deg(V1),deg(V2)))(hash table lookup, link lookup)  |
+| incidentEdges(Vertex)             | O(deg(V))(hash table lookup, link lookup)                |
+| addEdge                           | O(deg(V))(hash table lookup, check duplicates, add link) |
+| removeEdge                        | O(deg(V))(hash table lookup, link lookup)                |
 
-- reset constructor
+- for dense graph, try to use adjacency matrix, otherwise use adjacency list
 
-**link:**[solution repo](https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/inheritance.js)
+# Tries
 
-## ES6 Class - Note from Code with Mosh
+# Heaps
 
-### August 9th, 2020 - Sunday
+- requirement:
+  - complete tree:
+  - heap property
+- type:max heap, min heap,binary heap
+- app:heapSort;shortest path;priority queue;finding Kth smallest/largest value
 
-**project:** transfer all code note for Class section
+# AVL Tree
 
-**note:**
+# Tree
 
-- function hoisting
-- [instance method and static method](https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/classes.js)
-- [private members](https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/classes.js):
-  - symbol
-  - getter and setter
-  - weakMap
-- [method overriding](https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/classes.js): prototypical path to find a method, from child to parent
-- [inheritance](https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/classes.js)
-- `this` keyword:
-  - `this` keyword - `use strict` mode will be used as default setting in ES6 class
-  - in Java class, `this` is used when there is a need to clear ambiguity, such as the instance member's name is the same as the parameter's name passed into the method. if not the case, there is no need to use `this`
-  - in JS class, `this` points to current object, we have to use `this` in function to provide running context,see [very useful link](https://www.youtube.com/watch?v=zE9iro4r918)
-    - implicit binding
-    - explicit binding: bind(),call(),apply()
-    - new binding: `new` keyword will implicitly bind function/field to object when creating the instance
-    - window
-  - there is a clear demo of using class to create instance vs traditional way of creating an instance: [link](https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/stopWatch.js)
-    - [closure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
-    - class is the syntactic sugar over old constructor function
-  - getter and setter
+good binary search tree:
+| insert | lookup | delete |
+| -------- | -------- | -------- |
+| O(log n) | O(log n) | O(log n) |
 
-## Object - Note from Code with Mosh
+bad tree:
+| insert | lookup | delete |
+| -------- | -------- | -------- |
+| O(log n) | O(log n) | O(log n) |
 
-### August 9th, 2020 - Sunday
+- app: representing hierarchical data, databases, autocompletion, compilers, compression
+- BST cannot have duplicated value inside true, the child is either smaller or larger than parent node, cannot be equal.
+- traversal:
+  - Breadth First
+  - Depth First:
+    - pre-order(root,left,right), walk thru parent first, then its leaf nodes
+    - in-order(left,root,right): the traversal result is incremental/decremental
+    - post-order(left,right,root): walk thru leaf node first, then its parent
+- depth and height:
 
-**project:** transfer all code note for Object section
+  - depth of node: calculating the number of edges for a node from top-down
+  - height of sub tree: calculating the number of edges for a node from bottom-up
 
-**note:**
+# Hash Table
 
-- object literal: this can have issue when object have "behavior", function would be duplicated in different object
-- [factory function](https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/factoryFunction&constructorFunction.js)
-- when using constructor function to create an object, `this` will point to an empty object and attach property to it. And we don't need to explicitly return `this` because it will do it automatically
-- [constructor property](https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/constructorProperty.js): if using object literal, the constructor property will be using Object constructor
-- value/primitives types: number,string,boolean,symbol,undefined,null
-- reference types: object, function, array
-- [adding/removing property](https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/add&removeProperties.js): js object can dynamically add/remove properties on the fly
-- [enumerate property](https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/enumerateProperty.js)
-- [function object](https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/functionObject.js):
-  - function object constructor
-  - `func.call()` and `func.apply()` and `func.bind()`
-- [private method and property](https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/privateMethod&property.js): scope and closure
-  - scope is block scope, `let` variable initialize and die in lifecycle of the function
-  - [closure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures): an inner function can access parent variable
-- [getter and setter](https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/getter&setter.js)
-  - [using defineProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+| insert | lookup | delete |
+| ------ | ------ | ------ |
+| O(1)   | O(1)   | O(1)   |
 
-## Function - Note from Code with Mosh
+- app: spell checker,dictionary, compiler, code editor
+- worst case: O(n)
 
-### August 8th, 2020 - Saturday
+# Queue
 
-**project:** transfer all code note for Object section
+| enqueue | dequeue | peek | inEmpty | isFull |
+| ------- | ------- | ---- | ------- | ------ |
+| O(1)    | O(1)    | O(1) | O(1)    | O(1)   |
 
-**note:**
+- app: printer,operating system, web servers, live support system
 
-- function
+# Stack
 
-## Function - Array.map() and Array.filter()
+| push | pop  | peek | isEmpty |
+| ---- | ---- | ---- | ------- |
+| O(1) | O(1) | O(1) | O(1)    |
 
-### August 8th, 2020 - Friday
+- app: undo feature, syntax checking in compiler, evaluate math expression, build navigation(forward/back)
+- can be implemented by array, arraylist or linked list internally
 
-**project:** understand map and filter func, compare them with Java's similar function
+# Linked List
 
-**note:**
+| lookup                 | insert                            | delete                  |
+| ---------------------- | --------------------------------- | ----------------------- |
+| index: O(n) value:O(n) | start:O(1) middle: O(n) end: O(1) | singly:O(n) doubly:O(1) |
 
-- In Java, map function is `function interface`, and filter function is `predicates interface`.
-- In Java, the above two interface requires a concrete implementation. In order to use the function, it has to generate from a class which implement the interface. This is called functional interface. Anonymous class and lambda expression are used to quickly provide implementation detail.
-- In JS, the above two methods are very similar to Java's concept but the function itself is an object and expect an function object being passed as argument.
+- LinkedList from java.util package could be `LinkedList generic = new LinkedList();`. In this case, one node could host String, another node could host Integer
+- type:
+  - singly: O(n) on deleting the end item
+  - doubly: O(1) on deleting the end item
+  - circular: song playlist loop,
 
-**link:**
+# Array
 
-- [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
-- [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+| lookup by index | lookup by value | insert | delete               |
+| --------------- | --------------- | ------ | -------------------- |
+| O(1)            | O(n)            | O(n)   | worst:O(n) best:O(1) |
 
-## Function - How to read JavaScript document
+- ArrayList: grow 50% everytime it's full. not synchronized, multi thread
+- Vector: grow 100% everytime it's full. synchronize, single thread
 
-### August 8th, 2020 - Saturday
+# Big O notation
 
-**project:** It is a bit weird to read MDN's JavaScript document. Especially `[,` symbol is very hard to understand
-
-**note:**
-
-- `[,xxx]`is optional argument
-
-**link:** [detailed explaination](http://cassandrawilcox.me/beginners-guide-developer-documentation/)
-
-## Modules - Note from Code with Mosh
-
-### August 7th, 2020 - Thursday
-
-**project:** Question: what is Node.JS?
-
-**note:**
-
-- CommonJS: module.export is an object, we could export the whole class, or attach some object to the export object as properties
-- ES6: can use export&export default, when importing, need to use import/import {}
-- there is an issue importing the module, that can be fixe in [index.js](https://ui.dev/javascript-modules-iifes-commonjs-esmodules/)
-
-**link:** [solution repo](../module)
-
-## Modules - Node.JS, npm, V8: term kick-off
-
-### August 7th, 2020 - Thursday
-
-**project:** Question: what is Node.JS?
-
-**note:**
-
-- Node.js is a javascript runtime built on JavaScript V8 Engine, written in C++
-- JS can only access browser, with NodeJs, it can access local machine and can be used for building utilities, web server, file control, etc
-- `npm init` can package the dependencies and create a package.json file for providing dependency info, `npm install` will use this json file to install the required package
-- V8 is a high-performance interpreter, help transferring JS code to machine code. It is running in browser but Node.js wraps it and make it run in local machine
-- `package-lock.json` is another package version control file, usually we only need to adjust `package.json`
-
-**link:** [youtube](https://www.youtube.com/watch?v=pU9Q6oiQNd0)
+- runtime complexity: O(1),O(n),O(n^2),O(log n), O(2^n)
+- space complexity: always look at additional space needs to be allocated, don't count size of the input

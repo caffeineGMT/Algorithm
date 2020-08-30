@@ -4,22 +4,22 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>JavaScript Note
+  <title>Java Learning
     by Maitao Guo</title>
   <!-- Begin Jekyll SEO tag v2.5.0 -->
 <meta name="generator" content="Jekyll v3.7.4" />
-<meta property="og:title" content="JavaScript Note" />
+<meta property="og:title" content="Java Learning" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="by Maitao Guo" />
 <meta property="og:description" content="by Maitao Guo" />
 <link rel="canonical" href="http://localhost:4000/" />
 <meta property="og:url" content="http://localhost:4000/" />
-<meta property="og:site_name" content="100 Days of Code Log Round 1" />
+<meta property="og:site_name" content="Java Learning" />
 <script type="application/ld+json">
-{"headline":"JavaScript Note","url":"http://localhost:4000/","name":"100 Days of Code Log Round 1","description":"by Maitao Guo","@type":"WebSite","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/","headline":"Java Learning","name":"Java Learning","description":"by Maitao Guo","@type":"WebSite","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=7eeea78d9fcf94f9287a1533b3cb4d0c3fafb319">
+  <link rel="stylesheet" href="/assets/css/style.css?v=d8fd6fe9343eef8c26cea21b4607534c13be4f0c">
   <script src="https://code.jquery.com/jquery-3.3.0.min.js"
     integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
   <script src="/assets/js/main.js"></script>
@@ -64,15 +64,15 @@
 
   <header>
     
-    <h1>JavaScript Note</h1>
-    <p></p>
+    <h1>Java Learning</h1>
+    <p>by Maitao Guo</p>
     
   </header>
 
   <div id="banner">
     <span id="logo"></span>
 
-    <a href="https://github.com/caffeineGMT/JavaScript_Learning" class="button fork"><strong>View On GitHub</strong></a>
+    <a href="https://github.com/caffeineGMT/Algorithm" class="button fork"><strong>View On GitHub</strong></a>
     
   </div><!-- end banner -->
 
@@ -81,209 +81,376 @@
       <ul></ul>
     </nav>
     <section>
-      <h1 id="javascript-note">JavaScript Note</h1>
+      <!-- markdownlint-disable MD025-->
 
-<p>This is a repo recording any important note or thought when learning JavaScript. Most of the note/solution will be based on MOOC course “Code with Mosh” JavaScript Series.</p>
+<h1 id="algorithm-note">Algorithm Note</h1>
 
-<h2 id="prototypes---note-from-code-with-mosh">Prototypes - Note from Code with Mosh</h2>
+<p>This is a repo recording any important note or thought when learning Algorithm. Most of the note/solution will be based on MOOC course “Code with Mosh” Algorithm Series.</p>
 
-<h3 id="august-9th-2020---sunday">August 9th, 2020 - Sunday</h3>
+<h1 id="undirected-graph">Undirected Graph</h1>
 
-<p><strong>project:</strong> transfer all code note for Prototype section</p>
+<p>-</p>
 
-<p><strong>note:</strong></p>
+<h1 id="graph">Graph</h1>
 
 <ul>
-  <li>classical inheritance vs prototypical inheritance
+  <li>app: network connection, social media, path finding</li>
+  <li>basic concept:
     <ul>
-      <li>Object prototype doesn’t have a parent proto</li>
-      <li>prototype is an object, it could save method/property that could be shared in instance</li>
-      <li>when accessing an property or method of an object, it will look up in this object first, if not found, it will look up in its direct parent(prototype), all the way until root object, which is Object prototype.</li>
+      <li>vertex: V/n</li>
+      <li>edge: E/m</li>
+      <li>incident edges: immediate edges connecting to a node</li>
+      <li>degree of node: how many incident node</li>
+      <li>adjacent node/vertices</li>
+      <li>path: sequence of vertices connect by edges</li>
+      <li>cycle: path with a common start and end</li>
+      <li>simple graph: no self loop or multi-edges</li>
+      <li>directed graph</li>
+      <li>undirected graph</li>
     </ul>
   </li>
-  <li>property descriptors</li>
-  <li>constructor prototype</li>
-  <li>don’t modify built-in object</li>
-  <li>instance member and prototype member</li>
-  <li>iterating instance property and prototype property</li>
-  <li>prototype only have access to public member of instance created by constructor, it doesnt have access to constructor’s local variable. In other word, because method in prototype is not defined inside a constructor, it does not contain the closure scope as the method defined inside the constructor</li>
-</ul>
-
-<p><strong>link:</strong> <a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/prototypes.js">solution repo</a></p>
-
-<h2 id="prototypical-inheritance---note-from-code-with-mosh">Prototypical Inheritance - Note from Code with Mosh</h2>
-
-<h3 id="august-9th-2020---sunday-1">August 9th, 2020 - Sunday</h3>
-
-<p><strong>project:</strong> transfer all code note for Prototypical Inheritance section</p>
-
-<p><strong>note:</strong></p>
-
-<ul>
-  <li>reset constructor</li>
-</ul>
-
-<p><strong>link:</strong><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/inheritance.js">solution repo</a></p>
-
-<h2 id="es6-class---note-from-code-with-mosh">ES6 Class - Note from Code with Mosh</h2>
-
-<h3 id="august-9th-2020---sunday-2">August 9th, 2020 - Sunday</h3>
-
-<p><strong>project:</strong> transfer all code note for Class section</p>
-
-<p><strong>note:</strong></p>
-
-<ul>
-  <li>function hoisting</li>
-  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/classes.js">instance method and static method</a></li>
-  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/classes.js">private members</a>:
+  <li>edges numbers:
     <ul>
-      <li>symbol</li>
-      <li>getter and setter</li>
-      <li>weakMap</li>
-    </ul>
-  </li>
-  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/classes.js">method overriding</a>: prototypical path to find a method, from child to parent</li>
-  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/class/classes.js">inheritance</a></li>
-  <li><code class="highlighter-rouge">this</code> keyword:
-    <ul>
-      <li><code class="highlighter-rouge">this</code> keyword - <code class="highlighter-rouge">use strict</code> mode will be used as default setting in ES6 class</li>
-      <li>in Java class, <code class="highlighter-rouge">this</code> is used when there is a need to clear ambiguity, such as the instance member’s name is the same as the parameter’s name passed into the method. if not the case, there is no need to use <code class="highlighter-rouge">this</code></li>
-      <li>in JS class, <code class="highlighter-rouge">this</code> points to current object, we have to use <code class="highlighter-rouge">this</code> in function to provide running context,see <a href="https://www.youtube.com/watch?v=zE9iro4r918">very useful link</a>
+      <li>min edges for a graph:
         <ul>
-          <li>implicit binding</li>
-          <li>explicit binding: bind(),call(),apply()</li>
-          <li>new binding: <code class="highlighter-rouge">new</code> keyword will implicitly bind function/field to object when creating the instance</li>
-          <li>window</li>
+          <li>not connected:0</li>
+          <li>connected: n-1</li>
         </ul>
       </li>
-      <li>there is a clear demo of using class to create instance vs traditional way of creating an instance: <a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/stopWatch.js">link</a>
+      <li>max edges for a graph:
         <ul>
-          <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">closure</a></li>
-          <li>class is the syntactic sugar over old constructor function</li>
+          <li>simple: n*(n-1)</li>
+          <li>not simple:infinity</li>
         </ul>
       </li>
-      <li>getter and setter</li>
+      <li>sum of degree in a graph: 2m (because every inbound edge will have a corresponding outbound edge)</li>
     </ul>
   </li>
+  <li>edge list(simple graph):one hash table maintain node, one hash table maintain edges</li>
 </ul>
 
-<h2 id="object---note-from-code-with-mosh">Object - Note from Code with Mosh</h2>
-
-<h3 id="august-9th-2020---sunday-3">August 9th, 2020 - Sunday</h3>
-
-<p><strong>project:</strong> transfer all code note for Object section</p>
-
-<p><strong>note:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>operation</th>
+      <th>time complexity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>space</td>
+      <td>O(n+m)(n node in hash table &amp; total m edges in hash table)</td>
+    </tr>
+    <tr>
+      <td>insertVertex(K key)</td>
+      <td>O(1)(hash table lookup)</td>
+    </tr>
+    <tr>
+      <td>removeVertex(Vertex v)</td>
+      <td>O(m)(hash table lookup, walk thru every edge)</td>
+    </tr>
+    <tr>
+      <td>areAdjacent(Vertex v1, Vertex v2)</td>
+      <td>O(m)(walk thru every edge)</td>
+    </tr>
+    <tr>
+      <td>incidentEdges(Vertex)</td>
+      <td>O(m)(hash table lookup, walk thru every edge)</td>
+    </tr>
+    <tr>
+      <td>addEdge</td>
+      <td>O(1)(hash table lookup)</td>
+    </tr>
+    <tr>
+      <td>removeEdge</td>
+      <td>O(1)(hash table lookup)</td>
+    </tr>
+  </tbody>
+</table>
 
 <ul>
-  <li>object literal: this can have issue when object have “behavior”, function would be duplicated in different object</li>
-  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/factoryFunction&amp;constructorFunction.js">factory function</a></li>
-  <li>when using constructor function to create an object, <code class="highlighter-rouge">this</code> will point to an empty object and attach property to it. And we don’t need to explicitly return <code class="highlighter-rouge">this</code> because it will do it automatically</li>
-  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/constructorProperty.js">constructor property</a>: if using object literal, the constructor property will be using Object constructor</li>
-  <li>value/primitives types: number,string,boolean,symbol,undefined,null</li>
-  <li>reference types: object, function, array</li>
-  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/add&amp;removeProperties.js">adding/removing property</a>: js object can dynamically add/remove properties on the fly</li>
-  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/enumerateProperty.js">enumerate property</a></li>
-  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/functionObject.js">function object</a>:
+  <li>adjacency matrix(simple graph):one hash table maintain node, one 2D array maintain edges</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>operation</th>
+      <th>time complexity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>space</td>
+      <td>O(n^2)(n node in hash table &amp; n by n 2D matrix)</td>
+    </tr>
+    <tr>
+      <td>insertVertex(K key)</td>
+      <td>O(n^2)(need to copy the whole matrix)</td>
+    </tr>
+    <tr>
+      <td>removeVertex(Vertex v)</td>
+      <td>O(n^2)(need to shrink the whole matrix)</td>
+    </tr>
+    <tr>
+      <td>areAdjacent(Vertex v1, Vertex v2)</td>
+      <td>O(1)(hash table lookup)</td>
+    </tr>
+    <tr>
+      <td>incidentEdges(Vertex)</td>
+      <td>O(n)(hash table look up &amp; walk down one row/column)</td>
+    </tr>
+    <tr>
+      <td>addEdge</td>
+      <td>O(1)(hash table lookup,turn 0 to 1)</td>
+    </tr>
+    <tr>
+      <td>removeEdge</td>
+      <td>O(1)(hash table lookup,turn 1 to 0)</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>adjacency list(simple graph):one hash table maintain node, one array of linked list maintain edges</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>operation</th>
+      <th>time complexity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>space</td>
+      <td>O(n+m)(n node in hash table &amp; m edges in linked list)</td>
+    </tr>
+    <tr>
+      <td>insertVertex(K key)</td>
+      <td>O(1)(hash table lookup)</td>
+    </tr>
+    <tr>
+      <td>removeVertex(Vertex v)</td>
+      <td>O(deg(V))(hash table lookup, link lookup, relink)</td>
+    </tr>
+    <tr>
+      <td>areAdjacent(Vertex v1, Vertex v2)</td>
+      <td>O(min(deg(V1),deg(V2)))(hash table lookup, link lookup)</td>
+    </tr>
+    <tr>
+      <td>incidentEdges(Vertex)</td>
+      <td>O(deg(V))(hash table lookup, link lookup)</td>
+    </tr>
+    <tr>
+      <td>addEdge</td>
+      <td>O(deg(V))(hash table lookup, check duplicates, add link)</td>
+    </tr>
+    <tr>
+      <td>removeEdge</td>
+      <td>O(deg(V))(hash table lookup, link lookup)</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>for dense graph, try to use adjacency matrix, otherwise use adjacency list</li>
+</ul>
+
+<h1 id="tries">Tries</h1>
+
+<h1 id="heaps">Heaps</h1>
+
+<ul>
+  <li>requirement:
     <ul>
-      <li>function object constructor</li>
-      <li><code class="highlighter-rouge">func.call()</code> and <code class="highlighter-rouge">func.apply()</code> and <code class="highlighter-rouge">func.bind()</code></li>
+      <li>complete tree:</li>
+      <li>heap property</li>
     </ul>
   </li>
-  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/privateMethod&amp;property.js">private method and property</a>: scope and closure
+  <li>type:max heap, min heap,binary heap</li>
+  <li>app:heapSort;shortest path;priority queue;finding Kth smallest/largest value</li>
+</ul>
+
+<h1 id="avl-tree">AVL Tree</h1>
+
+<h1 id="tree">Tree</h1>
+
+<p>good binary search tree:
+| insert | lookup | delete |
+| ——– | ——– | ——– |
+| O(log n) | O(log n) | O(log n) |</p>
+
+<p>bad tree:
+| insert | lookup | delete |
+| ——– | ——– | ——– |
+| O(log n) | O(log n) | O(log n) |</p>
+
+<ul>
+  <li>app: representing hierarchical data, databases, autocompletion, compilers, compression</li>
+  <li>BST cannot have duplicated value inside true, the child is either smaller or larger than parent node, cannot be equal.</li>
+  <li>traversal:
     <ul>
-      <li>scope is block scope, <code class="highlighter-rouge">let</code> variable initialize and die in lifecycle of the function</li>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">closure</a>: an inner function can access parent variable</li>
+      <li>Breadth First</li>
+      <li>Depth First:
+        <ul>
+          <li>pre-order(root,left,right), walk thru parent first, then its leaf nodes</li>
+          <li>in-order(left,root,right): the traversal result is incremental/decremental</li>
+          <li>post-order(left,right,root): walk thru leaf node first, then its parent</li>
+        </ul>
+      </li>
     </ul>
   </li>
-  <li><a href="https://github.com/caffeineGMT/JavaScript_Learning/blob/master/objects/getter&amp;setter.js">getter and setter</a>
+  <li>
+    <p>depth and height:</p>
+
     <ul>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">using defineProperty</a></li>
+      <li>depth of node: calculating the number of edges for a node from top-down</li>
+      <li>height of sub tree: calculating the number of edges for a node from bottom-up</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="function---note-from-code-with-mosh">Function - Note from Code with Mosh</h2>
+<h1 id="hash-table">Hash Table</h1>
 
-<h3 id="august-8th-2020---saturday">August 8th, 2020 - Saturday</h3>
-
-<p><strong>project:</strong> transfer all code note for Object section</p>
-
-<p><strong>note:</strong></p>
-
-<ul>
-  <li>function</li>
-</ul>
-
-<h2 id="function---arraymap-and-arrayfilter">Function - Array.map() and Array.filter()</h2>
-
-<h3 id="august-8th-2020---friday">August 8th, 2020 - Friday</h3>
-
-<p><strong>project:</strong> understand map and filter func, compare them with Java’s similar function</p>
-
-<p><strong>note:</strong></p>
-
-<ul>
-  <li>In Java, map function is <code class="highlighter-rouge">function interface</code>, and filter function is <code class="highlighter-rouge">predicates interface</code>.</li>
-  <li>In Java, the above two interface requires a concrete implementation. In order to use the function, it has to generate from a class which implement the interface. This is called functional interface. Anonymous class and lambda expression are used to quickly provide implementation detail.</li>
-  <li>In JS, the above two methods are very similar to Java’s concept but the function itself is an object and expect an function object being passed as argument.</li>
-</ul>
-
-<p><strong>link:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>insert</th>
+      <th>lookup</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>O(1)</td>
+      <td>O(1)</td>
+      <td>O(1)</td>
+    </tr>
+  </tbody>
+</table>
 
 <ul>
-  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">filter</a></li>
-  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">map</a></li>
+  <li>app: spell checker,dictionary, compiler, code editor</li>
+  <li>worst case: O(n)</li>
 </ul>
 
-<h2 id="function---how-to-read-javascript-document">Function - How to read JavaScript document</h2>
+<h1 id="queue">Queue</h1>
 
-<h3 id="august-8th-2020---saturday-1">August 8th, 2020 - Saturday</h3>
-
-<p><strong>project:</strong> It is a bit weird to read MDN’s JavaScript document. Especially <code class="highlighter-rouge">[,</code> symbol is very hard to understand</p>
-
-<p><strong>note:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>enqueue</th>
+      <th>dequeue</th>
+      <th>peek</th>
+      <th>inEmpty</th>
+      <th>isFull</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>O(1)</td>
+      <td>O(1)</td>
+      <td>O(1)</td>
+      <td>O(1)</td>
+      <td>O(1)</td>
+    </tr>
+  </tbody>
+</table>
 
 <ul>
-  <li><code class="highlighter-rouge">[,xxx]</code>is optional argument</li>
+  <li>app: printer,operating system, web servers, live support system</li>
 </ul>
 
-<p><strong>link:</strong> <a href="http://cassandrawilcox.me/beginners-guide-developer-documentation/">detailed explaination</a></p>
+<h1 id="stack">Stack</h1>
 
-<h2 id="modules---note-from-code-with-mosh">Modules - Note from Code with Mosh</h2>
-
-<h3 id="august-7th-2020---thursday">August 7th, 2020 - Thursday</h3>
-
-<p><strong>project:</strong> Question: what is Node.JS?</p>
-
-<p><strong>note:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>push</th>
+      <th>pop</th>
+      <th>peek</th>
+      <th>isEmpty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>O(1)</td>
+      <td>O(1)</td>
+      <td>O(1)</td>
+      <td>O(1)</td>
+    </tr>
+  </tbody>
+</table>
 
 <ul>
-  <li>CommonJS: module.export is an object, we could export the whole class, or attach some object to the export object as properties</li>
-  <li>ES6: can use export&amp;export default, when importing, need to use import/import {}</li>
-  <li>there is an issue importing the module, that can be fixe in <a href="https://ui.dev/javascript-modules-iifes-commonjs-esmodules/">index.js</a></li>
+  <li>app: undo feature, syntax checking in compiler, evaluate math expression, build navigation(forward/back)</li>
+  <li>can be implemented by array, arraylist or linked list internally</li>
 </ul>
 
-<p><strong>link:</strong> <a href="../module">solution repo</a></p>
+<h1 id="linked-list">Linked List</h1>
 
-<h2 id="modules---nodejs-npm-v8-term-kick-off">Modules - Node.JS, npm, V8: term kick-off</h2>
-
-<h3 id="august-7th-2020---thursday-1">August 7th, 2020 - Thursday</h3>
-
-<p><strong>project:</strong> Question: what is Node.JS?</p>
-
-<p><strong>note:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>lookup</th>
+      <th>insert</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>index: O(n) value:O(n)</td>
+      <td>start:O(1) middle: O(n) end: O(1)</td>
+      <td>singly:O(n) doubly:O(1)</td>
+    </tr>
+  </tbody>
+</table>
 
 <ul>
-  <li>Node.js is a javascript runtime built on JavaScript V8 Engine, written in C++</li>
-  <li>JS can only access browser, with NodeJs, it can access local machine and can be used for building utilities, web server, file control, etc</li>
-  <li><code class="highlighter-rouge">npm init</code> can package the dependencies and create a package.json file for providing dependency info, <code class="highlighter-rouge">npm install</code> will use this json file to install the required package</li>
-  <li>V8 is a high-performance interpreter, help transferring JS code to machine code. It is running in browser but Node.js wraps it and make it run in local machine</li>
-  <li><code class="highlighter-rouge">package-lock.json</code> is another package version control file, usually we only need to adjust <code class="highlighter-rouge">package.json</code></li>
+  <li>LinkedList from java.util package could be <code class="highlighter-rouge">LinkedList generic = new LinkedList();</code>. In this case, one node could host String, another node could host Integer</li>
+  <li>type:
+    <ul>
+      <li>singly: O(n) on deleting the end item</li>
+      <li>doubly: O(1) on deleting the end item</li>
+      <li>circular: song playlist loop,</li>
+    </ul>
+  </li>
 </ul>
 
-<p><strong>link:</strong> <a href="https://www.youtube.com/watch?v=pU9Q6oiQNd0">youtube</a></p>
+<h1 id="array">Array</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>lookup by index</th>
+      <th>lookup by value</th>
+      <th>insert</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>O(1)</td>
+      <td>O(n)</td>
+      <td>O(n)</td>
+      <td>worst:O(n) best:O(1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>ArrayList: grow 50% everytime it’s full. not synchronized, multi thread</li>
+  <li>Vector: grow 100% everytime it’s full. synchronize, single thread</li>
+</ul>
+
+<h1 id="big-o-notation">Big O notation</h1>
+
+<ul>
+  <li>runtime complexity: O(1),O(n),O(n^2),O(log n), O(2^n)</li>
+  <li>space complexity: always look at additional space needs to be allocated, don’t count size of the input</li>
+</ul>
 
 
     </section>
