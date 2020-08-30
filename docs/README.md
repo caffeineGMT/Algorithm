@@ -83,12 +83,14 @@ This is a repo recording any important note or thought when learning Algorithm. 
 # Tree
 
 good binary search tree:
-| insert | lookup | delete |
+
+| insert   | lookup   | delete   |
 | -------- | -------- | -------- |
 | O(log n) | O(log n) | O(log n) |
 
 bad tree:
-| insert | lookup | delete |
+
+| insert   | lookup   | delete   |
 | -------- | -------- | -------- |
 | O(log n) | O(log n) | O(log n) |
 
