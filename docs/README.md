@@ -72,11 +72,24 @@ This is a repo recording any important note or thought when learning Algorithm. 
 
 # Heaps
 
+| insert(bubble up) | delete (bubble dow ) | find max/min |
+| ----------------- | -------------------- | ------------ |
+| O(log n)          | O(log n)             | O(1)         |
+
 - requirement:
-  - complete tree:
-  - heap property
+  - complete tree: 2 children for each node, and has to be on the same level until last level, and at last level all nodes being pushed to the left
+  - heap property: parent node is smaller than children node (min-heap)/parent node is bigger than children node (max-heap)
 - type:max heap, min heap,binary heap
 - app:heapSort;shortest path;priority queue;finding Kth smallest/largest value
+- implementation notes:
+  - implementation data structure: array
+  - insert: add item in order in array, when there is an item not following the heap property, we should bubble up this item, which is swapping this item with its parent until it follows heap property
+  - delete: when deleting the root node, we need to do bubble down operation, which is bringing the last node to the vacant position, and bubble down the node at that new location until we satisfy heap property
+  - find max/min: the root node value is the max/min
+  - parent/children index formula: 
+    - leftIndex=parentIndex*2+1
+    - rightIndex=parentIndex*2+2
+    - parentIndex=(childIndex-1)/2
 
 # AVL Tree
 
@@ -115,6 +128,12 @@ bad tree:
 
 - app: spell checker,dictionary, compiler, code editor
 - worst case: O(n)
+- collison:
+  - chaining: using linked list
+  - open addressing:
+    - linear probing: `(hash(key)+i)%sizeOfArray`. hash(key) will be a number. if the slot is not empty, we increment by 1, which is represented by i. In order to bound the boundary of (hash(key)+i), we introduce modular operator to bound it by the size of array, otherwise it might be out of index boundary of the array. This method can result in clustering.
+    - quadratic probing:`(hash(key)+i^2)%sizeOfArray`. because we are doing big jumps in array, we might end up looping back to previous step and being trapped in an infinite loop.
+    - double hashing:`(hash1(key)+i*hash2(key))%sizeOfArray`. `hash2(key)=prime-(key%prime)`. prime is a number smaller than size of array.Example: array size is 5, prime number is 3. hash1(11)=11%5=1.Let's say index at 1 has a collision. hash2(11)=3-(11%3)=1. hash(11)=(1+1\*1)%5=2. We should try if array at index 2 is available. If not, increment i by 1, so hash(11)=(1+2\*1)%5=3
 
 # Queue
 

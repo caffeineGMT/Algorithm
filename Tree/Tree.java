@@ -1,8 +1,7 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Tree {
-    private Node root;
-
     private class Node {
         private int value;
         private Node left;
@@ -15,12 +14,17 @@ public class Tree {
         };
     }
 
+    private Node root;
+    private int size;
+
     public Tree() {
         root = null;
+        size = 0;
     }
 
     public void insert(int value) {
         var node = new Node(value);
+        size++;
         if (root == null) {
             root = node;
             return;
@@ -46,18 +50,16 @@ public class Tree {
 
     private boolean find(int target, Node start) {
         // solution 1: recursion
+        if (start == null)
+            return false;
+
         var current = start;
-        if (target < current.value) {
-            if (current.left == null)
-                return false;
+        if (target < current.value)
             return find(target, current.left);
-        } else if (target > current.value) {
-            if (current.right == null)
-                return false;
+        else if (target > current.value)
             return find(target, current.right);
-        } else {
+        else
             return true;
-        }
     }
 
     public boolean find(int target) {
@@ -234,6 +236,125 @@ public class Tree {
         }
     }
 
+    public int size() {
+        return size;
+    }
+
+    public int countSize() {
+        return countSize(root);
+    }
+
+    private int countSize(Node start) {
+        if (start == null)
+            return 0;
+
+        var count = 1;
+        count += countSize(start.left);
+        count += countSize(start.right);
+
+        return count;
+
+        // solution2: checking leaf node
+        // if (root == null)
+        // return 0;
+
+        // if (isLeaf(root))
+        // return 1;
+
+        // return 1 + size(root.left) + size(root.rightChild);
+
+    }
+
+    public int countLeaves() {
+        return countLeaves(root);
+    }
+
+    private int countLeaves(Node start) {
+        if (start == null)
+            return 0;
+        if (isLeaf(start))
+            return 1;
+        return countLeaves(start.left) + countLeaves(start.right);
+    }
+
+    public int max() {
+        // using recursion
+        return max(root);
+    }
+
+    private int max(Node start) {
+        if (start == null)
+            throw new IllegalStateException();
+        if (start.right == null)
+            return start.value;
+
+        return max(start.right);
+    }
+
+    public boolean contains(int value) {
+        return contains(root, value);
+    }
+
+    private boolean contains(Node root, int value) {
+        if (root == null)
+            return false;
+
+        if (root.value == value)
+            return true;
+
+        return contains(root.left, value) || contains(root.right, value);
+    }
+
+    public boolean areSibling(int first, int second) {
+        return areSibling(root, first, second);
+    }
+
+    private boolean areSibling(Node start, int first, int second) {
+        if (start == null)
+            return false;
+        if (start.left == null || start.right == null)
+            return false;
+        if ((start.left.value == first && start.right.value == second)
+                || (start.left.value == second && start.right.value == first))
+            return true;
+
+        return areSibling(start.left, first, second) || areSibling(start.right, first, second);
+
+        // solution 2
+        // if (start == null)
+        // return false;
+
+        // var areSibling = false; // flag, only condition below can change the flag.
+        // Otherwise delegate the task to its children
+        // if (root.left != null && root.right != null) {
+        // areSibling = (root.left.value == first && root.right.value == second)
+        // || (root.right.value == first && root.left.value == second);
+        // }
+
+        // return areSibling || areSibling(root.left, first, second) ||
+        // areSibling(root.right, first, second);
+    }
+
+    // public List<Integer> getAncestors() {
+
+    // }
+    public boolean isBalanced() {
+        return isBalanced(root);
+    }
+
+    private boolean isBalanced(Node root) {
+        if (root == null)
+            return true;
+
+        var balanceFactor = height(root.left) - height(root.right);
+
+        return Math.abs(balanceFactor) <= 1 && isBalanced(root.left) && isBalanced(root.right);
+    }
+
+    public boolean isPerfect() {
+        return size() == (Math.pow(2, height() + 1) - 1);
+    }
+
     public static void main(String[] args) {
         var test = new Tree();
         test.insert(10);
@@ -241,10 +362,11 @@ public class Tree {
         test.insert(8);
         test.insert(12);
         test.insert(9);
-        test.traversalLevelOrder();
+        test.insert(7);
+        // test.traversalLevelOrder();
 
         // test.find(20);
-        // System.out.println(test.find(13));
+        System.out.println(test.areSibling(7, 9));
     }
 
 }
