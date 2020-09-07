@@ -128,7 +128,7 @@ bad tree:
 
 - app: spell checker,dictionary, compiler, code editor
 - worst case: O(n)
-- collison:
+- collision: when 2 key are generating the same hashed value thru hash function
   - chaining: using linked list
   - open addressing:
     - linear probing: `(hash(key)+i)%sizeOfArray`. hash(key) will be a number. if the slot is not empty, we increment by 1, which is represented by i. In order to bound the boundary of (hash(key)+i), we introduce modular operator to bound it by the size of array, otherwise it might be out of index boundary of the array. This method can result in clustering.
