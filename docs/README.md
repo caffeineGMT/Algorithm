@@ -4,6 +4,27 @@
 
 This is a repo recording any important note or thought when learning Algorithm. Most of the note/solution will be based on MOOC course "Code with Mosh" Algorithm Series.
 
+# Sorting Algorithm
+
+- bubble sort: 
+  | operation  | best | worst  |
+  | ---------- | ---- | ------ |
+  | iteration  | O(n) | O(n)   |
+  | shift item | O(1) | O(n)   |
+  | total      | O(n) | O(n^2) |
+- selection sort:
+  | operation  | best   | worst  |
+  | ---------- | ------ | ------ |
+  | iteration  | O(n)   | O(n)   |
+  | shift item | O(n)   | O(n)   |
+  | total      | O(n^2) | O(n^2) |
+- insertion sort: 
+  | operation  | best | worst  |
+  | ---------- | ---- | ------ |
+  | iteration  | O(n) | O(n)   |
+  | shift item | O(1) | O(n)   |
+  | total      | O(n) | O(n^2) |
+
 # Undirected Graph
 
 -
@@ -67,14 +88,31 @@ This is a repo recording any important note or thought when learning Algorithm. 
 | removeEdge                        | O(deg(V))(hash table lookup, link lookup)                |
 
 - for dense graph, try to use adjacency matrix, otherwise use adjacency list
+- topological sort: 
+  - definition: a topological sort or topological ordering of a directed graph is a linear ordering of its vertices such that for every directed edge uv from vertex u to vertex v, u comes before v in the ordering. For instance, the vertices of the graph may represent tasks to be performed, and the edges may represent constraints that one task must be performed before another; in this application, a topological ordering is just a valid sequence for the tasks.
+  - app: dependency check; prerequisite course; ranking
+  - directed acyclic graph
+  - O(n) runtime complexity
 
 # Tries
 
+| operation | time complexity |
+| --------- | --------------- |
+| lookup    | O(L)            |
+| insert    | O(L)            |
+| delete    | O(L)            |
+
+- app: auto-completion
+- tries concept:
+  - tries is not binary tree. It can have multiple children
+  - for word search/insertion/deletion, it need to do `L` operation, where `L` stands for the number of characters in the word.
+  - tries' root node is empty
+
 # Heaps
 
-| insert(bubble up) | delete (bubble dow ) | find max/min |
-| ----------------- | -------------------- | ------------ |
-| O(log n)          | O(log n)             | O(1)         |
+| insert(bubble up) | delete (bubble down ) | find max/min | heapify | heap sort (create then delete) |
+| ----------------- | --------------------- | ------------ | ------- | ------------------------------ |
+| O(log n)          | O(log n)              | O(1)         | O(n)    | nlgn+nlgn -> O(nlgn)           |
 
 - requirement:
   - complete tree: 2 children for each node, and has to be on the same level until last level, and at last level all nodes being pushed to the left
@@ -109,6 +147,11 @@ bad tree:
 
 - app: representing hierarchical data, databases, autocompletion, compilers, compression
 - BST cannot have duplicated value inside true, the child is either smaller or larger than parent node, cannot be equal.
+- full binary tree: binary tree is a full binary tree if every node has 0 or 2 children. In a Full Binary Tree, number of leaf nodes is the number of internal nodes plus 1. L = I + 1, where L = Number of leaf nodes, I = Number of internal nodes with 2 children
+- complete binary tree: binary tree is a complete binary tree if all the levels are completely filled except possibly the last level and the last level has all keys as left as possible
+- perfect binary tree: a binary tree is a perfect binary tree in which all the internal nodes have two children and all leaf nodes are at the same level. A Perfect Binary Tree of height h (where height is the number of nodes on the path from the root to leaf) has (2^(h+1)) – 1 node.
+- balanced binary tree: a binary tree is balanced if the height of the tree is O(Log n) where n is the number of nodes. For Example, the AVL tree maintains O(Log n) height by making sure that the difference between the heights of the left and right subtrees is almost 1. Red-Black trees maintain O(Log n) height by making sure that the number of Black nodes on every root to leaf paths is the same and there are no adjacent red nodes. Balanced Binary Search trees are performance-wise good as they provide O(log n) time for search, insert and delete.
+- degenerate tree: a tree where every internal node has one child. Such trees are performance-wise same as linked list.
 - traversal:
   - Breadth First
   - Depth First:
@@ -116,7 +159,6 @@ bad tree:
     - in-order(left,root,right): the traversal result is incremental/decremental
     - post-order(left,right,root): walk thru leaf node first, then its parent
 - depth and height:
-
   - depth of node: calculating the number of edges for a node from top-down
   - height of sub tree: calculating the number of edges for a node from bottom-up
 

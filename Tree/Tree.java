@@ -355,6 +355,24 @@ public class Tree {
         return size() == (Math.pow(2, height() + 1) - 1);
     }
 
+    public List<Integer> getAncestors(int target) {
+        var list = new ArrayList<Integer>();
+        startIsAncestorOfTarget(root, target, list);
+        return list;
+    }
+
+    private boolean startIsAncestorOfTarget(Node start, int target, List<Integer> list) {
+        if (start == null)
+            return false;
+        if (start.value == target)
+            return true;
+        if (startIsAncestorOfTarget(start.left, target, list) || startIsAncestorOfTarget(start.right, target, list)) {
+            list.add(start.value);
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         var test = new Tree();
         test.insert(10);
@@ -366,7 +384,7 @@ public class Tree {
         // test.traversalLevelOrder();
 
         // test.find(20);
-        System.out.println(test.areSibling(7, 9));
+        System.out.println(test.getAncestors(7));
     }
 
 }
