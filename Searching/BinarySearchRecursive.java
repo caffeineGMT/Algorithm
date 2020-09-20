@@ -1,15 +1,13 @@
 public class BinarySearchRecursive {
     public static int binarySearchRecursive(int[] arr, int target) {
-        // overload wrapper, only expose necessary api
         return binarySearchRecursive(arr, target, 0, arr.length - 1);
     }
 
     private static int binarySearchRecursive(int[] arr, int target, int left, int right) {
-        // base condition
         if (right < left) {
             return -1;
         }
-        // current condition
+
         int middle = (left + right) / 2;
         if (target == arr[middle]) {
             return middle;

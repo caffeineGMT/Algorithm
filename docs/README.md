@@ -4,6 +4,23 @@
 
 This is a repo recording any important note or thought when learning Algorithm. Most of the note/solution will be based on MOOC course "Code with Mosh" Algorithm Series.
 
+# Searching Algorithm
+
+- binary search: 
+  | operation | recursive | iterative |
+  | --------- | --------- | --------- |
+  | time      | O(lgn)    | O(lgn)    |
+  | space     | O(lgn)    | O(1)      |
+
+- ternary search: slower than binary search
+  | operation | recursive | iterative |
+  | --------- | --------- | --------- |
+  | time      | O(lg3 n)  | O(lg3 n)  |
+  | space     | O(lg3 n)  | O(1)      |
+
+- jump search:
+- exponential search:
+
 # Sorting Algorithm
 
 - bubble sort: 
@@ -24,6 +41,32 @@ This is a repo recording any important note or thought when learning Algorithm. 
   | iteration  | O(n) | O(n)   |
   | shift item | O(1) | O(n)   |
   | total      | O(n) | O(n^2) |
+- quick sort: 
+  | operation              | best    | worst  |
+  | ---------------------- | ------- | ------ |
+  | work in each partition | O(n)    | O(n)   |
+  | partition times        | O(lgn)  | O(n)   |
+  | total                  | O(nlgn) | O(n^2) |
+  | space                  | O(lgn)  | O(n)   |
+- counting sort: 
+  | operation        |                                                          |
+  | ---------------- | -------------------------------------------------------- |
+  | populating count | O(n)                                                     |
+  | iterate count    | O(k)                                                     |
+  | total            | O(n)                                                     |
+  | space            | O(k) (k is the maximum value in the domain of the array) |
+  - when to use: 
+    - allocating extra space is not a issue
+    - values are positive integers
+    - most of the value in the range are present
+- bucket sort: 
+  | operation      | best                           | worst  |
+  | -------------- | ------------------------------ | ------ |
+  | distribution   | O(n)                           | O(n)   |
+  | iterate bucket | O(k)                           | O(k)   |
+  | sorting        | O(1)                           | O(n^2) |
+  | total          | O(n+k)                         | O(n^2) |
+  | space          | O(n+k) (k is number of bucket) | O(n+k) |
 
 # Undirected Graph
 
