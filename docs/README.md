@@ -6,60 +6,92 @@ This is a repo recording any important note or thought when learning Algorithm. 
 
 # Searching Algorithm
 
-- binary search: 
+- binary search:
+
   | operation | recursive | iterative |
   | --------- | --------- | --------- |
   | time      | O(lgn)    | O(lgn)    |
   | space     | O(lgn)    | O(1)      |
 
 - ternary search: slower than binary search
+
   | operation | recursive | iterative |
   | --------- | --------- | --------- |
   | time      | O(lg3 n)  | O(lg3 n)  |
   | space     | O(lg3 n)  | O(1)      |
 
 - jump search:
+
+  | operation |                                           |
+  | --------- | ----------------------------------------- |
+  | time      | O(sqrt(n)) (the number of divided blocks) |
+
 - exponential search:
+
+  | operation |                                                                         |
+  | --------- | ----------------------------------------------------------------------- |
+  | time      | O(lg i) ( i is the index of the element being searched for in the list) |
 
 # Sorting Algorithm
 
-- bubble sort: 
+- bubble sort:
+
   | operation  | best | worst  |
   | ---------- | ---- | ------ |
   | iteration  | O(n) | O(n)   |
   | shift item | O(1) | O(n)   |
   | total      | O(n) | O(n^2) |
+
 - selection sort:
+
   | operation  | best   | worst  |
   | ---------- | ------ | ------ |
   | iteration  | O(n)   | O(n)   |
   | shift item | O(n)   | O(n)   |
   | total      | O(n^2) | O(n^2) |
-- insertion sort: 
+
+- insertion sort:
+
   | operation  | best | worst  |
   | ---------- | ---- | ------ |
   | iteration  | O(n) | O(n)   |
   | shift item | O(1) | O(n)   |
   | total      | O(n) | O(n^2) |
-- quick sort: 
+
+- merge sort:
+
+  | operation | best    |
+  | --------- | ------- |
+  | dividing  | O(lgn)  |
+  | merging   | O(n)    |
+  | total     | O(nlgn) |
+  | space     | O(n)    |
+
+- quick sort:
+
   | operation              | best    | worst  |
   | ---------------------- | ------- | ------ |
   | work in each partition | O(n)    | O(n)   |
   | partition times        | O(lgn)  | O(n)   |
   | total                  | O(nlgn) | O(n^2) |
   | space                  | O(lgn)  | O(n)   |
-- counting sort: 
+
+- counting sort:
+
   | operation        |                                                          |
   | ---------------- | -------------------------------------------------------- |
   | populating count | O(n)                                                     |
   | iterate count    | O(k)                                                     |
   | total            | O(n)                                                     |
   | space            | O(k) (k is the maximum value in the domain of the array) |
-  - when to use: 
+
+  - when to use:
     - allocating extra space is not a issue
     - values are positive integers
     - most of the value in the range are present
-- bucket sort: 
+
+- bucket sort:
+
   | operation      | best                           | worst  |
   | -------------- | ------------------------------ | ------ |
   | distribution   | O(n)                           | O(n)   |
@@ -131,7 +163,7 @@ This is a repo recording any important note or thought when learning Algorithm. 
 | removeEdge                        | O(deg(V))(hash table lookup, link lookup)                |
 
 - for dense graph, try to use adjacency matrix, otherwise use adjacency list
-- topological sort: 
+- topological sort:
   - definition: a topological sort or topological ordering of a directed graph is a linear ordering of its vertices such that for every directed edge uv from vertex u to vertex v, u comes before v in the ordering. For instance, the vertices of the graph may represent tasks to be performed, and the edges may represent constraints that one task must be performed before another; in this application, a topological ordering is just a valid sequence for the tasks.
   - app: dependency check; prerequisite course; ranking
   - directed acyclic graph
@@ -167,9 +199,9 @@ This is a repo recording any important note or thought when learning Algorithm. 
   - insert: add item in order in array, when there is an item not following the heap property, we should bubble up this item, which is swapping this item with its parent until it follows heap property
   - delete: when deleting the root node, we need to do bubble down operation, which is bringing the last node to the vacant position, and bubble down the node at that new location until we satisfy heap property
   - find max/min: the root node value is the max/min
-  - parent/children index formula: 
-    - leftIndex=parentIndex*2+1
-    - rightIndex=parentIndex*2+2
+  - parent/children index formula:
+    - leftIndex=parentIndex\*2+1
+    - rightIndex=parentIndex\*2+2
     - parentIndex=(childIndex-1)/2
 
 # AVL Tree

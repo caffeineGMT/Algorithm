@@ -3,7 +3,7 @@ public class BinarySearchRecursive {
         return binarySearchRecursive(arr, target, 0, arr.length - 1);
     }
 
-    private static int binarySearchRecursive(int[] arr, int target, int left, int right) {
+    public static int binarySearchRecursive(int[] arr, int target, int left, int right) {
         if (right < left) {
             return -1;
         }
