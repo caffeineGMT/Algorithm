@@ -18,7 +18,6 @@ public class MaxHeap {
 
     private static void heapify(int[] arr, int index) {
         var largeIndex = index;
-
         var leftIndex = index * 2 + 1;
         if (leftIndex < arr.length && arr[leftIndex] > arr[largeIndex])
             largeIndex = leftIndex;

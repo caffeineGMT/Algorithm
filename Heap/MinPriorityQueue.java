@@ -1,5 +1,3 @@
-package com.codewithmosh;
-
 public class MinPriorityQueue {
     private MinHeap heap = new MinHeap();
 

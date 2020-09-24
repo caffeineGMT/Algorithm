@@ -1,4 +1,3 @@
-package com.codewithmosh;
 
 public class MinHeap {
     private class Node {
@@ -55,9 +54,7 @@ public class MinHeap {
         if (!hasRightChild(index))
             return leftChildIndex(index);
 
-        return (leftChild(index).key < rightChild(index).key) ?
-                leftChildIndex(index) :
-                rightChildIndex(index);
+        return (leftChild(index).key < rightChild(index).key) ? leftChildIndex(index) : rightChildIndex(index);
     }
 
     private boolean hasLeftChild(int index) {

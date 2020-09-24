@@ -206,6 +206,11 @@ This is a repo recording any important note or thought when learning Algorithm. 
 
 # AVL Tree
 
+- [tutorial](https://www.youtube.com/watch?v=jDM6_TnYIqE)
+- balanced tree: |Height(R)-Height(L)|<=1
+- rotation: LL, RR, LR. RL
+-
+
 # Tree
 
 good binary search tree:
