@@ -4,6 +4,13 @@
 
 This is a repo recording any important note or thought when learning Algorithm. Most of the note/solution will be based on MOOC course "Code with Mosh" Algorithm Series.
 
+# Complexity
+
+- time complexity: priority
+- space complexity: sub-priority
+- coding complexity: can use built-in functions tho it might hurt time complexity a bit, but need to negotiate with interviewer
+- thinking complexity:
+
 # Searching Algorithm
 
 - binary search:
