@@ -5,11 +5,11 @@ public class BinarySearchTemplate {
         }
 
         int start = 0, end = nums.length - 1;
-        // key1: start + 1 < end
+        // key1: start + 1 < end, 防止死循环
         while (start + 1 < end) {
             // key2：start + (end - start) / 2, in case of number representation overflow
             int mid = start + (end - start) / 2;
-            // key3：=, <, > separate cases，mid does not plus 1 or minus 1
+            // key3：=, <, > separate cases，mid does not plus 1 or minus 1, 防止紧张写错，属于没必要的优化
             if (nums[mid] == target) {
                 return mid;
             } else if (nums[mid] < target) {

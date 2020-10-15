@@ -109,7 +109,7 @@ This is a repo recording any important note or thought when learning Algorithm. 
 | --------- | ---------------------------- | ---------- |
 | time      | average: O(nlgn) worst: O(n) | O(nlgn)    |
 | space     | O(1)                         | O(n)       |
-| stability | not stable                   | stable     |
+| stability | \*not stable                 | stable     |
 
 # Chapter 6: bisection/dichotomy algorithm
 
@@ -136,3 +136,147 @@ This is a repo recording any important note or thought when learning Algorithm. 
 # Chapter 8: two pointers
 
 - see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_8._高频算法之王双指针算法之相向双指针.pdf)
+
+# Chapter 9: bisection/dichotomy algorithm
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_9._简约而不简单二分法的四重境界.pdf)
+
+# Chapter 10: queue
+
+- Queue: using LinkedList and ArrayList
+
+  ```java
+  class Node {
+    public int val;
+    public Node next;
+    public Node(int _val) {
+        val = _val;
+        next = null;
+    }
+  }
+  public class MyQueue {
+      public Node head, tail;
+
+      public MyQueue() {
+          head = tail = null;
+          // do initialize if necessary
+      }
+
+      public void enqueue(int item) {
+          if (head == null) {
+              tail = new Node(item);
+              head = tail;
+          } else {
+              tail.next = new Node(item);
+              tail = tail.next;
+          }
+      }
+
+      public int dequeue() {
+          if (head != null) {
+              int item = head.val;
+              head = head.next;
+              return item;
+          }
+          return -1;
+      }
+  }
+  ```
+
+```java
+/**
+ * 在循环队列中，除了用一组地址连续的存储单元依次存储从队首到队尾的元素外，还需要附设两个整型变量 head 和 tail 分别指示队首和队尾的位置。我们可以将循环队列视作一个类，通过成员变量数组来表示一组地址连续的存储单元，再定义两个成员变量 head 和 tail，将循环队列的基本操作定义成类的方法，循环效果则用“模”运算实现，以此来实现循环队列。每当 tail 到达末尾的时候，将 tail 对 MAXSIZE 取模，使其回到队首。但是如果这样我们会发现一个问题，队列为空和队列已满的条件都成了 tail == head。为了避免这种无法判断的情况，我们规定当循环队列只剩一个空位的时候，就认为队列已满。这样队列已满的条件就成了 (tail + 1) % MAXSIZE == head。
+ */
+public class MyQueue {
+  public int head, tail;
+  public int SIZE = 4;
+  public int[] queue = new int[SIZE];
+
+  public MyQueue() {
+      head = tail = 0;
+      // do initialize if necessary
+  }
+  //压入一个元素
+  public void enqueue(int item) {
+      // 队列已满
+      if ((tail + 1) % SIZE == head){
+          return ;
+      }
+
+      queue[tail++] = item;
+      tail %= SIZE;
+  }
+  //弹出一个元素
+public int dequeue() {
+      // 队列为空
+      if (head == tail){
+          return -1;
+      }
+
+      int item = queue[head++];
+      head %= SIZE;
+      return item;
+
+  }
+}
+```
+
+- Set:
+  - no duplicate value
+  - can have null value
+  - no order
+
+```java
+Set<String> set = new HashSet<>();
+for (int i = 1; i < 6; i ++) {
+	set.add(i + "");
+}
+set.add("1"); //不会重复写入数据
+set.add(null);//可以写入空数据
+Iterator<String> iter = set.iterator();
+while (iter.hasNext()) {
+	system.out.print(iter.next() + " ");//数据无序
+}// 输出(无序)为 3 4 1 5 null 2
+```
+
+- map:
+  - key is not duplicated, value can be
+  - allow key and value to be null
+  - no order
+
+```java
+public class Solution {
+    public static void main(String[] args){
+        Map<String, String> map = new HashMap<>();
+        for (int i = 5; i > 0; i --) {
+            map.put(i + "", i + "");
+        }
+        map.put("1","1");//key无重复
+        map.put("11","1");//value可以重复
+        map.put(null, null);//可以为空
+        for (Iterator i = map.keySet().iterator(); i.hasNext(); ) {
+            String key = (String)i.next();
+            String value = map.get(key);
+            System.out.println("key = " + key + ", value = " + value);
+        }
+    }
+}
+//输出
+/*
+key = 11, value = 1
+key = null, value = null
+key = 1, value = 1
+key = 2, value = 2
+key = 3, value = 3
+key = 4, value = 4
+key = 5, value = 5
+*/
+//输出顺序与输入顺序无关
+```
+
+- interface:
+  - interface cannot have variable, we can only declare constant in interface.
+  - one class can implement multiple interfaces
+- abstract class:
+  - very similar to interface, provide declaration but not implementation
+  - one class can only extends one (abstract) class
