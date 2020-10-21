@@ -9,7 +9,7 @@ public class BinarySearchTemplate {
         while (start + 1 < end) {
             // key2：start + (end - start) / 2, in case of number representation overflow
             int mid = start + (end - start) / 2;
-            // key3：=, <, > separate cases，mid does not plus 1 or minus 1, 防止紧张写错，属于没必要的优化
+            // key3：=, <, > separate cases，mid does not plus 1 or minus 1, 防止紧张写错，属没必要的优化
             if (nums[mid] == target) {
                 return mid;
             } else if (nums[mid] < target) {

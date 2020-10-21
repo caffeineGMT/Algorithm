@@ -4,11 +4,11 @@
 
 This is a repo recording any important note or thought when learning Algorithm. Most of the note/solution will be based on JiuZhang Algorithm Series.
 
-# Chapter 1: intro
+# Chapter 1: FB 面试官揭秘算法面试速成技巧 - 怎样做到 Bug Free 和刷 100 题等于别人刷 300 题
 
 - see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_1._FB面试官揭秘面试速成技巧_-_怎样做到_Bug_Free_和刷100题刷300题.pdf)
 
-# Chapter 2: interview case analysis
+# Chapter 2: 真实面试案例分析（上）与面试评分标准
 
 - greedy algorithm:
   - not worth the time to study it
@@ -83,9 +83,9 @@ This is a repo recording any important note or thought when learning Algorithm. 
     // result is yes
     ```
 
-# Chapter 3: interview case analysis
+# Chapter 3: 真实面试案例分析（下）与 80%求职者会踩坑的基础知识
 
-# Chapter 4: complexity
+# Chapter 4: 复杂度理论与双指针算法入门
 
 ## theory
 
@@ -103,7 +103,7 @@ This is a repo recording any important note or thought when learning Algorithm. 
   - [Harmonic Series complexity](https://stackoverflow.com/questions/25905118/finding-big-o-of-the-harmonic-series): 1+1/2+1/3+...+1/n O(lgn)
   - O(n+m) == O(max(n,m))
 
-# Chapter 5: 2 sort algorithm
+# Chapter 5: 必须熟练掌握的两个排序算法
 
 | feature   | quick sort                   | merge sort |
 | --------- | ---------------------------- | ---------- |
@@ -111,7 +111,7 @@ This is a repo recording any important note or thought when learning Algorithm. 
 | space     | O(1)                         | O(n)       |
 | stability | \*not stable                 | stable     |
 
-# Chapter 6: bisection/dichotomy algorithm
+# Chapter 6: 时间复杂度为 O(logN)的高频算法——二分法
 
 - time complexity:
 
@@ -129,19 +129,19 @@ This is a repo recording any important note or thought when learning Algorithm. 
   - what will be stored in stack space when calling a function?: function itself, parameter passed in, return value, local var in function
   - Java Object: `int[] arr = new int[10];` arr is actually a variable which takes small memory to record a reference/address. If arr is in local func, it will be destroyed when function finishes. But `new int[10]` is saved in heap, it wont be destroyed right away.
 
-# Chapter 7: bisection/dichotomy algorithm template
+# Chapter 7: 一个不会出现死循环的通用二分法模板
 
 - [template](../JiuZhangAlgorithm2020/week2/BinarySearchTemplate.java)
 
-# Chapter 8: two pointers
+# Chapter 8: 高频算法之王——双指针算法之相向双指针
 
 - see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_8._高频算法之王双指针算法之相向双指针.pdf)
 
-# Chapter 9: bisection/dichotomy algorithm
+# Chapter 9: 简约而不简单——二分法学习的四重境界
 
 - see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_9._简约而不简单二分法的四重境界.pdf)
 
-# Chapter 10: queue
+# Chapter 10: 队列知识点从易到难
 
 - Queue: using LinkedList and ArrayList
 
@@ -280,3 +280,56 @@ key = 5, value = 5
 - abstract class:
   - very similar to interface, provide declaration but not implementation
   - one class can only extends one (abstract) class
+
+# Chapter 11: 宽度优先搜索与图论入门
+
+- 3 bfs method: single queue, double queue, dummy node
+- way to describe a graph
+  - adjacency matrix:
+    [
+    [1,0,0,1],
+    [0,1,1,0],
+    [0,1,1,0],
+    [1,0,0,1]
+    ]
+    例如上图表示 0 号点和 3 号点有连边。1 号点和 2 号点有连边。
+    当然，每个点和自己也是默认有连边的。
+    图中的 0 表示不连通，1 表示连通。
+    我们也可以用一个更具体的整数值来表示连边的长度。
+    邻接矩阵我们可以直接用一个二维数组表示，如
+    int[][] matrix;
+    这种数据结构因为耗费 O(n^2) 的空间，所以在稀疏图上浪费很大，因此并不常用。
+  - adjacency list:
+    [
+    [1],
+    [0,2,3],
+    [1],
+    [1]
+    ]
+    这个图表示 0 和 1 之间有连边，1 和 2 之间有连边，1 和 3 之间有连边。即每个点上存储自己有哪些邻居（有哪些连通的点）。
+    这种方式下，空间耗费和边数成正比，可以记做 O(m)，m 代表边数。m 最坏情况下虽然也是 O(n^2)，但是邻接表的存储方式大部分情况下会比邻接矩阵更省空间。
+    可以用自定义的类来实现邻接表
+    Java:
+    class DirectedGraphNode {
+    int label;
+    List neighbors;
+    ...
+    }
+    也可以使用 HashMap 和 HashSet 搭配的方式来存储邻接表
+    Map<T, Set> = new HashMap<Integer, HashSet>();
+
+# Chapter 12: 用递归实现遍历法和分治法
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_12._用递归实现遍历法和分治法.pdf)
+
+# Chapter 13: 使用非递归实现二叉树的遍历
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_13._使用非递归实现二叉树的遍历.pdf)
+
+# Chapter 14: 性价比之王——宽度优先搜索
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_14._性价比之王宽度优先搜索.pdf)
+
+# Chapter 15: 解决 99%二叉树问题的算法——分治法
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_15._解决99二叉树问题的算法分治法1.pdf)
