@@ -333,3 +333,34 @@ key = 5, value = 5
 # Chapter 15: 解决 99%二叉树问题的算法——分治法
 
 - see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_15._解决99二叉树问题的算法分治法1.pdf)
+
+# Chapter 16: 组合类 DFS
+
+- 在非二叉树上的深度优先搜索（Depth-first Search）中，90%的问题，不是求组合（Combination）就是求排列（Permutation）。特别是组合类的深度优先搜索的问题特别的多。而排列组合类的搜索问题，本质上是一个“隐式图”的搜索问题。一个问题如果没有明确的告诉你什么是点，什么是边，但是又需要你进行搜索的话，那就是一个隐式图搜索问题了。所以对于这类问题，我们首先要分析清楚什么是点什么是边。
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter16.pptx)
+
+# Chapter 17: 排列类 DFS
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_15._解决99二叉树问题的算法分治法1.pdf)
+
+# Chapter 18: 哈希表的原理
+
+- HashMap 和 HashSet 的区别:
+  首先得看 java 最基本的两种数据结构：数组和链表的区别：
+  数组易于快速读取（通过 for 循环），不便存储（数组长度有限制）；链表易于存储，不易于快速读取。
+  哈希表的出现是为了解决链表访问不快速的弱点，哈希表也称散列表。
+  HashSet 是通过 HashMap 来实现的，HashMap 的输入参数有 Key、Value 两个组成，在实现 HashSet 的时候，保持 HashMap 的 Value 为常量，相当于在 HashMap 中只对 Key 对象进行处理。
+  HashMap 的底层是一个数组结构，数组中的每一项对应了一个链表，这种结构称“链表散列”的数据结构，即数组和链表的结合体；也叫散列表、哈希表。
+  想要了解 HashMap 和 HashSet 这样两个不同存储结构的区别，就得熟知他们的存储过程
+
+- HashMap 存储对象的过程
+  1、对 HashMap 的 Key 调用 hashCode()方法，返回 int 值，即对应的 hashCode；
+  2、把此 hashCode 作为哈希表的索引，查找哈希表的相应位置，若当前位置内容为 NULL，则把 HashMap 的 Key、Value 包装成 Entry 数组，放入当前位置；
+  3、若当前位置内容不为空，则继续查找当前索引处存放的链表，利用 equals 方法，找到 Key 相同的 Entry 数组，则用当前 Value 去替换旧的 Value；
+  4、若未找到与当前 Key 值相同的对象，则把当前位置的链表后移（Entry 数组持有一个指向下一个元素的引用），把新的 Entry 数组放到链表表头；
+
+- HashSet 存储对象的过程
+  往 HashSet 添加元素的时候，HashSet 会先调用元素的 hashCode 方法得到元素的哈希值 ，然后通过元素 的哈希值经过移位等运算，就可以算出该元素在哈希表中 的存储位置。
+  情况 1： 如果算出元素存储的位置目前没有任何元素存储，那么该元素可以直接存储到该位置上。
+  情况 2： 如果算出该元素的存储位置目前已经存在有其他的元素了，那么会调用该元素的 equals 方法与该位置的元素再比较一次，如果 equals 返回的是 true，那么该元素与这个位置上的元素就视为重复元素，不允许添加，如果 equals 方法返回的是 false，那么该元素运行添加。
