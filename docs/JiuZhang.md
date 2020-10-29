@@ -1,8 +1,8 @@
 <!-- markdownlint-disable MD025-->
 
-# Algorithm Note
+# Note
 
-This is a repo recording any important note or thought when learning Algorithm. Most of the note/solution will be based on JiuZhang Algorithm Series.
+This is a repo recording notes based on JiuZhang Algorithm Series.
 
 # Chapter 1: FB 面试官揭秘算法面试速成技巧 - 怎样做到 Bug Free 和刷 100 题等于别人刷 300 题
 
