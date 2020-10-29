@@ -364,3 +364,167 @@ key = 5, value = 5
   往 HashSet 添加元素的时候，HashSet 会先调用元素的 hashCode 方法得到元素的哈希值 ，然后通过元素 的哈希值经过移位等运算，就可以算出该元素在哈希表中 的存储位置。
   情况 1： 如果算出元素存储的位置目前没有任何元素存储，那么该元素可以直接存储到该位置上。
   情况 2： 如果算出该元素的存储位置目前已经存在有其他的元素了，那么会调用该元素的 equals 方法与该位置的元素再比较一次，如果 equals 返回的是 true，那么该元素与这个位置上的元素就视为重复元素，不允许添加，如果 equals 方法返回的是 false，那么该元素运行添加。
+
+- 哈希表（Java 中的 HashSet / HashMap，C++ 中的 unordered_map，Python 中的 dict）是面试中非常常见的数据结构。它的主要考点有两个： 1.是否会灵活的使用哈希表解决问题 2.是否熟练掌握哈希表的基本原理
+
+- HashSet 实现了 Set 接口，其内部不允许出现重复的值，如果我们将一个对象存入 HashSet，必须重写 equals()和 hashCode()方法，这样才能确保集合中不存在同一个元素。HashSet 的内部是无序的，因此不能使用 hashset.get(index) 来获取元素。HashMap 实现了 Map 接口，其内容是键值对的映射（key->value），不允许出现相同的键（key）。在查询的时候会根据给出的键来查询对应的值。我们可以认为，HashSet 和 HashMap 增查操作的时间复杂度都是常数级的。
+
+- 工程中 open hashing 比 close hashing 用的多
+
+- rehashing
+
+# Chapter 19: 堆的基本原理
+
+- 堆是一棵满足如下性质的二叉树：
+  1、父节点的键值总是不大于它的孩子节点的键值（小顶堆）。
+  2、父节点的键值总是不小于它的孩子节点的键值（大顶堆）。
+  由于堆是一棵形态规则的二叉树，因此堆的父节点和孩子节点存在如下关系（根节点编号为 0）：
+  设父节点的编号为 i, 则其左孩子节点的编号为 2i+1, 右孩子节点的编号为 2i+2
+  设孩子节点的编号为 i, 则其父节点的编号为(i-1)/2
+  由于上面的性质，父节点一定比他的儿节点小（大），所以整个树的树根的值一定是最小（最大）的，那么我们就能在 O(1)的时间内，获得整个堆的极值。
+- 优先队列是一种抽象的数据类型，它和堆的关系类似于，List 和数组、链表的关系一样；我们常常使用堆来实现优先队列，因此很多时候堆和优先队列都很相似，它们只是概念上的区分。
+- 优先队列的应用场景十分的广泛，常见的应用有：
+  Dijkstra’s algorithm（单源最短路问题中需要在邻接表中找到某一点的最短邻接边，这可以将复杂度降低。）
+  Huffman coding（贪心算法的一个典型例子，采用优先队列构建最优的前缀编码树(prefixEncodeTree)）
+  Prim’s algorithm for minimum spanning tree
+  在 java，python 中都已经有封装了的 Priority Queue(Heaps)
+  优先队列是一个至少能够提供插入（Insert）和删除最小（DeleteMin）这两种操作的数据结构。对应于队列的操作，Insert 相当于 Enqueue，DeleteMin 相当于 Dequeue。
+  用堆实现优先的过程中，需要注意最大堆只能对应最大优先队列，最小堆则是对应最小优先队列
+- siftup and siftdown:
+  给定一个数组 A[]，我们的目的是要将 A[] 堆化，也就是让 A[]满足以下要求：
+  A[i * 2 + 1] >= A[i]
+  A[i * 2 + 2] >= A[i]
+
+method1:
+对于每个元素 A[i]，比较 A[i]和它的父亲结点的大小，如果小于父亲结点，则与父亲结点交换。交换后再和新的父亲比较，重复上述操作，直至该点的值大于父亲。时间复杂度分析：对于每个元素都要遍历一遍，这部分是 O(n).每处理一个元素时，最多需要向根部方向交换 logn 次。因此总的时间复杂度是 O(nlogn)
+[proof](<https://en.wikipedia.org/wiki/Heap_(data_structure)>)
+
+```java
+
+public class Solution {
+    /**
+     * @param A: Given an integer array
+     * @return: void
+     */
+    private void siftup(int[] A, int k) {
+        while (k != 0) {
+            int father = (k - 1) / 2;
+            if (A[k] > A[father]) {
+                break;
+            }
+            int temp = A[k];
+            A[k] = A[father];
+            A[father] = temp;
+
+            k = father;
+        }
+    }
+
+    public void heapify(int[] A) {
+        for (int i = 0; i < A.length; i++) {
+            siftup(A, i);
+        }
+    }
+}
+
+```
+
+method2:
+算法思路：
+初始选择最接近叶子的一个父结点，与其两个儿子中较小的一个比较，若大于儿子，则与儿子交换。
+交换后再与新的儿子比较并交换，直至没有儿子。
+再选择较浅深度的父亲结点，重复上述步骤。
+时间复杂度分析
+这个版本的算法，乍一看也是 O(nlogn)， 但是我们仔细分析一下，算法从第 n/2 个数开始，倒过来进行 siftdown。也就是说，相当于从 heap 的倒数第二层开始进行 siftdown 操作，倒数第二层的节点大约有 n/4 个， 这 n/4 个数，最多 siftdown 1 次就到底了，所以这一层的时间复杂度耗费是 O(n/4)，然后倒数第三层差不多 n/8 个点，最多 siftdown 2 次就到底了。所以这里的耗费是 O(n/8\*2), 倒数第 4 层是 O(n/16\*3)，倒数第 5 层是 O(n/32\*4) ... 因此累加所有的时间复杂度耗费为：
+T(n) = O(n/4) + O(n/8\*2) + O(n/16\*3) ...
+然后我们用 2T - T 得到：
+2\*T(n) = O(n/2) + O(n/4\*2) + O(n/8\*3) + O(n/16\*4) ...
+T(n) = O(n/4) + O(n/8\*2) + O(n/16\*3) ...
+2\*T(n) - T(n) = O(n/2) +O (n/4) + O(n/8) + ...
+= O(n/2 + n/4 + n/8 + ... )
+= O(n)
+因此得到 T(n) = 2\*T(n) - T(n) = O(n)
+
+```java
+public class Solution {
+    /**
+     * @param A: Given an integer array
+     * @return: void
+     */
+    private void siftdown(int[] A, int k) {
+        while (k * 2 + 1 < A.length) {
+            int son = k * 2 + 1;   // A[i] 的左儿子下标。
+            if (k * 2 + 2 < A.length && A[son] > A[k * 2 + 2])
+                son = k * 2 + 2;     // 选择两个儿子中较小的。
+            if (A[son] >= A[k])
+                break;
+
+            int temp = A[son];
+            A[son] = A[k];
+            A[k] = temp;
+            k = son;
+        }
+    }
+
+    public void heapify(int[] A) {
+        for (int i = (A.length - 1) / 2; i >= 0; i--) {
+            siftdown(A, i);
+        }
+    }
+}
+
+```
+
+- 堆排序
+  运用堆的性质，我们可以得到一种常用的、稳定的、高效的排序算法————堆排序。堆排序的时间复杂度为 O(n\*log(n))，空间复杂度为 O(1)，堆排序的思想是：对于含有 n 个元素的无序数组 nums, 构建一个堆(这里是小顶堆)heap，然后执行 extractMin 得到最小的元素，这样执行 n 次得到序列就是排序好的序列。
+  如果是降序排列则是小顶堆；否则利用大顶堆。
+
+  Trick
+  由于 extractMin 执行完毕后，最后一个元素 last 已经被移动到了 root，因此可以将 extractMin 返回的元素放置于最后，这样可以得到 sort in place 的堆排序算法。
+  当然，如果不使用前面定义的 heap，则可以手动写堆排序，由于堆排序设计到建堆和 extractMin， 两个操作都公共依赖于 siftDown 函数，因此我们只需要实现 siftDown 即可。(trick:由于建堆操作可以采用 siftUp 或者 siftDown，而 extractMin 是需要 siftDown 操作，因此取公共部分，则采用 siftDown 建堆)。
+
+```java
+
+//升序堆排序
+public class Solution {
+    private void siftdown(int[] A, int left, int right) {
+        int k = left;
+        while (k * 2 + 1 <= right) {
+            int son = k * 2 + 1;
+            if (son + 1 <= right && A[son] < A[son + 1]) {
+                son = k * 2 + 2;
+            }
+            if (A[son] <= A[k]) {
+                break;
+            }
+            int tmp = A[son];
+            A[son] = A[k];
+            A[k] = tmp;
+            k = son;
+        }
+    }
+
+    public void heapify(int[] A) {
+        for (int i = (A.length - 1) / 2; i >= 0; i--) {
+            siftdown(A, i, A.length - 1);
+        }
+    }
+
+    void sortIntegers(int[] A) {
+        heapify(A);
+        for (int i = A.length - 1; i > 0; i--) {
+            int tmp = A[0];
+            A[0] = A[i];
+            A[i] = tmp;
+            siftdown(A, 0, i - 1);
+        }
+    }
+}
+
+```
+
+# Chapter 20: 堆的基本原理
+
+# Chapter 21: 堆的基本原理
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_21._高频数据结构哈希表与堆.pdf)
