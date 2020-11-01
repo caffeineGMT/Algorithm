@@ -2,10 +2,10 @@
 
 This is a repo recording notes for algorithm learning
 
-[Built-inClass](./Built-inClassSummary.md)
+[Built-inClass](./Built-inClass.md)
 
-[BasicDataStructure&Algorithm](./DataStructure&AlgorithmSummary.md)
+[BasicDataStructure&Algorithm](./BasicDataStructure&Algorithm.md)
 
-[CodeSolutions](./LeetCode&LintCodeSolutions.md)
+[CodeSolutions](./CodeSolutions.md)
 
-[JiuZhang](./JiuZhangSummary.md)
+[JiuZhang](./JiuZhang.md)
