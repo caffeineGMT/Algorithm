@@ -10,6 +10,7 @@ This is a repo recording notes based on JiuZhang Algorithm Series.
 
 # Chapter 2: 真实面试案例分析（上）与面试评分标准
 
+- 字符串查找——Robin Karp 算法
 - greedy algorithm:
   - not worth the time to study it
   - Dijkstra
@@ -523,8 +524,30 @@ public class Solution {
 
 ```
 
-# Chapter 20: 堆的基本原理
+# Chapter 20: 刷人利器深度优先搜索
 
-# Chapter 21: 堆的基本原理
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_20._刷人利器深度优先搜索.pdf)
+
+# Chapter 21: 高频数据结构哈希表与堆
 
 - see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_21._高频数据结构哈希表与堆.pdf)
+
+# Chapter 22: 从搜索到动规记忆化搜索入门
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_22._从搜索到动规记忆化搜索入门.pdf)
+
+# Chapter 23: 动态规划入门与动规四要素
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_23._动态规划入门与动规四要素.pdf)
+
+# Chapter 24: 动态规划使用场景与题型分类
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_24._动态规划使用场景与题型分类.pdf)
+
+# Chapter 25: 背包型动态规划入门
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_25._背包型动态规划入门1.pdf)
+
+# Chapter 26: 让面试官眼前一亮的算法——记忆化搜索
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_26.%20让面试官眼前一亮的算法——记忆化搜索.pdf)

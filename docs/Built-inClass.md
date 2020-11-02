@@ -12,7 +12,7 @@ This is a repo recording notes for method and implementation of frequently used 
 # Array
 
 - [documentation](https://docs.oracle.com/javase/specs/jls/se7/html/jls-10.html)
-- public final field length
+- `public final field length`
   - contains the number of components of the array. length may be positive or zero.
 
 # Stack
@@ -25,13 +25,13 @@ A more complete and consistent set of LIFO stack operations is provided by the D
 `Deque<Integer> stack = new ArrayDeque<Integer>();`
 
 - [documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Stack.html)
-- public boolean isEmpty()
+- `public boolean isEmpty()`
   - Tests if this stack is empty.
-- public E peek()
+- `public E peek()`
   - Looks at the object at the top of this stack without removing it from the stack.
-- public E push​(E item)
+- `public E push​(E item)`
   - Pushes an item onto the top of this stack.
-- public E pop()
+- `public E pop()`
   - Removes the object at the top of this stack and returns that object as the value of this function.
 
 # Queue
@@ -96,21 +96,21 @@ The size, isEmpty, get, set, iterator, and listIterator operations run in consta
 Each ArrayList instance has a capacity. The capacity is the size of the array used to store the elements in the list. It is always at least as large as the list size. As elements are added to an ArrayList, its capacity grows automatically. The details of the growth policy are not specified beyond the fact that adding an element has constant amortized time cost.
 
 - [documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html)
-- public int size()
+- `public int size()`
   - Returns the number of elements in this list.
-- doesn't have capacity field
-- public boolean isEmpty()
+  - doesn't have capacity field
+- `public boolean isEmpty()`
   - Returns true if this list contains no elements.
-- public boolean add​(E e)
+- `public boolean add​(E e)`
   - Appends the specified element to the end of this list.
-- public E get(int index)
+- `public E get(int index)`
   - Returns the element at the specified position in this list.
-- public E set(int index, E element)
+- `public E set(int index, E element)`
   - Replaces the element at the specified position in this list with the specified element.
-- public E remove(int index)
+- `public E remove(int index)`
   - Removes the element at the specified position in this list. Shifts any subsequent elements to the left (subtracts one from their indices).
   - if remove the last item, there wont be any shift, it is O(1). If remove the first item, it is O(n)
-- public boolean isEmpty()
+- `public boolean isEmpty()`
   - Returns true if this list contains no elements.
 
 # LinkedList
@@ -120,24 +120,24 @@ Doubly-linked list implementation of the List and Deque interfaces. Implements a
 All of the operations perform as could be expected for a doubly-linked list. Operations that index into the list will traverse the list from the beginning or the end, whichever is closer to the specified index.
 
 - [documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/LinkedList.html)
-- public int size()
+- `public int size()`
   - Returns the number of elements in this list.
-- public boolean isEmpty()
+- `public boolean isEmpty()`
   - Returns true if this collection contains no elements.
-- public E peek()
+- `public E peek()`
   - Retrieves, but does not remove, the head (first element) of this list.
-- public boolean offer​(E e)
+- `public boolean offer​(E e)`
   - Adds the specified element as the tail (last element) of this list.
-- public E poll()
+- `public E poll()`
   - Retrieves and removes the head (first element) of this list.
-- public void push​(E e)
+- `public void push​(E e)`
   - Pushes an element onto the stack represented by this list. In other words, inserts the element at the front of this list.
-- public E pop()
+- `public E pop()`
   - Pops an element from the stack represented by this list. In other words, removes and returns the first element of this list.
-- public E get​(int index)
+- `public E get​(int index)`
   - Returns the element at the specified position in this list.
   - O(n) worst case
-- public E set​(int index, E element)
+- `public E set​(int index, E element)`
   - Replaces the element at the specified position in this list with the specified element.
   - O(n) worst case
 
@@ -152,15 +152,15 @@ This class implements the Set interface, backed by a hash table (actually a Hash
 This class offers constant time performance for the basic operations (add, remove, contains and size), assuming the hash function disperses the elements properly among the buckets. Iterating over this set requires time proportional to the sum of the HashSet instance's size (the number of elements) plus the "capacity" of the backing HashMap instance (the number of buckets). Thus, it's very important not to set the initial capacity too high (or the load factor too low) if iteration performance is important.
 
 - [documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashSet.html)
-- public int size()
+- `public int size()`
   - Returns the number of elements in this set (its cardinality).
-- public boolean isEmpty()
+- `public boolean isEmpty()`
   - Returns true if this set contains no elements.
-- public boolean contains​(Object o)
+- `public boolean contains​(Object o)`
   - Returns true if this set contains the specified element. More formally, returns true if and only if this set contains an element e such that Objects.equals(o, e).
-- public boolean add​(E e)
+- `public boolean add​(E e)`
   - Adds the specified element to this set if it is not already present. More formally, adds the specified element e to this set if this set contains no element e2 such that Objects.equals(e, e2). If this set already contains the element, the call leaves the set unchanged and returns false.
-- public boolean remove​(Object o)
+- `public boolean remove​(Object o)`
   - Removes the specified element from this set if it is present. More formally, removes an element e such that Objects.equals(o, e), if this set contains such an element. Returns true if this set contained the element (or equivalently, if this set changed as a result of the call). (This set will not contain the element once the call returns.)
 
 # Map
@@ -176,15 +176,15 @@ An instance of HashMap has two parameters that affect its performance: initial c
 As a general rule, the default load factor (.75) offers a good tradeoff between time and space costs. Higher values decrease the space overhead but increase the lookup cost (reflected in most of the operations of the HashMap class, including get and put). The expected number of entries in the map and its load factor should be taken into account when setting its initial capacity, so as to minimize the number of rehash operations. If the initial capacity is greater than the maximum number of entries divided by the load factor, no rehash operations will ever occur.
 
 - [documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashMap.html)
-- public V put​(K key, V value)
+- `public V put​(K key, V value)`
   - Associates the specified value with the specified key in this map. If the map previously contained a mapping for the key, the old value is replaced.
-- public V get​(Object key)
+- `public V get​(Object key)`
   - Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key. More formally, if this map contains a mapping from a key k to a value v such that (key==null ? k==null : key.equals(k)), then this method returns v; otherwise it returns null. (There can be at most one such mapping.) A return value of null does not necessarily indicate that the map contains no mapping for the key; it's also possible that the map explicitly maps the key to null. The containsKey operation may be used to distinguish these two cases.
-- public boolean containsKey​(Object key)
+- `public boolean containsKey​(Object key)`
   - Returns true if this map contains a mapping for the specified key.
-- public Set<K> keySet()
+- `public Set<K> keySet()`
   - Returns a Set view of the keys contained in this map. The set is backed by the map, so changes to the map are reflected in the set, and vice-versa. If the map is modified while an iteration over the set is in progress (except through the iterator's own remove operation), the results of the iteration are undefined. The set supports element removal, which removes the corresponding mapping from the map, via the Iterator.remove, Set.remove, removeAll, retainAll, and clear operations. It does not support the add or addAll operations.
-- public Set<Map.Entry<K,​V>> entrySet()
+- `public Set<Map.Entry<K,​V>> entrySet()`
   - Returns a Set view of the mappings contained in this map. The set is backed by the map, so changes to the map are reflected in the set, and vice-versa. If the map is modified while an iteration over the set is in progress (except through the iterator's own remove operation, or through the setValue operation on a map entry returned by the iterator) the results of the iteration are undefined. The set supports element removal, which removes the corresponding mapping from the map, via the Iterator.remove, Set.remove, removeAll, retainAll and clear operations. It does not support the add or addAll operations.
   - [document for entry](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.Entry.html)
 
@@ -200,7 +200,7 @@ The methods in this class all throw a NullPointerException, if the specified arr
 The documentation for the methods contained in this class includes brief descriptions of the implementations. Such descriptions should be regarded as implementation notes, rather than parts of the specification. Implementors should feel free to substitute other algorithms, so long as the specification itself is adhered to. (For example, the algorithm used by sort(Object[]) does not have to be a MergeSort, but it does have to be stable.)
 
 - [documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Arrays.html)
-- public static void sort​(int[] a)
+- `public static void sort​(int[] a)`
   - Sorts the specified array into ascending numerical order.
   - Implementation note: The sorting algorithm is a Dual-Pivot Quicksort by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm offers O(n log(n)) performance on many data sets that cause other quicksorts to degrade to quadratic performance, and is typically faster than traditional (one-pivot) Quicksort implementations.
 
@@ -211,18 +211,37 @@ The String class represents character strings. All string literals in Java progr
 Strings are constant; their values cannot be changed after they are created. String buffers support mutable strings. Because String objects are immutable they can be shared.
 
 - [documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html)
-- public int length()
+- `public int length()`
   - Returns the length of this string. The length is equal to the number of Unicode code units in the string.
-- public String toUpperCase()
+- `public char charAt​(int index)`
+  - Returns the char value at the specified index. An index ranges from 0 to length() - 1. The first char value of the sequence is at index 0, the next at index 1, and so on, as for array indexing.
+- `public String concat​(String str)`
+  - Concatenates the specified string to the end of this string.
+    If the length of the argument string is 0, then this String object is returned. Otherwise, a String object is returned that represents a character sequence that is the concatenation of the character sequence represented by this String object and the character sequence represented by the argument string.
+  - returned String object is a new String, it won't change the old immutable String
+- `public String replace​(CharSequence target, CharSequence replacement)`
+  - Replaces each substring of this string that matches the literal target sequence with the specified literal replacement sequence. The replacement proceeds from the beginning of the string to the end, for example, replacing "aa" with "b" in the string "aaa" will result in "ba" rather than "ab".
+  - returned String object is a new String, it won't change the old immutable String
+- `public boolean contains​(CharSequence s)`
+  - Returns true if and only if this string contains the specified sequence of char values.
+- `public String toUpperCase()`
   - Converts all of the characters in this String to upper case using the rules of the default locale.
-- public String toLowerCase()
+- `public String toLowerCase()`
   - Converts all of the characters in this String to lower case using the rules of the default locale.
-- public String substring​(int beginIndex, int endIndex)
+- `public char[] toCharArray()`
+  - Converts this string to a new character array.
+- `public String substring​(int beginIndex, int endIndex)`
   - Returns a string that is a substring of this string. The substring begins at the specified beginIndex and extends to the character at index endIndex - 1. Thus the length of the substring is endIndex-beginIndex.
   - beginIndex - the beginning index, inclusive.
   - endIndex - the ending index, exclusive.
+- `public boolean equals​(Object anObject)`
+  - Compares this string to the specified object. The result is true if and only if the argument is not null and is a String object that represents the same sequence of characters as this object.
+  - testing if 2 items are the same instance first, if not, testing if they have the same content
+  - `==` will only test if 2 items are the same instance, which is comparing the memory address
 
 # StringBuilder
+
+- equals
 
 # Collections
 
