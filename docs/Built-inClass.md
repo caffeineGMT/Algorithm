@@ -58,19 +58,19 @@ Resizable-array implementation of the Deque interface. Array deques have no capa
 Most ArrayDeque operations run in amortized constant time. Exceptions include remove, removeFirstOccurrence, removeLastOccurrence, contains, iterator.remove(), and the bulk operations, all of which run in linear time.
 
 - [documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayDeque.html)
-- public int size()
+- `public int size()`
   - Returns the number of elements in this deque.
-- public boolean isEmpty()
+- `public boolean isEmpty()`
   - Returns true if this deque contains no elements.
-- public E peek()
+- `public E peek()`
   - Retrieves, but does not remove, the head of the queue represented by this deque, or returns null if this deque is empty.
-- public boolean offer​(E e)
+- `public boolean offer​(E e)`
   - Inserts the specified element at the end of this deque.
-- public E poll()
+- `public E poll()`
   - Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
-- public void push​(E e)
+- `public void push​(E e)`
   - Pushes an element onto the stack represented by this deque.
-- public E pop()
+- `public E pop()`
   - Pops an element from the stack represented by this deque.
 
 # List
@@ -234,6 +234,8 @@ Strings are constant; their values cannot be changed after they are created. Str
   - Returns a string that is a substring of this string. The substring begins at the specified beginIndex and extends to the character at index endIndex - 1. Thus the length of the substring is endIndex-beginIndex.
   - beginIndex - the beginning index, inclusive.
   - endIndex - the ending index, exclusive.
+- `public String trim()`
+  - Returns a string whose value is this string, with all leading and trailing space removed, where space is defined as any character whose codepoint is less than or equal to 'U+0020' (the space character).If this String object represents an empty character sequence, or the first and last characters of character sequence represented by this String object both have codes that are not space (as defined above), then a reference to this String object is returned. Otherwise, if all characters in this string are space (as defined above), then a String object representing an empty string is returned.Otherwise, let k be the index of the first character in the string whose code is not a space (as defined above) and let m be the index of the last character in the string whose code is not a space (as defined above). A String object is returned, representing the substring of this string that begins with the character at index k and ends with the character at index m-that is, the result of this.substring(k, m + 1).
 - `public boolean equals​(Object anObject)`
   - Compares this string to the specified object. The result is true if and only if the argument is not null and is a String object that represents the same sequence of characters as this object.
   - testing if 2 items are the same instance first, if not, testing if they have the same content
@@ -241,10 +243,18 @@ Strings are constant; their values cannot be changed after they are created. Str
 
 # StringBuilder
 
-- equals
+- `public boolean equals​(Object obj)`
+  - For any non-null reference value x, x.equals(null) should return false.
+    The equals method for class Object implements the most discriminating possible equivalence relation on objects; that is, for any non-null reference values x and y, this method returns true if and only if x and y refer to the same object (x == y has the value true).
+  - `==` is the same as `equals`
 
 # Collections
 
+# Math
+
 # Object
 
-- equals
+- `public boolean equals​(Object obj)`
+  - For any non-null reference value x, x.equals(null) should return false.
+    The equals method for class Object implements the most discriminating possible equivalence relation on objects; that is, for any non-null reference values x and y, this method returns true if and only if x and y refer to the same object (x == y has the value true).
+  - `==` is the same as `equals`

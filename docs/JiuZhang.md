@@ -551,3 +551,742 @@ public class Solution {
 # Chapter 26: 让面试官眼前一亮的算法——记忆化搜索
 
 - see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_26.%20让面试官眼前一亮的算法——记忆化搜索.pdf)
+
+# Chapter 27: 让面试官眼前一亮的算法——记忆化搜索
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_27.%20最难的算法——动态规划.pdf)
+
+# Chapter 28: 双指针算法之同向双指针（上）
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_28._双指针算法之同向双指针上.pdf)
+
+# Chapter 29:双指针算法之同向双指针（下）
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_29._双指针算法之同向双指针下.pdf)
+- 链表中点问题
+  问题描述
+  求一个链表的中点
+
+问题分析
+这个问题可能大家会觉得，WTF 这么简单有什么好做的？你可能的想法是：
+
+先遍历一下整个链表，求出长度 L，然后再遍历一下链表找到第 L/2 的那个位置的节点。
+
+但是在你抛出这个想法之后，面试官会追问你：如果只允许遍历链表一次怎么办？
+
+可以看到这种 Follow up 并不是让你优化算法的时间复杂度，而是严格的限制了你遍历整个链表的次数。你可能会认为，这种优化有意义么？事实上是很有意义的。因为遍历一次这种场景，在真实的工程环境中会经常遇到，也就是我们常说的数据流问题（Data Stream Problem）。
+
+数据流问题 Data Stream Problem
+所谓的数据流问题，就是说，你需要设计一个在线系统，这个系统不断的接受一些数据，并维护这些数据的一些信息。比如这个问题就是在数据流中维护中点在哪儿。（维护中点的意思就是提供一个接口，来获取中点）
+
+类似的一些数据流问题还有：
+
+数据流中位数 http://www.lintcode.com/problem/data-stream-median/
+
+数据流最大 K 项 http://www.lintcode.com/problem/top-k-largest-numbers-ii/
+
+数据流高频 K 项 http://www.lintcode.com/problem/top-k-frequent-words-ii/
+
+这类问题的特点都是，你没有机会第二次遍历所有数据。上述问题部分将在《九章算法强化班》中讲解。
+
+用双指针算法解决链表中点问题
+我们可以使用双指针算法来解决链表中点的问题，更具体的，我们可以称之为快慢指针算法。该算法如下：
+Java:
+
+ListNode slow = head, fast = head.next;
+while (fast != null && fast.next != null) {
+slow = slow.next;
+fast = fast.next.next;
+}
+
+return slow;
+Python:
+
+slow, fast = head, head.next
+while fast != None and fast.next != None:
+slow = slow.next
+fast = fast.next.next
+
+return slow
+在上面的程序中，我们将快指针放在第二个节点上，慢指针放在第一个节点上，while 循环中每一次快指针走两步，慢指针走一步。这样当快指针走到头的时候，慢指针就在中点了。
+
+快慢指针的算法，在下一小节的“带环链表”中，也用到了。
+
+一个小练习
+将上述代码改为提供接口的模式，即设计一个 class，支持两个函数，一个是 add(node) 加入一个节点，一个是 getMiddle() 求中间的那个节点。
+
+# Chapter 30:二分法实战练习精讲
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_30._二分法实战练习精讲.pdf)
+
+# Chapter 31:时间复杂度低于*On*的算法
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_31._时间复杂度低于_On_的算法.pdf)
+- 辗转相除法
+  算法介绍
+  辗转相除法， 又名欧几里德算法， 是求最大公约数的一种方法。它的具体做法是：用较大的数除以较小的数，再用除数除以出现的余数（第一余数），再用第一余数除以出现的余数（第二余数），如此反复，直到最后余数是 0 为止。如果是求两个数的最大公约数，那么最后的除数就是这两个数的最大公约数。
+
+代码
+Java:
+
+public int gcd(int big, int small) {
+if (small != 0) {
+return gcd(small, big % small);
+} else {
+return big;
+}
+}
+
+# Chapter 32:使用宽度优先搜索找所有方案
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_32._使用宽度优先搜索找所有方案.pdf)
+
+# Chapter 33: 双向宽度优先搜索算法
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_33.__双向宽度优先搜索.pdf)
+
+# Chapter 34: 后序遍历非递归与 Morris 算法
+
+在第 13 章的学习中，我们掌握了如何使用非递归形式获得二叉树的前序、中序遍历。而在这节课中，我们将继续使用非递归形式求出二叉树的后序遍历。然后我们将学习另外一类遍历二叉树的算法——Morris 算法。
+
+本章关键字：前序遍历（Preorder Traversal），中序遍历（Inorder Traversal），后序遍历（Postorder Traversal）。
+
+与前序、中序的非递归方式相同，二叉树的非递归后序遍历也需要借助栈来完成，遍历顺序为左、右、根。
+
+大致思路如下：
+1、如果根节点非空，将根节点加入到栈中。
+2、如果栈不空，取栈顶元素（暂时不弹出），
+a.如果（左子树已访问过或者左子树为空），且（右子树已访问过或右子树为空），则弹出栈顶节点，将其值加入数组，
+b.如果左子树不为空，且未访问过，则将左子节点加入栈中，并标左子树已访问过。
+c.如果右子树不为空，且未访问过，则将右子节点加入栈中，并标右子树已访问过。
+3、重复第二步，直到栈空。
+
+```java
+
+public ArrayList<Integer> postorderTraversal(TreeNode root) {
+    ArrayList<Integer> result = new ArrayList<Integer>();
+    Stack<TreeNode> stack = new Stack<TreeNode>();
+    TreeNode prev = null; // previously traversed node
+    TreeNode curr = root;
+    if (root == null) {
+        return result;
+    }
+
+    stack.push(root);
+    while (!stack.empty()) {
+        curr = stack.peek();
+        if (prev == null || prev.left == curr || prev.right == curr) { // traverse down the tree
+            if (curr.left != null) {
+                stack.push(curr.left);
+            } else if (curr.right != null) {
+                stack.push(curr.right);
+            }
+        } else if (curr.left == prev) { // traverse up the tree from the left
+            if (curr.right != null) {
+                stack.push(curr.right);
+            }
+        } else { // traverse up the tree from the right
+            result.add(curr.val);
+            stack.pop();
+        }
+        prev = curr;
+    }
+    return result;
+}
+```
+
+什么是 Morris 算法
+与递归和使用栈空间遍历的思想不同，Morris 算法使用二叉树中的叶节点的 right 指针来保存后面将要访问的节点的信息，当这个 right 指针使用完成之后，再将它置为 null，但是在访问过程中有些节点会访问两次，所以与递归的空间换时间的思路不同，Morris 则是使用时间换空间的思想。
+
+节点定义
+Java:
+
+class TreeNode{
+int val;
+TreeNode left;
+TreeNode right;
+pubic TreeNode(int val) {
+this.val = val;
+this.left = this.right = null;
+}
+}
+
+用 Morris 算法进行中序遍历(Inorder Traversal)
+思路
+如果当前节点的左孩子为空，则输出当前节点并将其右孩子作为当前节点。
+如果当前节点的左孩子不为空，在当前节点的左子树中找到当前节点在中序遍历下的前驱节点。
+如果前驱节点的右孩子为空，将它的右孩子设置为当前节点。当前节点更新为当前节点的左孩子。
+如果前驱节点的右孩子为当前节点，将它的右孩子重新设为空（恢复树的形状）。输出当前节点。当前节点更新为当前节点的右孩子。
+重复 1、2 两步直到当前节点为空。
+上图为每一步迭代的结果（从左至右，从上到下），cur 代表当前节点，深色节点表示该节点已输出。
+
+```Java:
+
+public class Solution {
+    /**
+     * @param root: A Tree
+     * @return: Inorder in ArrayList which contains node values.
+     */
+
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> nums = new ArrayList<>();
+        TreeNode cur = null;
+
+        while (root != null) {
+            if (root.left != null) {
+                cur = root.left;
+                while (cur.right != null && cur.right != root) {
+                    cur = cur.right;
+                }
+
+                if (cur.right == root) {
+                    nums.add(root.val);
+                    cur.right = null;
+                    root = root.right;
+                } else {
+                    cur.right = root;
+                    root = root.left;
+                }
+            } else {
+                nums.add(root.val);
+                root = root.right;
+            }
+        }
+
+        return nums;
+    }
+
+}
+```
+
+用 Morris 算法实现先序遍历(Preorder Traversal)
+思路
+如果当前节点的左孩子为空，则输出当前节点并将其右孩子作为当前节点。
+如果当前节点的左孩子不为空，在当前节点的左子树中找到当前节点在中序遍历下的前驱节点。
+如果前驱节点的右孩子为空，将它的右孩子设置为当前节点。输出当前节点（与中序遍历唯一一点不同）。当前节点更新为当前节点的左孩子。
+如果前驱节点的右孩子为当前节点，将它的右孩子重新设为空。当前节点更新为当前节点的右孩子。
+重复 1、2 两步直到当前节点为空。
+
+```Java:
+
+public class Solution {
+    /**
+     * @param root: A Tree
+     * @return: Preorder in ArrayList which contains node values.
+     */
+    public List<Integer> preorderTraversal(TreeNode root) {
+        // morris traversal
+        List<Integer> nums = new ArrayList<>();
+        TreeNode cur = null;
+        while (root != null) {
+            if (root.left != null) {
+                cur = root.left;
+                // find the predecessor of root node
+                while (cur.right != null && cur.right != root) {
+                    cur = cur.right;
+                }
+                if (cur.right == root) {
+                    cur.right = null;
+                    root = root.right;
+                } else {
+                    nums.add(root.val);
+                    cur.right = root;
+                    root = root.left;
+                }
+            } else {
+                nums.add(root.val);
+                root = root.right;
+            }
+        }
+        return nums;
+    }
+}
+```
+
+用 Morris 算法实现后序遍历(Postorder Traversal)
+思路
+后序遍历其实可以看作是和前序遍历左右对称的，此处，我们同样可以利用这个性质，基于前序遍历的算法，可以很快得到后序遍历的结果。我们只需要将前序遍历中所有的左孩子和右孩子进行交换就可以了。
+
+```Java:
+
+public class Solution {
+    /**
+     * @param root: A Tree
+     * @return: Postorder in ArrayList which contains node values.
+     */
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> nums = new ArrayList<>();
+        TreeNode cur = null;
+        while (root != null) {
+            if (root.right != null) {
+                cur = root.right;
+                while (cur.left != null && cur.left != root) {
+                    cur = cur.left;
+                }
+                if (cur.left == root) {
+                    cur.left = null;
+                    root = root.left;
+                } else {
+                    nums.add(root.val);
+                    cur.left = root;
+                    root = root.right;
+                }
+            } else {
+                nums.add(root.val);
+                root = root.left;
+            }
+        }
+        Collections.reverse(nums);
+        return nums;
+    }
+}
+```
+
+# Chapter 35:二叉查找树的增删查改
+
+- BST 的增删查改
+  什么是二叉搜索树(Binary Search Tree)
+  二叉搜索树可以是一棵空树或者是一棵满足下列条件的二叉树:
+  如果它的左子树不空，则左子树上所有节点值均小于它的根节点值。
+  如果它的右子树不空，则右子树上所有节点值均大于它的根节点值。
+  它的左右子树均为二叉搜索树(BST)。
+  严格定义下 BST 中是没有值相等的节点的(No duplicate nodes)。
+  根据上述特性，我们可以得到一个结论：BST 中序遍历得到的序列是升序的。
+  BST 基本操作——增删改查(CRUD)
+  对于树节点的定义如下：
+
+```Java:
+class TreeNode{
+  int val;
+  TreeNode left;
+  TreeNode right;
+  pubic TreeNode(int val) {
+  this.val = val;
+  this.left = this.right = null;
+  }
+}
+```
+
+- 基本操作之查找(Retrieve)
+  思路: 查找值为 val 的节点，如果 val 小于根节点则在左子树中查找，反之在右子树中查找
+
+```Java:
+public TreeNode searchBST(TreeNode root, int val) {
+    if (root == null) {
+      return null;
+    }// 未找到值为val的节点
+    if (val < root.val) {
+      return searchBST(root.left, val);//val小于根节点值，在左子树中查找
+    } else if (val > root.val) {
+      return searchBST(root.right, val);//val大于根节点值，在右子树中查找
+    } else {
+      return root;//找到了
+    }
+}
+```
+
+- 基本操作之修改(Update)
+  思路: 修改仅仅需要在查找到需要修改的节点之后，更新这个节点的值就可以了
+
+```Java:
+public void updateBST(TreeNode root, int target, int val) {
+  if (root == null) {
+  return;
+  }// 未找到 target 节点
+  if (target < root.val) {
+  updateBST(root.left, target, val);//target 小于根节点值，在左子树中查找
+  } else if (target > root.val) {
+  updateBST(root.right, target, val);//target 大于根节点值，在右子树中查找
+  } else { //找到了
+  root.val = val;
+  }
+}
+```
+
+- 基本操作之增加(Create)
+  思路: 根节点为空，则待添加的节点为根节点
+  如果待添加的节点值小于根节点，则在左子树中添加
+  如果待添加的节点值大于根节点，则在右子树中添加
+  我们统一在树的叶子节点(Leaf Node)后添加
+
+```Java:
+public TreeNode insertNode(TreeNode root, TreeNode node) {
+  if (root == null) {
+  return node;
+  }
+  if (root.val > node.val) {
+  root.left = insertNode(root.left, node);
+  } else {
+  root.right = insertNode(root.right, node);
+  }
+  return root;
+}
+```
+
+- 基本操作之删除(Delete)
+  思路:
+  考虑待删除的节点为叶子节点，可以直接删除并修改父亲节点(Parent Node)的指针，需要区分待删节点是否为根节点
+  考虑待删除的节点为单支节点(只有一棵子树——左子树 or 右子树)，与删除链表节点操作类似，同样的需要区分待删节点是否为根节点
+  考虑待删节点有两棵子树，可以将待删节点与左子树中的最大节点进行交换，由于左子树中的最大节点一定为叶子节点，所以这时再删除待删的节点可以参考第一条
+  详细的解释可以看 http://www.algolist.net/Data_structures/Binary_search_tree/Removal
+
+```Java:
+public TreeNode removeNode(TreeNode root, int value) {
+    TreeNode dummy = new TreeNode(0);
+    dummy.left = root;
+    TreeNode parent = findNode(dummy, root, value);
+    TreeNode node;
+    if (parent.left != null && parent.left.val == value) {
+        node = parent.left;
+    } else if (parent.right != null && parent.right.val == value) {
+        node = parent.right;
+    } else {
+        return dummy.left;
+    }
+    deleteNode(parent, node);
+    return dummy.left;
+}
+
+private TreeNode findNode(TreeNode parent, TreeNode node, int value) {
+    if (node == null) {
+        return parent;
+    }
+    if (node.val == value) {
+        return parent;
+    }
+    if (value < node.val) {
+        return findNode(node, node.left, value);
+    } else {
+        return findNode(node, node.right, value);
+    }
+}
+
+private void deleteNode(TreeNode parent, TreeNode node) {
+    if (node.right == null) {
+        if (parent.left == node) {
+            parent.left = node.left;
+        } else {
+            parent.right = node.left;
+        }
+    } else {
+        TreeNode temp = node.right;
+        TreeNode father = node;
+        while (temp.left != null) {
+            father = temp;
+            temp = temp.left;
+        }
+        if (father.left == temp) {
+            father.left = temp.right;
+        } else {
+            father.right = temp.right;
+        }
+        if (parent.left == node) {
+            parent.left = temp;
+        } else {
+            parent.right = temp;
+        }
+        temp.left = node.left;
+        temp.right = node.right;
+    }
+}
+```
+
+# Chapter 36: 非递归的方式实现排列和组合类 DFS
+
+本章关键字：Combination（组合），Permutations（排列），Binary（二进制）。
+
+用非递归（Non-recursion / Iteration）的方式实现全子集问题，有两种方式：
+
+进制转换（binary）
+宽度优先搜索（Breadth-first Search）
+基于进制转换的方法
+思路就是使用一个 正整数的二进制表示 的第 i 位是 1 还是 0 来代表集合的第 i 个数取或者不取。因为从 0 到 2^n - 1 总共 2^n 个整数，正好对应集合的 2^n 个子集。
+比如 {1，2，3} 的子集可以用 0 到 7 来表示。
+
+0 -> 000 -> {}
+1 -> 001 -> {3}
+2 -> 010 -> {2}
+3 -> 011 -> {2,3}
+4 -> 100 -> {1}
+5 -> 101 -> {1,3}
+6 -> 110 -> {1,2}
+7 -> 111 -> {1,2,3}
+
+```java
+
+class Solution {
+/\*\*
+_ @param S: A set of numbers.
+_ @return: A list of lists. All valid subsets.
+\*/
+public List<List<Integer>> subsets(int[] nums) {
+List<List<Integer>> result = new ArrayList<List<Integer>>();
+int n = nums.length;
+Arrays.sort(nums);
+for (int i = 0; i < (1 << n); i++) {
+List<Integer> subset = new ArrayList<Integer>();
+for (int j = 0; j < n; j++) {
+if ((i & (1 << j)) != 0) {
+subset.add(nums[j]);
+}
+}
+result.add(subset);
+}
+
+        return result;
+    }
+
+}
+
+```
+
+基于 BFS 的方法
+在 BFS 那节课的讲解中，我们很少提到用 BFS 来解决找所有的方案的问题。事实上 BFS 也是可以用来做这件事情的。
+用 BFS 来解决该问题时，层级关系如下：
+
+第一层: []
+第二层: [1] [2] [3]
+第三层: [1, 2] [1, 3], [2, 3]
+第四层: [1, 2, 3]
+每一层的节点都是上一层的节点拓展而来。
+
+```java
+public class Solution {
+
+    /*
+     * @param nums: A set of numbers
+     * @return: A list of lists
+     */
+    public List<List<Integer>> subsets(int[] nums) {
+        // List vs ArrayList （google）
+        List<List<Integer>> results = new LinkedList<>();
+
+        if (nums == null) {
+            return results; // 空列表
+        }
+
+        Arrays.sort(nums);
+
+        // BFS
+        Queue<List<Integer>> queue = new LinkedList<>();
+        queue.offer(new ArrayList<Integer>());
+
+        while (!queue.isEmpty()) {
+            List<Integer> subset = queue.poll();
+            results.add(subset);
+
+            for (int i = 0; i < nums.length; i++) {
+                if (subset.size() == 0 || subset.get(subset.size() - 1) < nums[i]) {
+                    List<Integer> nextSubset = new ArrayList<Integer>(subset);
+                    nextSubset.add(nums[i]);
+                    queue.offer(nextSubset);
+                }
+            }
+        }
+
+        return results;
+    }
+}
+```
+
+在学习全排列的解决方法之前，我们先来学习如何求 下一个排列。
+
+问题：给定一个若干整数的排列，给出按整数大小进行字典序从小到大排序后的下一个排列。若没有下一个排列，则输出字典序最小的序列。
+从末尾往左走，如果一直递增，例如 {...9,7,5} ，那么下一个排列一定会牵扯到左边更多的数，直到一个非递增数为止，例如 {...6,9,7,5} 。对于原数组的变化就只到 6 这里，和左侧其他数再无关系。6 这个位置会变成 6 右侧所有数中比 6 大的最小的数，而 6 会进入最后 3 个数中，且后 3 个数必是升序数组。
+所以算法步骤如下：
+
+从右往左遍历数组 nums，直到找到一个位置 i ，满足 nums[i] > nums[i - 1] 或者 i 为 0 。
+i 不为 0 时，用 j 再次从右到左遍历 nums ，寻找第一个 nums[j] > nums[i - 1] 。而后交换 nums[j] 和 nums[i - 1] 。注意，满足要求的 j 一定存在！且交换后 nums[i] 及右侧数组仍为降序数组。
+将 nums[i] 及右侧的数组翻转，使其升序。
+
+可能会有同学有些疑问：
+Q：i 为 0 怎么办？
+A：i 为 0 说明整个数组是降序的，直接翻转整个数组即可。
+
+Q：有重复元素怎么办？
+A：在遍历时只要严格满足 nums[i] > nums[i - 1] 和 nums[j] > nums[i - 1] 就不会有问题。
+
+Q：元素过少是否要单独考虑？
+A：当元素个数小于等于 1 个时，可以直接返回。
+
+```java
+public class Solution {
+    /**
+     * @param nums: A list of integers
+     * @return: A list of integers that's next permuation
+    */
+    // 用于交换nums[i]和nums[j]
+    public void swapItem(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+    // 用于翻转nums[i]到nums[j]，包含两端的这一小段数组
+    public void swapList(int[] nums, int i, int j) {
+        while (i < j) {
+            swapItem(nums, i, j);
+            i ++;
+            j --;
+        }
+    }
+    public void nextPermutation(int[] nums) {
+        int len = nums.length;
+        if ( len <= 1) {
+            return;
+        }
+        int i = len - 1;
+        while (i > 0 && nums[i] <= nums[i - 1]) {
+            i --;
+        }
+        if (i != 0) {
+            int j = len - 1;
+            while (nums[j] <= nums[i - 1]) {
+                j--;
+            }
+            swapItem(nums, j, i-1);
+        }
+        swapList(nums, i, len - 1);
+    }
+}
+```
+
+在学习了 下一个排列 的算法之后，对于全排列问题，我们只需要不断调用这个算法的函数就可以啦。
+一些可以做得更细致的地方：
+为了确定何时结束，建议在迭代前，先对输入 nums 数组进行升序排序，迭代到降序时，就都找完了。有心的同学可能还记得在 nextPermutation 当中，当且仅当数组完全降序，那么从右往左遍历的指针 i 最终会指向 0 。所以可以为 nextPermutation 带上布尔返回值，当 i 为 0 时，返回 false，表示找完了。要注意，排序操作在这样一个 NP 问题中，消耗的时间几乎可以忽略。
+当数组长度为 1 时，nextPermutation 会直接返回 false ；当数组长度为 0 时， nextPermutation 中 i 会成为 -1 ，所以返回 false 的条件可以再加上 i 为 -1 。
+Java 中，如果输入类型是 int[] ，而输出类型是 List<List> ，要注意，并没有太好的方法进行类型转换，这是由于 int 是基本类型。建议还是自行手动复制，实际工作中还可使用 guava 库。
+
+```java
+public class Solution {
+    /*
+     * @param nums: A list of integers.
+     * @return: A list of permutations.
+     */
+    public List<List<Integer>> permute(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+
+        boolean next = true;  // next 为 true 时，表示可以继续迭代
+        while (next)  {
+            List<Integer> current = new ArrayList<>();  // 进行数组复制
+            for (int num : nums) {
+                current.add(num);
+            }
+
+            result.add(current);
+            next = nextPermutation(nums);
+        }
+        return result;
+    }
+    // 用于交换nums[i]和nums[j]
+    public void swapItem(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+    // 用于翻转nums[i]到nums[j]，包含两端的这一小段数组
+    public void swapList(int[] nums, int i, int j) {
+        while (i < j) {
+            swapItem(nums, i, j);
+            i ++;
+            j --;
+        }
+    }
+    public boolean nextPermutation(int[] nums) {
+        int len = nums.length;
+        int i = len - 1;
+        while (i > 0 && nums[i] <= nums[i - 1]) {
+            i--;
+        }
+        if (i <= 0) {
+            return false;
+        }
+
+        int j = len - 1;
+        while (nums[j] <= nums[i - 1]) {
+            j--;
+        }
+        swapItem(nums, j, i - 1);
+
+        swapList(nums, i, len - 1);
+
+        return true;
+    }
+
+}
+```
+
+最后我们来研究下如何求一个排列是第几个。
+
+题目：给出一个不含重复数字的排列，求这些数字的所有排列按字典序排序后该排列的编号，编号从 1 开始。例如排列 [1, 2, 4] 是第 1 个排列。
+
+算法描述
+只需计算有多少个排列在当前排列 A 的前面即可。如何算呢?举个例子，[3,7,4,9,1]，在它前面的必然是某位置 i 对应元素比原数组小，而 i 左侧和原数组一样。也即 [3,7,4,1,X] ， [3,7,1,X,X] ， [3,1 或 4,X,X,X] ， [1,X,X,X,X] 。
+而第 i 个元素，比原数组小的情况有多少种，其实就是 A[i] 右侧有多少元素比 A[i] 小，乘上 A[i] 右侧元素全排列数，即 A[i] 右侧元素数量的阶乘。 i 从右往左看，比当前 A[i] 小的右侧元素数量分别为 1,1,2,1，所以最终字典序在当前 A 之前的数量为 1×1!+1×2!+2×3!+1×4!=39 ，故当前 A 的字典序为 40。
+
+具体步骤：
+用 permutation 表示当前阶乘，初始化为 1,result 表示最终结果，初始化为 0 。由于最终结果可能巨大，所以用 long 类型。
+i 从右往左遍历 A ，循环中计算 A[i] 右侧有多少元素比 A[i] 小，计为 smaller ，result += smaller _ permutation。之后 permutation _= A.length - i ，为下次循环 i 左移一位后的排列数。
+已算出多少字典序在 A 之前，返回 result + 1 。
+
+```java
+public class Solution {
+    /**
+     * @param A: An array of integers
+     * @return: A long integer
+     */
+    public long permutationIndex(int[] A) {
+        // write your code here
+        long permutation = 1;
+        long result = 0;
+        for (int i = A.length - 2; i >= 0; --i) {
+            int smaller = 0;
+            for (int j = i + 1; j < A.length; ++j) {
+                if (A[j] < A[i]) {
+                    smaller++;
+                }
+            }
+            result += smaller * permutation;
+            permutation *= A.length - i;
+        }
+        return result + 1;
+    }
+}
+```
+
+常见 QA：
+Q：为了找寻每个元素右侧有多少元素比自己小，用了 O(n^2)的时间，能不能更快些？
+A：可以做到 O(nlogn)，但是很复杂，这是另外一个问题了，可以使用 BST，归并排序或者线段树：http://www.lintcode.com/zh-cn/problem/count-of-smaller-number-before-itself/
+Q：元素有重复怎么办？
+A：好问题！元素有重复，情况会复杂的多。因为这会影响 A[i] 右侧元素的排列数，此时的排列数计算方法为总元素数的阶乘，除以各元素值个数的阶乘，例如 [1, 1, 1, 2, 2, 3] ，排列数为
+6! ÷ (3! × 2! × 1!) 。为了正确计算阶乘数，需要用哈系表记录 A[i] 及右侧的元素值个数，并考虑到 A[i] 与右侧比其小的元素 A[k] 交换后，要把 A[k] 的计数减一。用该哈系表计算正确的阶乘数。而且要注意，右侧比 A[i]小 的重复元素值只能计算一次，不要重复计算！
+
+# Chapter 37:DFS 经典题精讲
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_37._DFS经典题精讲.pdf)
+
+# Chapter 38:数据结构设计类问题
+
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_38._数据结构设计类问题.pdf)
+
+# Chapter 39: 外排序算法与数组合并类问题
+
+外排序算法（External Sorting）
+外排序算法是指在内存不够的情况下，如何对存储在一个或者多个大文件中的数据进行排序的算法。外排序算法通常是解决一些大数据处理问题的第一个步骤，或者是面试官所会考察的算法基本功。外排序算法是海量数据处理算法中十分重要的一块。
+在学习这类大数据算法时，经常要考虑到内存、缓存、准确度等因素，这和我们之前见到的算法都略有差别。
+
+外排序算法分为两个基本步骤：
+
+将大文件切分为若干个个小文件，并分别使用内存排好序
+使用 K 路归并算法（k-way merge）将若干个排好序的小文件合并到一个大文件中
+第一步：文件拆分
+根据内存的大小，尽可能多的分批次的将数据 Load 到内存中，并使用系统自带的内存排序函数（或者自己写个快速排序算法），将其排好序，并输出到一个个小文件中。比如一个文件有 1T，内存有 1G，那么我们就这个大文件中的内容按照 1G 的大小，分批次的导入内存，排序之后输出得到 1024 个 1G 的小文件。
+
+第二步：K 路归并算法
+K 路归并算法使用的是数据结构堆（Heap）来完成的，使用 Java 或者 C++ 的同学可以直接用语言自带的 PriorityQueue（C++中叫 priority_queue）来代替。
+
+我们将 K 个文件中的第一个元素加入到堆里，假设数据是从小到大排序的话，那么这个堆是一个最小堆（Min Heap）。每次从堆中选出最小的元素，输出到目标结果文件中，然后如果这个元素来自第 x 个文件，则从第 x 个文件中继续读入一个新的数进来放到堆里，并重复上述操作，直到所有元素都被输出到目标结果文件中。
+
+Follow up: 一个个从文件中读入数据，一个个输出到目标文件中操作很慢，如何优化？
+如果我们每个文件只读入 1 个元素并放入堆里的话，总共只用到了 1024 个元素，这很小，没有充分的利用好内存。另外，单个读入和单个输出的方式也不是磁盘的高效使用方式。因此我们可以为输入和输出都分别加入一个缓冲（Buffer）。假如一个元素有 10 个字节大小的话，1024 个元素一共 10K，1G 的内存可以支持约 100K 组这样的数据，那么我们就为每个文件设置一个 100K 大小的 Buffer， 每次需要从某个文件中读数据，都将这个 Buffer 装满。当然 Buffer 中的数据都用完的时候，再批量的从文件中读入。输出同理，设置一个 Buffer 来避免单个输出带来的效率缓慢。
+那下面我们就来熟悉下两路归并和 K 路归并的算法。

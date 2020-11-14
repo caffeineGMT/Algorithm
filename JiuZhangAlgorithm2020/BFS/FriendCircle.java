@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * LintCode 1179
  * 
