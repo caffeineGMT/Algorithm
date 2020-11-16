@@ -8,7 +8,7 @@ import java.util.Map;
 public class KnightShortestPathII {
 
     public static void main(String[] args) {
-        int[] dx = { -1, 1, 0, 0 };
+        int[] dx = new int[] { -1, 1, 0, 0 };
 
     }
 }

@@ -215,6 +215,8 @@ Strings are constant; their values cannot be changed after they are created. Str
   - Returns the length of this string. The length is equal to the number of Unicode code units in the string.
 - `public char charAt​(int index)`
   - Returns the char value at the specified index. An index ranges from 0 to length() - 1. The first char value of the sequence is at index 0, the next at index 1, and so on, as for array indexing.
+- `public static String valueOf(int i)`
+  - Returns the string representation of the int argument
 - `public String concat​(String str)`
   - Concatenates the specified string to the end of this string.
     If the length of the argument string is 0, then this String object is returned. Otherwise, a String object is returned that represents a character sequence that is the concatenation of the character sequence represented by this String object and the character sequence represented by the argument string.
@@ -235,11 +237,16 @@ Strings are constant; their values cannot be changed after they are created. Str
   - beginIndex - the beginning index, inclusive.
   - endIndex - the ending index, exclusive.
 - `public String trim()`
-  - Returns a string whose value is this string, with all leading and trailing space removed, where space is defined as any character whose codepoint is less than or equal to 'U+0020' (the space character).If this String object represents an empty character sequence, or the first and last characters of character sequence represented by this String object both have codes that are not space (as defined above), then a reference to this String object is returned. Otherwise, if all characters in this string are space (as defined above), then a String object representing an empty string is returned.Otherwise, let k be the index of the first character in the string whose code is not a space (as defined above) and let m be the index of the last character in the string whose code is not a space (as defined above). A String object is returned, representing the substring of this string that begins with the character at index k and ends with the character at index m-that is, the result of this.substring(k, m + 1).
+  Returns a string whose value is this string, with all leading and trailing space removed, where space is defined as any character whose codepoint is less than or equal to 'U+0020' (the space character).If this String object represents an empty character sequence, or the first and last characters of character sequence represented by this String object both have codes that are not space (as defined above), then a reference to this String object is returned. Otherwise, if all characters in this string are space (as defined above), then a String object representing an empty string is returned.Otherwise, let k be the index of the first character in the string whose code is not a space (as defined above) and let m be the index of the last character in the string whose code is not a space (as defined above). A String object is returned, representing the substring of this string that begins with the character at index k and ends with the character at index m-that is, the result of this.substring(k, m + 1).
 - `public boolean equals​(Object anObject)`
   - Compares this string to the specified object. The result is true if and only if the argument is not null and is a String object that represents the same sequence of characters as this object.
   - testing if 2 items are the same instance first, if not, testing if they have the same content
   - `==` will only test if 2 items are the same instance, which is comparing the memory address
+- `public static String join(CharSequence delimiter, Iterable<? extends CharSequence> elements)`
+  Returns a new String composed of copies of the CharSequence elements joined together with a copy of the specified delimiter.
+- `public static String valueOf(int i)`
+  - Returns the string representation of the int argument.
+  - "" + int = String
 
 # StringBuilder
 
@@ -247,10 +254,41 @@ Strings are constant; their values cannot be changed after they are created. Str
   - For any non-null reference value x, x.equals(null) should return false.
     The equals method for class Object implements the most discriminating possible equivalence relation on objects; that is, for any non-null reference values x and y, this method returns true if and only if x and y refer to the same object (x == y has the value true).
   - `==` is the same as `equals`
+- `public StringBuilder append(String str)`
+  Appends the specified string to this character sequence.
+  The characters of the String argument are appended, in order, increasing the length of this sequence by the length of the argument. If str is null, then the four characters "null" are appended.
+  Let n be the length of this character sequence just prior to execution of the append method. Then the character at index k in the new character sequence is equal to the character at index k in the old character sequence, if k is less than n; otherwise, it is equal to the character at index k-n in the argument str.
+
+- `public StringBuilder append(char c)`
+  Appends the string representation of the char argument to this sequence.
+  The argument is appended to the contents of this sequence. The length of this sequence increases by 1.The overall effect is exactly as if the argument were converted to a string by the method String.valueOf(char), and the character in that string were then appended to this character sequence.
+
+- `public String toString()`
+  Returns a string representing the data in this sequence. A new String object is allocated and initialized to contain the character sequence currently represented by this object. This String is then returned. Subsequent changes to this sequence do not affect the contents of the String.
+
+# Integer
+
+- `public static int parseInt(String s)`
+  Parses the string argument as a signed decimal integer. The characters in the string must all be decimal digits, except that the first character may be an ASCII minus sign '-' ('\u002D') to indicate a negative value or an ASCII plus sign '+' ('\u002B') to indicate a positive value. The resulting integer value is returned, exactly as if the argument and the radix 10 were given as arguments to the parseInt(java.lang.String, int) method.
+- `public static final int MAX_VALUE`
+  A constant holding the maximum value an int can have, 2^31-1.
+- `public static final int MIN_VALUE`
+  A constant holding the minimum value an int can have, -231.
 
 # Collections
 
+- [documentation](https://docs.oracle.com/javase/7/docs/api/java/util/Collections.html)
+- `public static void reverse(List<?> list)`
+  Reverses the order of the elements in the specified list.
+  This method runs in linear time.
+
 # Math
+
+- [documentation](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html#max-int-int-)
+- `public static int max(int a, int b)`
+  Returns the greater of two int values. That is, the result is the argument closer to the value of Integer.MAX_VALUE. If the arguments have the same value, the result is that same value.
+- `public static int min(int a, int b)`
+  Returns the smaller of two int values. That is, the result the argument closer to the value of Integer.MIN_VALUE. If the arguments have the same value, the result is that same value.
 
 # Object
 
