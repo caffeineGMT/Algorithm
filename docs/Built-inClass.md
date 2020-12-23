@@ -185,8 +185,12 @@ As a general rule, the default load factor (.75) offers a good tradeoff between 
 - `public Set<K> keySet()`
   - Returns a Set view of the keys contained in this map. The set is backed by the map, so changes to the map are reflected in the set, and vice-versa. If the map is modified while an iteration over the set is in progress (except through the iterator's own remove operation), the results of the iteration are undefined. The set supports element removal, which removes the corresponding mapping from the map, via the Iterator.remove, Set.remove, removeAll, retainAll, and clear operations. It does not support the add or addAll operations.
 - `public Set<Map.Entry<K,​V>> entrySet()`
+
   - Returns a Set view of the mappings contained in this map. The set is backed by the map, so changes to the map are reflected in the set, and vice-versa. If the map is modified while an iteration over the set is in progress (except through the iterator's own remove operation, or through the setValue operation on a map entry returned by the iterator) the results of the iteration are undefined. The set supports element removal, which removes the corresponding mapping from the map, via the Iterator.remove, Set.remove, removeAll, retainAll and clear operations. It does not support the add or addAll operations.
   - [document for entry](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.Entry.html)
+
+- `public V remove(Object key)`
+  Removes the mapping for the specified key from this map if present.
 
 # TreeNode
 
@@ -268,12 +272,24 @@ Strings are constant; their values cannot be changed after they are created. Str
 
 # Integer
 
+- [documentation](https://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html)
 - `public static int parseInt(String s)`
   Parses the string argument as a signed decimal integer. The characters in the string must all be decimal digits, except that the first character may be an ASCII minus sign '-' ('\u002D') to indicate a negative value or an ASCII plus sign '+' ('\u002B') to indicate a positive value. The resulting integer value is returned, exactly as if the argument and the radix 10 were given as arguments to the parseInt(java.lang.String, int) method.
 - `public static final int MAX_VALUE`
   A constant holding the maximum value an int can have, 2^31-1.
 - `public static final int MIN_VALUE`
   A constant holding the minimum value an int can have, -231.
+
+# Character
+
+- [documentation](https://docs.oracle.com/javase/7/docs/api/java/lang/Character.html)
+- `public static char toLowerCase(char ch)`
+  Converts the character argument to lowercase using case mapping information from the UnicodeData file.
+  Note that Character.isLowerCase(Character.toLowerCase(ch)) does not always return true for some ranges of characters, particularly those that are symbols or ideographs.
+- `public static boolean isDigit(char ch)`
+  Determines if the specified character is a digit.
+- `public static boolean isLetter(char ch)`
+  Determines if the specified character is a letter.
 
 # Collections
 
