@@ -1,8 +1,10 @@
 # LeetCode & LintCode
 
+## BFS
+
 ## DP
 
-#### 322. Coin ChangeMedium6038183Add to ListShare
+### 322. Coin ChangeMedium6038183Add to ListShare
 
 You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return `-1`.
 
@@ -118,6 +120,15 @@ class Solution {
     }
 }
 ```
+
+
+
+* analysis:
+  * see more detailed analysis from `backpack III` problem
+  * v1: see code comments
+  * v2: 2 ways to look at dp\[i\]\[j\]'s immediate previous state, one way is think about all the case when we pick 1 ith item, 2 ith items, 3...this will result in a loop. another way is to think about we can pick at least 1 ith item, and the immediate previous state is we pick 1 more ith item compare to its previous state. what is its previous state? it is dp\[i\]\[j - coins\[i - 1\]\]
+  * time: O\(len \* amount\), with optimization
+  * space: O\(amount\), with optimization
 
 
 
