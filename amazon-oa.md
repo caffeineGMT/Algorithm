@@ -145,3 +145,40 @@ Given a multiset \(set that allows for multiple instances of same value\), parti
 
 We can divide the numbers into two subsets `A = [4, 5]` and `B = [1, 2, 2, 3]`. The sum of A is 9 which is greater than the sum of B which is 8. There are other ways to divide but `A = [4, 5]` is of minimal size of 2.
 
+Solution1: time: O\(nlgn\). space: O\(n\). 
+
+* thoughts: 
+  * there might be an issue with this approach. this assume we must put at least 1 item in set. what if we have case like \[4, 4\]? can we make 1 set having \[4, 4\] and the other as \[\]?
+
+```java
+public static List<Integer> optimizingBoxWeights(List<Integer> arr) {
+    if (arr == null || arr.size() == 0) {
+        return new ArrayList<Integer>();
+    }
+
+    Collections.sort(arr);
+
+    int size = arr.size();
+    int[] prefix = new int[size];
+    prefix[0] = arr.get(0);
+
+    for (int i = 1; i < size; i++) {
+        prefix[i] = prefix[i - 1] + arr.get(i);
+    }
+
+    int sum = 0;
+    List<Integer> result = new ArrayList<>();
+    for (int i = size - 1; i >= 1; i--) {
+        sum += arr.get(i);
+        result.add(arr.get(i));
+        if (sum > prefix[i - 1]) {
+            break;
+        }
+    }
+
+    Collections.reverse(result);
+
+    return result;
+}
+```
+
