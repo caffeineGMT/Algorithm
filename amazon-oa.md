@@ -149,6 +149,7 @@ Solution1: time: O\(nlgn\). space: O\(n\).
 
 * thoughts: 
   * there might be an issue with this approach. this assume we must put at least 1 item in set. what if we have case like \[4, 4\]? can we make 1 set having \[4, 4\] and the other as \[\]?
+  * if so, we need to check if the last sum is == prefix\[0\]
 
 ```java
 public static List<Integer> optimizingBoxWeights(List<Integer> arr) {
@@ -179,6 +180,57 @@ public static List<Integer> optimizingBoxWeights(List<Integer> arr) {
     Collections.reverse(result);
 
     return result;
+}
+```
+
+Solution2: 
+
+If we sort the array, the subset A with maximal total weight is the shortest trailing subarray with sum greater than half of the total sum, e.g. for the example above,
+
+```text
+sorted(arr) = [1, 2, 2, 3, 4, 5]
+sum(arr) / 2 = 17 / 2 = 8.5
+A = [4, 5]
+sum(A) = 9
+```
+
+Now, we can just sort the array and extract the subarray and call it a day, but there is a more efficient approach. Notice that we don't need the whole array in sorted order — we only need to extract the largest elements in descending order, which seems like a perfect opportunity for a [priority queue](https://algo.monster/problems/heap_intro).
+
+Therefore, we put all the values into a heap through heapify \(note: inserting one by one would defeat the purpose, as that would take `O(n log n)` time which is on the same magnitude as sorting\). We then pop one element at a time into a separate array, until the sum of the removed elements is larger than half the total sum. The removed elements are in descending order, so we reverse the result array before returning.
+
+For input of size `n` and output of size `m`, this approach takes `O(n + m log n)` as opposed to `O(n log n)` by sorting, which is faster in all cases and especially so if the output size is small.
+
+```java
+public static List<Integer> optimizingBoxWeights(List<Integer> arr) {
+    if (arr == null || arr.size() == 0) {
+        return new ArrayList<Integer>();
+    }
+
+    PriorityQueue<Integer> q = new PriorityQueue<>((Integer a, Integer b) -> {
+        return b - a;
+    });
+    q.addAll(arr);
+
+    int sum = 0;
+    for (int i = 0; i < arr.size(); i++) {
+        sum += arr.get(i);
+    }
+    int average = sum / 2;
+
+    List<Integer> result = new ArrayList<>();
+    int curSum = 0;
+
+    while (curSum <= average) {
+        int num = q.poll();
+        curSum += num;
+        result.add(num);
+    }
+
+    Collections.reverse(result);
+
+    return result;
+
+
 }
 ```
 
