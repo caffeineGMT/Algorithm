@@ -1,9 +1,8 @@
 # Table of contents
 
 * [Fundamentals](README.md)
-* [Frequently used built-in class](frequently-used-built-in-class.md)
+* [Frequently Used Built-in Class](frequently-used-built-in-class.md)
 * [JiuZhang](jiuzhang.md)
 * [LeetCode & LintCode](leetcode-and-lintcode.md)
-* [Summary](summary.md)
 * [Amazon OA](amazon-oa.md)
 
