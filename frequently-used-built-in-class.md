@@ -1,4 +1,4 @@
-# Frequently Used Built-in Class
+# Frequently used built-in class
 
 ## Note
 

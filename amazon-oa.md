@@ -1,4 +1,247 @@
+---
+description: 'Resource: https://algo.monster/dashboard'
+---
+
 # Amazon OA
+
+## 
+
+## Minimum Cost to Connect All Nodes \(Minimum Spanning Tree I\)
+
+Monster Airlines has a set of `n` destination cities and a list of flight paths connecting some of the cities together. Your job is to find the flight paths that would connect all of the cities together, but with minimum total travel distance.
+
+#### Input
+
+The input consists of three arguments:
+
+`n` = the number of nodes \(ie. cities\). The cities are represented by numbers `1...n`.
+
+`edges` = an array of flight paths, represented by pairs of numbers corresponding to the cities being connected.
+
+`costs` = a list of distances in number triplets. The first two numbers represent the cities being connected, and the last number is the distance. For example, `[1,2,3]` would state that the distance between cities `1` and `2` is `3`. Due to certain constraints, not all cities can be connected, so if a triplet is not found in this list, it is not possible to connect them.
+
+#### Examples
+
+**Example 1:**
+
+**Input: n = 6, edges = \[\[1, 4\], \[4, 5\], \[2, 3\]\], costs = \[\[1, 2, 5\], \[1, 3, 10\], \[1, 6, 2\], \[5, 6, 5\]\]**
+
+**Output: 7**
+
+**Explanation:**
+
+The edges can be collected into interconnected groups of cities, ie. `[1, 4, 5]`, `[2, 3]`, and `[6]`. This helps identify what needs to be connected.
+
+The cheapest path between the first and second group is `[1, 2]`. The cheapest path between the first and third group is `[1, 6]`, and there is no available path between the second and third group.
+
+The cost of each path is `5` and `2` respectively, therefore the total cost is `5 + 2 = 7`.
+
+**hint:** What’s the time complexity of your algorithm? Can you make the running time `O(E * log(E))` by using union find?
+
+* Solution: 
+  * union find + greedy
+  * time: without path compression O\(elge\); with path compression: O\(e\)
+  * space: O\(n\)
+
+```java
+static class UnionFind {
+    Map<Integer, Integer> valueMap;
+    Map<Integer, Integer> sizeMap;
+    int count;
+
+    UnionFind() {
+        valueMap = new HashMap<>();
+        sizeMap = new HashMap<>();
+        count = 0;
+    }
+
+    void add(int a) {
+        if (valueMap.containsKey(a)) {
+            return;
+        }
+        valueMap.put(a, a);
+        sizeMap.put(a, 1);
+        count++;
+    }
+
+    void union(int a, int b) {
+        if (!valueMap.containsKey(a) || !valueMap.containsKey(b)) {
+            return;
+        }
+
+        int pa = find(a);
+        int pb = find(b);
+
+        if (pa == pb) {
+            return;
+        }
+        if (sizeMap.get(pa) <= sizeMap.get(pb)) {
+            valueMap.put(pa, pb);
+            sizeMap.put(pb, sizeMap.get(pa) + sizeMap.get(pb));
+        } else {
+            valueMap.put(pb, pa);
+            sizeMap.put(pa, sizeMap.get(pa) + sizeMap.get(pb));
+        }
+        count--;
+    }
+
+    int find(int a) {
+        int cur = a;
+        while (valueMap.get(cur) != cur) {
+            int parent = valueMap.get(cur);
+            valueMap.put(cur, valueMap.get(parent));
+            cur = parent;
+        }
+        return cur;
+    }
+}
+public static int minCostToConnectNodes(int n, List<List<Integer>> edges, List<List<Integer>> costs) {
+    UnionFind uf = new UnionFind();
+    for (int i = 1; i <= n; i++) {
+        uf.add(i);
+    }
+    for (List<Integer> edge: edges) {
+        int a = edge.get(0);
+        int b = edge.get(1);
+        uf.union(a, b);
+    }
+
+    Collections.sort(costs, (a, b) -> {
+        return a.get(2) - b.get(2);
+    });
+
+    int sum = 0;
+    for (List<Integer> cost: costs) {
+        int a = cost.get(0);
+        int b = cost.get(1);
+        int pa = uf.find(a);
+        int pb = uf.find(b);
+        if (pa == pb) {
+            continue;
+        }
+        uf.union(a, b);
+        sum += cost.get(2);
+    }
+
+    return sum;
+}
+```
+
+## Find All Combination of Numbers that Sum to a Target \| Shopping Options
+
+Given four arrays of integers and an integer `limit`. We need to pick 1 number from each of the four arrays such that the sum of the selected numbers is smaller or equal to `limit`. Find the number of valid combinations.
+
+#### Example
+
+**Input:**
+
+```text
+a = [2, 3, 5]
+b = [5]
+c = [2, 3, 10]
+d = [1, 2]
+limit = 11
+```
+
+**Output: 4**
+
+We can pick the numbers in the following four ways: `[2, 5, 2, 1], [2, 5, 3, 1], [2, 5, 2, 2], [3, 5, 2, 1]`. So return 4.
+
+```java
+public static int numberOfOptions(List<Integer> a, List<Integer> b, List<Integer> c, List<Integer> d, int limit) {
+    int[][] dp = new int[4][limit + 1];
+    for (int j = 1; j <= limit; j++) {
+        for (int num: a) {
+            if (num <= j) {
+                dp[0][j]++;
+            }
+        }
+    }
+
+    for (int i = 1; i < 4; i++) {
+        for (int j = 1; j <= limit; j++) {
+            if (i == 1) {
+                induction(dp, b, i, j);
+            } else if (i == 2) {
+                induction(dp, c, i, j);
+            } else if (i == 3) {
+                induction(dp, d, i, j);
+            }
+        }
+    }
+
+    return dp[3][limit];
+}
+
+private static void induction(int[][] dp, List<Integer> list, int i, int j) {
+    for (int num: list) {
+        if (j - num >= 0) {
+            dp[i][j] += dp[i - 1][j - num];
+        }
+    }
+}
+```
+
+## Earliest Time To Complete Deliveries \| Schedule Deliveries
+
+You are the manager of logistics for a burger franchise, and you are tasked with delivering supplies as quickly as possible.
+
+There are `n` restaurants with `4` receiving docks each. Each dock has a specified maximum receiving rate.
+
+#### Input
+
+`n` = number of restaurants
+
+`openTimes` = a number that represents the time the `i`th restaurant opens
+
+`deliveryTimeCost` = an array of numbers representing the time it takes to unload a delivery. There are exactly `n * 4` values in this list.
+
+#### Output
+
+The earliest time all deliveries can be completed.
+
+#### Examples
+
+**Example 1:**
+
+**Input:**
+
+`n = 2`
+
+`openTimes = [8, 10]`
+
+`deliveryTimeCost = [2,2,3,1,8,7,4,5]`
+
+**Output: 16**
+
+**Explanation:**
+
+For the restaurant that opens at `8`, assign deliveries with cost `[8, 7, 5, 4]`. These will complete at `(8+8), (8+7), (8+5)`, and `(8+4)`, which are `16, 15, 13,` and `12` respectively.
+
+For the restaurant that opens at `10`, assign deliveries with cost `[3, 2, 2, 1]`. These will complete at `(10+3), (10+2), (10+2)`, and `(10+1)`, which are `13, 12, 12`, and `11` respectively.
+
+The lastest of all of the delivery completion time is at `16`.
+
+Solution: We can solve this problem with a greedy algorithm. It's better to assign longer tasks to docks that open earlier because the combined finish time would be minimized. Sort dock ascending and offloading sort time descending, and then assign time to dock.
+
+```java
+public static int earliestTime(int n, List<Integer> openTimes, List<Integer> deliveryTimeCost) {
+    Collections.sort(openTimes);
+    Collections.sort(deliveryTimeCost, (Integer a, Integer b) -> {
+        return b - a;
+    });
+
+    int ans = 0;
+    int index = 0;
+
+    for (Integer openTime: openTimes) {
+        ans = Math.max(ans, openTime + deliveryTimeCost.get(index));
+        index += 4;
+    }
+
+    return ans;
+}
+```
 
 ## Transaction Logs
 
@@ -420,4 +663,72 @@ returnRouteList= [[1, 2000], [2, 3000], [3, 4000], [4, 5000]]
 **Explanation:**
 
 There are two pairs of forward and return shipping routes possible that optimally utilizes the given aircraft. Shipping Route ID\#2 from `forwardShippingRouteList` requires 5000 miles travelled, and Shipping Route ID\#4 from `returnShippingRouteList` also requires 5000 miles travelled. Combined, they add up to 10000 miles travelled. Similarly, Shipping Route ID\#3 from `forwardShippingRouteList` requires 7000 miles travelled, and Shipping Route ID\#2 from `returnShippingRouteList` requires 3000 miles travelled. These also add up to 10000 miles travelled. Therefore, the pairs of forward and return shipping routes that optimally utilize the aircraft are `[2, 4]` and `[3, 2]`.
+
+## Maximum Disk Space Available
+
+A user wants to store a file in a data center, but requests it to be replicated across each machine in a block. A block is defined as a continuous set of machines, starting from the first machine, with each block being next to one another and fixed in size. For example, if the block size is defined as 3, the first block is composed of machines 1 to 3, the second block is composed of machines 2 to 5, and so on.
+
+Find the largest possible file the user can store in a data center, given a block size.
+
+#### Input
+
+`freeSpace`: a list of numbers representing the free space available in each machine of the data center
+
+`blockSize`: a number representing the size of each block
+
+#### Output
+
+A number representing the amount of free space that the emptiest block in the data center has. The free space within a given block is the minimum free space of all the machines in it.
+
+#### Constraints
+
+The size of the block is always smaller than the number of machines in the `freeSpace` list. `freeSpace` values are never zero.
+
+#### Examples
+
+**Example 1:**
+
+**Input:**
+
+freeSpace = `[8,2,4,5]`
+
+blockSize = `2`
+
+**Output: 4**
+
+**Explanation:**
+
+In this data center, the subarrays representing the free space of each block of size `2` are `[8,2]`, `[2,4]`, and `[4,5]`. The minimum available space of each blocks is `2`, `2`, and `4`. The maximum of these values is `4`. Therefore, the answer is `4`.
+
+#### Complexity
+
+Both time complexity and space complexity must be around `O(n)`.
+
+Solution: this is same as `sliding window maximum`: [https://leetcode.com/problems/sliding-window-maximum/](https://leetcode.com/problems/sliding-window-maximum/)
+
+```java
+public static int availableSpace(List<Integer> freeSpace, int blockLength) {
+    ArrayDeque<Integer> q = new ArrayDeque<>();
+    int n = freeSpace.size();
+    int k = blockLength;
+    int max = Integer.MIN_VALUE;
+
+    for (int i = 0; i < n; i++) {
+        while (!q.isEmpty() && q.peekFirst() < i - k + 1) {
+            q.pollFirst();
+        }
+        while (!q.isEmpty() && freeSpace.get(q.peekLast()) > freeSpace.get(i)) {
+            q.pollLast();
+        }
+
+        q.offer(i);
+
+        if (i >= k - 1) {
+            max = Math.max(max, freeSpace.get(q.peekFirst()));
+        }
+    }
+
+    return max;
+}
+```
 
