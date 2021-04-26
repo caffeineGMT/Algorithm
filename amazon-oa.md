@@ -234,3 +234,122 @@ public static List<Integer> optimizingBoxWeights(List<Integer> arr) {
 }
 ```
 
+## Optimal Utilization
+
+Find a pair of entries from two lists that yield a sum that is as close to a `target` number as possible, without exceeding it.
+
+Each entry in a list is a key-value pair, where the key is a number identifier and the value is also a number. The output must be a list containing the pairs of numbers representing the identifiers that yield the result.
+
+If a solution is not possible, return an empty list.
+
+#### Input
+
+`a` = an array of `number pairs` where the first number is an identifier and the second number is a value.
+
+`b` = Same as `a`. Each identifier is unique in each list.
+
+`target` = a number
+
+#### Examples
+
+**Example 1:**
+
+**Input:**
+
+`a = [[1, 2], [2, 4], [3, 6]]`, `b = [[1, 2]]`, `target = 7`,
+
+**Output: \[\[2, 1\]\]**
+
+**Explanation:**
+
+There are only three possible pairs, `[1, 1]`, `[2, 1]`, and `[3, 1]`. They yield the sum values of `2 + 2 = 4`, `4 + 2 = 6` and `6 + 2 = 8` respectively.
+
+`6` is the largest number that does not exceed `7`, therefore `[2, 1]` is the optimal pair.
+
+**Example 2:**
+
+**Input:**
+
+`a = [[1, 3], [2, 5], [3, 7], [4, 10]]`, `b = [[1, 2], [2, 3], [3, 4], [4, 5]]`, `target = 10`,
+
+**Output: \[\[2, 4\], \[3, 2\]\]**
+
+**Explanation:**
+
+There are two pairs possible. The element with `id = 2` from list `a` has a value of `5`, and the element with `id = 4` from list `b` also has a value of `5`. Combined, they add up to `10`.
+
+Likewise, the element with `id = 3` from `a` has a value of `7`, and the element with `id = 2` from `b` has a value of `3`. These also add up to `10`.
+
+Therefore, the optimal pairs are `[2, 4]` and `[3, 2]`.
+
+**Example 3:**
+
+**Input:**
+
+`a = [[1, 8], [2, 7], [3, 14]]`, `b = [[1, 5], [2, 10], [3, 14]]`, `target = 20`,
+
+**Output: \[\[3, 1\]\]**
+
+**Example 4:**
+
+**Input:**
+
+`a = [[1, 8], [2, 15], [3, 9]]`, `b = [[1, 8], [2, 11], [3, 12]]`, `target = 20`,
+
+**Output: \[\[1, 3\], \[3, 2\]\]**
+
+* Solution: 
+  * time: O\(nlgn + mlgm\)
+  * space: O\(m + n\)
+* thoughts: this is tricky 2-sum question. since we must pick 1 from a and pick another from b, after sorting both list, we can have 1 pointer points to the smallest item from a, and another pointer points to the largest item from b. The tricky part is that once we encounter a duplicate, we cannot simply change right pointer's value, because the left pointer could still use it since every item has a unique id.
+
+```java
+public static List<List<Integer>> getPairs(List<List<Integer>> a, List<List<Integer>> b, int target) {
+    Collections.sort(a, (l1, l2) -> {
+        return l1.get(1) - l2.get(1);
+    });
+    Collections.sort(b, (l1, l2) -> {
+        return l1.get(1) - l2.get(1);
+    });
+
+    int l = 0, r = b.size() - 1;
+    int maxSum = Integer.MIN_VALUE;
+    List<List<Integer>> result = new ArrayList<>();
+
+    while (l < a.size() && r >= 0) {
+        int temp = a.get(l).get(1) + b.get(r).get(1);
+        if (temp > target) {
+            r--;
+        } else {
+            // still not optimal
+            if (maxSum > temp) {
+                l++;
+                continue;
+            } 
+
+            // found a better option
+            if (maxSum < temp) {
+                maxSum = temp;
+                result.clear();
+            }
+
+            // found a tie option
+            List<Integer> list = Arrays.asList(a.get(l).get(0), b.get(r).get(0));
+            result.add(list);
+
+            // deal with duplicates
+            int index = r - 1;
+            while (index >= 0 && b.get(index).get(1) == b.get(r).get(1)) {
+                List<Integer> more = Arrays.asList(a.get(l).get(0), b.get(index).get(0));
+                result.add(more);
+                index--;
+            }
+
+            l++;
+        }
+    }
+
+    return result;
+}
+```
+
