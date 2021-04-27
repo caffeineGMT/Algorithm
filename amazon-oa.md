@@ -6,6 +6,198 @@ description: 'Resource: https://algo.monster/dashboard'
 
 ## 
 
+## Split String Into Unique Primes
+
+Given a string made up of integers 0 to 9, count the number of ways to split the string into prime numbers in the range of 2 to 1000 inclusive, using up all the characters in the string.
+
+Each prime number, `pn`, must not contain leading 0s, and `2 <= pn <= 1000`.
+
+#### Constraints
+
+The input string does not contain any leading 0s.
+
+#### Examples
+
+**Example 1:**
+
+**Input: "31173"**
+
+**Output: 6**
+
+**Explanation:**
+
+The string "31173" can be split into prime numbers in 6 ways:
+
+* `[3, 11, 7, 3]`
+* `[3, 11, 73]`
+* `[31, 17, 3]`
+* `[31, 173]`
+* `[311, 7, 3]`
+* `[311, 73]`
+
+
+
+* Solution: \`count prime\` + dp
+  * time: O\(1000 + len\)
+  * space: O\(1000 + len\)
+
+```text
+public static int splitPrimes(String inputStr) {
+    if (inputStr == null || inputStr.length() == 0) {
+        return 0;
+    }
+    boolean[] isPrime = new boolean[1001];
+    Arrays.fill(isPrime, true);
+    isPrime[0] = false;
+    isPrime[1] = false;
+    for (int i = 2; i * i <= 1000; i++) {
+        if (!isPrime[i]) {
+            continue;
+        }
+        for (int j = i * i; j <= 1000; j += i) {
+            isPrime[j] = false;
+        }
+    }
+
+    int len = inputStr.length();
+    int[] dp = new int[len + 1];
+    dp[0] = 1;
+
+    for (int i = 1; i <= len; i++) {
+        if (i >= 1 && isPrime[Integer.parseInt(inputStr.substring(i - 1, i))]) {
+            dp[i] += dp[i - 1];
+        }
+        if (i >= 2 && inputStr.charAt(i - 2) != '0' && isPrime[Integer.parseInt(inputStr.substring(i - 2, i))]) {
+            dp[i] += dp[i - 2];
+        }
+        if (i >= 3 && inputStr.charAt(i - 3) != '0' && isPrime[Integer.parseInt(inputStr.substring(i - 3, i))]) {
+            dp[i] += dp[i - 3];
+        }
+    }
+
+    return dp[len];
+}
+```
+
+## Pairs of Songs With Total Durations Divisible by 60
+
+Given a list of numbers and a target number. Find the number of pairs of numbers from the list whose sum is divisible by 60.
+
+**Example 1:**
+
+**Input: \[30,20,150,100,40\]**
+
+**Output: 3**
+
+**Explanation:**
+
+\(30, 150\), \(20, 100\) and \(20, 40\) are pairs of numbers whose sum are divisible by 60.
+
+* Solution: 
+  * a lot of time, we need to write down the formula first to observe
+  * watch out the case when map entry key is 0
+  * time: O\(n\)
+  * space: O\(n\) or O\(1\) if we use arr bucket
+
+```java
+public static int numPairsDivisibleBy60(List<Integer> times) {
+    if (times == null || times.size() == 0) {
+        return 0;
+    }
+
+    Map<Integer, Integer> map = new HashMap<>();
+    int total = 0;
+
+    for (int time: times) {
+        int cur = time % 60;
+        int target = cur == 0 ? 0 : 60 - cur;
+        if (map.containsKey(target)) {
+            total += map.get(target);
+        } 
+        map.put(cur, map.getOrDefault(cur, 0) + 1);
+    }
+
+    return total;
+}
+```
+
+## Storage Optimization
+
+You have a paper box with dividers for holding wine bottles.
+
+![](https://i.ibb.co/hFvSLX8/image.png)
+
+The box is divided by `m x n` dividers into `(m + 1) x (n + 1)` cells. Assuming the depth of the box is 1, each cell has a volume of 1.
+
+Now we want to remove a number of dividers. Find the largest space after removing the dividers.
+
+#### Example 1:
+
+**Input:**
+
+`n = 5` Number of dividers in the horizontal direction
+
+`m = 5` Number of dividers in the vertical direction
+
+`h = [2, 3]` Horizontal dividers to remove
+
+`v = [3]` Vertical dividers to remove
+
+**Output: 6**
+
+**Explanation:**
+
+We want to remove the 2nd and 3rd horizontal divider and the 3rd vertical divider. The largest space after removing the dividers has a volume of `(4 - 1) * (4 - 2) * 1 = 6`.
+
+![](https://i.ibb.co/CbjRHnR/image.png)
+
+* Solution:
+  * same question as cutting cake
+  * when we have a condition where the out of bound condition need to be delt with out of a loop, we could adopt this doulbe while loop pattern where the outer loop will control the whole iteration will never be out of bound and the inner loop will deal with special condition. \`if\` condition only triggers when we are still in bound. maxH execution will trigger no matter if we are out of bound or reach a secial condition
+  * time: O\(hlgh + vlgv + h + v\)
+  * space: O\(1\)
+
+```java
+public static int storageOptimization(int n, int m, List<Integer> h, List<Integer> v) {
+    Collections.sort(h);
+    Collections.sort(v);
+
+    int start = h.get(0) - 1;
+    int end = start + 1;
+    int i = 0;
+    int maxH = 1;
+    while (i < h.size()) {
+        while (i < h.size() && h.get(i) == end) {
+            end++;
+            i++;
+        }
+        maxH = Math.max(maxH, end - start);
+        if (i < h.size()) {
+            start = h.get(i) - 1;
+            end = start + 1;
+        }
+    }
+
+    start = v.get(0) - 1;
+    end = start + 1;
+    i = 0;
+    int maxV = 1;
+    while (i < v.size()) {
+        while (i < v.size() && v.get(i) == end) {
+            end++;
+            i++;
+        }
+        maxV = Math.max(maxV, end - start);
+        if (i < v.size()) {
+            start = v.get(i) - 1;
+            end = start + 1;
+        }
+    }
+
+    return maxH * maxV;
+}
+```
+
 ## Minimum Cost to Connect All Nodes \(Minimum Spanning Tree I\)
 
 Monster Airlines has a set of `n` destination cities and a list of flight paths connecting some of the cities together. Your job is to find the flight paths that would connect all of the cities together, but with minimum total travel distance.
