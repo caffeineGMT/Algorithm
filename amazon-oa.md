@@ -4,7 +4,638 @@ description: 'Resource: https://algo.monster/dashboard'
 
 # Amazon OA
 
-## Turnstile \| Hackerank SHL
+## Number Game
+
+same as [https://leetcode.com/problems/maximize-score-after-n-operations/](https://leetcode.com/problems/maximize-score-after-n-operations/)
+
+video tutorial: [https://www.youtube.com/watch?v=94vDosERuiI](https://www.youtube.com/watch?v=94vDosERuiI)
+
+You are playing a card game with your friends. Every card is marked with a positive integer. You start the game with 2N cards on your hand, and the game lasts N rounds. In each round, you have to remove 2 cards from your hand.
+
+Your score in each round is `gcd(card, card2) * round_number`, where `card` and `card2` are the cards that you removed and `round_number` is the current round. Your total score will be the sum of the scores that you received in each round.
+
+What is the maximum total score that you can get?
+
+#### Constraints
+
+`1 <= n <= 10`, `n` represents the total number of rounds.
+
+`1 <= cards[i] <= 10^9`, `cards` represents the array of the cards on your hand, and `cards[i]` represents the positive integer marked on card `i`.
+
+The round\_number starts from 1.
+
+#### Examples
+
+**Example 1:**
+
+**Input:**
+
+n = `3`
+
+cards = `[8, 5, 6, 25, 6, 16]`
+
+**Output: 41**
+
+**Explanation:**
+
+The game can proceed as follow:
+
+* round\_number 1: remove `card = 5`, `card2 = 25`, so `gcd(5, 25) * round_number = 5 * 1 = 5`.
+* round\_number 2: remove `card = 6`, `card2 = 6`, so `gcd(6, 6) * round_number = 6 * 2 = 12`.
+* round\_number 3: remove `card = 8`, `card2 = 16`, so `gcd(8, 16) * round_number = 8 * 3 = 24`.
+
+The maximum total score is `5 + 12 + 24 = 41`.
+
+
+
+```java
+public static int getMaxScore(int n, List<Integer> cards) {
+    return dfs(cards, n, 1, 0, new HashMap<Integer, Integer>());
+}
+
+private static int dfs(List<Integer> cards,
+                       int n,
+                       int round,
+                       int state,
+                       Map<Integer, Integer> memo) {
+    if (round > n) {
+        return 0;
+    }
+
+    if (memo.containsKey(state)) {
+        return memo.get(state);
+    }
+
+    int ans = 0;
+    for (int i = 0; i < cards.size(); i++) {
+        for (int j = i + 1; j < cards.size(); j++) {
+            int pick = 1 << i | 1 << j;
+            if ((state & pick) == 0) {
+                ans = Math.max(ans,
+                               round * gcd(cards.get(i), cards.get(j)) +
+                               dfs(cards, n, round + 1, state | pick, memo));
+            }
+        }
+    }
+
+    memo.put(state, ans);
+
+    return ans;
+}
+
+private static int gcd(int a, int b) {
+    return b == 0 ? a : gcd(b, a % b);
+}
+```
+
+## Move The Obstacle \| Demolition Robot
+
+You are in charge of preparing a recently purchased lot for the Company's building.
+
+The lot is covered with trenches and has a single obstacle that needs to be taken down before the foundation is prepared for the building.
+
+The demolition robot must remove the obstacle before the progress can be made on the building.
+
+#### Assumptions
+
+* The lot is flat, except the trenches, and can be represented by a 2D grid.
+* The demolition robot must start at the top left corner of the lot, which is always flat, and can move on the block up, down, right, left
+* The demolition robot cannot enter trenches and cannot leave the lot.
+* The flat areas are indicated by `1`, areas with trenches are indicated by `0`, and the obstacle is indicated by `9`
+
+#### Input
+
+The input consists of one argument:
+
+`lot`: a `2d grid of integers`
+
+#### Output
+
+Return an `integer` that indicated the minimum distance traversed to remove the obstacle else return `-1`
+
+#### Constraints
+
+`1 <= numRows`
+
+`numColumns <= 1000`
+
+#### Examples
+
+**Example 1:**
+
+**Input:**
+
+```text
+lot = [
+  [1, 0, 0],
+  [1, 0, 9],
+  [1, 9, 1],
+]
+```
+
+**Output: 3**
+
+**Explanation**
+
+Starting from the top-left corner, the demolition robot traversed the cells `(0,0) -> (1,0) -> (2,0) -> (2,1)`
+
+The robot moves `3` times to remove the obstacle `9`
+
+* Solution: bfs
+  * time: O\(m \* n\)
+  * space: O\(m \* n\) for visited arr, O\(m + n\) for q, overall O\(m\*n\). if we can modify the input, this could be O\(m + n\)
+
+```java
+public static int moveObstacle(List<List<Integer>> lot) {
+    if (lot == null || lot.size() == 0) {
+        return 0;
+    }
+
+    int[] dx = { 1, -1, 0, 0 };
+    int[] dy = { 0, 0, -1, 1 };
+
+    int m = lot.size();
+    int n = lot.get(0).size();
+
+    Queue<int[]> q = new ArrayDeque<>();
+    q.offer(new int[] { 0, 0 });
+    boolean[][] visited = new boolean[m][n];
+    visited[0][0] = true;
+    int dis = -1;
+
+    while (!q.isEmpty()) {
+        dis++;
+        int size = q.size();
+        for (int i = 0; i < size; i++) {
+            int[] point = q.poll();
+            int x = point[0];
+            int y = point[1];
+            if (lot.get(x).get(y) == 9) {
+                return dis;
+            }
+            for (int j = 0; j < 4; j++) {
+                int nx = x + dx[j];
+                int ny = y + dy[j];
+                if (!isValid(lot, nx, ny, m, n)) {
+                    continue;
+                }
+                if (lot.get(nx).get(ny) == 0) {
+                    continue;
+                }
+                if (visited[nx][ny]) {
+                    continue;
+                }
+                q.offer(new int[] { nx, ny });
+                visited[nx][ny] = true;
+            }
+        }
+    }
+
+    return -1;
+}
+
+private static boolean isValid(List<List<Integer>> lot, int x, int y, int m, int n) {
+    return x >= 0 && x < m && y >= 0 && y < n;
+}
+```
+
+## Robot Bounded in Circle
+
+On an infinite plane, a robot is programmed to repeat a set of movements indefinitely. The robot starts at position `(0, 0)` facing north. The movement can be one of three:
+
+* `"S"`: go straight 1 unit
+* `"L"`: turn 90 degrees to the left
+* `"R"`: turn 90 degrees to the right
+
+Find out if there exists a circle in the plane such that the robot never leaves the circle.
+
+#### Input
+
+`movements`: a string made up of 'S', 'L', 'R' that determines the robot's future position on the plane.
+
+#### Output
+
+Return `true` if the robot is bounded in a circle in the plane; otherwise return `false`.
+
+#### Constraints
+
+* `1 <= movements.length <= 100`
+
+#### Examples
+
+**Example 1:**
+
+**Input: "SSLLSS"**
+
+**Output: true**
+
+**Explanation:**
+
+The robot moves from \(0, 0\) to \(0, 2\), turns 180 degrees to face south, and then returns to \(0, 0\). The robot remains in the circle of radius 2 centered at the origin at all times.
+
+**Example 2:**
+
+**Input: "SS"**
+
+**Output: false**
+
+**Explanation:**
+
+The robot moves north indefinitely.
+
+**Example 3:**
+
+**Input: "SL"**
+
+**Output: true**
+
+**Explanation:**
+
+The robot moves from \(0, 0\) -&gt; \(0, 1\) -&gt; \(-1, 1\) -&gt; \(-1, 0\) -&gt; \(0, 0\) -&gt; ..., circling around the perimeter of a square of size 1 on the plane.  
+
+
+* Solution: 
+  * time: O\(n\)
+  * space: O\(1\)
+
+```java
+public static boolean isRobotBounded(String movements) {
+    if (movements == null || movements.length() == 0) {
+        return true;
+    }
+
+    char[] arr = movements.toCharArray();
+
+    int[] dirX = { 0, -1, 0, 1 };
+    int[] dirY = { 1, 0, -1, 0 };
+    int dir = 0;
+
+    boolean isMoved = true;
+    int[] pos = {0, 0};
+
+    for (char ch: arr) {
+        if (ch == 'S') {
+            pos[0] += dirX[dir];
+            pos[1] += dirY[dir];
+        } else if (ch == 'L') {
+            dir = (dir + 1) % 4;
+        } else if (ch == 'R') {
+            dir = (dir - 1 + 4) % 4;
+        }
+    }
+
+    if (pos[0] == 0 && pos[1] == 0) {
+        isMoved = false;
+    }
+
+    if (dir != 0) {
+        return true;
+    } else if (dir == 0 && !isMoved) {
+        return true;
+    }
+
+    return false;
+}
+```
+
+## Fill The Truck 
+
+A warehouse manager needs to create a shipment to fill a truck. All products loaded onto the truck should be packaged in boxes of the same size. One box can hold different number of units of product for each product type.
+
+Given the number of boxes the truck can hold, write an algorithm to determine the maximum number of units of any mix of products that can be shipped.
+
+#### Input
+
+The input consists of five arguments:
+
+`num`: an `integer` representing the number of product types in the warehouse
+
+`boxes`: a `list of integers` representing the number of available boxes for each product type
+
+`unitSize`: an `integer` representing size of the `unitsPerBox` list
+
+`unitsPerBox`: a `list of integers` representing the number of units packed in a box for each product type
+
+`truckSize`: an `integer` representing the number of boxes the truck can carry
+
+#### Output
+
+Return an `integer` representing the maximum units that can be carried by truck.
+
+#### Constraints
+
+`1 <= |boxes| <= 10^5`
+
+`|boxes| == |unitsPerBox|`
+
+`1 <= boxes[i] <= 10^7`
+
+`1 <= i <= |boxes|`
+
+`1 <= unitsParBox[i] <= 10^5`
+
+`1 <= j <= |unitsPerBox|`
+
+`1 <= truckSize <= 10 ^ 8`
+
+#### Examples
+
+**Example 1:**
+
+**Input:**
+
+num = `3`
+
+boxes = `[1, 2, 3]`
+
+unitSize = `3`
+
+unitsPerBox = `[3, 2, 1]`
+
+truckSize = `3`
+
+**Output: 7**
+
+**Explanation:**
+
+`Product 0:` because `boxes[0] = 1`, we know there is `1` box of product `0`. And because `unitsPerBox[0] = 3`, we know there is `1` box with `3` units of product `0`.
+
+`Product 1:` `2` boxes with `2` units each
+
+`Product 2:` `3` boxes with `1` unit each
+
+Finally, we have packed products like the list: `[3, 2, 2, 1, 1, 1]`
+
+The `truckSize` is `3`, so we pick the top `3` boxes from the above list, which is `[3, 2, 2]`, and return the sum `7`.
+
+The maximum number of units that can be shipped = `3 + 2 + 2 = 7` units.
+
+* Solution: greedy
+  * time: O\(nlgn\)
+  * space: O\(n\)
+
+```java
+public static int fillTheTruck(int num, List<Integer> boxes, int unitSize, List<Integer> unitsPerBox, int truckSize) {
+    List<Integer> list = new ArrayList<>();
+    for (int i = 0; i < boxes.size(); i++) {
+        for (int j = 1; j <= boxes.get(i); j++) {
+            list.add(unitsPerBox.get(i));
+        }
+    }
+
+    Collections.sort(list, (a, b) -> {
+        return b - a;
+    });
+
+
+    int sum = 0;
+    int count = 0;
+    for (int item: list) {
+        sum += item;
+        count++;
+        if (count > truckSize) {
+            sum -= item;
+            count--;
+            break;
+        }
+    }
+
+    return sum;
+}
+```
+
+## Debt Records \| Smallest Negative Balance
+
+An international organization is investigating debt across countries. Given a list of records representing amounts of money owed between each country, find the country with the largest negative balance.
+
+Return the list consisting of the string "No countries have debt." if all countries zero out their owed amounts.
+
+#### Input
+
+`debts`: an array consisting of [`borrower country` string, `lender country` string, `amount` number](https://algo.monster/problems/debt_records) triplets, each representing a debt record.
+
+#### Output
+
+A list of countries with the largest debt. If there are multiple countries with the same maximum debt amount, sort them alphabetically.
+
+Return a list containing the string `"No countries have debt."` if there is no debt.
+
+#### Example
+
+| Borrower | Lender | Amount |
+| :--- | :--- | :--- |
+| USA | Canada | `2` |
+| Canada | USA | `2` |
+| Mexico | USA | `5` |
+| Canada | Mexico | `7` |
+| USA | Canada | `4` |
+| USA | Mexico | `4` |
+
+**Explanation:**
+
+**For USA:**
+
+The `first`, `fifth`, and `sixth` entries decrease the balance because they are a `borrower`.
+
+The `second` and `third` entries increase because they are a lender.
+
+Their balance is `(2 + 5) - (2 + 4 + 4) = 7 - 10 = -3`.
+
+**For Canada:**
+
+They are a lender in `first` and `fifth` entries and a borrower in the `second` and `fourth` entries.
+
+Their balance is `(2 + 4) - (2 + 7) = 6 - 9 = -3`.
+
+**For Mexico:**
+
+They are a borrower in the `third` entry and a lender in the `fourth` and `sixth` entries.
+
+Thus, `Mexico's` balance is `(7 + 4) - 5 = 11 - 6 = 5`.
+
+**Here USA and Canada both have the balance of -3, which is the minimum net balance among all countries.**
+
+* Solution: hashmap
+  * time: O\(n\)
+  * space: O\(n\)
+
+```java
+public static List<String> debtRecords(List<List<String>> debts) {
+        Map<String, Integer> map = new HashMap<>();
+        for (List<String> d: debts) {
+            String a = d.get(0);
+            String b = d.get(1);
+            int balance = Integer.parseInt(d.get(2));
+            map.put(a, map.getOrDefault(a, 0) - balance);
+            map.put(b, map.getOrDefault(b, 0) + balance);
+        }
+        
+        int min = Integer.MAX_VALUE;
+        List<String> result = new ArrayList<>();
+        for (String key: map.keySet()) {
+            int balance = map.get(key);
+            if (balance >= 0) {
+                continue;
+            }
+            if (balance < min) {
+                min = balance;
+                result.clear();
+                result.add(key);
+            } else if (balance == min) {
+                result.add(key);
+            }
+        }
+        
+        if (result.size() > 0) {
+            Collections.sort(result);
+        } else {
+            result.add("No countries have debt.");
+        }
+        
+        return result;
+    }
+```
+
+## Shopping Patterns
+
+Shoe Monster, a popular shopping website for atheletic shoes, would like to know which shoes are frequently bought together.
+
+When a customer purchases two shoes together, we log an `edge` between the two products. Three shoes that are interconnected form a `triple`.
+
+A score for a `triple` can be calculated by counting the total number of shoes outside the triple that are joined with a shoe inside the triple. This is the `product sum`.
+
+Find the minimum `product sum` in the graph, or return `-1` if no triples exist.
+
+#### Input
+
+The input to the function/method consists of four arguments:
+
+`int products_nodes`: the total number of shoe products for sale. Each shoe is identified by a number from `1` to `product_nodes`.
+
+`int products_from[]`: the list of products on the left side of each edges
+
+`int products_to[]`: the list of products on the right side of each edge
+
+#### Output
+
+`int`: the minimum `product sum` or `-1` if no triples exist.
+
+#### Constraints
+
+There is always at least two products and one edge. All edges are valid, ie. they do not refer to itself, and are a valid product number, ie. between `1` and `product_nodes`.
+
+#### Examples
+
+**Example 1:**
+
+**Input:**
+
+`products_nodes = 6`
+
+`products_edges = 6`
+
+`products_from = [1, 2, 2, 3, 4, 5]`
+
+`products_to = [2, 4, 5, 5, 5, 6]`
+
+| Product | Related Products |
+| :--- | :--- |
+| `1` | `2` |
+| `2` | `1,4,5` |
+| `3` | `5` |
+| `4` | `2,5` |
+| `5` | `2,3,4,6` |
+| `6` | `5` |
+
+A graph of `n = 6` products where the only triple of related products is `(2, 4, 5)`.
+
+| Product | Outside Products | Which Products Are Outside |
+| :--- | :--- | :--- |
+| 2 | 1 | 1 |
+| 4 | 0 |  |
+| 5 | 2 | 3, 6 |
+
+In the diagram above, the total product score is `1 + 0 + 2 = 3` for the triple `(2, 4, 5)`.
+
+**Output: 3**
+
+**Example 2:**
+
+**Input:**
+
+`products_nodes = 5`
+
+`products_edges = 6`
+
+`products_from = [1, 1, 2, 2, 3, 4]`
+
+`products_to = [2, 3, 3, 4, 4, 5]`
+
+**Output: 2**
+
+**Explanation:**
+
+There are two possible triples: `{1,2,3}` and `{2,3,4}`
+
+The score for `{1,2,3}` is `0 + 1 + 1 = 2`.
+
+The score for `{2,3,4}` is `1 + 1 + 1 = 3`.
+
+Return `2`.
+
+## Most Common Word with Exclusion List
+
+Find the most frequently used word, which is not listed in `ignored_keywords`, within a `paragraph`. A paragraph is a single line of words that may contain punctuation marks, mixed with uppercase and lowercase letters. The word comparison should not be case sensitive, and the output word is expected to be in lowercase.
+
+#### Examples
+
+**Example 1:**
+
+**Input:**
+
+paragraph = `"If this book was written today in the midst of the slew of dystopian novels that come out, it may not have stood out. But, this book was way ahead of its time."` ignored\_keywords = `["of", "was", "the"]`
+
+**Output: "book"**
+
+**Explanation:**
+
+`"of"` appears three times and `"was"`, `"the"` appear twice, but they are in the `ignored_keywords` list. The next most common word is `"book"`, which appears twice.
+
+#### Constraints
+
+There is always at least one word in the paragraph and at least one word in the list of excluded keywords. The most common keyword frequency count that is not in `ignored_keywords` will always be unique. Keywords in the exclusion list only consist of lowercase alphabetical characters.
+
+* Solution: String maniputation
+  * time: O\(n\)
+  * space: O\(n\)
+
+```java
+public static String mostCommonWord(String paragraph, List<String> banned) {
+    String normalizedStr = paragraph.replaceAll("\\W+", " ").toLowerCase().trim();
+    String[] tokens = normalizedStr.split("\\s+");
+
+    Map<String, Integer> map = new HashMap<>();
+    for (String token: tokens) {
+        map.put(token, map.getOrDefault(token, 0) + 1);
+    }
+
+    Set<String> set = new HashSet<>(banned);
+    String result = "";
+    int count = 0;
+
+    for (String key: map.keySet()) {
+        int cur = map.get(key);
+        if (cur > count && !set.contains(key)) {
+            result = key;
+            count = cur;
+        }
+    }
+
+    return result;
+}
+```
+
+## Turnstile
 
 A warehouse has one loading dock that workers use to load and unload goods.
 
