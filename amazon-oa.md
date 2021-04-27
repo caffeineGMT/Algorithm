@@ -4,7 +4,69 @@ description: 'Resource: https://algo.monster/dashboard'
 
 # Amazon OA
 
-## 
+## Five Star Seller
+
+An arborist that operates a plant store in Brooklyn, NY would like to improve their online sales by improving their ratings.
+
+In order to become a five-star store, they must maintain a certain threshold percentage of five-star ratings. Given their current situation, find the minimum number of additional five-star ratings they must receive to meet the threshold. The overall online store percentage is calculated by taking the sum of percentages of five-star ratings for each product.
+
+#### Examples
+
+**Example 1:**
+
+**Input:**
+
+`productCount` = `3`
+
+`productRatings` = `[[4,4],[1,2],[3,6]]` where each entry is `[five-star reviews, total reviews]`
+
+`threshold` = `77`
+
+**Output: 3**
+
+**Explanation :**
+
+We need the sum of the percentages of five-star ratings for each product to add up to the threshold.
+
+The current percentage of five-star ratings for this seller is `((4/4) + (1/2) + (3/6))/3 = 66.66%`
+
+If we add a five star review to product \#2, their threshold becomes `((4/4) + (2/3) + (3/6))/3 = 72.22%`
+
+If we add another five star review to product \#2, their threshold becomes `((4/4) + (3/4) + (3/6))/3 = 75%`
+
+If we add a five star review to product \#3, their threshold becomes `((4/4) + (3/4) + (4/7))/3 = 77.38%`
+
+At this point, the `77%` threshold is met. The answer is `3`, because there is no other way to add less ratings and achieve `77%` or more.
+
+#### Constraints:
+
+There is always at least one product, and the threshold is between `1` and `99` inclusive. All values are positive.  
+
+
+##  Winning Sequence
+
+Given the lower and upper bound of a range of integers, find the largest "mountain array". A mountain array is defined as in the [Peak of mountain array](https://algo.monster/problems/peak_of_mountain_array) problem, i.e. An array that
+
+* has at least 3 elements
+* let's call the element with the largest value the "peak", with index `k`. The array elements monotonically increase from the first element to `A[k]`, and then monotonically decreases from `A[k + 1]` to the last element of the array. Thus creating a "mountain" of numbers.
+
+If more tham one valid mountain arrays can be built from a given range of integers, the largest array is the one with the maximum values starting from the left side. For example, `[6, 7, 6, 5]` is larger than `[5, 6, 7, 5]` because first value is larger in the first array.
+
+Return the largest mountain array satisfying the constraints, or -1 if it's not possible.
+
+#### Examples
+
+**Example 1:**
+
+**Input: num = 4, lowerEnd = 3, upperEnd = 10**
+
+**Output: \[9 10 9 8\]**
+
+**Example 2:**
+
+**Input: num = 5, lowerEnd = 1, upperEnd = 3**
+
+**Output: \[1 2 3 2 1\]**
 
 ## Split String Into Unique Primes
 
