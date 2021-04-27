@@ -4,6 +4,45 @@ description: 'Resource: https://algo.monster/dashboard'
 
 # Amazon OA
 
+## Turnstile \| Hackerank SHL
+
+A warehouse has one loading dock that workers use to load and unload goods.
+
+Warehouse workers carrying the goods arrive at the loading dock at different times. They form two queues, a "loading" queue and an "unloading" queue. Within each queue, the workers are ordered by the time they arrive at the dock.
+
+The arrival time \(in minutes\) array stores the minute the worker arrives at the loading dock. The direction array stores whether the worker is "loading" or "unloading", a value of 0 means loading and 1 means unloading. Loading/unloading takes 1 minute.
+
+When a worker arrives at the loading dock, if no other worker is at the dock at the same time, then the worker can use the dock.
+
+If a "loading" worker and an "unloading" worker arrive at the dock at the same time, then we decide who can use the dock with these rules:
+
+* if the loading dock was not in use in the previous minute, then the unloading worker can use the dock.
+* if the loading dock was just used by another unloading worker, then the unloading worker can use the dock.
+* if the loading dock was just used by another loading worker, then the loading worker can use the dock.
+
+Return an array of the time \(in minute\) each worker uses the dock.
+
+#### Examples
+
+**Example 1:**
+
+**Input:**
+
+time = `[0, 0, 1, 6]` direction = `[0, 1, 1, 0]`
+
+**Output:**
+
+`[2, 0, 1, 6]`
+
+**Explanation:**
+
+* At time `0`, worker `0` and `1` want to use the dock. Worker `0` wants to load and worker `1` wants to unload. The dock was not used in the previous minute, so worker `1` unload first.
+* At time `1`, workers `0` and `2` want to use the rock. Worker `2` wants to unload, and at the previous minute the dock was used to unload, so worker `2` uses the dock.
+* At time `2`, worker `0` is the only worker at the dock, so he uses the dock.
+* At time `6`, worker `3` arrives at the empty dock and uses the dock.
+
+We return `[2, 0, 1, 6]`.
+
 ## Five Star Seller
 
 An arborist that operates a plant store in Brooklyn, NY would like to improve their online sales by improving their ratings.
@@ -42,6 +81,59 @@ At this point, the `77%` threshold is met. The answer is `3`, because there is n
 
 There is always at least one product, and the threshold is between `1` and `99` inclusive. All values are positive.  
 
+
+* Solution: heap + greedy
+  * time: O\(nlgn + times of change \* lgn\)
+  * space: O\(n\)
+
+```java
+static class Rating {
+    int n;
+    int d;
+    double rating;
+    double increasing;
+
+    Rating() {}
+    Rating(int n, int d) {
+        this.n = n;
+        this.d = d;
+        this.rating = (double) n / d;
+        this.increasing = (double) (n + 1) / (d + 1) - this.rating;
+    }
+}
+public static int fiveStarReviews(List<List<Integer>> ratings, int threshold) {
+    Queue<Rating> q = new PriorityQueue<>((a, b) -> {
+        if (a.increasing < b.increasing) {
+            return 1;
+        } else if (a.increasing == b.increasing) {
+            return 0;
+        } else {
+            return -1;
+        }
+    });
+
+    int size = ratings.size();
+    double average = 0;
+
+    for (List<Integer> rating: ratings) {
+        int n = rating.get(0);
+        int d = rating.get(1);
+        average += (double) n / d;
+        q.offer(new Rating(n, d));
+    }
+    average /= size;
+
+    int count = 0;
+    while (average * 100 < threshold) {
+        Rating r = q.poll();
+        average += r.increasing / size;
+        q.offer(new Rating(r.n + 1, r.d + 1));
+        count++;
+    }
+
+    return count;
+}
+```
 
 ##  Winning Sequence
 
@@ -86,6 +178,8 @@ The input string does not contain any leading 0s.
 
 **Output: 6**
 
+
+
 **Explanation:**
 
 The string "31173" can be split into prime numbers in 6 ways:
@@ -103,7 +197,7 @@ The string "31173" can be split into prime numbers in 6 ways:
   * time: O\(1000 + len\)
   * space: O\(1000 + len\)
 
-```text
+```java
 public static int splitPrimes(String inputStr) {
     if (inputStr == null || inputStr.length() == 0) {
         return 0;
@@ -213,7 +307,7 @@ We want to remove the 2nd and 3rd horizontal divider and the 3rd vertical divide
 
 ![](https://i.ibb.co/CbjRHnR/image.png)
 
-* Solution:
+* Solution: greedy
   * same question as cutting cake
   * when we have a condition where the out of bound condition need to be delt with out of a loop, we could adopt this doulbe while loop pattern where the outer loop will control the whole iteration will never be out of bound and the inner loop will deal with special condition. \`if\` condition only triggers when we are still in bound. maxH execution will trigger no matter if we are out of bound or reach a secial condition
   * time: O\(hlgh + vlgv + h + v\)
@@ -292,8 +386,7 @@ The cost of each path is `5` and `2` respectively, therefore the total cost is `
 
 **hint:** What’s the time complexity of your algorithm? Can you make the running time `O(E * log(E))` by using union find?
 
-* Solution: 
-  * union find + greedy
+* Solution:  union find + greedy
   * time: without path compression O\(elge\); with path compression: O\(e\)
   * space: O\(n\)
 
@@ -401,6 +494,10 @@ limit = 11
 
 We can pick the numbers in the following four ways: `[2, 5, 2, 1], [2, 5, 3, 1], [2, 5, 2, 2], [3, 5, 2, 1]`. So return 4.
 
+* Solution: knapsack dp
+  * time: O\(4 \* limit \* \(a + b + c + d\)\)
+  * space: O\(4 \* limit\)
+
 ```java
 public static int numberOfOptions(List<Integer> a, List<Integer> b, List<Integer> c, List<Integer> d, int limit) {
     int[][] dp = new int[4][limit + 1];
@@ -476,7 +573,8 @@ For the restaurant that opens at `10`, assign deliveries with cost `[3, 2, 2, 1]
 
 The lastest of all of the delivery completion time is at `16`.
 
-Solution: We can solve this problem with a greedy algorithm. It's better to assign longer tasks to docks that open earlier because the combined finish time would be minimized. Sort dock ascending and offloading sort time descending, and then assign time to dock.
+* Solution: greedy
+  * It's better to assign longer tasks to docks that open earlier because the combined finish time would be minimized. Sort dock ascending and offloading sort time descending, and then assign time to dock.
 
 ```java
 public static int earliestTime(int n, List<Integer> openTimes, List<Integer> deliveryTimeCost) {
@@ -554,7 +652,9 @@ There are three users that have appear more than `3` times:
 `029323` appears 3 times.  
 
 
-Solution1:  time: O\(nlgn\). space: O\(n\)
+* Solution1:  
+  * time: O\(nlgn\)
+  * space: O\(n\)
 
 ```java
 public static List<String> getUserIds(List<String> logs, int threshold) {
