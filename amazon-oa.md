@@ -4,6 +4,229 @@ description: 'Resource: https://algo.monster/dashboard'
 
 # Amazon OA
 
+
+
+## Nearest Cities
+
+A number of pins are placed on a 2D Cartesian grid. Each pin has an x-coordinate, a y coordinate, and a name.
+
+Given a list of target pins, find the pin that share the same x or y coordinates with each of the target pin and return the list. If two pins have the same distance to the target pin, return the pin with the lexicographically smaller name.
+
+**Example 1:**
+
+**Input:**
+
+pins = `["a", "b", "c", "d"]`
+
+x\_coordinates = `[50, 60, 100, 200, 300]` y\_coordinates = `[50, 60, 50, 200, 50]`
+
+target\_pins = `["a", "b","c", "d", "e"]`
+
+**Output: \["c", "NONE", "a", "NONE", "c"\]**
+
+**Explanation:**
+
+`a`, `c` and `e` share the same y coordinate. For `a`, the closest is `c`. `b` shares no x or y coordinate with anyone. `c` shares the same y coordinate with a and e. The closest is `a`. `d` shares no x or y coordinate with anyone. `e` shares the same y coordinate with `a` and `c`. The closest is `c`.
+
+
+
+* Solution: hashmap
+  * we should build custom class if data access method is scattered.
+  * time: O\(query \* n\), linear search can be optimized to lgn if we use treemap
+  * space: O\(n\)
+
+```java
+static class Pin {
+    int id;
+    String name;
+    int x;
+    int y;
+
+    Pin() {}
+    Pin(int id, String name, int x, int y) {
+        this.id = id;
+        this.name = name;
+        this.x = x;
+        this.y = y;
+    }
+}
+public static List<String> nearestPins(List<String> pins, List<Integer> xCoordinates, List<Integer> yCoordinates, List<String> queries) {
+    Map<String, Pin> nameToPin = new HashMap<>();
+    Map<Integer, Set<Pin>> xToPin = new HashMap<>();
+    Map<Integer, Set<Pin>> yToPin = new TreeMap<>();
+    for (int i = 0; i < pins.size(); i++) {
+        int x = xCoordinates.get(i);
+        int y = yCoordinates.get(i);
+        Pin p = new Pin(i, pins.get(i), x, y);
+
+        nameToPin.put(pins.get(i), p);
+
+        xToPin.putIfAbsent(x, new HashSet<Pin>());
+        xToPin.get(x).add(p);
+
+        yToPin.putIfAbsent(y, new HashSet<Pin>());
+        yToPin.get(y).add(p);
+    }
+
+    List<String> result = new ArrayList<>();
+    for (String s: queries) {
+        Pin p = nameToPin.get(s);
+        int x = p.x;
+        int y = p.y;
+        Set<Pin> xSet = xToPin.get(p.x);
+        Set<Pin> ySet = yToPin.get(p.y);
+        ySet.addAll(xSet);
+        Set<Pin> combined = ySet;
+
+        int min = Integer.MAX_VALUE;
+        Pin candidate = null;
+
+        for (Pin item: combined) {
+            if (item == p) {
+                continue;
+            }
+            int dis = Math.abs(item.x - p.x) + Math.abs(item.y - p.y);
+            if (dis < min) {
+                min = dis;
+                candidate = item;
+            } else if (dis == min && item.name.compareTo(candidate.name) < 0){
+                candidate = item;
+            }
+        }
+
+        if (candidate == null) {
+            result.add("NONE");
+        } else {
+            result.add(candidate.name);
+        }
+    }
+
+    return result;
+}
+```
+
+## Autoscale Policy, Utilization Check
+
+A risk modeling system uses a scaling computing system that implements an autoscale policy depending on the current load or _utilization_ of the computing system.
+
+The system starts with a number of computing instances given by `instances`. The system polls the instances every second to see the average utilization at that second, and performs scaling as described below. Once any action is taken, the system will stop polling for `10 seconds`. During that time, the number of instances does not change.
+
+_**Average utilization &gt; 60%**_**:** Double the number of instances if the doubled value does not exceed `2 * 10^8`. This is an action. If the number of instances exceeds this limit on doubling, perform no action.
+
+_**Average utilization &lt; 25%**_**:** Halve the number of instances if the number of instances is greater than 1 \(take ceil if the number is not an integer\). This is also an action. If the number of instances is 1, take no action.
+
+_**25% &lt;= Average utilization &lt;= 60%**_: No action.
+
+Given an array of the values of the average utilization at each second for this system, determine the number of instances at the end of the time frame.
+
+For example, the system starts with _**instances = 2**_, and average utilization is given as _**averageUtil =** `[25, 23, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 76, 80]`_.
+
+At the first second, utilization is _**`25`**_, so no action is taken.
+
+At the second second, `averageUtil[1] = 23 < 25`, so `instances = 2 / 2 = 1`. The next `10 seconds`, `averageUtil[2]..averageUtil[11]`, no polling is done.
+
+At `averageUtil[11] = 76, 76 > 60` so the number of instances is doubled. There are no more readings to consider and `2` is the final answer.
+
+#### Example 1:
+
+**Input: averageUtil=\[5, 10, 80\], instances = 1**
+
+**Output: 2**
+
+**Explanation:**
+
+Here _**instance = 1**_ and _**averageUtil = `[5, 10, 80]`**_. At the `1`st and `2`nd seconds of the time period, no action will be taken because the utilization is less than _**25%**_, the number of instance is `1`. At the `3`rd second, the number of instances will double to `2`.
+
+#### Constraints:
+
+* `1 <= instances <= 10^5`
+* `1 <= n <= 10^5`
+* `1 <= averageUtil[i] <= 100`
+
+
+
+* Solution: simulation
+  * time: O\(n\)
+  * space: O\(1\)
+
+```java
+public static int autoScale(List<Integer> averageUtils, int numInstances) {
+    int i = 0;
+    while (i < averageUtils.size()) {
+        if (averageUtils.get(i) < 25 && numInstances > 1) {
+            numInstances = (int) Math.ceil((double) numInstances / 2);
+            i += 11;
+            continue;
+        }
+        if (averageUtils.get(i) > 60 && numInstances * 2 <= 2 * Math.pow(10, 8)) {
+            numInstances *= 2;
+            i += 11;
+            continue;
+        } 
+        i += 1;
+    }
+
+    return numInstances;
+}
+```
+
+## Cut off Rank
+
+Each year, employees of an organization are rated based on their performance. The employees are then ranked based on the ratings. Enployees with the same ratings will have the same rankings, but the next employee with the next lowest score will be rated based on the position within the list of all rankings. Employees below the cutoff rank are placed in a layoff list.
+
+Give the ratings each employee receives and the cutoff rank, return the number of employees who are not in the layoff list.
+
+#### Example 1:
+
+**Input: cutoff rank = 2, scores = \[100 90 80 70 60\]**
+
+**Output: 2**
+
+**Explanation:**
+
+The employee rankings are `[1, 2, 3, 4, 5]`. And with a cutoff rank of two, only the first 2 employees are not in the layoff list.
+
+#### Example 2:
+
+**Input: cutoff rank = 4, scores = \[100 100 80 70 60\]**
+
+**Output: 4**
+
+**Explanation:**
+
+The first two employees have equal rating and both receives a ranking of 1. Employee with score 80 has 2 employees in front of him so he receives a ranking of 3. The final employee rankings are `[1, 1, 3, 4, 5]`. With a cutoff rank of `4`, the first 4 employees are out of the layoff list.  
+
+
+
+
+* Solution:
+  * time: O\(nlgn\)
+  * space: O\(1\)
+
+```java
+public static int cutOffRank(int cutOff, List<Integer> scores) {
+    if (scores == null || scores.size() == 0) {
+        return 0;
+    }
+
+    Collections.sort(scores, (a, b) -> {
+        return b - a;
+    });
+
+    int curRank = 1;
+    for (int i = 1; i < scores.size(); i++) {
+        if (scores.get(i) != scores.get(i - 1)) {
+            curRank = i + 1;
+        }
+        if (curRank > cutOff) {
+            return i;
+        }
+    }
+
+    return scores.size();
+}
+```
+
 ## Number Game
 
 same as [https://leetcode.com/problems/maximize-score-after-n-operations/](https://leetcode.com/problems/maximize-score-after-n-operations/)
@@ -46,7 +269,7 @@ The game can proceed as follow:
 
 The maximum total score is `5 + 12 + 24 = 41`.
 
-
+* Solution: memo + bitmap. Amazon, are you demon?
 
 ```java
 public static int getMaxScore(int n, List<Integer> cards) {
