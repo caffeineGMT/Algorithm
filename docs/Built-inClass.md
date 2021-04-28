@@ -208,14 +208,14 @@ The documentation for the methods contained in this class includes brief descrip
   - Sorts the specified array into ascending numerical order.
   - Implementation note: The sorting algorithm is a Dual-Pivot Quicksort by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm offers O(n log(n)) performance on many data sets that cause other quicksorts to degrade to quadratic performance, and is typically faster than traditional (one-pivot) Quicksort implementations.
 - `public static <T> List<T> asList​(T... a)`
-Returns a fixed-size list backed by the specified array. (Changes to the returned list "write through" to the array.) This method acts as bridge between array-based and collection-based APIs, in combination with Collection.toArray(). The returned list is serializable and implements RandomAccess.
-This method also provides a convenient way to create a fixed-size list initialized to contain several elements:
+  Returns a fixed-size list backed by the specified array. (Changes to the returned list "write through" to the array.) This method acts as bridge between array-based and collection-based APIs, in combination with Collection.toArray(). The returned list is serializable and implements RandomAccess.
+  This method also provides a convenient way to create a fixed-size list initialized to contain several elements:
   List<String> stooges = Arrays.asList("Larry", "Moe", "Curly");
 - `public static void fill​(int[] a, int val)`
-Assigns the specified int value to each element of the specified array of ints.
+  Assigns the specified int value to each element of the specified array of ints.
 - `public static int hashCode​(int[] a)`
   - Returns a hash code based on the contents of the specified array. For any two non-null int arrays a and b such that Arrays.equals(a, b), it is also the case that Arrays.hashCode(a) == Arrays.hashCode(b)
-  - when use `var set = new hashset<int[]>()` this set is actually using the address of the object not using the content 
+  - when use `var set = new hashset<int[]>()` this set is actually using the address of the object not using the content
 
 # String
 
@@ -261,10 +261,10 @@ Strings are constant; their values cannot be changed after they are created. Str
   - Returns the string representation of the int argument.
   - "" + int = String
 - `public String[] split​(String regex)`
-Splits this string around matches of the given regular expression.
-This method works as if by invoking the two-argument split method with the given expression and a limit argument of zero. Trailing empty strings are therefore not included in the resulting array.
+  Splits this string around matches of the given regular expression.
+  This method works as if by invoking the two-argument split method with the given expression and a limit argument of zero. Trailing empty strings are therefore not included in the resulting array.
 - `public String[] split​(String regex, int limit)`
-The limit parameter controls the number of times the pattern is applied and therefore affects the length of the resulting array.
+  The limit parameter controls the number of times the pattern is applied and therefore affects the length of the resulting array.
 - `\\s+` `\\w+` `\\W+`
 
 # StringBuilder
