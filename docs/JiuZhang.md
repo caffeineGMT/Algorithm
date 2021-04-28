@@ -10,6 +10,7 @@ This is a repo recording notes based on JiuZhang Algorithm Series.
 
 # Chapter 2: 真实面试案例分析（上）与面试评分标准
 
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_2._真实面试案例分析上.pdf)
 - 字符串查找——Robin Karp 算法
 - greedy algorithm:
   - not worth the time to study it
@@ -64,7 +65,7 @@ This is a repo recording notes based on JiuZhang Algorithm Series.
     }
     ```
 
-  - `==` is testing if 2 items are the same instance of String class, not the content of these 2 items.
+  - `==` is testing if 2 items are the same instance of String class, not the value of these 2 items.
   - `equals` is testing if 2 items are the same instance first, if not, testing if they have the same content
   - `StringBuilder` is testing if 2 items are the same instance. In the case above, first "hel" is the instance of String class, second "hel" is the instance of StringBuilder class
   - if memory already has this string, it wont create new string. See case below.
@@ -86,31 +87,30 @@ This is a repo recording notes based on JiuZhang Algorithm Series.
 
 # Chapter 3: 真实面试案例分析（下）与 80%求职者会踩坑的基础知识
 
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_3._真实面试案例分析下与_80_求职者都会采坑的基础知识.pdf)
+
+- [substring/subarray vs subsequence](https://www.geeksforgeeks.org/subarraysubstring-vs-subsequence-and-programs-to-generate-them/)
+
+  - A `subbarray` is a contiguous part of array. An array that is inside another array. For example, consider the array [1, 2, 3, 4], There are 10 non-empty sub-arrays. The subbarays are (1), (2), (3), (4), (1,2), (2,3), (3,4), (1,2,3), (2,3,4) and (1,2,3,4). In general, for an array/string of size n, there are n\*(n+1)/2 non-empty subarrays/subsrings.
+
+  - A `subsequence` is a sequence that can be derived from another sequence by zero or more elements, without changing the order of the remaining elements. For the same example, there are 15 sub-sequences. They are (1), (2), (3), (4), (1,2), (1,3),(1,4), (2,3), (2,4), (3,4), (1,2,3), (1,2,4), (1,3,4), (2,3,4), (1,2,3,4). More generally, we can say that for a sequence of size n, we can have (2n-1) non-empty sub-sequences in total.
+
 # Chapter 4: 复杂度理论与双指针算法入门
 
-## theory
-
-- time complexity: priority
-- space complexity: sub-priority
-- coding complexity: can use built-in functions tho it might hurt time complexity a bit, but need to negotiate with interviewer
-- thinking complexity: easy to follow in thinking
-
-## time complexity
-
-- P: polynomial
-- NP: Nondeterministic polynomial
-
+- see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_4._复杂度理论与双指针算法入门.pdf)
 - other:
   - [Harmonic Series complexity](https://stackoverflow.com/questions/25905118/finding-big-o-of-the-harmonic-series): 1+1/2+1/3+...+1/n O(lgn)
   - O(n+m) == O(max(n,m))
 
 # Chapter 5: 必须熟练掌握的两个排序算法
 
-| feature   | quick sort                   | merge sort |
-| --------- | ---------------------------- | ---------- |
-| time      | average: O(nlgn) worst: O(n) | O(nlgn)    |
-| space     | O(1)                         | O(n)       |
-| stability | \*not stable                 | stable     |
+| feature   | quick sort                     | merge sort |
+| --------- | ------------------------------ | ---------- |
+| time      | average: O(nlgn) worst: O(n^2) | O(nlgn)    |
+| space     | O(1)                           | O(n)       |
+| stability | \*not stable                   | stable     |
+
+- [regarding quick-sort stability](https://stackoverflow.com/questions/13498213/quicksort-algorithm-stability)
 
 # Chapter 6: 时间复杂度为 O(logN)的高频算法——二分法
 
@@ -132,7 +132,7 @@ This is a repo recording notes based on JiuZhang Algorithm Series.
 
 # Chapter 7: 一个不会出现死循环的通用二分法模板
 
-- [template](../JiuZhangAlgorithm2020/week2/BinarySearchTemplate.java)
+- see leetcode
 
 # Chapter 8: 高频算法之王——双指针算法之相向双指针
 
@@ -563,57 +563,6 @@ public class Solution {
 # Chapter 29:双指针算法之同向双指针（下）
 
 - see [slide](../JiuZhangAlgorithm2020/CoursePDF/Chapter_29._双指针算法之同向双指针下.pdf)
-- 链表中点问题
-  问题描述
-  求一个链表的中点
-
-问题分析
-这个问题可能大家会觉得，WTF 这么简单有什么好做的？你可能的想法是：
-
-先遍历一下整个链表，求出长度 L，然后再遍历一下链表找到第 L/2 的那个位置的节点。
-
-但是在你抛出这个想法之后，面试官会追问你：如果只允许遍历链表一次怎么办？
-
-可以看到这种 Follow up 并不是让你优化算法的时间复杂度，而是严格的限制了你遍历整个链表的次数。你可能会认为，这种优化有意义么？事实上是很有意义的。因为遍历一次这种场景，在真实的工程环境中会经常遇到，也就是我们常说的数据流问题（Data Stream Problem）。
-
-数据流问题 Data Stream Problem
-所谓的数据流问题，就是说，你需要设计一个在线系统，这个系统不断的接受一些数据，并维护这些数据的一些信息。比如这个问题就是在数据流中维护中点在哪儿。（维护中点的意思就是提供一个接口，来获取中点）
-
-类似的一些数据流问题还有：
-
-数据流中位数 http://www.lintcode.com/problem/data-stream-median/
-
-数据流最大 K 项 http://www.lintcode.com/problem/top-k-largest-numbers-ii/
-
-数据流高频 K 项 http://www.lintcode.com/problem/top-k-frequent-words-ii/
-
-这类问题的特点都是，你没有机会第二次遍历所有数据。上述问题部分将在《九章算法强化班》中讲解。
-
-用双指针算法解决链表中点问题
-我们可以使用双指针算法来解决链表中点的问题，更具体的，我们可以称之为快慢指针算法。该算法如下：
-Java:
-
-ListNode slow = head, fast = head.next;
-while (fast != null && fast.next != null) {
-slow = slow.next;
-fast = fast.next.next;
-}
-
-return slow;
-Python:
-
-slow, fast = head, head.next
-while fast != None and fast.next != None:
-slow = slow.next
-fast = fast.next.next
-
-return slow
-在上面的程序中，我们将快指针放在第二个节点上，慢指针放在第一个节点上，while 循环中每一次快指针走两步，慢指针走一步。这样当快指针走到头的时候，慢指针就在中点了。
-
-快慢指针的算法，在下一小节的“带环链表”中，也用到了。
-
-一个小练习
-将上述代码改为提供接口的模式，即设计一个 class，支持两个函数，一个是 add(node) 加入一个节点，一个是 getMiddle() 求中间的那个节点。
 
 # Chapter 30:二分法实战练习精讲
 
@@ -1370,22 +1319,20 @@ A：好问题！元素有重复，情况会复杂的多。因为这会影响 A[i
 # Chapter 39: 外排序算法与数组合并类问题
 
 - see [slide](../JiuZhangAlgorithm2020/CoursePDF/chapter%2039.pptx)
-  外排序算法（External Sorting）
-  外排序算法是指在内存不够的情况下，如何对存储在一个或者多个大文件中的数据进行排序的算法。外排序算法通常是解决一些大数据处理问题的第一个步骤，或者是面试官所会考察的算法基本功。外排序算法是海量数据处理算法中十分重要的一块。
-  在学习这类大数据算法时，经常要考虑到内存、缓存、准确度等因素，这和我们之前见到的算法都略有差别。
 
-外排序算法分为两个基本步骤：
+- 外排序算法（External Sorting）
+  外排序算法是指在内存不够的情况下，如何对存储在一个或者多个大文件中的数据进行排序的算法。外排序算法通常是解决一些大数据处理问题的第一个步骤，或者是面试官所会考察的算法基本功。外排序算法是海量数据处理算法中十分重要的一块。在学习这类大数据算法时，经常要考虑到内存、缓存、准确度等因素，这和我们之前见到的算法都略有差别。
 
-将大文件切分为若干个个小文件，并分别使用内存排好序
-使用 K 路归并算法（k-way merge）将若干个排好序的小文件合并到一个大文件中
-第一步：文件拆分
-根据内存的大小，尽可能多的分批次的将数据 Load 到内存中，并使用系统自带的内存排序函数（或者自己写个快速排序算法），将其排好序，并输出到一个个小文件中。比如一个文件有 1T，内存有 1G，那么我们就这个大文件中的内容按照 1G 的大小，分批次的导入内存，排序之后输出得到 1024 个 1G 的小文件。
+- 外排序算法分为两个基本步骤：将大文件切分为若干个个小文件，并分别使用内存排好序, 使用 K 路归并算法（k-way merge）将若干个排好序的小文件合并到一个大文件中
 
-第二步：K 路归并算法
-K 路归并算法使用的是数据结构堆（Heap）来完成的，使用 Java 或者 C++ 的同学可以直接用语言自带的 PriorityQueue（C++中叫 priority_queue）来代替。
+  - 第一步：文件拆分
+    根据内存的大小，尽可能多的分批次的将数据 Load 到内存中，并使用系统自带的内存排序函数（或者自己写个快速排序算法），将其排好序，并输出到一个个小文件中。比如一个文件有 1T，内存有 1G，那么我们就这个大文件中的内容按照 1G 的大小，分批次的导入内存，排序之后输出得到 1024 个 1G 的小文件。
 
-我们将 K 个文件中的第一个元素加入到堆里，假设数据是从小到大排序的话，那么这个堆是一个最小堆（Min Heap）。每次从堆中选出最小的元素，输出到目标结果文件中，然后如果这个元素来自第 x 个文件，则从第 x 个文件中继续读入一个新的数进来放到堆里，并重复上述操作，直到所有元素都被输出到目标结果文件中。
+  - 第二步：K 路归并算法
+    K 路归并算法使用的是数据结构堆（Heap）来完成的，使用 Java 或者 C++ 的同学可以直接用语言自带的 PriorityQueue（C++中叫 priority_queue）来代替。
 
-Follow up: 一个个从文件中读入数据，一个个输出到目标文件中操作很慢，如何优化？
-如果我们每个文件只读入 1 个元素并放入堆里的话，总共只用到了 1024 个元素，这很小，没有充分的利用好内存。另外，单个读入和单个输出的方式也不是磁盘的高效使用方式。因此我们可以为输入和输出都分别加入一个缓冲（Buffer）。假如一个元素有 10 个字节大小的话，1024 个元素一共 10K，1G 的内存可以支持约 100K 组这样的数据，那么我们就为每个文件设置一个 100K 大小的 Buffer， 每次需要从某个文件中读数据，都将这个 Buffer 装满。当然 Buffer 中的数据都用完的时候，再批量的从文件中读入。输出同理，设置一个 Buffer 来避免单个输出带来的效率缓慢。
-那下面我们就来熟悉下两路归并和 K 路归并的算法。
+    我们将 K 个文件中的第一个元素加入到堆里，假设数据是从小到大排序的话，那么这个堆是一个最小堆（Min Heap）。每次从堆中选出最小的元素，输出到目标结果文件中，然后如果这个元素来自第 x 个文件，则从第 x 个文件中继续读入一个新的数进来放到堆里，并重复上述操作，直到所有元素都被输出到目标结果文件中。
+
+    Follow up: 一个个从文件中读入数据，一个个输出到目标文件中操作很慢，如何优化？
+
+    如果我们每个文件只读入 1 个元素并放入堆里的话，总共只用到了 1024 个元素，这很小，没有充分的利用好内存。另外，单个读入和单个输出的方式也不是磁盘的高效使用方式。因此我们可以为输入和输出都分别加入一个缓冲（Buffer）。假如一个元素有 10 个字节大小的话，1024 个元素一共 10K，1G 的内存可以支持约 100K 组这样的数据，那么我们就为每个文件设置一个 100K 大小的 Buffer， 每次需要从某个文件中读数据，都将这个 Buffer 装满。当然 Buffer 中的数据都用完的时候，再批量的从文件中读入。输出同理，设置一个 Buffer 来避免单个输出带来的效率缓慢。

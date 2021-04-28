@@ -207,6 +207,15 @@ The documentation for the methods contained in this class includes brief descrip
 - `public static void sort​(int[] a)`
   - Sorts the specified array into ascending numerical order.
   - Implementation note: The sorting algorithm is a Dual-Pivot Quicksort by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm offers O(n log(n)) performance on many data sets that cause other quicksorts to degrade to quadratic performance, and is typically faster than traditional (one-pivot) Quicksort implementations.
+- `public static <T> List<T> asList​(T... a)`
+Returns a fixed-size list backed by the specified array. (Changes to the returned list "write through" to the array.) This method acts as bridge between array-based and collection-based APIs, in combination with Collection.toArray(). The returned list is serializable and implements RandomAccess.
+This method also provides a convenient way to create a fixed-size list initialized to contain several elements:
+  List<String> stooges = Arrays.asList("Larry", "Moe", "Curly");
+- `public static void fill​(int[] a, int val)`
+Assigns the specified int value to each element of the specified array of ints.
+- `public static int hashCode​(int[] a)`
+  - Returns a hash code based on the contents of the specified array. For any two non-null int arrays a and b such that Arrays.equals(a, b), it is also the case that Arrays.hashCode(a) == Arrays.hashCode(b)
+  - when use `var set = new hashset<int[]>()` this set is actually using the address of the object not using the content 
 
 # String
 
@@ -219,8 +228,8 @@ Strings are constant; their values cannot be changed after they are created. Str
   - Returns the length of this string. The length is equal to the number of Unicode code units in the string.
 - `public char charAt​(int index)`
   - Returns the char value at the specified index. An index ranges from 0 to length() - 1. The first char value of the sequence is at index 0, the next at index 1, and so on, as for array indexing.
-- `public static String valueOf(int i)`
-  - Returns the string representation of the int argument
+- `public static String valueOf(char[] data)`
+  Returns the string representation of the char array argument. The contents of the character array are copied; subsequent modification of the character array does not affect the newly created string.
 - `public String concat​(String str)`
   - Concatenates the specified string to the end of this string.
     If the length of the argument string is 0, then this String object is returned. Otherwise, a String object is returned that represents a character sequence that is the concatenation of the character sequence represented by this String object and the character sequence represented by the argument string.
@@ -242,7 +251,7 @@ Strings are constant; their values cannot be changed after they are created. Str
   - endIndex - the ending index, exclusive.
 - `public String trim()`
   Returns a string whose value is this string, with all leading and trailing space removed, where space is defined as any character whose codepoint is less than or equal to 'U+0020' (the space character).If this String object represents an empty character sequence, or the first and last characters of character sequence represented by this String object both have codes that are not space (as defined above), then a reference to this String object is returned. Otherwise, if all characters in this string are space (as defined above), then a String object representing an empty string is returned.Otherwise, let k be the index of the first character in the string whose code is not a space (as defined above) and let m be the index of the last character in the string whose code is not a space (as defined above). A String object is returned, representing the substring of this string that begins with the character at index k and ends with the character at index m-that is, the result of this.substring(k, m + 1).
-- `public boolean equals​(Object anObject)`
+- `public boolean equals​(Object anotherObject)`
   - Compares this string to the specified object. The result is true if and only if the argument is not null and is a String object that represents the same sequence of characters as this object.
   - testing if 2 items are the same instance first, if not, testing if they have the same content
   - `==` will only test if 2 items are the same instance, which is comparing the memory address
@@ -251,6 +260,12 @@ Strings are constant; their values cannot be changed after they are created. Str
 - `public static String valueOf(int i)`
   - Returns the string representation of the int argument.
   - "" + int = String
+- `public String[] split​(String regex)`
+Splits this string around matches of the given regular expression.
+This method works as if by invoking the two-argument split method with the given expression and a limit argument of zero. Trailing empty strings are therefore not included in the resulting array.
+- `public String[] split​(String regex, int limit)`
+The limit parameter controls the number of times the pattern is applied and therefore affects the length of the resulting array.
+- `\\s+` `\\w+` `\\W+`
 
 # StringBuilder
 
@@ -269,6 +284,16 @@ Strings are constant; their values cannot be changed after they are created. Str
 
 - `public String toString()`
   Returns a string representing the data in this sequence. A new String object is allocated and initialized to contain the character sequence currently represented by this object. This String is then returned. Subsequent changes to this sequence do not affect the contents of the String.
+
+- `public int length()`
+  Returns the length (character count)
+
+- `public StringBuilder deleteCharAt(int index)`
+  Removes the char at the specified position in this sequence. This sequence is shortened by one char.
+  Note: If the character at the given index is a supplementary character, this method does not remove the entire character. If correct handling of supplementary characters is required, determine the number of chars to remove by calling Character.charCount(thisSequence.codePointAt(index)), where thisSequence is this sequence.
+
+- `public StringBuilder reverse()`
+  Causes this character sequence to be replaced by the reverse of the sequence.
 
 # Integer
 
@@ -297,6 +322,9 @@ Strings are constant; their values cannot be changed after they are created. Str
 - `public static void reverse(List<?> list)`
   Reverses the order of the elements in the specified list.
   This method runs in linear time.
+
+- `public static <T> void sort(List<T> list, Comparator<? super T> c)`
+  Sorts the specified list according to the order induced by the specified comparator. All elements in the list must be mutually comparable using the specified comparator (that is, c.compare(e1, e2) must not throw a ClassCastException for any elements e1 and e2 in the list).
 
 # Math
 
