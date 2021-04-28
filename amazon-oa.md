@@ -6,6 +6,105 @@ description: 'Resource: https://algo.monster/dashboard'
 
 
 
+## Nearest Cities
+
+A number of pins are placed on a 2D Cartesian grid. Each pin has an x-coordinate, a y coordinate, and a name.
+
+Given a list of target pins, find the pin that share the same x or y coordinates with each of the target pin and return the list. If two pins have the same distance to the target pin, return the pin with the lexicographically smaller name.
+
+**Example 1:**
+
+**Input:**
+
+pins = `["a", "b", "c", "d"]`
+
+x\_coordinates = `[50, 60, 100, 200, 300]` y\_coordinates = `[50, 60, 50, 200, 50]`
+
+target\_pins = `["a", "b","c", "d", "e"]`
+
+**Output: \["c", "NONE", "a", "NONE", "c"\]**
+
+**Explanation:**
+
+`a`, `c` and `e` share the same y coordinate. For `a`, the closest is `c`. `b` shares no x or y coordinate with anyone. `c` shares the same y coordinate with a and e. The closest is `a`. `d` shares no x or y coordinate with anyone. `e` shares the same y coordinate with `a` and `c`. The closest is `c`.
+
+
+
+* Solution: hashmap
+  * we should build custom class if data access method is scattered.
+  * time: O\(query \* n\), linear search can be optimized to lgn if we use treemap
+  * space: O\(n\)
+
+```java
+static class Pin {
+    int id;
+    String name;
+    int x;
+    int y;
+
+    Pin() {}
+    Pin(int id, String name, int x, int y) {
+        this.id = id;
+        this.name = name;
+        this.x = x;
+        this.y = y;
+    }
+}
+public static List<String> nearestPins(List<String> pins, List<Integer> xCoordinates, List<Integer> yCoordinates, List<String> queries) {
+    Map<String, Pin> nameToPin = new HashMap<>();
+    Map<Integer, Set<Pin>> xToPin = new HashMap<>();
+    Map<Integer, Set<Pin>> yToPin = new TreeMap<>();
+    for (int i = 0; i < pins.size(); i++) {
+        int x = xCoordinates.get(i);
+        int y = yCoordinates.get(i);
+        Pin p = new Pin(i, pins.get(i), x, y);
+
+        nameToPin.put(pins.get(i), p);
+
+        xToPin.putIfAbsent(x, new HashSet<Pin>());
+        xToPin.get(x).add(p);
+
+        yToPin.putIfAbsent(y, new HashSet<Pin>());
+        yToPin.get(y).add(p);
+    }
+
+    List<String> result = new ArrayList<>();
+    for (String s: queries) {
+        Pin p = nameToPin.get(s);
+        int x = p.x;
+        int y = p.y;
+        Set<Pin> xSet = xToPin.get(p.x);
+        Set<Pin> ySet = yToPin.get(p.y);
+        ySet.addAll(xSet);
+        Set<Pin> combined = ySet;
+
+        int min = Integer.MAX_VALUE;
+        Pin candidate = null;
+
+        for (Pin item: combined) {
+            if (item == p) {
+                continue;
+            }
+            int dis = Math.abs(item.x - p.x) + Math.abs(item.y - p.y);
+            if (dis < min) {
+                min = dis;
+                candidate = item;
+            } else if (dis == min && item.name.compareTo(candidate.name) < 0){
+                candidate = item;
+            }
+        }
+
+        if (candidate == null) {
+            result.add("NONE");
+        } else {
+            result.add(candidate.name);
+        }
+    }
+
+    return result;
+}
+```
+
 ## Autoscale Policy, Utilization Check
 
 A risk modeling system uses a scaling computing system that implements an autoscale policy depending on the current load or _utilization_ of the computing system.
