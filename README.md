@@ -1,300 +1,310 @@
-# ALgorithm Note
+# Fundamentals
 
-The Algorithm Note note is [here](docs/README.md).
+## Note
 
----
+This is a repo recording notes for basic data structure/algorithm concept. Most of the note/solution will be based on MOOC course "Code with Mosh" Algorithm Series.
 
-# Log Template
+## Complexity
 
-The following is showing how to use the template.The original template repo was created by [James Priest](https://github.com/james-priest/100-days-log-template). In order to implement the template on your machine, please follow the instructions below written by [James Priest](https://github.com/james-priest/100-days-log-template).
+* time complexity: priority
+* space complexity: sub-priority
+* coding complexity: can use built-in functions tho it might hurt time complexity a bit, but need to negotiate with interviewer
+* thinking complexity:
 
-The original repo is used to track progress for Alexander Kallaway's 100 Days of Code Challenge ([https://100daysofcode.com](https://100daysofcode.com)).
+## Searching Algorithm
 
-It's made available to anyone that would like to fork this repo in order to also track their progress using GitHub Pages. It uses a customized version of the [Leap day theme](https://github.com/pages-themes/leap-day) (see preview [here](https://pages-themes.github.io/leap-day/)) and allows simple customization of page titles & colors schemes.
+* binary search:
 
-- [ALgorithm Note](#algorithm-note)
-- [Log Template](#log-template)
-  - [Overview](#overview)
-  - [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-  - [Usage](#usage)
-    - [Serve site](#serve-site)
-    - [Serve site (with with live-reload)](#serve-site-with-with-live-reload)
-  - [Deployment](#deployment)
-  - [Enable GitHub Pages](#enable-github-pages)
-  - [Optimize Images](#optimize-images)
-    - [Grunt Install](#grunt-install)
-    - [Grunt Usage](#grunt-usage)
-    - [Embedding Images in Log](#embedding-images-in-log)
-  - [Log Customization](#log-customization)
-  - [Miscellaneous](#miscellaneous)
-    - [Recommended Workflow](#recommended-workflow)
-    - [Under the Hood](#under-the-hood)
+  | operation | recursive | iterative |
+  | :--- | :--- | :--- |
+  | time | O\(lgn\) | O\(lgn\) |
+  | space | O\(lgn\) | O\(1\) |
 
-## Overview
+* ternary search: slower than binary search
 
-GitHub Pages is a static site hosting service provided by GitHub that takes Markdown files, combines them with a template, and turns them to static HTML.
+  | operation | recursive | iterative |
+  | :--- | :--- | :--- |
+  | time | O\(lg3 n\) | O\(lg3 n\) |
+  | space | O\(lg3 n\) | O\(1\) |
 
-With GitHub Pages enabled, code logs written in Markdown are converted to html when pushed to GitHub.
+* jump search:
 
-## Getting Started
+  | operation |  |
+  | :--- | :--- |
+  | time | O\(sqrt\(n\)\) \(the number of divided blocks\) |
+
+* exponential search:
+
+  | operation |  |
+  | :--- | :--- |
+  | time | O\(lg i\) \( i is the index of the element being searched for in the list\) |
+
+## Sorting Algorithm
+
+* bubble sort:
+
+  | operation | best | worst |
+  | :--- | :--- | :--- |
+  | iteration | O\(n\) | O\(n\) |
+  | shift item | O\(1\) | O\(n\) |
+  | total | O\(n\) | O\(n^2\) |
+
+* selection sort:
+
+  | operation | best | worst |
+  | :--- | :--- | :--- |
+  | iteration | O\(n\) | O\(n\) |
+  | shift item | O\(n\) | O\(n\) |
+  | total | O\(n^2\) | O\(n^2\) |
+
+* insertion sort:
+
+  | operation | best | worst |
+  | :--- | :--- | :--- |
+  | iteration | O\(n\) | O\(n\) |
+  | shift item | O\(1\) | O\(n\) |
+  | total | O\(n\) | O\(n^2\) |
+
+* merge sort:
+
+  | operation | best |
+  | :--- | :--- |
+  | dividing | O\(lgn\) |
+  | merging | O\(n\) |
+  | total | O\(nlgn\) |
+  | space | O\(n\) |
+
+* quick sort:
+
+  | operation | best | worst |
+  | :--- | :--- | :--- |
+  | work in each partition | O\(n\) | O\(n\) |
+  | partition times | O\(lgn\) | O\(n\) |
+  | total | O\(nlgn\) | O\(n^2\) |
+  | space | O\(lgn\) | O\(n\) |
+
+* counting sort:
+
+  | operation |  |
+  | :--- | :--- |
+  | populating count | O\(n\) |
+  | iterate count | O\(k\) |
+  | total | O\(n\) |
+  | space | O\(k\) \(k is the maximum value in the domain of the array\) |
+
+  * when to use:
+    * allocating extra space is not a issue
+    * values are positive integers
+    * most of the value in the range are present
+
+* bucket sort:
+
+  | operation | best | worst |
+  | :--- | :--- | :--- |
+  | distribution | O\(n\) | O\(n\) |
+  | iterate bucket | O\(k\) | O\(k\) |
+  | sorting | O\(1\) | O\(n^2\) |
+  | total | O\(n+k\) | O\(n^2\) |
+  | space | O\(n+k\) \(k is number of bucket\) | O\(n+k\) |
+
+## Undirected Graph
+
+-
+
+## Graph
+
+* app: network connection, social media, path finding
+* basic concept:
+  * vertex: V/n
+  * edge: E/m
+  * incident edges: immediate edges connecting to a node
+  * degree of node: how many incident node
+  * adjacent node/vertices
+  * path: sequence of vertices connect by edges
+  * cycle: path with a common start and end
+  * simple graph: no self loop or multi-edges
+  * directed graph
+  * undirected graph
+* edges numbers:
+  * min edges for a graph:
+    * not connected:0
+    * connected: n-1
+  * max edges for a graph:
+    * simple: n\*\(n-1\)
+    * not simple:infinity
+  * sum of degree in a graph: 2m \(because every inbound edge will have a corresponding outbound edge\)
+* edge list\(simple graph\):one hash table maintain node, one hash table maintain edges
+
+| operation | time complexity |
+| :--- | :--- |
+| space | O\(n+m\)\(n node in hash table & total m edges in hash table\) |
+| insertVertex\(K key\) | O\(1\)\(hash table lookup\) |
+| removeVertex\(Vertex v\) | O\(m\)\(hash table lookup, walk thru every edge\) |
+| areAdjacent\(Vertex v1, Vertex v2\) | O\(m\)\(walk thru every edge\) |
+| incidentEdges\(Vertex\) | O\(m\)\(hash table lookup, walk thru every edge\) |
+| addEdge | O\(1\)\(hash table lookup\) |
+| removeEdge | O\(1\)\(hash table lookup\) |
+
+* adjacency matrix\(simple graph\):one hash table maintain node, one 2D array maintain edges
+
+| operation | time complexity |
+| :--- | :--- |
+| space | O\(n^2\)\(n node in hash table & n by n 2D matrix\) |
+| insertVertex\(K key\) | O\(n^2\)\(need to copy the whole matrix\) |
+| removeVertex\(Vertex v\) | O\(n^2\)\(need to shrink the whole matrix\) |
+| areAdjacent\(Vertex v1, Vertex v2\) | O\(1\)\(hash table lookup\) |
+| incidentEdges\(Vertex\) | O\(n\)\(hash table look up & walk down one row/column\) |
+| addEdge | O\(1\)\(hash table lookup,turn 0 to 1\) |
+| removeEdge | O\(1\)\(hash table lookup,turn 1 to 0\) |
+
+* adjacency list\(simple graph\):one hash table maintain node, one array of linked list maintain edges
+
+| operation | time complexity |
+| :--- | :--- |
+| space | O\(n+m\)\(n node in hash table & m edges in linked list\) |
+| insertVertex\(K key\) | O\(1\)\(hash table lookup\) |
+| removeVertex\(Vertex v\) | O\(deg\(V\)\)\(hash table lookup, link lookup, relink\) |
+| areAdjacent\(Vertex v1, Vertex v2\) | O\(min\(deg\(V1\),deg\(V2\)\)\)\(hash table lookup, link lookup\) |
+| incidentEdges\(Vertex\) | O\(deg\(V\)\)\(hash table lookup, link lookup\) |
+| addEdge | O\(deg\(V\)\)\(hash table lookup, check duplicates, add link\) |
+| removeEdge | O\(deg\(V\)\)\(hash table lookup, link lookup\) |
+
+* for dense graph, try to use adjacency matrix, otherwise use adjacency list
+* topological sort:
+  * definition: a topological sort or topological ordering of a directed graph is a linear ordering of its vertices such that for every directed edge uv from vertex u to vertex v, u comes before v in the ordering. For instance, the vertices of the graph may represent tasks to be performed, and the edges may represent constraints that one task must be performed before another; in this application, a topological ordering is just a valid sequence for the tasks.
+  * app: dependency check; prerequisite course; ranking
+  * directed acyclic graph
+  * O\(n\) runtime complexity
+
+## Tries
+
+| operation | time complexity |
+| :--- | :--- |
+| lookup | O\(L\) |
+| insert | O\(L\) |
+| delete | O\(L\) |
+
+* app: auto-completion
+* tries concept:
+  * tries is not binary tree. It can have multiple children
+  * for word search/insertion/deletion, it need to do `L` operation, where `L` stands for the number of characters in the word.
+  * tries' root node is empty
+
+## Heaps
+
+| insert\(bubble up\) | delete \(bubble down \) | find max/min | heapify | heap sort \(create then delete\) |
+| :--- | :--- | :--- | :--- | :--- |
+| O\(log n\) | O\(log n\) | O\(1\) | O\(n\) | nlgn+nlgn -&gt; O\(nlgn\) |
+
+* requirement:
+  * complete tree: 2 children for each node, and has to be on the same level until last level, and at last level all nodes being pushed to the left
+  * heap property: parent node is smaller than children node \(min-heap\)/parent node is bigger than children node \(max-heap\)
+* type:max heap, min heap,binary heap
+* app:heapSort;shortest path;priority queue;finding Kth smallest/largest value
+* implementation notes:
+  * implementation data structure: array
+  * insert: add item in order in array, when there is an item not following the heap property, we should bubble up this item, which is swapping this item with its parent until it follows heap property
+  * delete: when deleting the root node, we need to do bubble down operation, which is bringing the last node to the vacant position, and bubble down the node at that new location until we satisfy heap property
+  * find max/min: the root node value is the max/min
+  * parent/children index formula:
+    * leftIndex=parentIndex\*2+1
+    * rightIndex=parentIndex\*2+2
+    * parentIndex=\(childIndex-1\)/2
+
+## AVL Tree
+
+* [tutorial](https://www.youtube.com/watch?v=jDM6_TnYIqE)
+* balanced tree: \|Height\(R\)-Height\(L\)\|&lt;=1
+* rotation: LL, RR, LR. RL
+
+  -
+
+## Tree
+
+good binary search tree:
+
+| insert | lookup | delete |
+| :--- | :--- | :--- |
+| O\(log n\) | O\(log n\) | O\(log n\) |
+
+bad tree:
+
+| insert | lookup | delete |
+| :--- | :--- | :--- |
+| O\(log n\) | O\(log n\) | O\(log n\) |
+
+* app: representing hierarchical data, databases, autocompletion, compilers, compression
+* BST cannot have duplicated value inside true, the child is either smaller or larger than parent node, cannot be equal.
+* full binary tree: binary tree is a full binary tree if every node has 0 or 2 children. In a Full Binary Tree, number of leaf nodes is the number of internal nodes plus 1. L = I + 1, where L = Number of leaf nodes, I = Number of internal nodes with 2 children
+* complete binary tree: binary tree is a complete binary tree if all the levels are completely filled except possibly the last level and the last level has all keys as left as possible
+* perfect binary tree: a binary tree is a perfect binary tree in which all the internal nodes have two children and all leaf nodes are at the same level. A Perfect Binary Tree of height h \(where height is the number of nodes on the path from the root to leaf\) has \(2^\(h+1\)\) – 1 node.
+* balanced binary tree: a binary tree is balanced if the height of the tree is O\(Log n\) where n is the number of nodes. For Example, the AVL tree maintains O\(Log n\) height by making sure that the difference between the heights of the left and right subtrees is almost 1. Red-Black trees maintain O\(Log n\) height by making sure that the number of Black nodes on every root to leaf paths is the same and there are no adjacent red nodes. Balanced Binary Search trees are performance-wise good as they provide O\(log n\) time for search, insert and delete.
+* degenerate tree: a tree where every internal node has one child. Such trees are performance-wise same as linked list.
+* traversal:
+  * Breadth First
+  * Depth First:
+    * pre-order\(root,left,right\), walk thru parent first, then its leaf nodes
+    * in-order\(left,root,right\): the traversal result is incremental/decremental
+    * post-order\(left,right,root\): walk thru leaf node first, then its parent
+* depth and height:
+  * depth of node: calculating the number of edges for a node from top-down
+  * height of sub tree: calculating the number of edges for a node from bottom-up
+
+## Hash Table
+
+| insert | lookup | delete |
+| :--- | :--- | :--- |
+| O\(1\) | O\(1\) | O\(1\) |
+
+* app: spell checker,dictionary, compiler, code editor
+* worst case: O\(n\)
+* collision: when 2 key are generating the same hashed value thru hash function
+  * chaining: using linked list
+  * open addressing:
+    * linear probing: `(hash(key)+i)%sizeOfArray`. hash\(key\) will be a number. if the slot is not empty, we increment by 1, which is represented by i. In order to bound the boundary of \(hash\(key\)+i\), we introduce modular operator to bound it by the size of array, otherwise it might be out of index boundary of the array. This method can result in clustering.
+    * quadratic probing:`(hash(key)+i^2)%sizeOfArray`. because we are doing big jumps in array, we might end up looping back to previous step and being trapped in an infinite loop.
+    * double hashing:`(hash1(key)+i*hash2(key))%sizeOfArray`. `hash2(key)=prime-(key%prime)`. prime is a number smaller than size of array.Example: array size is 5, prime number is 3. hash1\(11\)=11%5=1.Let's say index at 1 has a collision. hash2\(11\)=3-\(11%3\)=1. hash\(11\)=\(1+1\*1\)%5=2. We should try if array at index 2 is available. If not, increment i by 1, so hash\(11\)=\(1+2\*1\)%5=3
+
+## Queue
+
+| enqueue | dequeue | peek | inEmpty | isFull |
+| :--- | :--- | :--- | :--- | :--- |
+| O\(1\) | O\(1\) | O\(1\) | O\(1\) | O\(1\) |
+
+* app: printer,operating system, web servers, live support system
+
+## Stack
+
+| push | pop | peek | isEmpty |
+| :--- | :--- | :--- | :--- |
+| O\(1\) | O\(1\) | O\(1\) | O\(1\) |
+
+* app: undo feature, syntax checking in compiler, evaluate math expression, build navigation\(forward/back\)
+* can be implemented by array, arraylist or linked list internally
+
+## Linked List
+
+| lookup | insert | delete |
+| :--- | :--- | :--- |
+| index: O\(n\) value:O\(n\) | start:O\(1\) middle: O\(n\) end: O\(1\) | singly:O\(n\) doubly:O\(1\) |
+
+* LinkedList from java.util package could be `LinkedList generic = new LinkedList();`. In this case, one node could host String, another node could host Integer
+* type:
+  * singly: O\(n\) on deleting the end item
+  * doubly: O\(1\) on deleting the end item
+  * circular: song playlist loop,
+
+## Array
+
+| lookup by index | lookup by value | insert | delete |
+| :--- | :--- | :--- | :--- |
+| O\(1\) | O\(n\) | O\(n\) | worst:O\(n\) best:O\(1\) |
+
+* ArrayList: grow 50% everytime it's full. not synchronized, multi thread
+* Vector: grow 100% everytime it's full. synchronize, single thread
+
+## Big O notation
+
+* runtime complexity: O\(1\),O\(n\),O\(n^2\),O\(log n\), O\(2^n\)
+* space complexity: always look at additional space needs to be allocated, don't count size of the input
 
-GitHub Pages uses [Jekyll](https://jekyllrb.com/) to build the static site. Jekyll is a Ruby-based static site generator that uses [Liquid](https://jekyllrb.com/docs/liquid/) as it's templating language and Markdown as it's content source. Code logs are written in Markdown.
-
-In order to preview and test changes, Jekyll GitHub Pages should be installed locally. GitHub recommends installing Jekyll to preview your site and help troubleshoot any failed Jekyll builds.
-
-While Jekyll relies on Ruby and Liquid for logic and templating, you don't need to know anything other than Markdown in order to create your log. Here are a couple Markdown resources.
-
-- [GitHub Guides Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
-- [Markdown Syntax Cheatsheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
-
-### Prerequisites
-
-[Ruby](https://www.ruby-lang.org/) and [Bundler](http://bundler.io/) need to be installed before proceeding.
-
-1. Open the terminal (Terminal, Git Bash, WSL, etc.).
-2. Check whether you have Ruby 2.1.0 or higher installed:
-
-   ```bash
-   $ruby --version
-   > ruby 2.X.X
-   ```
-
-3. If you don't have Ruby installed, [install Ruby 2.1.0 or higher](https://www.ruby-lang.org/en/downloads/).
-4. Install Bundler:
-
-   ```bash
-   $ gem install bundler
-   # Installs the Bundler gem
-   ```
-
-### Installation
-
-Fork and clone the repo, then use Bundler to install the gem dependencies.
-
-1. Fork the repo by clicking the Fork button in the upper right corner of the page.
-
-   ![Fork button](./docs/src/fixed/fork.jpg)
-
-2. Clone (or download) the repo.
-
-   ```bash
-   $ git clone https://github.com/<username>/100-days-log.git
-   $ cd 100-days-log/docs/
-   >
-   ```
-
-3. Install Jekyll and other [dependencies](https://pages.github.com/versions/) from the GitHub Pages gem with the following command.
-
-   ```bash
-   $ bundle install
-   > Fetching gem metadata from https://rubygems.org/............
-   > Fetching version metadata from https://rubygems.org/...
-   > Fetching dependency metadata from https://rubygems.org/..
-   > Resolving dependencies...
-   ```
-
-## Usage
-
-You can serve the site and enable live-reload if desired. [Additional command line options](https://jekyllrb.com/docs/configuration/options/) exist to changes things such as port, hostname, url, etc.
-
-### Serve site
-
-Serves the local Jekyll site and rebuilds anytime a source file changes.
-
-1. Navigate to the `docs` folder off of the root directory.
-2. Run the Jekyll site locally.
-
-   ```bash
-   bundle exec jekyll serve
-   ```
-
-3. Preview your local Jekyll site in your web browser at
-
-   [http://localhost:4000](http://localhost:4000)
-
-### Serve site (with with live-reload)
-
-Serves, builds and auto-reloads the page when whenever a source file changes.
-
-1. Navigate to the `docs` folder off of the root directory.
-2. Run the Jekyll site locally.
-
-   ```bash
-   bundle exec jekyll serve --livereload
-   ```
-
-3. Preview your local Jekyll site in your web browser at
-
-   [http://localhost:4000](http://localhost:4000)
-
-## Deployment
-
-Once all changes are completed and you are satisfied that everything looks fine, the site can be deployed to GitHub with a commit and push.
-
-1. Add all files to staging.
-
-   ```bash
-   git add .
-   ```
-
-2. Commit with a meaningful message such as "Day 1: Title of my first entry" or "r1d1: What I did today".
-
-   ```bash
-   git commit -m "Day 1: Deploy new log"
-   ```
-
-3. Push changes to GitHub
-
-   ```bash
-   git push
-   ```
-
-Once the changes are posted it takes GitHub 1-3 minutes to generate the site.
-
-## Enable GitHub Pages
-
-In order to view your site you'll need to go into your repository's Settings and enable GitHub Pages.
-
-1. Choose Settings from repo menu.
-
-   ![settings](./docs/src/fixed/settings.jpg)
-
-2. Click the button under Source.
-
-   ![settings](./docs/src/fixed/source.jpg)
-
-3. Choose "master branch /docs folder".
-
-   ![settings](./docs/src/fixed/docs-folder.jpg)
-
-   This will refresh the page and start the build process. There is no need to choose a theme since this will be picked up from the `_config.yml` file.
-
-4. You can navigate back down to the GitHub Pages section to view or click the link to the new site. This might take a minute or two to generate.
-
-   ![settings](./docs/src/fixed/pages-link.jpg)
-
-## Optimize Images
-
-A grunt task is provided that will monitor a "watch folder" and create optimized versions of any image files copied to that folder. This works for both JPGs and PNGs. and will help keep file sizes small for a log that may eventually contain 100+ images.
-
-The files will be sized at:
-
-- small (570 width)
-- large (800 width)
-
-The small image is sized to display properly within the template's page width. The large image is used as an expanded view if a user clicks on the small image. Both are optimized for size.
-
-Once the Grunt task is running, any image copied to source will be optimized and place in output. Here are the source and output folder paths.
-
-| Source folder       | Output folder          |
-| ------------------- | ---------------------- |
-| `/docs/src/images/` | `/docs/assets/images/` |
-
-An image named `my-file.jpg` will be created as follows.
-
-| source                       | small output (570w)                   | large output (800w)             |
-| ---------------------------- | ------------------------------------- | ------------------------------- |
-| /docs/src/images/my-file.jpg | /docs/assets/images/my-file_small.jpg | /docs/assets/images/my-file.jpg |
-
-The images can then be linked to in the output directory from the code log.
-
-### Grunt Install
-
-Run once to install package dependencies.
-
-1. Navigate to the `docs` folder off of the root directory.
-2. Install npm dependencies.
-
-   ```bash
-   npm install
-   ```
-
-### Grunt Usage
-
-Run each time to enable image optimization with watch folder.
-
-1. Navigate to the `docs` folder off of the root directory.
-2. Run grunt.
-
-   ```bash
-   npx grunt
-   ```
-
-### Embedding Images in Log
-
-Use this format to embed a **simple, non-clickable** image.
-
-```bash
-![image alt text](assets/images/my-file_small.jpg)
-```
-
-Use this format to embed a **clickable image** which displays a larger version on click.
-
-```bash
-[![image alt text](assets/images/my-file_small.jpg)](assets/images/my-file.jpg)
-```
-
-## Log Customization
-
-THIS SECTION IS A WIP... and still needs to be completed.
-
-This is a list of items that can be customized at the top of each page.
-
-- Header text
-- Header description
-- Header background color
-- Page background color
-- Link color
-
-These items can be customized for the site.
-
-- Favicon - replace icon in `docs/assets/images/icons/favicon.ico`
-- Heading text for default page - `/_config.yml`
-
-## Miscellaneous
-
-### Recommended Workflow
-
-- VSCode extensions that I use for my log.
-  - Code Spell Checker
-  - Markdown All in Once
-  - Markdown Emoji
-  - Markdown Preview Git
-  - markdownlint
-
-<!--
-1. Open folder
-2. Start up site in terminal
-3. Make changes
-4. other... -->
-
-### Under the Hood
-
-Here's how a sample set of Markdown files would be converted.
-
-- README.md -> index.html
-- log1.md -> log1.html
-- log2.md -> log2.html
-- notes.md -> notes.html
-
-Initially all log files are placed in the `/docs` folder. This will create the html files in the root of your GitHub Pages repo site.
-
-It is possible to create a folder structure to hold additional Markdown files. These would then be converted to HTML and hosted on GitHub Pages.
-
-Here's the mapping.
-
-| GitHub Repo source                                 | GitHub Pages URL                             |
-| -------------------------------------------------- | -------------------------------------------- |
-| `https://github.com/<username>/100-days-log/docs/` | `https://<username>.github.io/100-days-log/` |
-
-Here are some paths and their URL mapping.
-
-| GitHub Repo source            | GitHub Pages URL                                                    |
-| ----------------------------- | ------------------------------------------------------------------- |
-| `/docs/README.md`             | `https://<username>.github.io/100-days-log/index.html`              |
-| `/docs/log1.md`               | `https://<username>.github.io/100-days-log/log1.html`               |
-| `/docs/my-notes.md`           | `https://<username>.github.io/100-days-log/my-notes.html`           |
-| `/docs/logs/page1.md`         | `https://<username>.github.io/100-days-log/logs/page1.html`         |
-| `/docs/school-notes/cs101.md` | `https://<username>.github.io/100-days-log/school-notes/cs101.html` |
