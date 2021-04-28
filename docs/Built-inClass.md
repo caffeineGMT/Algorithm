@@ -264,7 +264,7 @@ Strings are constant; their values cannot be changed after they are created. Str
   Splits this string around matches of the given regular expression.
   This method works as if by invoking the two-argument split method with the given expression and a limit argument of zero. Trailing empty strings are therefore not included in the resulting array.
 - `public String[] split​(String regex, int limit)`
-  The limit parameter controls the number of times the pattern is applied and therefore affects the length of the resulting array.
+  The limit parameter controls the number of times the pattern is applied and therefore affects the length of the resulting array .
 - `\\s+` `\\w+` `\\W+`
 
 # StringBuilder
