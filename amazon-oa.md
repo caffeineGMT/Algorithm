@@ -5,6 +5,8 @@ Resource:
 * [https://algo.monster/dashboard](https://algo.monster/dashboard)
 * [https://www.teamblind.com/post/Amazon-OA-question-complilation-xjQosyo3](https://www.teamblind.com/post/Amazon-OA-question-complilation-xjQosyo3)
 
+
+
 ## Break a Palindrome
 
 {% embed url="https://leetcode.com/problems/break-a-palindrome/" %}
@@ -147,11 +149,31 @@ Sample input:
 
 ## Item in container
 
+{% embed url="https://www.1point3acres.com/bbs/interview/amazon-software-engineer-674708.html" %}
+
+[https://algo.monster/problems/items\_in\_containers](https://algo.monster/problems/items_in_containers)
+
+![](.gitbook/assets/1.png)
+
+![](.gitbook/assets/2.png)
+
+![](.gitbook/assets/3.png)
+
+![](.gitbook/assets/4.png)
+
+![](.gitbook/assets/5.png)
+
+![](.gitbook/assets/6.png)
+
+![](.gitbook/assets/7.png)
+
+![](.gitbook/assets/8.png)
+
+![](.gitbook/assets/9.png)
+
 ```java
     public static List<Integer> numberOfItems(String s, List<List<Integer>> ranges) {
-        // WRITE YOUR BRILLIANT CODE HERE
         int n = s.length();
-        return List.of();
         HashMap<Integer, Integer> prefixSums = new HashMap<>();
         int curSum = 0;
         for (int i = 0; i < n; i++) {
@@ -184,6 +206,15 @@ Sample input:
                 res.add(0);
         }
         return res;
+    }
+    
+    public static void main(String[] args) {
+        List<List<Integer>> ranges = new ArrayList<>();
+        ranges.add(new ArrayList<Integer>());
+        ranges.get(0).add(4);
+        ranges.get(0).add(6);
+        var result = numberOfItems("*|**|**|", ranges);
+        System.out.println(result.get(0));
     }
 ```
 
@@ -1245,7 +1276,29 @@ At this point, the `77%` threshold is met. The answer is `3`, because there is n
 
 #### Constraints:
 
-There is always at least one product, and the threshold is between `1` and `99` inclusive. All values are positive.  
+There is always at least one product, and the threshold is between `1` and `99` inclusive. All values are positive.
+
+Alternative description:
+
+[https://leetcode.com/problems/maximum-average-pass-ratio](https://leetcode.com/problems/maximum-average-pass-ratio)
+
+#### Which class should an extra student go to?
+
+We want to add an extra student to the class where he can make the most impact. Impact is measured as how much the average score the class can gain, i.e. `average score after adding the student - average score before adding the student`. We call this the "gain" by adding the student.
+
+#### "Gain" has diminishing returns
+
+Imagine a class with two students: one passing the other one failing. The passing ratio is 50%. By adding another passing student the ratio becomes `2/3 = 66%`. The gain is `66%-50%=16%`. However, adding one more student the ratio is `3/4=75%` with a `75%-16%=11%` gain. Therefore the gain reduces as more students are added.
+
+Since the gain of a class changes when we add a student to it, we have to keep track of the max gain as we add students. A good data structure for this is a max heap.
+
+#### Greedy + Heap
+
+To summarize, we use a max heap to keep track of the gains. While we have extra students, we pop the class with highest gain out of the heap, add the extra student to it and push it back into the max heap.
+
+#### Complexity
+
+Each time we pop from the heap it's `O(log(n))` and with `k` students and a final loop to find the sum, the total is `O(klog(n) + n)`.  
 
 
 * Solution: heap + greedy
