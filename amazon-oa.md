@@ -1528,7 +1528,7 @@ We want to remove the 2nd and 3rd horizontal divider and the 3rd vertical divide
 
 * Solution: greedy
   * same question as cutting cake
-  * when we have a condition where the out of bound condition need to be delt with out of a loop, we could adopt this doulbe while loop pattern where the outer loop will control the whole iteration will never be out of bound and the inner loop will deal with special condition. \`if\` condition only triggers when we are still in bound. maxH execution will trigger no matter if we are out of bound or reach a secial condition
+  * when we have a condition where the out of bound condition need to be dealt with out of a loop, we could adopt this doulbe while loop pattern where the outer loop will control the whole iteration will never be out of bound and the inner loop will deal with special condition. \`if\` condition only triggers when we are still in bound. maxH execution will trigger no matter if we are out of bound or reach a secial condition
   * time: O\(hlgh + vlgv + h + v\)
   * space: O\(1\)
 
@@ -2015,6 +2015,8 @@ Now, we can just sort the array and extract the subarray and call it a day, but 
 Therefore, we put all the values into a heap through heapify \(note: inserting one by one would defeat the purpose, as that would take `O(n log n)` time which is on the same magnitude as sorting\). We then pop one element at a time into a separate array, until the sum of the removed elements is larger than half the total sum. The removed elements are in descending order, so we reverse the result array before returning.
 
 For input of size `n` and output of size `m`, this approach takes `O(n + m log n)` as opposed to `O(n log n)` by sorting, which is faster in all cases and especially so if the output size is small.
+
+build heap using q.addAll\(Collection\) can heapify the collection and using O\(n\) time
 
 ```java
 public static List<Integer> optimizingBoxWeights(List<Integer> arr) {
