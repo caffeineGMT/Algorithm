@@ -1,10 +1,255 @@
----
-description: 'Resource: https://algo.monster/dashboard'
----
-
 # Amazon OA
 
+Resource: 
 
+* [https://algo.monster/dashboard](https://algo.monster/dashboard)
+* [https://www.teamblind.com/post/Amazon-OA-question-complilation-xjQosyo3](https://www.teamblind.com/post/Amazon-OA-question-complilation-xjQosyo3)
+
+## Break a Palindrome
+
+{% embed url="https://leetcode.com/problems/break-a-palindrome/" %}
+
+
+
+```java
+public String breakPalindrome(String palindrome) {
+    char[] s = palindrome.toCharArray();
+    int n = s.length;
+
+    for (int i = 0; i < n / 2; i++) {
+        if (s[i] != 'a') {
+            s[i] = 'a';
+            return String.valueOf(s);
+        }
+    }
+    s[n - 1] = 'b';
+
+    return n < 2 ? "" : String.valueOf(s);
+}
+```
+
+## Count of Smaller Numbers after Self \| Number of Swaps to Sort \| 
+
+  
+You are given an integer array nums and you have to return a new counts array. The counts array has the property where `counts[i]` is the number of smaller elements to the right of `nums[i]`.
+
+Input:
+
+```text
+    [5,2,6,1]
+```
+
+Output:
+
+```text
+    [2,1,1,0]
+```
+
+Explanation:
+
+For the number 5, there are 2 numbers smaller than it after it. \(2 and 1\)
+
+For the number 2, there is 1 number smaller than it after it. \(1\)
+
+For the number 6, there is also 1 number smaller than it after it. \(1\)
+
+For the number 1, there are no numbers smaller than it after it.
+
+Hence, we have `[2, 1, 1, 0]`.
+
+Another way to phrase the question is:
+
+If we sort the array by finding the smallest pair `i, j` where `i < j` and `a[i] > a[j]` how many swaps are needed?
+
+To answer that question we just have to sum up the numbers in the above output array: `2 + 1 + 1 = 5` swaps.
+
+A third way to phrase the question is
+
+Given an array and a sorting algorithm, the sorting algorithm will do a selection swap. Find the number of swaps to sort the array.  
+Sample input:  
+\[5,4,1,2\] -&gt; pair \(5,4\) -&gt; \[4,5,1,2\] -&gt; pair \(4,1\) -&gt; \[1,5,4,2\] -&gt; pair\(5,4\) -&gt; \[1,4,5,2\] -&gt; pair\(4,2\) -&gt; \[1,2,5,4\] -&gt; pair\(5,4\) -&gt; \[1,2,4,5\].
+
+```java
+    class Item {
+        int val;
+        int index;
+        Item() {}
+        Item(int val, int index) {
+            this.val = val;
+            this.index = index;
+        }
+    }
+    public List<Integer> countSmaller(int[] nums) {
+        List<Integer> result = new ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            return result;
+        }
+        
+        Item[] items = new Item[nums.length];
+        Item[] temp = new Item[nums.length];
+        int[] count = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            items[i] = new Item(nums[i], i);
+        }
+        
+        mergeSort(items, 0, nums.length - 1, temp, count);
+        
+        for (int item: count) {
+            result.add(item);
+        }
+        
+        return result;
+    }
+    
+    private void mergeSort(Item[] items, int start, int end, Item[] temp, int[] count){
+        if (start >= end) {
+            return;
+        }
+        
+        int mid = start + (end - start) / 2;
+        mergeSort(items, start, mid, temp, count);
+        mergeSort(items, mid + 1, end, temp, count);
+        
+        merge(items, start, end, temp, count);
+    }
+    
+    private void merge(Item[] items, int start, int end, Item[] temp, int[] count) {
+        int mid = start + (end - start) / 2;
+        int left = start;
+        int right = mid + 1;
+        int index = start;
+        int rightCount = 0;
+        
+        while (left <= mid && right <= end) {
+            if (items[left].val <= items[right].val) {
+                count[items[left].index] += rightCount;
+                temp[index++] = items[left++];
+            } else {
+                rightCount++;
+                temp[index++] = items[right++];
+            }
+        }
+        
+        while (left <= mid) {
+            count[items[left].index] += rightCount;
+            temp[index++] = items[left++];
+        }
+        
+        while (right <= end) {
+            temp[index++] = items[right++];
+        }
+        
+        for (int i = start; i <= end; i++) {
+            items[i] = temp[i];
+        }
+    }
+```
+
+## Item in container
+
+```java
+    public static List<Integer> numberOfItems(String s, List<List<Integer>> ranges) {
+        // WRITE YOUR BRILLIANT CODE HERE
+        int n = s.length();
+        return List.of();
+        HashMap<Integer, Integer> prefixSums = new HashMap<>();
+        int curSum = 0;
+        for (int i = 0; i < n; i++) {
+            if (s.charAt(i) == '|')
+                prefixSums.put(i, curSum);
+            else
+                curSum++;
+        }
+        int[] leftBounds = new int[n];
+        int last = -1;
+        for (int i = 0; i < n; i++) {
+            if (s.charAt(i) == '|')
+                last = i;
+            leftBounds[i] = last;
+        }
+        int[] rightBounds = new int[n];
+        last = -1;
+        for (int i = n - 1; i >= 0; i--) {
+            if (s.charAt(i) == '|')
+                last = i;
+            rightBounds[i] = last;
+        }
+        ArrayList<Integer> res = new ArrayList<>();
+        for (int i = 0; i < ranges.size(); i++) {
+            int start = rightBounds[ranges.get(i).get(0)];
+            int end = leftBounds[ranges.get(i).get(1)];
+            if (start != -1 && end != -1 && start < end)
+                res.add(prefixSums.get(end) - prefixSums.get(start));
+            else
+                res.add(0);
+        }
+        return res;
+    }
+```
+
+## Substrings of Size K with Distinct Characters \| HackerRank SHL
+
+Given a string `s` made up of lowercase alphabet characters, find all unique substrings containing distinct characters of length `k`.
+
+#### Examples
+
+**Example 1:**
+
+**Input: s = xabxcd, k = 4**
+
+**Output: \["abxc", "bxcd"\]**
+
+**Explanation:**
+
+Substrings of size `4` in `s` are `xabx`, `abxc`, and `bxcd`. However `x` repeats in the `xabx`, so it is not a valid substring made up of distinct characters.
+
+**Example 2:**
+
+**Input: s = aabcdbcd, k = 3**
+
+**Output: \["abc", "bcd", "cdb", "dbc"\]**
+
+**Explanation:**
+
+The substrings with distinct characters are `abc`, `bcd`, `cdb`, `dbc`, and again `bcd`. However, we are only looking for unique substrings, so we discard the last one.
+
+**Constraints:**
+
+`k` is a positive number less than or equal to `26`.  
+
+
+
+
+```java
+public static List<String> substrings(String s, int k) {
+    if (s == null || s.length() == 0 || k <= 0 || k > 26) {
+        return new ArrayList<String>();
+    }
+
+    int len = s.length();
+    Set<String> result = new HashSet<>();
+    Set<Character> set = new HashSet<>();
+    int i = 0, j = 0;
+
+    while (j < len) {
+        while (j < len && !set.contains(s.charAt(j)) && j - i < k) {
+            set.add(s.charAt(j));
+            j++;
+        }
+
+        if (j - i == k) {
+            result.add(s.substring(i, j));
+        }
+
+        set.remove(s.charAt(i));
+        i++;
+    }
+
+    List<String> temp = new ArrayList<>(result);
+
+    return temp;
+}
+```
 
 ## Nearest Cities
 
@@ -721,6 +966,8 @@ public static List<String> debtRecords(List<List<String>> debts) {
 
 ## Shopping Patterns
 
+[https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=672261](https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=672261)
+
 Shoe Monster, a popular shopping website for atheletic shoes, would like to know which shoes are frequently bought together.
 
 When a customer purchases two shoes together, we log an `edge` between the two products. Three shoes that are interconnected form a `triple`.
@@ -805,6 +1052,71 @@ The score for `{1,2,3}` is `0 + 1 + 1 = 2`.
 The score for `{2,3,4}` is `1 + 1 + 1 = 3`.
 
 Return `2`.
+
+```java
+    public int minTrioDegree(int n, int[][] edges) {
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
+        Map<Integer, Integer> degree = new HashMap<>();
+        for (int i = 1; i <= n; i++) {
+            graph.put(i, new HashSet<>());
+        }
+        for (int[] edge: edges) {
+            int u = edge[0], v = edge[1];
+            graph.get(Math.min(u, v)).add(Math.max(u, v));
+            degree.put(u, degree.getOrDefault(u, 0) + 1);
+            degree.put(v, degree.getOrDefault(v, 0) + 1);
+        }
+        
+        int ans = Integer.MAX_VALUE;
+        for (int i = 1; i <= n; i++) {
+            for (int j: graph.get(i)) {
+                for (int k: graph.get(j)) {
+                    if (graph.get(i).contains(k)) {
+                        ans = Math.min(ans, degree.get(i) + degree.get(j) + degree.get(k) - 6);
+                    }
+                }
+            }
+        }
+        
+        return ans == Integer.MAX_VALUE ? -1 : ans;
+    }
+```
+
+```java
+    //v2
+    public static int shoppingPatterns(int productsNodes, List<Integer> productsFrom, List<Integer> productsTo) {
+        List<HashSet<Integer>> neighbors = IntStream.range(0, productsNodes).mapToObj(i -> new HashSet<Integer>()).collect(Collectors.toList());
+        for (int i = 0; i < productsFrom.size(); i++) {
+            // convert from 1-based to 0-based indexing
+            int u = productsFrom.get(i) - 1;
+            int v = productsTo.get(i) - 1;
+            neighbors.get(u).add(v);
+            neighbors.get(v).add(u);
+        }
+        int minSum = Integer.MAX_VALUE;
+        // all (u, v, w) where
+        // - (u, v), (v, w), (u, w) are neighbors (trio)
+        // - u < v < w (to avoid duplicates, as optimization)
+        for (int u = 0; u < neighbors.size(); u++) {
+            HashSet<Integer> u_ns = neighbors.get(u);
+            for (int v : u_ns) {
+                if (v < u)
+                    continue;
+                for (int w : u_ns) {
+                    HashSet<Integer> v_ns = neighbors.get(v);
+                    if (w < u || !v_ns.contains(w))
+                        continue;
+                    HashSet<Integer> w_ns = neighbors.get(w);
+                    // each neighbors set include the other 2 in the trio,
+                    // which we don't count in product score
+                    int curSum = u_ns.size() + v_ns.size() + w_ns.size() - 6;
+                    minSum = Math.min(minSum, curSum);
+                }
+            }
+        }
+        return minSum != Integer.MAX_VALUE ? minSum : -1;
+    }
+```
 
 ## Most Common Word with Exclusion List
 
