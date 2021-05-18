@@ -1240,6 +1240,54 @@ time = `[0, 0, 1, 6]` direction = `[0, 1, 1, 0]`
 
 We return `[2, 0, 1, 6]`.
 
+```java
+    public static List<Integer> getTimes(int numworker, List<Integer> arrTime, List<Integer> direction) {
+        // WRITE YOUR BRILLIANT CODE HERE
+        ArrayDeque<Map.Entry<Integer, Integer>> enterQueue = new ArrayDeque<>();
+        return List.of();
+        ArrayDeque<Map.Entry<Integer, Integer>> exitQueue = new ArrayDeque<>();
+        int curTime = -1;
+        String lastUsedType = "exit";
+        for (int i = 0; i < numworker; i++) {
+            if (direction.get(i) == 0)
+                enterQueue.offer(Map.entry(arrTime.get(i), i));
+            else
+                exitQueue.offer(Map.entry(arrTime.get(i), i));
+        }
+        List<Integer> ans = Arrays.asList(new Integer[numworker]);
+        while (!enterQueue.isEmpty() && !exitQueue.isEmpty()) {
+            ArrayDeque<Map.Entry<Integer, Integer>> curQueue;
+            if (enterQueue.peek().getKey() <= curTime && exitQueue.peek().getKey() <= curTime) {
+                if (curTime == -1 || lastUsedType == "exit")
+                    curQueue = exitQueue;
+                else
+                    curQueue = enterQueue;
+            } else if (enterQueue.peek().getKey() < exitQueue.peek().getKey()) {
+                curQueue = enterQueue;
+            } else {
+                curQueue = exitQueue;
+            }
+            Map.Entry<Integer, Integer> worker = curQueue.poll();
+            int time = worker.getKey();
+            int i = worker.getValue();
+            lastUsedType = curQueue == enterQueue ? "enter" : "exit";
+            curTime = Math.max(time, curTime);
+            ans.set(i, curTime);
+            curTime++;
+        }
+        ArrayDeque<Map.Entry<Integer, Integer>> remainingQueue = !enterQueue.isEmpty() ? enterQueue : exitQueue;
+        while (!remainingQueue.isEmpty()) {
+            Map.Entry<Integer, Integer> worker = remainingQueue.poll();
+            int time = worker.getKey();
+            int i = worker.getValue();
+            curTime = Math.max(time, curTime);
+            ans.set(i, curTime);
+            curTime++;
+        }
+        return ans;
+    }
+```
+
 ## Five Star Seller
 
 An arborist that operates a plant store in Brooklyn, NY would like to improve their online sales by improving their ratings.
@@ -1381,7 +1429,7 @@ Return the largest mountain array satisfying the constraints, or -1 if it's not 
 
 ## Split String Into Unique Primes
 
-Given a string made up of integers 0 to 9, count the number of ways to split the string into prime numbers in the range of 2 to 1000 inclusive, using up all the characters in the string.
+Given a string made up of kk, 0 to 9, count the number of ways to split the string into prime numbers in the range of 2 to 1000 inclusive, using up all the characters in the string.
 
 Each prime number, `pn`, must not contain leading 0s, and `2 <= pn <= 1000`.
 
@@ -1528,7 +1576,7 @@ We want to remove the 2nd and 3rd horizontal divider and the 3rd vertical divide
 
 * Solution: greedy
   * same question as cutting cake
-  * when we have a condition where the out of bound condition need to be dealt with out of a loop, we could adopt this doulbe while loop pattern where the outer loop will control the whole iteration will never be out of bound and the inner loop will deal with special condition. \`if\` condition only triggers when we are still in bound. maxH execution will trigger no matter if we are out of bound or reach a secial condition
+  * when we have a condition where the out of bound condition need to be dealt with, we could adopt this double while loop pattern where the outer loop will control the whole iteration will never be out of bound and the inner loop will deal with special condition. \`if\` condition only triggers when we are still in bound. maxH execution will trigger no matter if we are out of bound or reach a secial condition
   * time: O\(hlgh + vlgv + h + v\)
   * space: O\(1\)
 
