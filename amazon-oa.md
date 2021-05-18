@@ -1743,6 +1743,12 @@ public static int minCostToConnectNodes(int n, List<List<Integer>> edges, List<L
 
 ## Find All Combination of Numbers that Sum to a Target \| Shopping Options
 
+{% embed url="https://leetcode.com/discuss/interview-question/1210472/amazon-online-assessment-question" %}
+
+description: [https://www.chegg.com/homework-help/questions-and-answers/2-shopper-s-delight-shopaholic-buy-pair-jeans-pair-shoes-skirt-top-budgeted-dollars-given--q58094309](https://www.chegg.com/homework-help/questions-and-answers/2-shopper-s-delight-shopaholic-buy-pair-jeans-pair-shoes-skirt-top-budgeted-dollars-given--q58094309)
+
+explaination: [https://www.youtube.com/watch?v=9dkMC7\_Afsc](https://www.youtube.com/watch?v=9dkMC7_Afsc)
+
 Given four arrays of integers and an integer `limit`. We need to pick 1 number from each of the four arrays such that the sum of the selected numbers is smaller or equal to `limit`. Find the number of valid combinations.
 
 #### Example
@@ -1759,11 +1765,14 @@ limit = 11
 
 **Output: 4**
 
+
+
 We can pick the numbers in the following four ways: `[2, 5, 2, 1], [2, 5, 3, 1], [2, 5, 2, 2], [3, 5, 2, 1]`. So return 4.
 
-* Solution: knapsack dp
+* Solution1: knapsack dp
   * time: O\(4 \* limit \* \(a + b + c + d\)\)
   * space: O\(4 \* limit\)
+  * cons: if limit is huge, this could lead to huge memory consumption and time is depend on limit
 
 ```java
 public static int numberOfOptions(List<Integer> a, List<Integer> b, List<Integer> c, List<Integer> d, int limit) {
@@ -1800,7 +1809,82 @@ private static void induction(int[][] dp, List<Integer> list, int i, int j) {
 }
 ```
 
+```java
+//v2:
+    private static class Acc {
+        // cost of (lowest, highest) combination
+        public int low;
+        public int high;
+        // number of all combinations, ignoring limit
+        public int combs;
+        public Acc(int low, int high, int combs) {
+            this.low = low;
+            this.high = high;
+            this.combs = combs;
+        }
+    }
+    private static int search(int item, int limit, List<List<Integer>> allNumbers, ArrayList<Acc> accs, HashMap<Entry<Integer, Integer>, Integer> memo) {
+        Entry<Integer, Integer> key = Map.entry(item, limit);
+        if (memo.containsKey(key))
+            return memo.get(key);
+        // for persistent scan optimization
+        List<Integer> num0 = allNumbers.get(0);
+        // right boundary of `num0` with `<= left` number
+        int b0 = num0.size();
+        List<Integer> numbers = allNumbers.get(item - 1);
+        Acc acc = accs.get(item - 1);
+        int ways = 0;
+        for (int number : numbers) {
+            int left = limit - number;
+            // extreme case optimization
+            if (left < acc.low) {
+                // not enough for cheapest combination, so 0 options;
+                // same for higher `number`, so break
+                break;
+            }
+            if (left >= acc.high) {
+                // enough for all combinations
+                ways += acc.combs;
+                continue;
+            }
+            // persistent scan optimization
+            if (item == 2) {
+                // will not go out of bounds because of `left < low` check
+                while (num0.get(b0 - 1) > left)
+                    b0--;
+                // boundary is persisted between loops,
+                // so faster than a linear scan every time
+                ways += b0;
+                continue;
+            }
+            ways += search(item - 1, left, allNumbers, accs, memo);
+        }
+        memo.put(key, ways);
+        return ways;
+    }
+    
+    public static int numberOfOptions(List<Integer> a, List<Integer> b, List<Integer> c, List<Integer> d, int limit) {
+        List<List<Integer>> allNumbers = List.of(a, b, c, d);
+        int n = allNumbers.size();
+        for (List<Integer> numbers : allNumbers)
+            numbers.sort(null);
+        ArrayList<Acc> accs = new ArrayList<>();
+        accs.add(new Acc(0, 0, 1));
+        for (List<Integer> numbers : allNumbers) {
+            Acc last = accs.get(accs.size() - 1);
+            int low = numbers.get(0) + last.low;
+            int high = numbers.get(numbers.size() - 1) + last.high;
+            int combs = numbers.size() * last.combs;
+            accs.add(new Acc(low, high, combs));
+        }
+        HashMap<Entry<Integer, Integer>, Integer> memo = new HashMap<>();
+        return search(n, limit, allNumbers, accs, memo);
+    }
+```
+
 ## Earliest Time To Complete Deliveries \| Schedule Deliveries
+
+
 
 You are the manager of logistics for a burger franchise, and you are tasked with delivering supplies as quickly as possible.
 
