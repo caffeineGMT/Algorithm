@@ -4,6 +4,7 @@ Resource:
 
 * [https://algo.monster/dashboard](https://algo.monster/dashboard)
 * [https://www.teamblind.com/post/Amazon-OA-question-complilation-xjQosyo3](https://www.teamblind.com/post/Amazon-OA-question-complilation-xjQosyo3)
+* [http://travelbynumbers.ca/problems/](http://travelbynumbers.ca/problems/amazon_oa_find_all_combination_of_numbers_sum_to_target)
 
 
 
@@ -1809,6 +1810,8 @@ private static void induction(int[][] dp, List<Integer> list, int i, int j) {
 }
 ```
 
+* Solution 2: cannot understand
+
 ```java
 //v2:
     private static class Acc {
@@ -1880,6 +1883,131 @@ private static void induction(int[][] dp, List<Integer> list, int i, int j) {
         HashMap<Entry<Integer, Integer>, Integer> memo = new HashMap<>();
         return search(n, limit, allNumbers, accs, memo);
     }
+```
+
+* Solution3: 4sum variant
+
+  * [https://www.youtube.com/watch?v=9dkMC7\_Afsc](https://www.youtube.com/watch?v=9dkMC7_Afsc)
+  * [https://pcs.cs.cloud.vt.edu/submissions/12969](https://pcs.cs.cloud.vt.edu/submissions/12969)
+  * time: O\(n^2 \* lgn^2 + m^2 lgn^2\)
+  * space: O\(n^2 + m^2\)
+  * pros: decoupled with limit
+
+```java
+//v1
+class Solution {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        int a = reader.nextInt();
+        int[] arrA = new int[a];
+        for (int i = 0; i < a; i++) arrA[i] = reader.nextInt();
+        int b = reader.nextInt();
+        int[] arrB = new int[b];
+        for (int i = 0; i < b; i++) arrB[i] = reader.nextInt();
+        int c = reader.nextInt();
+        int[] arrC = new int[c];
+        for (int i = 0; i < c; i++) arrC[i] = reader.nextInt();
+        int d = reader.nextInt();
+        int[] arrD = new int[d];
+        for (int i = 0; i < d; i++) arrD[i] = reader.nextInt();
+        int budget = reader.nextInt();
+        
+        Integer[] ab = new Integer[a * b];
+        int idx_ab = 0;
+        for (int i = 0; i < a; i++) {
+            for (int j = 0; j < b; j++) {
+                ab[idx_ab++] = arrA[i] + arrB[j];
+            }
+        }
+
+        Integer[] cd = new Integer[c * d];
+        int idx_cd = 0;
+        for (int i = 0; i < c; i++) {
+            for (int j = 0; j < d; j++) {
+                cd[idx_cd++] = arrC[i] + arrD[j];
+            }
+        }
+
+        Arrays.sort(ab);
+        Arrays.sort(cd, (num1, num2)-> {
+            return num2 - num1;
+        });
+
+        int l = 0, r = 0;
+        long result = 0;
+        while (l < a * b && r < c * d) {
+            if (ab[l] + cd[r] > budget) {
+                r++;
+            } else {
+                result += c * d - r;
+                l++;
+            }
+        }
+
+        System.out.println(result);
+    }
+}
+```
+
+```java
+//v2
+import java.util.*;
+public class Shopping {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        int a = reader.nextInt();
+        int[] arrA = new int[a];
+        for (int i = 0; i < a; i++) arrA[i] = reader.nextInt();
+        int b = reader.nextInt();
+        int[] arrB = new int[b];
+        for (int i = 0; i < b; i++) arrB[i] = reader.nextInt();
+        int c = reader.nextInt();
+        int[] arrC = new int[c];
+        for (int i = 0; i < c; i++) arrC[i] = reader.nextInt();
+        int d = reader.nextInt();
+        int[] arrD = new int[d];
+        for (int i = 0; i < d; i++) arrD[i] = reader.nextInt();
+        int budget = reader.nextInt();
+        int ab = a * b;
+        int[] arrAB = new int[ab];
+        for (int i = 0; i < a; i++) {
+            for (int j = 0; j < b; j++) {
+                arrAB[i * b + j] = arrA[i] + arrB[j];
+            }
+        }
+        int cd = c * d;
+        int[] arrCD = new int[cd];
+        for (int i = 0; i < c; i++) {
+            for (int j = 0; j < d; j++) {
+                arrCD[i * d + j] = arrC[i] + arrD[j];
+            }
+        }
+        Arrays.sort(arrAB);
+        Arrays.sort(arrCD);
+        reverse(arrCD, arrCD.length);
+        long sum = 0;
+        int end = 0;
+        for (int i = 0; i < arrAB.length; i++) {
+            int val = arrAB[i];
+            int left = budget - val;
+            while (end < arrCD.length && arrCD[end] > left) end++;
+            if (end == arrCD.length) break;
+            sum += (arrCD.length - end);
+        }
+        System.out.println(sum);
+    }
+    
+    static void reverse(int a[], int n) 
+    { 
+        int i, k, t; 
+        for (i = 0; i < n / 2; i++) { 
+            t = a[i]; 
+            a[i] = a[n - i - 1]; 
+            a[n - i - 1] = t; 
+        } 
+    } 
+
+}
 ```
 
 ## Earliest Time To Complete Deliveries \| Schedule Deliveries
