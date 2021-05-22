@@ -8,6 +8,123 @@ Resource:
 
 
 
+## Mininum Total Container Size
+
+{% embed url="https://leetcode.com/discuss/interview-question/958494/Minimum-Total-Container-Size-or-Interview-Question" %}
+
+{% embed url="https://algo.monster/problems/minimum\_total\_container\_size" %}
+
+[https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/](https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/)
+
+Imagine we have moved `i` boxes in total after `d` days, and the total truck size we have used is `s(d, i)`. Notice that for fixed `i` and `d`, having a lower `s` is always better than a higher `s` \(since the available choices for later days are the same\).
+
+For `d > 0`, we must have moved some number of boxes during the last day - let's say `k` boxes. Then `s(d, i)` is the sum of `s(d - 1, i - k)` \(the total truck size when we moved `i - k` boxes after `d - 1` days\) and the max of truck sizes from box `i - k` to box `i` \(truck size we used during the last day\). So the minimum possible `s(d, i)` is the minimum of all `s(d - 1, i - k) + max(sizes[i - k..i])` for all `k` in `1..i + 1` \(at least 1 every day, and at most all boxes\).
+
+For `d = 0`, we haven't moved anything yet, so `s(d=0, i=0) = 0` \(total truck size 0\), and `s(d=0, i)` is impossible for `i != 0` \(moved non-0 boxes in 0 days\) which we will represent with infinity / int max \(since we want minimum\).
+
+So we have an recurrence relation:
+
+* `s(d=0, i=0) = 0`
+* `s(d=0, i!=0) = inf`
+* `s(d!=0, i) = min(s(d - 1, i - k) + max(sizes[i - k..i]) for k = 1..i + 1)`
+
+We can write this out as a \(memoized\) recursive function \(top-down dynamic programming\):
+
+```java
+private static int dfs(int day, int box, List<Integer> boxSizes, HashMap<Entry<Integer, Integer>, Integer> memo) {
+        if (day == 0)
+            return box == 0 ? 0 : Integer.MAX_VALUE;
+        Entry<Integer, Integer> key = Map.entry(day, box);
+        if (memo.containsKey(key))
+            return memo.get(key);
+        int res = Integer.MAX_VALUE;
+        // number of boxes moved during the last day
+        for (int last = 1; last < box + 1; last++) {
+            // max size of boxes moved during the last day
+            int mx = boxSizes.subList(box - last, box).stream().mapToInt(Integer::intValue).max().getAsInt();
+            int rec = dfs(day - 1, box - last, boxSizes, memo);
+            if (rec != Integer.MAX_VALUE)
+                res = Math.min(res, rec + mx);
+        }
+        memo.put(key, res);
+        return res;
+    }
+    public static int minContainerSize(List<Integer> boxSizes, int days) {
+        // WRITE YOUR BRILLIANT CODE HERE
+        HashMap<Entry<Integer, Integer>, Integer> memo = new HashMap<>();
+        return dfs(days, boxSizes.size(), boxSizes, memo);
+    }
+```
+
+## Labeling System
+
+```java
+def labeling_system(original: str, limit: int) -> str:
+    counter = Counter(original)
+    heap = []
+    for char, count in counter.items():
+        heappush(heap, (-ord(char), char, count)) # -ord(char) to put largest character at the top
+    res = []
+    cur = None
+    while heap:
+        if cur is None:
+            cur = heappop(heap)
+        _, char, count = cur
+        next = heappop(heap) # pop the next char out and set it as cur later to avoid consecutive chars
+        if count <= limit:
+            res.append(char * count)
+        else:
+            heappush(heap, (-ord(char), char, count - limit))
+            res.append(char * limit)
+        cur = next
+    _, char, count = cur
+    res.append(char * min(count, limit))
+    return ''.join(res)
+```
+
+## Throttling Gateway
+
+```java
+static class Item {
+        int time;
+        int count;
+        public Item(int time, int count) {
+            this.time = time;
+            this.count = count;
+        }
+    }
+    static class Limiter {
+        int duration;
+        int limit;
+        ArrayDeque<Item> queue = new ArrayDeque<>();
+        int accum = 0;
+        public Limiter(int duration, int limit) {
+            this.duration = duration;
+            this.limit = limit;
+        }
+        public void append(int time, int count) {
+            while (!queue.isEmpty() && queue.peekFirst().time <= time - duration)
+                accum -= queue.pollFirst().count;
+            queue.offerLast(new Item(time, count));
+            accum += count;
+        }
+    }
+    public static int throttlingGateway(List<Integer> transactionTime) {
+        // WRITE YOUR BRILLIANT CODE HERE
+        List<Limiter> qs = List.of(new Limiter(1, 3), new Limiter(10, 20), new Limiter(60, 60));
+        int dropped = 0;
+        Map<Integer, List<Integer>> times = transactionTime.stream().collect(Collectors.groupingBy(i -> i));
+        for (Entry<Integer, List<Integer>> e : times.entrySet()) {
+            int time = e.getKey();
+            int count = e.getValue().size();
+            for (Limiter q : qs)
+                q.append(time, count);
+            dropped += Math.max(0, qs.stream().mapToInt(q -> q.accum - q.limit).max().getAsInt());
+        }
+        return dropped;
+    }
+```
+
 ## Break a Palindrome
 
 {% embed url="https://leetcode.com/problems/break-a-palindrome/" %}
@@ -1204,6 +1321,8 @@ public static String mostCommonWord(String paragraph, List<String> banned) {
 
 ## Turnstile
 
+[https://leetcode.com/discuss/interview-question/699973/goldman-sachs-oa-turnstile](https://leetcode.com/discuss/interview-question/699973/goldman-sachs-oa-turnstile)
+
 A warehouse has one loading dock that workers use to load and unload goods.
 
 Warehouse workers carrying the goods arrive at the loading dock at different times. They form two queues, a "loading" queue and an "unloading" queue. Within each queue, the workers are ordered by the time they arrive at the dock.
@@ -1245,7 +1364,6 @@ We return `[2, 0, 1, 6]`.
     public static List<Integer> getTimes(int numworker, List<Integer> arrTime, List<Integer> direction) {
         // WRITE YOUR BRILLIANT CODE HERE
         ArrayDeque<Map.Entry<Integer, Integer>> enterQueue = new ArrayDeque<>();
-        return List.of();
         ArrayDeque<Map.Entry<Integer, Integer>> exitQueue = new ArrayDeque<>();
         int curTime = -1;
         String lastUsedType = "exit";
@@ -1287,6 +1405,87 @@ We return `[2, 0, 1, 6]`.
         }
         return ans;
     }
+```
+
+```java
+    // more clear
+    public static int[] getTimes(int[] times, int[] directions) {
+        int[] res = new int[times.length];
+
+        Queue<Integer> entry = new LinkedList<>();
+        Queue<Integer> exit = new LinkedList<>();
+        for (int i = 0; i < directions.length; i++) {
+            if (directions[i] == 0) {
+                entry.add(i);
+            } else {
+                exit.add(i);
+            }
+        }
+
+        int curTime = 0;
+        int prev = 1;
+        int lastPassTime = 0;
+        while (!exit.isEmpty() && !entry.isEmpty()) {
+            int curExit = exit.peek();
+            int curEntry = entry.peek();
+            int timeExit = Math.max(curTime, times[curExit]);
+            int timeEntry = Math.max(curTime, times[curEntry]);
+
+            if (timeEntry == timeExit) {
+                if (timeEntry - lastPassTime > 1) { // check prev work or not
+                    exit.poll();
+                    res[curExit] = timeExit;
+                    prev = 1;
+                    lastPassTime = timeExit;
+                    curTime = timeExit;
+                } else {
+                    if (prev == 1) {
+                        exit.poll();
+                        res[curExit] = timeExit;
+                        prev = 1;
+                        lastPassTime = timeExit;
+                        curTime = timeExit;
+                    } else {
+                        entry.poll();
+                        res[curEntry] = timeEntry;
+                        prev = 0;
+                        lastPassTime = timeEntry;
+                        curTime = timeEntry;
+                    }
+                }
+            } else if (timeEntry < timeExit) {
+                entry.poll();
+                res[curEntry] = timeEntry;
+                prev = 0;
+                lastPassTime = timeEntry;
+                curTime = timeEntry;
+            } else {
+                exit.poll();
+                res[curExit] = timeExit;
+                prev = 1;
+                lastPassTime = timeExit;
+                curTime = timeExit;
+            }
+            curTime++;
+        }
+
+        while (!entry.isEmpty()) {
+            int curEntry = entry.poll();
+            int timeEntry = Math.max(curTime, times[curEntry]);
+            res[curEntry] = timeEntry;
+            curTime = Math.max(curTime, timeEntry);
+            curTime++;
+        }
+        while (!exit.isEmpty()) {
+            int curExit = exit.poll();
+            int timeExit = Math.max(curTime, times[curExit]);
+            res[curExit] = timeExit;
+            curTime = Math.max(curTime, timeExit);
+            curTime++;
+        }
+        return res;
+    }
+
 ```
 
 ## Five Star Seller
