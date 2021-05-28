@@ -5,7 +5,7 @@
 * [JiuZhang](jiuzhang.md)
 * [LeetCode & LintCode](leetcode-and-lintcode.md)
 * [Amazon OA](amazon-oa.md)
-* [Amazon VO](amazon-vo.md)
+* [Amazon VO 算法面经](amazon-vo.md)
 * [Microsoft OA](microsoft-oa.md)
 * [Microsoft VO](microsoft-vo.md)
 * [ByteDance](bytedance.md)
