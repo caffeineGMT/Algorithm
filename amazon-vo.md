@@ -11,6 +11,12 @@
 * \(bonus\) input is a TreeNode. update all the node values with the sum of its all children \(in-order traversal, update self from left and right, return sum\)
 * Minimum Path Sum \(dp on matrix\)
 * Number of Distint Island\(path signature + set\)
+* Simplify Paths\(split + stack\)
+* Pow\(x,y\) \(divideConquer / bit\)
+* Evaluate Division \(graph dfs\)
+* Minimum Genetic Mutation \(bfs / dfs, same as word ladder\)
+* First Unique Character in a String \(2 pass map, can be optimized based on different scenario in both space and time\)
+* Interval List Intersections\(merge sort + max & min for start and end\)
 
 
 
