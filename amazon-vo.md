@@ -29,7 +29,12 @@ Coded
 * Search Suggestions System \(trie search\)
 * Subarray Sum Equals K \(prefix sum\)
 * partition label \(greedy, shoot far, expand window, slide window\)
-
+* Longest Univalue Path \(l, r, leftMost, rightMost, global\)
+* Top K Frequent Words \(pq: minheap, lexicographically bigger\)
+* Most Common Word\(replaceAll, split, set\)
+* Rotting Oranges \(same as walls and gates, start from rotten oranges and keep fress counts\)
+* Insert Delete GetRandom O\(1\) \(\)
+* 
 Reviewed
 
 * Robot Bounded In Circle \(dir = \(dir + 3\) % 4 / dir = \(dir + 1\) % 4\)
