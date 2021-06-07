@@ -8,7 +8,7 @@
 * [Amazon VO 算法面经](amazon-vo.md)
 * [Microsoft OA](microsoft-oa.md)
 * [Microsoft VO](microsoft-vo.md)
-* [ByteDance](bytedance.md)
+* [ByteDance VO](bytedance.md)
 * [FaceBook](facebook.md)
 * [LinkedIn](linkedin.md)
 * [Google](google.md)

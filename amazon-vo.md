@@ -2,21 +2,37 @@
 
 ## VO cheatsheet
 
+Coded
+
 * 3sum\(fix 1 ptr, then 2sum\)
 * Random Pick with Weight\(prefixSum + binary search\)
-* write a function that 50% return 1, 50% return 0. follow up: utilize the function you just wrote, write another function 75% return 1 and 25% return 0 \(bitw\)
+* write a function that 50% return 1, 50% return 0. follow up: utilize the function you just wrote, write another function 75% return 1 and 25% return 0 \(bit\)
 
 {% embed url="https://massivealgorithms.blogspot.com/2016/08/generate-0-and-1-with-25-and-75.html" %}
 
 * \(bonus\) input is a TreeNode. update all the node values with the sum of its all children \(in-order traversal, update self from left and right, return sum\)
 * Minimum Path Sum \(dp on matrix\)
-* Number of Distint Island\(path signature + set\)
 * Simplify Paths\(split + stack\)
 * Pow\(x,y\) \(divideConquer / bit\)
 * Evaluate Division \(graph dfs\)
 * Minimum Genetic Mutation \(bfs / dfs, same as word ladder\)
 * First Unique Character in a String \(2 pass map, can be optimized based on different scenario in both space and time\)
-* Interval List Intersections\(merge sort + max & min for start and end\)
+* Interval List Intersections\(merge 2 sorted list + max & min for start and end\)
+* Count Good Nodes in Binary Tree\(preorder dfs\)
+* Non-overlapping Intervals\(reverse thinking + sort based on end + dp\)
+* Design HashMap\(bucket + linkedlist\)
+* Bulls and Cows\(hashmap, 1 pass, look before\)
+* Copy List with Random Pointer \(similar to clone graph \| O\(1\) space: change in-place, copy, then rewind\)
+* Happy Number \(set / list cycle I O\(1\) space\)
+* Design In-Memory File System \(trie-like structure\)
+* Design File System\(same as trie\)
+* Search Suggestions System \(trie search\)
+* Subarray Sum Equals K \(prefix sum\)
+* partition label \(greedy, shoot far, expand window, slide window\)
+
+Reviewed
+
+* Robot Bounded In Circle \(dir = \(dir + 3\) % 4 / dir = \(dir + 1\) % 4\)
 
 
 
