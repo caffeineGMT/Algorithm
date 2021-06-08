@@ -4,42 +4,40 @@
 
 Coded
 
-* 3sum\(fix 1 ptr, then 2sum\)
-* Random Pick with Weight\(prefixSum + binary search\)
-* write a function that 50% return 1, 50% return 0. follow up: utilize the function you just wrote, write another function 75% return 1 and 25% return 0 \(bit\)
-
-{% embed url="https://massivealgorithms.blogspot.com/2016/08/generate-0-and-1-with-25-and-75.html" %}
-
-* \(bonus\) input is a TreeNode. update all the node values with the sum of its all children \(in-order traversal, update self from left and right, return sum\)
-* Minimum Path Sum \(dp on matrix\)
-* Simplify Paths\(split + stack\)
-* Pow\(x,y\) \(divideConquer / bit\)
-* Evaluate Division \(graph dfs\)
-* Minimum Genetic Mutation \(bfs / dfs, same as word ladder\)
-* First Unique Character in a String \(2 pass map, can be optimized based on different scenario in both space and time\)
-* Interval List Intersections\(merge 2 sorted list + max & min for start and end\)
-* Count Good Nodes in Binary Tree\(preorder dfs\)
-* Non-overlapping Intervals\(reverse thinking + sort based on end + dp\)
-* Design HashMap\(bucket + linkedlist\)
-* Bulls and Cows\(hashmap, 1 pass, look before\)
-* Copy List with Random Pointer \(similar to clone graph \| O\(1\) space: change in-place, copy, then rewind\)
-* Happy Number \(set / list cycle I O\(1\) space\)
-* Design In-Memory File System \(trie-like structure\)
-* Design File System\(same as trie\)
-* Search Suggestions System \(trie search\)
-* Subarray Sum Equals K \(prefix sum\)
-* partition label \(greedy, shoot far, expand window, slide window\)
-* Longest Univalue Path \(l, r, leftMost, rightMost, global\)
-* Top K Frequent Words \(pq: minheap, lexicographically bigger\)
-* Most Common Word\(replaceAll, split, set\)
-* Rotting Oranges \(same as walls and gates, start from rotten oranges and keep fress counts\)
-* Insert Delete GetRandom O\(1\) \(\)
-* 
+1. 3sum\(fix 1 ptr, then 2sum\)
+2. Random Pick with Weight\(prefixSum + binary search\)
+3. write a function that 50% return 1, 50% return 0. follow up: utilize the function you just wrote, write another function 75% return 1 and 25% return 0 \(bit\) \([https://massivealgorithms.blogspot.com/2016/08/generate-0-and-1-with-25-and-75.html](https://massivealgorithms.blogspot.com/2016/08/generate-0-and-1-with-25-and-75.html)\)
+4. \(bonus\) input is a TreeNode. update all the node values with the sum of its all children \(in-order traversal, update self from left and right, return sum\)
+5. Minimum Path Sum \(dp on matrix\)
+6. Simplify Paths\(split + stack\)
+7. Pow\(x,y\) \(divideConquer / bit\)
+8. Evaluate Division \(graph dfs\)
+9. Minimum Genetic Mutation \(bfs / dfs, same as word ladder\)
+10. First Unique Character in a String \(2 pass map, can be optimized based on different scenario in both space and time\)
+11. Interval List Intersections\(merge 2 sorted list + max & min for start and end\)
+12. Count Good Nodes in Binary Tree\(preorder dfs\)
+13. Non-overlapping Intervals\(reverse thinking + sort based on end + dp\)
+14. Design HashMap\(bucket + linkedlist\)
+15. Bulls and Cows\(hashmap, 1 pass, look before\)
+16. Copy List with Random Pointer \(similar to clone graph \| O\(1\) space: change in-place, copy, then rewind\)
+17. Happy Number \(set / list cycle I O\(1\) space\)
+18. Design In-Memory File System \(trie-like structure\)
+19. Design File System\(same as trie\)
+20. Search Suggestions System \(trie search\)
+21. Subarray Sum Equals K \(prefix sum\)
+22. partition label \(greedy, shoot far, expand window, slide window\)
+23. Longest Univalue Path \(l, r, leftMost, rightMost, global\)
+24. Top K Frequent Words \(pq: minheap, lexicographically bigger\)
+25. Daily Temperatures \(push when t\[stack.peek\(\)\] &gt;= t\[i\], pop otherwise, remember push the last one in after popping\)
+26. Single Element in a Sorted Array \(binary search, l &lt; r exit, remember to use clean boundary as we move mid instead of normal template\)
+27. Insert Delete GetRandom O\(1\) \(\)
+28. 
 Reviewed
 
-* Robot Bounded In Circle \(dir = \(dir + 3\) % 4 / dir = \(dir + 1\) % 4\)
-
-
+1. Robot Bounded In Circle \(dir = \(dir + 3\) % 4 / dir = \(dir + 1\) % 4\)
+2. Rotting Oranges \(same as walls and gates, start from rotten oranges and keep fress counts\)
+3. Most Common Word\(replaceAll, split, set\)
+4. Find Peak Element \(nums\[mid\] &gt; nums\[mid + 1\], go to left, else go to right\)
 
 ## 1
 
