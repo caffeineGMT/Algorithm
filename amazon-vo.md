@@ -30,8 +30,14 @@ Coded
 24. Top K Frequent Words \(pq: minheap, lexicographically bigger\)
 25. Daily Temperatures \(push when t\[stack.peek\(\)\] &gt;= t\[i\], pop otherwise, remember push the last one in after popping\)
 26. Single Element in a Sorted Array \(binary search, l &lt; r exit, remember to use clean boundary as we move mid instead of normal template\)
-27. Insert Delete GetRandom O\(1\) \(\)
-28. 
+27. Next Greater Element II \(same as next greater element I, i % n, 2\*n loop\)
+28. Longest Consecutive Sequence \(uf-alike set, push all into set, 2nd loop look up and down to see if can connect them, move boundary and remove connected piece\)
+29. Remove All Adjacent Duplicates in String II \(pair \(ch, count\)\)
+30. Number of Atoms \(similar to basic calculator I, store Map in stack\)
+31. Sqrt\(x\) \(binary search, l, r need to be long to prevent overflow, cast into int when return\)
+32. path sum I \(maintain sum along path, check sum == target at leaf\)
+33. Insert Delete GetRandom O\(1\) \(\)
+34. 
 Reviewed
 
 1. Robot Bounded In Circle \(dir = \(dir + 3\) % 4 / dir = \(dir + 1\) % 4\)
