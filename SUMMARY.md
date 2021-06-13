@@ -9,8 +9,7 @@
 * [Microsoft OA](microsoft-oa.md)
 * [Microsoft VO](microsoft-vo.md)
 * [ByteDance VO](bytedance.md)
-* [FaceBook](facebook.md)
+* [Facebook](facebook.md)
 * [LinkedIn](linkedin.md)
-* [Google](google.md)
-* [Bloomberg](bloomberg.md)
+* [Dialpad](dialpad.md)
 
