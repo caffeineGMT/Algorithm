@@ -16,8 +16,12 @@
 * [x] Custom Sort String \(bucket sort\) 
 * [x] Decode String  \(maintain str, stack\)
 * [x] Kth Largest Element in an Array \(minheap, quick select\)
-* [ ] heap
-* [ ] hashmap
+* [ ] design heap \(\)
+* [x] design hashmap \(findPrev, always start from dummy\)
+* [x] reverse pairs \(merge sort, count first, same as count number smaller than self\)
+* [x] nearest city \([from Amazon OA](https://app.gitbook.com/@guomaitao/s/datastructure-and-algorithm/~/drafts/-Mc5LQbCX59MUfdz7t1S/amazon-oa#nearest-cities)\)
+* [x] Convert Binary Search Tree to Sorted Doubly Linked List \(in-order dc\)
+* [x] Bulls and Cows \(1-pass hashmap\)
 
 
 
@@ -119,12 +123,12 @@ public class Solution {
 
     private void siftDown(Node[] arr) {
         int i = 0;
-        while (i < nodes.length) {
+        while (i < arr.length) {
             int smallest = i;
-            if (2 * i + 1 < nodes.length && nodes[2 * i + 1].val < nodes[smallest].val) {
+            if (2 * i + 1 < arr.length && nodes[2 * i + 1].val < arr[smallest].val) {
                 smallest = 2 * i + 1;
             }
-            if (2 * i + 2 < nodes.length && nodes[2 * i + 2].val < nodes[smallest].val) {
+            if (2 * i + 2 < arr.length && nodes[2 * i + 2].val < arr[smallest].val) {
                 smallest = 2 * i + 2;
             }
             if (smallest == i) {

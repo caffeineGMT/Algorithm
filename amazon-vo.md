@@ -2,7 +2,7 @@
 
 ## VO cheatsheet
 
-Coded
+Other coded
 
 1. [ ] 3sum\(fix 1 ptr, then 2sum\)
 2. [x] Random Pick with Weight\(prefixSum + binary search\)
@@ -25,26 +25,163 @@ Coded
 19. [ ] Design File System\(same as trie\)
 20. [ ] Search Suggestions System \(trie search\)
 21. [ ] Subarray Sum Equals K \(prefix sum\)
-22. [ ] partition label \(greedy, shoot far, expand window, slide window\)
-23. [ ] Longest Univalue Path \(l, r, leftMost, rightMost, global\)
-24. [ ] Top K Frequent Words \(pq: minheap, lexicographically bigger\)
-25. [x] Daily Temperatures \(push when t\[stack.peek\(\)\] &gt;= t\[i\], pop otherwise, remember push the last one in after popping\)
-26. [ ] Single Element in a Sorted Array \(binary search, l &lt; r exit, remember to use clean boundary as we move mid instead of normal template\)
-27. [ ] Next Greater Element II \(same as next greater element I, i % n, 2\*n loop\)
-28. [x] Longest Consecutive Sequence \(uf-alike set, push all into set, 2nd loop look up and down to see if can connect them, move boundary and remove connected piece\)
-29. [x] Remove All Adjacent Duplicates in String II \(pair \(ch, count\)\)
-30. [x] Number of Atoms \(similar to basic calculator I, store Map in stack\)
-31. [ ] Sqrt\(x\) \(binary search, l, r need to be long to prevent overflow, cast into int when return\)
-32. [ ] path sum I \(maintain sum along path, check sum == target at leaf\)
-33. [ ] coin change II \(dp\[i\]\[j\] = dp\[i - 1\]\[j\] + dp\[i\]\[j - coins\[i - 1\]\]\)
-34. [ ] Insert Delete GetRandom O\(1\) \(\)
-35. [ ] 
+22. [ ] Longest Univalue Path \(l, r, leftMost, rightMost, global\)
+23. [x] Daily Temperatures \(push when t\[stack.peek\(\)\] &gt;= t\[i\], pop otherwise, remember push the last one in after popping\)
+24. [x] Single Element in a Sorted Array \(binary search, l &lt; r exit, remember to use clean boundary as we move mid instead of normal template\)
+25. [ ] Next Greater Element II \(same as next greater element I, i % n, 2\*n loop\)
+26. [x] Longest Consecutive Sequence \(uf-alike set, push all into set, 2nd loop look up and down to see if can connect them, move boundary and remove connected piece\)
+27. [x] Remove All Adjacent Duplicates in String II \(pair \(ch, count\)\)
+28. [x] Number of Atoms \(similar to basic calculator I, store Map in stack\)
+29. [ ] Sqrt\(x\) \(binary search, l, r need to be long to prevent overflow, cast into int when return\)
+30. [ ] path sum I \(maintain sum along path, check sum == target at leaf\)
+31. [ ] coin change II \(dp\[i\]\[j\] = dp\[i - 1\]\[j\] + dp\[i\]\[j - coins\[i - 1\]\]\)
+32. [x] Insert Delete GetRandom O\(1\) \(swap with last item in list\)
+
+Tasks
+
+* [ ] longest palindrome substring
+* [ ] balanced binary tree
+* [ ] synonymous sentence
+* [ ] sliding puzzle
+* [ ] reverse bits
+* [ ] remove duplicates from sorted list
+* [ ] partition label \(greedy, shoot far, expand window, slide window\)
+* [ ] best meeting points
+* [ ] BST node distance
+* [ ] longest increasing path in a matrix
+* [ ] number of closed islands
+* [ ] next greater node in linked list
+* [ ] search suggestion system
+* [ ] minimum window substring
+* [ ] shortest completing word
+* [ ] valid word abbreviation
+* [ ] valid palindrom II
+* [ ] valid palindrome III
+* [ ] transform one string to another using minimum number of given operation
+* [ ] nested-list-weight-sum
+* [x] Account Merge
+* [ ] Friend circle
+* [ ] number-of-connected-components
+* [ ] Open the Lock
+* [ ] shortest-path-visiting-all-nodes
+* [ ] bus-routes
+* [x] Reorganize String \(always use map\[ch - 'a'\]--\)
+* [ ] data-stream-as-disjoint-intervals
+* [ ] median in sliding widow
+* [ ] decode ways
+* [ ] Partition equal subset sum
+* [ ] common sub-sequence of two \(or more\) strings
+* [ ] longest-increasing-path-in-a-matrix
+* [ ] regular-expression-matching & wild card matching
+* [ ] Binary Tree Path Sum To Target III
+* [ ] Max sum from root，max sum from any to any
+* [ ] Right pointer
+* [ ] Rank in a stream
+* [ ] unique-binary-search-trees
+* [ ] maximum-averge-subtree
+* [ ] Queue with stacks
+* [ ] longest-valid-parentheses
+* [ ] Iterator for Combination
+* [ ] Find Max Bandwidth
+* [ ] copy-list-with-random-pointer
+* [ ] shortest-unsorted-continuous-subarray
+* [ ] Logger Rate Limiter
+* [ ] Web Crawler
+* [ ] Number of Longest Increasing Subsequence
+* [ ] Longest Substring Without Repeating Characters
+* [ ] Flood Fill
+* [ ] Binary Tree Level Order Traversal II
+* [x] Longest Consecutive Sequence
+* [ ] Robot Bounded In Circle
+* [ ] Maximum Frequency Stack
+* [ ] Valid Sudoku
+* [ ] Sudoku Solver
+* [x] Insert Delete GetRandom O\(1\)
+* [ ] Insert Delete GetRandom O\(1\) - Duplicates allowed
+* [ ] First unique word in a stream
+* [x] Design In-Memory File System
+* [x] Design Search Autocomplete System
+* [ ] LC 349 Intersection of Two Arrays I & 350. Intersection of Two Arrays II
+
+  LC 460. LFU Cache
+
+  LC 1296. Divide Array in Sets of K Consecutive Numbers
+
+  LC 62 unique pathsI & 63 unique pathsII & 980 unique paths III
+
+  LC 535. Encode and Decode TinyURL
+
+  LC 64. Minimum Path Sum
+
+  LC 136. Single Number
+
+  LC 572. Subtree of Another Tree
+
+  LC 1245. Tree Diameter
+
+  LC 257. Binary Tree Paths
+
+  LC 490. The Maze & 505. The Maze II
+
+  LC 1152. Analyze User Website Visit Pattern
+
+
+
+  https://leetcode.com/discuss/interview-question/124719/Find-the-first-word-in-a-stream-in-whic
+
+  h-it-is-not-repeated-in-the-rest-of-the-stream/
+
+  Find target word
+
+  https://www.1point3acres.com/bbs/thread-617156-1-1.html
+
+  given list of tuples: \[\("a", "b"\), \("b", "c".....\] and a target word: "hello", 要 求 判 断 能 否 ⽤ tuples
+
+  的 字 母 组 成 target 。 每 个 tuple 只 能 ⽤ ⼀ 次 ， tuple ⾥ 两 个 字 母 是 ⼆ 选 ⼀。
+
+  变 形 ： LC 17. Letter Combinations of a Phone Number
+
+  0-9 的 那 种 ⼿ 机 电 话 版。 每 个 数 字 都 代 表 对 应 的 字 母 ， ⽐ 如 1 ： abc ， 2 ： def.... 再 给 ⼀ 个
+
+  list of words ， call it dict 。 求 given ⼀ 个 number ， ⽐ 如 117, return dict ⾥ 所 有 prefix 能 被
+
+  117 组 成 的 word
+
+  LC 237. Delete Node in a Linked List
+
+  hasNext\(\) & Next\(\)
+
+  LC 284?
+
+  给 ⼀ 个 sorted 的 list of list ， 实 现 bool hasNext\(\) 和 next\(\) ， 刚 开 始 提 出 priority queue ， ⾯ 试 官
+
+  说 不 ⽤ 额 外 space ， 后 来 ⽤ pointer 做 的
+
+OOD
+
+* [ ] LRU
+* [ ] LINUX FIND
+* [ ] parking lot, 分配车位
+* [ ] 设计象棋
+* [ ] tik-tok-toe
+* [ ] 设计一个电话簿
+* [ ] string parser
+* [ ] top N selling products
+* [ ] analyze-user-website-visit-pattern
+* [ ] 设计Amazon Locker
+* [ ] 德州扑克
+* [ ] 购物车
+* [ ] 贪吃蛇
+* [ ] Ticket booking
+* [ ] resterrant reservation
+* [ ] vendor machine
+
 Reviewed
 
-1. Robot Bounded In Circle \(dir = \(dir + 3\) % 4 / dir = \(dir + 1\) % 4\)
-2. Rotting Oranges \(same as walls and gates, start from rotten oranges and keep fress counts\)
-3. Most Common Word\(replaceAll, split, set\)
-4. Find Peak Element \(nums\[mid\] &gt; nums\[mid + 1\], go to left, else go to right\)
+1. [ ] Robot Bounded In Circle \(dir = \(dir + 3\) % 4 / dir = \(dir + 1\) % 4\)
+2. [ ] Rotting Oranges \(same as walls and gates, start from rotten oranges and keep fress counts\)
+3. [ ] Most Common Word\(replaceAll, split, set\)
+4. [ ] Find Peak Element \(nums\[mid\] &gt; nums\[mid + 1\], go to left, else go to right\)
 
 ## 1
 
