@@ -4,36 +4,20 @@
 * [x] Number of Atoms \(basic calculator, stack&lt;map&gt;\)
 * [x] Minimum Remove to Make Valid Parentheses \(froward scan, stack, backward scan\) 
 * [x] Minimize Malware Spread \(uf\)
-* [x] Similar String Groups \(uf\)
-* [ ] Find Two Non-overlapping Sub-arrays Each With Target Sum         
+* [x] Similar String Groups \(uf\)        
 * [x] Random Pick with Weight \(prefix + binary search\)                
-* [ ] Restore The Array
 * [x] Walls and Gates \(bfs\)
-* [ ] Palindrome Pairs
 * [x] Word Break II 
-* [x] Pacific Atlantic Water Flow
-* [ ] String Transforms Into Another String  
+* [x] Pacific Atlantic Water Flow  
 * [x] Custom Sort String \(bucket sort\) 
 * [x] Decode String  \(maintain str, stack\)
 * [x] Kth Largest Element in an Array \(minheap, quick select\)
-* [ ] design heap \(\)
+* [x] design heap
 * [x] design hashmap \(findPrev, always start from dummy\)
 * [x] reverse pairs \(merge sort, count first, same as count number smaller than self\)
 * [x] nearest city \([from Amazon OA](https://app.gitbook.com/@guomaitao/s/datastructure-and-algorithm/~/drafts/-Mc5LQbCX59MUfdz7t1S/amazon-oa#nearest-cities)\)
 * [x] Convert Binary Search Tree to Sorted Doubly Linked List \(in-order dc\)
 * [x] Bulls and Cows \(1-pass hashmap\)
-
-
-
-1.
-
-{% embed url="https://www.1point3acres.com/bbs/thread-762483-1-1.html" %}
-
-
-
-2. 
-
-{% embed url="https://www.1point3acres.com/bbs/interview/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8-software-engineer-629094.html" %}
 
 minheap
 
