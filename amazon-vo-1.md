@@ -40,8 +40,10 @@ Other coded
 Tasks
 
 * [x] balanced binary tree
+* [x] shortest word distance I 
+* [x] shortest word distance II \(merge sort\)
 * [ ] synonymous sentence
-* [ ] sliding puzzle
+* [ ] sliding puzzle 
 * [ ] reverse bits
 * [ ] remove duplicates from sorted list
 * [ ] partition label \(greedy, shoot far, expand window, slide window\)
@@ -54,8 +56,9 @@ Tasks
 * [ ] minimum window substring
 * [ ] shortest completing word
 * [ ] valid word abbreviation
-* [ ] valid palindrom II
-* [ ] valid palindrome III
+* [x] valid palindrome I 
+* [x] valid palindrome II
+* [ ] ~~valid palindrome III \(hard\)~~
 * [ ] transform one string to another using minimum number of given operation
 * [ ] nested-list-weight-sum
 * [x] Account Merge
@@ -67,7 +70,7 @@ Tasks
 * [x] Reorganize String \(always use map\[ch - 'a'\]--\)
 * [ ] data-stream-as-disjoint-intervals
 * [ ] median in sliding widow
-* [ ] decode ways
+* [x] decode ways \(watch out leading 0\)
 * [ ] Partition equal subset sum
 * [ ] common sub-sequence of two \(or more\) strings
 * [ ] regular-expression-matching & wild card matching
@@ -77,7 +80,6 @@ Tasks
 * [ ] unique-binary-search-trees
 * [ ] maximum-averge-subtree
 * [ ] Queue with stacks
-* [ ] longest-valid-parentheses
 * [ ] Iterator for Combination
 * [ ] Find Max Bandwidth
 * [ ] copy-list-with-random-pointer
@@ -98,19 +100,20 @@ Tasks
 * [ ] First unique word in a stream
 * [x] Design In-Memory File System
 * [x] Design Search Autocomplete System
-* [ ] Intersection of Two Arrays I
-* [ ] Intersection of Two Arrays II
+* [x] Intersection of Two Arrays I \(2 hashset / sort + binary search/ sort + merge\)
+* [x] Intersection of Two Arrays II \(\)
 * [ ] LFU Cache
 * [ ] Divide Array in Sets of K Consecutive Numbers
-* [ ] unique pathsI & 63 unique pathsII & 980 unique paths III
 * [ ] Encode and Decode TinyURL
 * [ ] Single Number
 * [x] Subtree of Another Tree \(double dc, because we might have duplicates\)
 * [ ] Tree Diameter
 * [ ] Binary Tree Paths
-* [ ] The Maze
+* [x] The Maze
 * [ ] The Maze II
 * [ ] Analyze User Website Visit Pattern
+* [x] Number of Days Between Two Dates \(calc date from 1971\)
+* [x] triangle \(dp or divide conquer + memo\)
 
 
 
@@ -148,23 +151,144 @@ Reviewed
 OOD
 
 * [ ] LRU
-* [ ] LINUX FIND
+* [x] LINUX FIND
 * [x] parking lot
+* [ ] Amazon Locker
+* [ ] restaurant reservation
 * [ ] 设计象棋
 * [ ] tik-tok-toe
+* [ ] 德州扑克
+* [ ] 贪吃蛇
 * [ ] 设计一个电话簿
 * [ ] string parser
 * [ ] top N selling products
 * [ ] analyze-user-website-visit-pattern
-* [ ] 设计Amazon Locker
-* [ ] 德州扑克
 * [ ] 购物车
-* [ ] 贪吃蛇
 * [ ] Ticket booking
-* [x] restaurant reservation
 * [ ] vendor machine
 
+## Linux Find
+
+![](.gitbook/assets/image.png)
+
+
+
+```java
+public class LinuxFindDesign {
+    class File {
+        String name;
+        String extension;
+        int size;
+        boolean isDir;
+        List<File> children;
+        Timestamp deleted;
+        Timestamp created;
+        Timestamp modified;
+
+        File() {
+            name = "";
+            extension = "";
+            size = 0;
+            isDir = false;
+            children = new ArrayList<>();
+        }
+    }
+
+    File root = new File();
+
+    class SearchParams {
+        String extension;
+        Integer minSize;
+        Integer maxSize;
+        String name;
+    }
+
+    interface Filter {
+        boolean isValid(SearchParams params, File file);
+    }
+
+    class ExtensionFilter implements Filter {
+        @Override
+        public boolean isValid(SearchParams params, File file) {
+            if (params.extension == null) return true;
+            return file.extension.equals(params.extension);
+        }
+    }
+
+    class MinSizeFilter implements Filter {
+        @Override
+        public boolean isValid(SearchParams params, File file) {
+            if (params.minSize == null) return true;
+            return file.size >= params.minSize;
+        }
+    }
+
+    class MaxSizeFilter implements Filter {
+        @Override
+        public boolean isValid(SearchParams params, File file) {
+            if (params.maxSize == null) return true;
+            return file.size <= params.maxSize;
+        }
+    }
+
+    class NameFilter implements Filter {
+        @Override
+        public boolean isValid(SearchParams params, File file) {
+            if (params.name == null) return true;
+            return file.name.equals(params.name);
+        }
+    }
+
+    class FileFilter {
+        List<Filter> filters;
+        FileFilter() {
+            filters = new ArrayList<>();
+            filters.add(new ExtensionFilter());
+            filters.add(new NameFilter());
+            filters.add(new MaxSizeFilter());
+            filters.add(new MinSizeFilter());
+        }
+        public boolean isValid(SearchParams params, File file) {
+            for (Filter filter: filters) {
+                if (!filter.isValid(params, file)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    class FileSearcher {
+        private FileFilter fileFilter;
+        FileSearcher() {
+            FileFilter fileFilter= new FileFilter();
+        }
+
+        public List<File> search(File root, SearchParams searchParams) {
+            List<File> res = new ArrayList<>();
+            Queue<File> q = new ArrayDeque<>();
+            q.offer(root);
+            while(!q.isEmpty()) {
+                File file = q.poll();
+                if (!file.isDir && fileFilter.isValid(searchParams, file)) {
+                    res.add(file);
+                    continue;
+                }
+                for (File neighbor: file.children) {
+                    q.offer(neighbor);
+                }
+            }
+            return res;
+        }
+    }
+}
+```
+
+ 
+
 ## Parking Lot
+
+![](.gitbook/assets/image%20%281%29.png)
 
 ```java
 import java.util.*;
@@ -353,5 +477,226 @@ public class ParkingLotDesign {
 }
 ```
 
- 
+##  Merge Sort
+
+```java
+public class MergeSort {
+    public void sortIntegers2(int[] A) {
+        if (A == null || A.length == 0)
+            return;
+
+        int[] temp = new int[A.length];
+        mergeSort(A, 0, A.length - 1, temp);
+    }
+
+    private void mergeSort(int[] A, int start, int end, int[] temp) {
+        if (start >= end)
+            return;
+
+        mergeSort(A, start, (start + end) / 2, temp);
+        mergeSort(A, (start + end) / 2 + 1, end, temp);
+        merge(A, start, end, temp);
+    }
+
+    private void merge(int[] A, int start, int end, int[] temp) {
+        int middle = (start + end) / 2;
+        int leftIndex = start;
+        int rightIndex = middle + 1;
+        int index = leftIndex;
+
+        while (leftIndex <= middle && rightIndex <= end) {
+            if (A[leftIndex] < A[rightIndex])
+                temp[index++] = A[leftIndex++];
+            else
+                temp[index++] = A[rightIndex++];
+        }
+
+        while (leftIndex <= middle)
+            temp[index++] = A[leftIndex++];
+        while (rightIndex <= end)
+            temp[index++] = A[rightIndex++];
+
+        for (int i = start; i <= end; i++)
+            A[i] = temp[i];
+
+    }
+}
+
+```
+
+## Quick Sort
+
+```java
+public class QuickSort {
+    public void sortIntegers(int[] A) {
+        if (A == null || A.length == 0)
+            return;
+        quickSort(A, 0, A.length - 1);
+    }
+
+    private void quickSort(int[] A, int start, int end) {
+        if (start >= end)
+            return;
+
+        int l = start;
+        int r = end;
+        // key1: get the value of pivot, not index
+        int pivot = A[(start + end) / 2];
+        // key2: l <= r, not l < r
+        while (l <= r) {
+            // key3: A[l] < pivot, not A[l] <= pivot
+            while (l <= r && A[l] < pivot)
+                l++;
+            while (l <= r && A[r] > pivot)
+                r--;
+            if (l <= r) {
+                int temp = A[l];
+                A[l] = A[r];
+                A[r] = temp;
+                l++;
+                r--;
+            }
+        }
+
+        quickSort(A, start, r);
+        quickSort(A, l, end);
+    }
+}
+```
+
+## Quick Select
+
+```java
+public class QuickSelect {
+    public int findKthLargest(int[] nums, int k) {
+        if (nums == null || nums.length == 0)
+            return -1;
+        return quickSelect(nums, 0, nums.length - 1, k);
+    }
+
+    private int quickSelect(int[] nums, int start, int end, int k) {
+        if (start == end)
+            return nums[start];
+
+        int l = start;
+        int r = end;
+        int pivot = nums[(start + end) / 2];
+        while (l <= r) {
+            while (l <= r && nums[l] > pivot)
+                l++;
+            while (l <= r && nums[r] < pivot)
+                r--;
+
+            if (l <= r) {
+                int temp = nums[l];
+                nums[l] = nums[r];
+                nums[r] = temp;
+                l++;
+                r--;
+            }
+        }
+
+        if (start + k - 1 <= r)
+            return quickSelect(nums, start, r, k);
+        if (start + k - 1 >= l)
+            return quickSelect(nums, l, end, k - (l - start));
+
+        return nums[r + 1];
+    }
+}
+```
+
+## Bucket Sort
+
+```java
+public class BucketSort {
+    public void sort(int[] array, int numberOfBuckets) {
+        var i = 0;
+        for (var bucket : createBuckets(array, numberOfBuckets)) {
+            Collections.sort(bucket);
+            for (var item : bucket)
+                array[i++] = item;
+        }
+    }
+
+    private List<List<Integer>> createBuckets(int[] array, int numberOfBuckets) {
+        List<List<Integer>> buckets = new ArrayList<>();
+        for (var i = 0; i < numberOfBuckets; i++)
+            buckets.add(new ArrayList<>());
+
+        for (var item : array)
+            buckets.get(item / numberOfBuckets).add(item);
+
+        return buckets;
+    }
+}
+
+```
+
+## Bubble Sort
+
+```java
+public class BubbleSort {
+    public void sort(int[] arr) {
+        boolean flag;
+        for (int i = arr.length - 1; i >= 1; i--) {
+            flag = true;
+            for (int j = 0; j < i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(j, j + 1, arr);
+                    flag = false;
+                }
+            }
+            if (flag)
+                return;
+        }
+    }
+
+    public void swap(int a, int b, int[] arr) {
+        var temp = arr[b];
+        arr[b] = arr[a];
+        arr[a] = temp;
+    }
+}
+
+```
+
+## Couting Sort
+
+```java
+
+public class CountingSort {
+    public static void sort(int[] arr, int max) {
+        if (arr == null)
+            return;
+
+        var countArr = new int[max + 1];
+        for (int i = 0; i < arr.length; i++) {
+            var key = arr[i];
+            countArr[key]++;
+        }
+
+        var pointer = 0;
+        for (int key = 0; key < countArr.length; key++) {
+            var count = countArr[key];
+            if (count != 0)
+                for (int j = 0; j < count; j++) {
+                    arr[pointer] = key;
+                    pointer++;
+                }
+        }
+
+        // compact implementation
+        // int[] counts = new int[max + 1];
+        // for (var item : array)
+        // counts[item]++;
+
+        // var k = 0;
+        // for (var i = 0; i < counts.length; i++)
+        // for (var j = 0; j < counts[i]; j++)
+        // array[k++] = i;
+    }
+}
+
+```
 

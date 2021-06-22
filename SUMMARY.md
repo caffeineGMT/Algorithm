@@ -11,6 +11,5 @@
 * [Microsoft VO](microsoft-vo.md)
 * [ByteDance VO](bytedance.md)
 * [Facebook](facebook.md)
-* [LinkedIn](linkedin.md)
 * [Dialpad](dialpad.md)
 
