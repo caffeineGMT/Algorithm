@@ -15,7 +15,7 @@ Other coded
 9. [ ] Minimum Genetic Mutation \(bfs / dfs, same as word ladder\)
 10. [ ] First Unique Character in a String \(2 pass map, can be optimized based on different scenario in both space and time\)
 11. [ ] Interval List Intersections\(merge 2 sorted list + max & min for start and end\)
-12. [ ] Count Good Nodes in Binary Tree\(preorder dfs\)
+12. [x] Count Good Nodes in Binary Tree\(preorder dfs\)
 13. [ ] Non-overlapping Intervals\(reverse thinking + sort based on end + dp\)
 14. [x] Design HashMap\(bucket + linkedlist\)
 15. [ ] Copy List with Random Pointer \(similar to clone graph \| O\(1\) space: change in-place, copy, then rewind\)
@@ -102,7 +102,7 @@ Tasks
 * [x] Design Search Autocomplete System
 * [x] Intersection of Two Arrays I \(2 hashset / sort + binary search/ sort + merge\)
 * [x] Intersection of Two Arrays II \(\)
-* [ ] LFU Cache
+* [x] LFU Cache
 * [ ] Divide Array in Sets of K Consecutive Numbers
 * [ ] Encode and Decode TinyURL
 * [ ] Single Number
@@ -150,22 +150,18 @@ Reviewed
 
 OOD
 
-* [ ] LRU
+* [x] LRU
+* [x] FileSys
 * [x] LINUX FIND
 * [x] parking lot
-* [ ] Amazon Locker
+* [x] Amazon Locker
 * [ ] restaurant reservation
+* [ ] shopping cart
+* [ ] Ticket booking
+* [ ] vendor machine
 * [ ] 设计象棋
 * [ ] tik-tok-toe
 * [ ] 德州扑克
-* [ ] 贪吃蛇
-* [ ] 设计一个电话簿
-* [ ] string parser
-* [ ] top N selling products
-* [ ] analyze-user-website-visit-pattern
-* [ ] 购物车
-* [ ] Ticket booking
-* [ ] vendor machine
 
 ## Linux Find
 
@@ -471,6 +467,183 @@ public class ParkingLotDesign {
 
     class ParkingLotFullException extends Exception {
         public ParkingLotFullException(String s) {
+            super(s);
+        }
+    }
+}
+```
+
+## Singleton
+
+```java
+public class Singleton {
+    public static class ParkingLot {
+        private static ParkingLot _instance = null;
+        private List<Integer> levels;
+        private ParkingLot() {
+            levels = new ArrayList<>();
+        }
+
+        // non-thread safe
+        public static ParkingLot getInstance() {
+            if (_instance == null) {
+                _instance = new ParkingLot();
+            }
+            return _instance;
+        }
+
+        // thread safe
+//        public static synchronized ParkingLot getInstance() {
+//            if (_instance == null) {
+//                _instance = new ParkingLot();
+//            }
+//            return _instance;
+//        }
+    }
+}
+```
+
+## Amazon Locker
+
+```java
+public class AmazonLockerDesign {
+    public enum Size {
+        SMALL, MIDDLE, LARGE
+    }
+
+    public class Package {
+        public long packageId;
+        private Size packageSize;
+        public Package (Long packageId, Size packageSize) {
+            this.packageId = packageId;
+            this.packageSize = packageSize;
+        }
+        public Size getSize() {
+            return packageSize;
+        }
+    }
+
+    public class Locker {
+        private int lockerId;
+        private Size lockerSize;
+        private boolean availability;
+        public Locker (int lockerId, Size lockerSize) {
+            this.lockerId = lockerId;
+            this.lockerSize = lockerSize;
+        }
+        public void takeLocker() {
+            markUnavailable();
+        }
+
+        public void clearLocker() {
+            markAvailable();
+        }
+
+        private boolean getAvailability() {
+            return availability;
+        }
+
+        private void markAvailable() {
+            this.availability = true;
+        }
+
+        public void markUnavailable() {
+            this.availability = false;
+        }
+
+        public Size getSize() {
+            return lockerSize;
+        }
+
+        public boolean isFitIn (Package p) {
+            if (lockerSize == Size.LARGE) {
+                return true;
+            } else if (lockerSize == Size.MIDDLE) {
+                return p.getSize() == Size.MIDDLE || p.getSize() == Size.SMALL;
+            } else {
+                return p.getSize() == Size.SMALL;
+            }
+        }
+    }
+
+    class Receipt{
+        private Package p;
+        private Locker locker;
+        private float startTime;
+
+        public Receipt(Package p, Locker locker, long startTime) {
+            this.p = p;
+            this.locker = locker;
+            this.startTime = startTime;
+        }
+    }
+
+    public class LockerSystem {
+        private float hourlyRate;
+        Stack<Locker> availableSmall = new Stack<>();
+        Stack<Locker> availableMiddle = new Stack<>();
+        Stack<Locker> availableLarge = new Stack<>();
+
+        public LockerSystem(int s, int m, int l, int hourlyRate) {
+            int id = 0;
+            for (int i = 0; i < s; i++) {
+                availableSmall.push(new Locker(id++, Size.SMALL));
+            }
+            for (int i = 0; i < m; i++) {
+                availableMiddle.push(new Locker(id++, Size.MIDDLE));
+            }
+            for (int i = 0; i < l; i++) {
+                availableLarge.push(new Locker(id++, Size.LARGE));
+            }
+        }
+
+        public boolean checkAvailability(Package p) {
+            Size size = p.getSize();
+            if (size == Size.LARGE) {
+                return availableLarge.size() != 0;
+            } else if (size == Size.MIDDLE) {
+                return availableMiddle.size() != 0;
+            } else {
+                return availableSmall.size() != 0;
+            }
+        }
+
+        public void removePackage(Receipt receipt) {
+            receipt.locker.markAvailable();
+            if (receipt.locker.getSize() == Size.LARGE) {
+                availableLarge.push(new Locker(receipt.locker.lockerId, receipt.locker.lockerSize));
+            } else if (receipt.locker.getSize() == Size.MIDDLE){
+                availableMiddle.push(new Locker(receipt.locker.lockerId, receipt.locker.lockerSize));
+            } else {
+                availableSmall.push(new Locker(receipt.locker.lockerId, receipt.locker.lockerSize));
+            }
+        }
+
+        public Receipt addPackage(Package p) throws LockerFullException{
+            if (!checkAvailability(p)) {
+                throw new LockerFullException("locker is full");
+            }
+            Locker locker = null;
+            if (p.getSize() == Size.SMALL) {
+                locker = availableSmall.pop();
+            } else if (p.getSize() == Size.MIDDLE) {
+                locker = availableMiddle.pop();
+            } else {
+                locker = availableLarge.pop();
+            }
+            Date date = new Date();
+            Receipt receipt= new Receipt(p, locker, date.getTime());
+            return receipt;
+        }
+
+        private float calcPrice(Receipt t) {
+            Date curTime = new Date();
+            return (curTime.getTime() - t.startTime) / (60 * 60 * 1000) * hourlyRate;
+        }
+    }
+
+    class LockerFullException extends Exception {
+        public LockerFullException(String s) {
             super(s);
         }
     }
