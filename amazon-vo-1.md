@@ -62,10 +62,10 @@ Tasks
 * [ ] transform one string to another using minimum number of given operation
 * [ ] nested-list-weight-sum
 * [x] Account Merge
-* [ ] Friend circle
-* [ ] number-of-connected-components
+* [x] Friend circle \(num of province, uf\)
+* [x] number-of-connected-components \(uf\)
 * [x] Open the Lock \(bfs, remember to check the first node\)
-* [ ] shortest-path-visiting-all-nodes
+* [ ] ~~shortest-path-visiting-all-nodes \(hard\)~~
 * [ ] bus-routes
 * [x] Reorganize String \(always use map\[ch - 'a'\]--\)
 * [ ] data-stream-as-disjoint-intervals
@@ -74,7 +74,6 @@ Tasks
 * [ ] Partition equal subset sum
 * [ ] common sub-sequence of two \(or more\) strings
 * [ ] regular-expression-matching & wild card matching
-* [ ] Max sum from root，max sum from any to any
 * [ ] Right pointer
 * [ ] Rank in a stream
 * [ ] unique-binary-search-trees
@@ -97,29 +96,26 @@ Tasks
 * [ ] Sudoku Solver
 * [x] Insert Delete GetRandom O\(1\)
 * [ ] Insert Delete GetRandom O\(1\) - Duplicates allowed
-* [ ] First unique word in a stream
+* [x] First unique word in a stream \(similar to LRU [https://leetcode.com/discuss/interview-question/124719/Find-the-first-word-in-a-stream-in-which-it-is-not-repeated-in-the-rest-of-the-stream/](https://leetcode.com/discuss/interview-question/124719/Find-the-first-word-in-a-stream-in-which-it-is-not-repeated-in-the-rest-of-the-stream/)\)
 * [x] Design In-Memory File System
 * [x] Design Search Autocomplete System
 * [x] Intersection of Two Arrays I \(2 hashset / sort + binary search/ sort + merge\)
-* [x] Intersection of Two Arrays II \(\)
+* [x] Intersection of Two Arrays II 
 * [x] LFU Cache
 * [ ] Divide Array in Sets of K Consecutive Numbers
 * [ ] Encode and Decode TinyURL
 * [ ] Single Number
 * [x] Subtree of Another Tree \(double dc, because we might have duplicates\)
-* [ ] Tree Diameter
-* [ ] Binary Tree Paths
+* [x] Tree Diameter \(2 bfs\)
+* [x] Binary Tree Paths
 * [x] The Maze
 * [ ] The Maze II
 * [ ] Analyze User Website Visit Pattern
 * [x] Number of Days Between Two Dates \(calc date from 1971\)
 * [x] triangle \(dp or divide conquer + memo\)
-
-
-
-https://leetcode.com/discuss/interview-question/124719/Find-the-first-word-in-a-stream-in-whic
-
-h-it-is-not-repeated-in-the-rest-of-the-stream/
+* [x] serialize & deserializae n-ary tree \(append children count\)
+* [x] Minimum Knight Moves \(just calc one corner region\)
+* [x] All Nodes Distance K in Binary Tree
 
 Find target word
 
@@ -155,13 +151,13 @@ OOD
 * [x] LINUX FIND
 * [x] parking lot
 * [x] Amazon Locker
-* [ ] restaurant reservation
+* [x] restaurant reservation
 * [ ] shopping cart
 * [ ] Ticket booking
 * [ ] vendor machine
-* [ ] 设计象棋
-* [ ] tik-tok-toe
-* [ ] 德州扑克
+* [ ] phonebook
+* [ ] tic-tac-toe
+* [ ] texas poker
 
 ## Linux Find
 
@@ -650,7 +646,302 @@ public class AmazonLockerDesign {
 }
 ```
 
-##  Merge Sort
+
+
+## Restaurant Reservation
+
+![](.gitbook/assets/image%20%282%29.png)
+
+* reservation info is saved in table in code below
+* we record time instead of timeperiod
+
+
+
+```java
+import java.util.*;
+
+public class RestaurantDesign {
+    class Date {
+        long time;
+
+        public long getTime() {
+            return time;
+        }
+    }
+    class NoTableException extends Exception {
+        public NoTableException(Party p) {
+            super("No table available for party size: " + p.getSize());
+        }
+    }
+
+    class Meal {
+        private float price;
+
+        public Meal(float price) {
+            this.price = price;
+        }
+
+        public float getPrice() {
+            return this.price;
+        }
+    }
+
+    class Order {
+        private List<Meal> meals;
+        private Table table;
+        private Party p;
+
+        public Order(List<Meal> meals, Table table, Party p) {
+            this.meals = meals;
+            this.table = table;
+            this.p = p;
+        }
+
+        public List<Meal> getMeals() {
+            return meals;
+        }
+
+        public void mergeOrder(Order order) {
+            if (order != null) {
+                for (Meal meal : order.getMeals()) {
+                    meals.add(meal);
+                }
+            }
+        }
+
+        public float getPrice() {
+            int bill = 0;
+            for (Meal meal : meals) {
+                bill += meal.getPrice();
+            }
+            return bill;
+        }
+    }
+
+    class Party {
+        private int size;
+
+        public Party(int size) {
+            this.size = size;
+        }
+
+        public int getSize() {
+            return this.size;
+        }
+    }
+
+    class Table implements Comparable<Table> {
+        private int id;
+        private int capacity;
+        private boolean available;
+        private Order order;
+        List<Date> reservations;
+
+        public Table(int id, int capacity) {
+            this.id = id;
+            this.capacity = capacity;
+            available = true;
+            order = null;
+            reservations = new ArrayList<>();
+        }
+
+        public int getId() {
+            return this.id;
+        }
+
+        public int getCapacity() {
+            return this.capacity;
+        }
+
+        public List<Date> getReservation() {
+            return reservations;
+        }
+
+        public boolean isAvailable() {
+            return this.available;
+        }
+
+        public void markAvailable() {
+            this.available = true;
+        }
+
+        public void markUnavailable() {
+            this.available = false;
+        }
+
+        public Order getCurrentOrder() {
+            return this.order;
+        }
+
+        public void setOrder(Order o) {
+            if (order == null) {
+                this.order = o;
+            } else {
+                if (o != null) {
+                    this.order.mergeOrder(o);
+                }
+            }
+        }
+
+        @Override
+        public int compareTo(Table compareTable) {
+            return this.capacity - compareTable.getCapacity();
+        }
+
+        // find first item that is larger than target
+        private int findDatePosition(Date target) {
+            int len = reservations.size();
+            if (len == 0)
+                return 0;
+            if (target.getTime() > reservations.get(len - 1).getTime()) {
+                return len;
+            }
+
+            int l = 0;
+            int r = len - 1;
+
+            while (l + 1 < r) {
+                int mid = (l + r) / 2;
+                if (reservations.get(mid).getTime() <= target.getTime()) {
+                    l = mid;
+                } else {
+                    r = mid;
+                }
+            }
+
+            if (reservations.get(l).getTime() > target.getTime()) {
+                return l;
+            }
+            if (reservations.get(r).getTime() > target.getTime()) {
+                return r;
+            }
+
+            return len;
+        }
+
+        public boolean noFollowReservation(Date d) {
+            final int MILLI_TO_HOUR = 1000 * 60 * 60;
+            int position = findDatePosition(d);
+
+            if (position < reservations.size()) {
+                Date nextReservation = reservations.get(position);
+                int diff = (int) ((nextReservation.getTime() - d.getTime()) / MILLI_TO_HOUR);
+                if (diff < Restaurant.MAX_DINEHOUR) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public boolean reserveForDate(Date d) {
+            final int MILLI_TO_HOUR = 1000 * 60 * 60;
+            int position = findDatePosition(d);
+            int before = position - 1;
+            int after = position;
+
+            if (before >= 0) {
+                Date previousReservation = reservations.get(before);
+                int diff = (int) ((d.getTime() - previousReservation.getTime()) / MILLI_TO_HOUR);
+                if (diff < Restaurant.MAX_DINEHOUR) {
+                    return false;
+                }
+            }
+
+            if (after < reservations.size()) {
+                Date nextReservation = reservations.get(after);
+                int diff = (int) ((nextReservation.getTime() - d.getTime()) / MILLI_TO_HOUR);
+                if (diff < Restaurant.MAX_DINEHOUR) {
+                    return false;
+                }
+            }
+
+            reservations.add(position, d);
+            return true;
+        }
+
+        public void removeReservation(Date d) {
+            reservations.remove(d);
+        }
+    }
+
+    class Reservation {
+        private Table table;
+        private Date date;
+
+        public Reservation(Table table, Date date) {
+            this.table = table;
+            this.date = date;
+        }
+
+        public Date getDate() {
+            return date;
+        }
+
+        public Table getTable() {
+            return table;
+        }
+    }
+
+    public class Restaurant {
+        private List<Table> tables;
+        private List<Meal> menu;
+        public static final int MAX_DINEHOUR = 2;
+        public static final long HOUR = 3600 * 1000;
+
+        public Restaurant() {
+            tables = new ArrayList<Table>();
+            menu = new ArrayList<Meal>();
+        }
+
+        public void findTable(Party p) throws NoTableException {
+            Date currentDate = new Date();
+            for (Table t : tables) {
+                if (t.isAvailable() && t.getCapacity() >= p.getSize() && t.noFollowReservation(currentDate)) {
+                    t.markUnavailable();
+                    return;
+                }
+            }
+            throw new NoTableException(p);
+        }
+
+        public void takeOrder(Order o) {
+        }
+
+        public float checkOut(Order order) {
+            order.table.markAvailable();
+            return order.getPrice();
+        }
+
+        public List<Meal> getMenu() {
+            return menu;
+        }
+
+        public void addTable(Table t) {
+            tables.add(t);
+            Collections.sort(tables);
+        }
+
+        public Reservation findTableForReservation(Party p, Date date) {
+            for (Table table : tables) {
+                if (table.getCapacity() >= p.getSize() && table.reserveForDate(date)) {
+                    return new Reservation(table, date);
+                }
+            }
+            return null;
+        }
+
+        public void cancelReservation(Reservation r) {
+            Date date = r.getDate();
+            r.getTable().removeReservation(date);
+        }
+    }
+}
+
+```
+
+
+
+## Merge Sort
 
 ```java
 public class MergeSort {
@@ -979,7 +1270,100 @@ public class Solution {
 }
 ```
 
+## Binary Tree Preorder traversal
 
+```java
+    public List<Integer> preorderTraversal(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        List<Integer> preorder = new ArrayList<Integer>();
+        
+        if (root == null) {
+            return preorder;
+        }
+        
+        stack.push(root);
+        while (!stack.empty()) {
+            TreeNode node = stack.pop();
+            preorder.add(node.val);
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
+        
+        return preorder;
+    }
+```
 
+## Binary Tree Inorder Traversal
 
+```java
+public ArrayList<Integer> inorderTraversal(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        ArrayList<Integer> result = new ArrayList<>();
+        
+        while (root != null) {
+            stack.push(root);
+            root = root.left;
+        }
+    
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.peek();
+            result.add(node.val);
+            
+            if (node.right == null) {
+                node = stack.pop();
+                while (!stack.isEmpty() && stack.peek().right == node) {
+                    node = stack.pop();
+                }
+            } else {
+                node = node.right;
+                while (node != null) {
+                    stack.push(node);
+                    node = node.left;
+                }
+            }
+        }
+        return result;
+    }
+```
+
+## Binary Tree Postorder traversal 
+
+```java
+public ArrayList<Integer> postorderTraversal(TreeNode root) {
+    ArrayList<Integer> result = new ArrayList<Integer>();
+    Stack<TreeNode> stack = new Stack<TreeNode>();
+    TreeNode prev = null; // previously traversed node
+    TreeNode curr = root;
+
+    if (root == null) {
+        return result;
+    }
+
+    stack.push(root);
+    while (!stack.empty()) {
+        curr = stack.peek();
+        if (prev == null || prev.left == curr || prev.right == curr) { // traverse down the tree
+            if (curr.left != null) {
+                stack.push(curr.left);
+            } else if (curr.right != null) {
+                stack.push(curr.right);
+            }
+        } else if (curr.left == prev) { // traverse up the tree from the left
+            if (curr.right != null) {
+                stack.push(curr.right);
+            }
+        } else { // traverse up the tree from the right
+            result.add(curr.val);
+            stack.pop();
+        }
+        prev = curr;
+    }
+
+    return result;
+}
+```
 
