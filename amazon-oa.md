@@ -8,6 +8,8 @@ Resource:
 
 {% file src=".gitbook/assets/amazon\_oa.pdf" caption="Amazon\_OA1" %}
 
+{% file src=".gitbook/assets/amz\_oa\_2021.pdf" caption="Amazon\_OA2" %}
+
 ## Mininum Total Container Size
 
 {% embed url="https://leetcode.com/discuss/interview-question/958494/Minimum-Total-Container-Size-or-Interview-Question" %}
