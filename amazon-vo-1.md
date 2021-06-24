@@ -115,7 +115,7 @@ Tasks
 * [x] triangle \(dp or divide conquer + memo\)
 * [x] serialize & deserializae n-ary tree \(append children count\)
 * [x] Minimum Knight Moves \(just calc one corner region\)
-* [x] All Nodes Distance K in Binary Tree
+* [x] All Nodes Distance K in Binary Tree \(convert to graph and run bfs\)
 
 Find target word
 

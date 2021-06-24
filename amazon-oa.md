@@ -6,7 +6,7 @@ Resource:
 * [https://www.teamblind.com/post/Amazon-OA-question-complilation-xjQosyo3](https://www.teamblind.com/post/Amazon-OA-question-complilation-xjQosyo3)
 * [http://travelbynumbers.ca/problems/](http://travelbynumbers.ca/problems/amazon_oa_find_all_combination_of_numbers_sum_to_target)
 
-
+{% file src=".gitbook/assets/amazon\_oa.pdf" caption="Amazon\_OA1" %}
 
 ## Mininum Total Container Size
 
