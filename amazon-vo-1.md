@@ -22,20 +22,19 @@ Other coded
 16. [ ] Happy Number \(set / list cycle I O\(1\) space\)
 17. [x] Design In-Memory File System \(trie-like structure\)
 18. [x] Design File System\(same as trie\)
-19. [ ] Search Suggestions System \(trie search\)
-20. [ ] Subarray Sum Equals K \(prefix sum\)
-21. [ ] Longest Univalue Path \(l, r, leftMost, rightMost, global\)
-22. [x] Daily Temperatures \(push when t\[stack.peek\(\)\] &gt;= t\[i\], pop otherwise, remember push the last one in after popping\)
-23. [x] Single Element in a Sorted Array \(binary search, l &lt; r exit, remember to use clean boundary as we move mid instead of normal template\)
-24. [ ] Next Greater Element II \(same as next greater element I, i % n, 2\*n loop\)
-25. [x] Remove All Adjacent Duplicates in String II \(pair \(ch, count\)\)
-26. [x] Number of Atoms \(similar to basic calculator I, store Map in stack\)
-27. [x] Sqrt\(x\) \(binary search, l, r need to be long to prevent overflow, cast into int when return\)
-28. [x] path sum I \(maintain sum along path, check sum == target at leaf\)
-29. [x] path sum II \(remember to backtrack at last level\)
-30. [x] path sum III \(prefix sum\)
-31. [ ] coin change II \(dp\[i\]\[j\] = dp\[i - 1\]\[j\] + dp\[i\]\[j - coins\[i - 1\]\]\)
-32. [x] Insert Delete GetRandom O\(1\) \(swap with last item in list\)
+19. [ ] Subarray Sum Equals K \(prefix sum\)
+20. [x] Longest Univalue Path \(l, r, leftMost, rightMost, global\)
+21. [x] Daily Temperatures \(push when t\[stack.peek\(\)\] &gt;= t\[i\], pop otherwise, remember push the last one in after popping\)
+22. [x] Single Element in a Sorted Array \(binary search, l &lt; r exit, remember to use clean boundary as we move mid instead of normal template\)
+23. [ ] Next Greater Element II \(same as next greater element I, i % n, 2\*n loop\)
+24. [x] Remove All Adjacent Duplicates in String II \(pair \(ch, count\)\)
+25. [x] Number of Atoms \(similar to basic calculator I, store Map in stack\)
+26. [x] Sqrt\(x\) \(binary search, l, r need to be long to prevent overflow, cast into int when return\)
+27. [x] path sum I \(maintain sum along path, check sum == target at leaf\)
+28. [x] path sum II \(remember to backtrack at last level\)
+29. [x] path sum III \(prefix sum\)
+30. [ ] coin change II \(dp\[i\]\[j\] = dp\[i - 1\]\[j\] + dp\[i\]\[j - coins\[i - 1\]\]\)
+31. [x] Insert Delete GetRandom O\(1\) \(swap with last item in list\)
 
 Tasks
 
@@ -52,8 +51,8 @@ Tasks
 * [x] longest increasing path in a matrix \(dfs + int\[\]\[\] memo\)
 * [ ] number of closed islands
 * [ ] next greater node in linked list
-* [ ] search suggestion system
-* [ ] minimum window substring
+* [x] search suggestion system \(build prefix hashmap / build trie and dfs\)
+* [x] minimum window substring
 * [ ] shortest completing word
 * [ ] valid word abbreviation
 * [x] valid palindrome I 
@@ -63,7 +62,7 @@ Tasks
 * [ ] nested-list-weight-sum
 * [x] Account Merge
 * [x] Friend circle \(num of province, uf\)
-* [x] number-of-connected-components \(uf\)
+* [x] number of connected components \(uf\)
 * [x] Open the Lock \(bfs, remember to check the first node\)
 * [ ] ~~shortest-path-visiting-all-nodes \(hard\)~~
 * [ ] bus-routes
@@ -76,17 +75,17 @@ Tasks
 * [ ] regular-expression-matching & wild card matching
 * [ ] Right pointer
 * [ ] Rank in a stream
-* [ ] unique-binary-search-trees
-* [ ] maximum-averge-subtree
+* [ ] unique binary search trees
+* [x] maximum averge subtree
 * [ ] Queue with stacks
 * [ ] Iterator for Combination
 * [ ] Find Max Bandwidth
 * [ ] copy-list-with-random-pointer
 * [ ] shortest-unsorted-continuous-subarray
-* [ ] Logger Rate Limiter
-* [ ] Web Crawler
+* [x] Logger Rate Limiter \(hashmap \|\| queue + set \|\| lru\)
+* [ ] ~~Web Crawler~~
 * [ ] Number of Longest Increasing Subsequence
-* [ ] Longest Substring Without Repeating Characters
+* [x] Longest Substring Without Repeating Characters
 * [ ] Flood Fill
 * [x] Binary Tree Level Order Traversal II
 * [x] Longest Consecutive Sequence \(uf-alike set, push all into set, 2nd loop look up and down to see if can connect them, move boundary and remove connected piece\)
@@ -96,26 +95,33 @@ Tasks
 * [ ] Sudoku Solver
 * [x] Insert Delete GetRandom O\(1\)
 * [ ] Insert Delete GetRandom O\(1\) - Duplicates allowed
-* [x] First unique word in a stream \(similar to LRU [https://leetcode.com/discuss/interview-question/124719/Find-the-first-word-in-a-stream-in-which-it-is-not-repeated-in-the-rest-of-the-stream/](https://leetcode.com/discuss/interview-question/124719/Find-the-first-word-in-a-stream-in-which-it-is-not-repeated-in-the-rest-of-the-stream/)\)
+* [x] First unique word in a stream 
+  * [x] \(similar to LRU [https://leetcode.com/discuss/interview-question/124719/Find-the-first-word-in-a-stream-in-which-it-is-not-repeated-in-the-rest-of-the-stream/](https://leetcode.com/discuss/interview-question/124719/Find-the-first-word-in-a-stream-in-which-it-is-not-repeated-in-the-rest-of-the-stream/)\)
+  * [x] [https://www.jiuzhang.com/problem/first-unique-number-in-data-stream-ii/](https://www.jiuzhang.com/problem/first-unique-number-in-data-stream-ii/)
 * [x] Design In-Memory File System
 * [x] Design Search Autocomplete System
 * [x] Intersection of Two Arrays I \(2 hashset / sort + binary search/ sort + merge\)
 * [x] Intersection of Two Arrays II 
 * [x] LFU Cache
 * [ ] Divide Array in Sets of K Consecutive Numbers
-* [ ] Encode and Decode TinyURL
+* [x] Encode and Decode TinyURL
 * [ ] Single Number
 * [x] Subtree of Another Tree \(double dc, because we might have duplicates\)
 * [x] Tree Diameter \(2 bfs\)
 * [x] Binary Tree Paths
 * [x] The Maze
 * [ ] The Maze II
-* [ ] Analyze User Website Visit Pattern
+* [x] Analyze User Website Visit Pattern\(brute force count every occurence\)
 * [x] Number of Days Between Two Dates \(calc date from 1971\)
 * [x] triangle \(dp or divide conquer + memo\)
 * [x] serialize & deserializae n-ary tree \(append children count\)
 * [x] Minimum Knight Moves \(just calc one corner region\)
 * [x] All Nodes Distance K in Binary Tree \(convert to graph and run bfs\)
+* [x] select a random node from a tree with equal probability \(similar to quick select\)
+  * [x] \([https://www.youtube.com/watch?v=nj5jFhglw8U](https://www.youtube.com/watch?v=nj5jFhglw8U)\)
+  * [x] \([https://www.byte-by-byte.com/randombinarytree/](https://www.byte-by-byte.com/randombinarytree/)\)
+* [x] Minimum Cost to Connect Sticks \(pq\)
+* [x] add two numbers III \([https://leetcode.com/problems/add-strings/discuss/522194/follow-up-in-case-of-negative-numbers-python](https://leetcode.com/problems/add-strings/discuss/522194/follow-up-in-case-of-negative-numbers-python)\)
 
 Find target word
 
@@ -138,7 +144,7 @@ LC 284?
 Reviewed
 
 1. [ ] Robot Bounded In Circle \(dir = \(dir + 3\) % 4 / dir = \(dir + 1\) % 4\)
-2. [ ] Rotting Oranges \(same as walls and gates, start from rotten oranges and keep fress counts\)
+2. [x] Rotting Oranges \(same as walls and gates, start from rotten oranges and keep fress counts\)
 3. [ ] Most Common Word\(replaceAll, split, set\)
 4. [ ] Find Peak Element \(nums\[mid\] &gt; nums\[mid + 1\], go to left, else go to right\)
 
@@ -147,17 +153,20 @@ Reviewed
 OOD
 
 * [x] LRU
-* [x] FileSys
-* [x] LINUX FIND
+* [x] file system
+* [x] linux find
 * [x] parking lot
 * [x] Amazon Locker
 * [x] restaurant reservation
-* [ ] shopping cart
-* [ ] Ticket booking
-* [ ] vendor machine
-* [ ] phonebook
-* [ ] tic-tac-toe
-* [ ] texas poker
+* [x] elevator
+* [x] coffee machine
+* [x] tic-tac-toe
+* [x] blackjack
+* [x] chess
+* [x] deck of cards
+* [ ] shopping cart \(similar to vending machine\)
+* [ ] ticket booking \(similar to restaurant reservation\)
+* [ ] phonebook \(similar to file system\)
 
 ## Linux Find
 
@@ -939,7 +948,189 @@ public class RestaurantDesign {
 
 ```
 
+## TicTacToe
 
+```java
+public class TicTacToeDesign {
+    public class TicTacToe {
+        private char[][] board;
+        private char currentPlayerMark;
+        private boolean gameEnd;
+        
+        // v2:
+        int[] rows;
+        int[] cols;
+        int diagonal;
+        int antiDiagonal;
+
+        public TicTacToe() {
+            board = new char[3][3];
+            initialize();
+        }
+
+        public char getCurrentPlayer() {
+            return currentPlayerMark;
+        }
+
+        public void initialize() {
+            gameEnd = false;
+            currentPlayerMark = 'x';
+
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    board[i][j] = '-';
+                }
+            }
+            
+            // v2:
+            rows = new int[3];
+            cols = new int[3];
+            diagonal = 0;
+            antiDiagonal = 0;
+        }
+
+        public boolean isBoardFull() {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (board[i][j] == '-') {
+                        return false;
+                    }
+                }
+            }
+            gameEnd = true;
+            return true;
+        }
+
+        public void changePlayer() {
+            if (currentPlayerMark == 'x')
+                currentPlayerMark = 'o';
+            else
+                currentPlayerMark = 'x';
+
+        }
+        
+        // v1:
+        public void move(int row, int col, char player) throws AlreadyTakenException, GameEndException{
+            if (gameEnd) {
+                throw new GameEndException();
+            }
+
+            if (board[row][col] != '-') {
+                throw new AlreadyTakenException();
+            }
+            
+            board[row][col] = player;
+            
+            int cur = player == 'x' ? 1 : -1;
+            int n = rows.length;
+            rows[row] += cur;
+            cols[col] -= cur;
+            if (row == col) {
+                diagonal += cur;
+            }
+            if (row + col == n - 1) {
+                antiDiagonal += cur;
+            }
+            if (Math.abs(rows[row]) == n ||
+                    Math.abs(cols[col]) == n ||
+                    Math.abs(diagonal) == n ||
+                    Math.abs(antiDiagonal) == n) {
+                gameEnd = true;
+                System.out.println(player + "wins");
+            }
+        }
+
+        // v2:
+        // true means this move wins the game, false means otherwise
+        public boolean move(int row, int col) throws AlreadyTakenException, GameEndException {
+
+            if (gameEnd) {
+                throw new GameEndException();
+            }
+
+            if (board[row][col] != '-') {
+                throw new AlreadyTakenException();
+            }
+
+            board[row][col] = currentPlayerMark;
+
+            boolean win;
+
+            //check row
+            win = true;
+            for (int i = 0; i < board.length; i++) {
+                if (board[row][i] != currentPlayerMark) {
+                    win = false;
+                    break;
+                }
+            }
+
+            if (win) {
+                gameEnd = true;
+                return win;
+            }
+
+            //check column
+            win = true;
+            for (int i = 0; i < board.length; i++) {
+                if (board[i][col] != currentPlayerMark) {
+                    win = false;
+                    break;
+                }
+            }
+
+            if (win) {
+                gameEnd = true;
+                return win;
+            }
+
+            //check back diagonal
+            win = true;
+            for (int i = 0; i < board.length; i++) {
+                if (board[i][i] != currentPlayerMark) {
+                    win = false;
+                    break;
+                }
+            }
+
+            if (win) {
+                gameEnd = true;
+                return win;
+            }
+
+            //check forward diagonal
+            win = true;
+            for (int i = 0; i < board.length; i++) {
+                if (board[i][board.length - i - 1] != currentPlayerMark) {
+                    win = false;
+                    break;
+                }
+            }
+
+            if (win) {
+                gameEnd = true;
+                return win;
+            }
+            changePlayer();
+            return win;
+        }
+    }
+
+
+    class GameEndException extends Exception {
+        public GameEndException() {
+            super("Game has been ended, cannot make any more moves");
+        }
+    }
+
+    class AlreadyTakenException extends Exception {
+        public AlreadyTakenException() {
+            super("This place has been taken");
+        }
+    }
+}
+
+```
 
 ## Merge Sort
 
