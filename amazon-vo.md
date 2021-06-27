@@ -324,7 +324,7 @@ Round 5. HM继续聊BQ
 
 bq： 对teammate不满意 Step outside your responsibility Overcome unexpected obstacles mistake you made 讲一下你需要学新技术并在工作中应用
 
-大概差不多这些，2个hard 2个OOD，BQ基本上每轮都有点重复，第一轮印度大姐还不停的打断我说这个例子不太行你能换一个吗。。。跪的话八成跪在第一轮了
+大概差不多这些，2个hard 2个OOD，BQ基本上每轮都有重复，第一轮印度大姐还不停的打断我说这个例子不太行你能换一个吗。。。跪的话八成跪在第一轮了
 
 ## 27.
 
@@ -379,7 +379,7 @@ onsite
 
 我的电面和VO之间隔了大概一个月，我可以有时间刷system design， Object-Oriented Design，和 multi-threading。
 
-说了一大堆BQ，现在说下我视频面试的流程吧。因为我在leetcode没找到原题，我只能给出题目大概难度，类型。我面的是Amazon Aurora，有四轮，分两天： 第一天， 第一轮，和我面试的是我在上个帖子提到的中国大叔，他是组里的大manager。两道BQ和一个leetcode medium的slide window -- max product of subarray of size K \(注意，corner case 0\)。 第二轮，一个印度大叔面试，他是组里的小manager，一个白人大叔shadow，组里的senior。没有太多刁难，两道BQ和一个multi-threading的问题。这是一道典型的producer/consumer的multi-threading，做出来了，而且感觉设计得还行，但没时间检查和跑test。如果跪了，应该就是在这里了。教训是：回答BQ的时候稍微简洁一些，不要超时，要不之后技术面试时间会不够。 第二天， 第三轮，一个白人大叔面，Amazon Pharmacy的senior manager（唯一一个Aurora之外的面试官，所以我猜是bar raiser），一个印度大叔shadow。 两道BQ和一个easy的array。这个又超时了。。。后面一个面试官来晚了，而且白人大叔愿意在超时后，让我优化，跑测试，提问。 第四轮，一个韩国大叔面，因为我们面试开始得晚（晚了8min），所以他很好心地只问了一道BQ，给我留了足够的时间做system design。让设计一个类似 database metric publisher/receiver system。
+说了一大堆BQ，现在说下我视频面试的流程吧。因为我在leetcode没找到原题，我只能给出题目大概难度，类型。我面的是Amazon Aurora，有四轮，分两天： 第一天， 第一轮，和我面试的是我在上个帖子提到的中国大叔，他是组里的大manager。两道BQ和一个leetcode medium的slide window \(注意，corner case 0\)。 第二轮，一个印度大叔面试，他是组里的小manager，一个白人大叔shadow，组里的senior。没有太多刁难，两道BQ和一个multi-threading的问题。这是一道典型的producer/consumer的multi-threading，做出来了，而且感觉设计得还行，但没时间检查和跑test。如果跪了，应该就是在这里了。教训是：回答BQ的时候稍微简洁一些，不要超时，要不之后技术面试时间会不够。 第二天， 第三轮，一个白人大叔面，Amazon Pharmacy的senior manager（唯一一个Aurora之外的面试官，所以我猜是bar raiser），一个印度大叔shadow。 两道BQ和一个easy的array。这个又超时了。。。后面一个面试官来晚了，而且白人大叔愿意在超时后，让我优化，跑测试，提问。 第四轮，一个韩国大叔面，因为我们面试开始得晚（晚了8min），所以他很好心地只问了一道BQ，给我留了足够的时间做system design。让设计一个类似 database metric publisher/receiver system。
 
 总结一下： 1。Behavior Question真的很重要 -- 每轮面试你都在用一半的时间回答BQ。准备它们，你只需要10小时左右，你再找不到性价比更高的准备了。 2。和谷歌爸爸比，amazon算法面真的不难，毕竟你只有20-25分钟去解题，run through code。我第二天的同时电面谷歌，45min，直接一道hard，让我跪得明明白白，会在另一个帖子详述。 3。好好和面试官交流。这次VO，我并没有碰到刁难的面试官。当他们觉得想和你工作，他们会给你提示，给你easy question，或者起码给你一个好脸色。比如，我的第三轮，已经是easy的题了，最后优化的时候，白人大叔还是不断给hints。如果跪了，真的有点愧对了。 4。System design对大多数人来说都很陌生。比如我工作时，主要设计low-level driver和一些kernel的东西，从来没有设计过distributed system. 第一个，当然是经典的system design课程（Grokking the System Design Interview，注：我没收到educative.io的一分钱赞助），这个课程，我刷了3遍，虽然还是很多东西记不住，但很多概念以及设计的流程模板，你都能熟悉。 第二个，youtube上很多system design mock interviews，你有了足够的知识之后，一边follow别人的设计，一边自己想设计，帮助真的很大。贴一个例子（Youtube: Google Systems Design Interview With An Ex-Googler） 第三个，大多数时候，你都碰不上原题，这时候，别慌，顺着设计流程模板。比如我面system design的时候，刚开始就一脸懵B，不知道面试官到底想要什么。这时候，问你的面试官问题：functional and non-functional的要求，你的assumption是不是对的，具体focus在哪个部分，这个系统的scale是多少。等你这些问题问得差不多的时候，你心里大概就知道该怎么设计了。 5。掌握好时间。当你答题时，语速不要太快，面试官得typing你的回答，但你要把握好你自己的时间。
 

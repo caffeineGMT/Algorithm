@@ -13,7 +13,7 @@ Other coded
 7. [ ] Pow\(x,y\) \(divideConquer / bit\)
 8. [ ] Evaluate Division \(graph dfs\)
 9. [ ] Minimum Genetic Mutation \(bfs / dfs, same as word ladder\)
-10. [ ] First Unique Character in a String \(2 pass map, can be optimized based on different scenario in both space and time\)
+10. [x] First Unique Character in a String \(2 pass map, can be optimized based on different scenario in both space and time\)
 11. [ ] Interval List Intersections\(merge 2 sorted list + max & min for start and end\)
 12. [x] Count Good Nodes in Binary Tree\(preorder dfs\)
 13. [ ] Non-overlapping Intervals\(reverse thinking + sort based on end + dp\)
@@ -26,14 +26,14 @@ Other coded
 20. [x] Longest Univalue Path \(l, r, leftMost, rightMost, global\)
 21. [x] Daily Temperatures \(push when t\[stack.peek\(\)\] &gt;= t\[i\], pop otherwise, remember push the last one in after popping\)
 22. [x] Single Element in a Sorted Array \(binary search, l &lt; r exit, remember to use clean boundary as we move mid instead of normal template\)
-23. [ ] Next Greater Element II \(same as next greater element I, i % n, 2\*n loop\)
+23. [x] Next Greater Element II \(same as next greater element I, i % n, 2\*n loop\)
 24. [x] Remove All Adjacent Duplicates in String II \(pair \(ch, count\)\)
 25. [x] Number of Atoms \(similar to basic calculator I, store Map in stack\)
 26. [x] Sqrt\(x\) \(binary search, l, r need to be long to prevent overflow, cast into int when return\)
 27. [x] path sum I \(maintain sum along path, check sum == target at leaf\)
 28. [x] path sum II \(remember to backtrack at last level\)
 29. [x] path sum III \(prefix sum\)
-30. [ ] coin change II \(dp\[i\]\[j\] = dp\[i - 1\]\[j\] + dp\[i\]\[j - coins\[i - 1\]\]\)
+30. [x] coin change II \(dp\[i\]\[j\] = dp\[i - 1\]\[j\] + dp\[i\]\[j - coins\[i - 1\]\]\)
 31. [x] Insert Delete GetRandom O\(1\) \(swap with last item in list\)
 
 Tasks
@@ -41,60 +41,43 @@ Tasks
 * [x] balanced binary tree
 * [x] shortest word distance I 
 * [x] shortest word distance II \(merge sort\)
-* [ ] synonymous sentence
-* [ ] sliding puzzle 
 * [ ] reverse bits
 * [ ] remove duplicates from sorted list
 * [ ] partition label \(greedy, shoot far, expand window, slide window\)
-* [ ] best meeting points
 * [ ] BST node distance
 * [x] longest increasing path in a matrix \(dfs + int\[\]\[\] memo\)
 * [ ] number of closed islands
 * [ ] next greater node in linked list
 * [x] search suggestion system \(build prefix hashmap / build trie and dfs\)
 * [x] minimum window substring
-* [ ] shortest completing word
-* [ ] valid word abbreviation
 * [x] valid palindrome I 
 * [x] valid palindrome II
-* [ ] ~~valid palindrome III \(hard\)~~
-* [ ] transform one string to another using minimum number of given operation
-* [ ] nested-list-weight-sum
+* [x] nested list weight sum \(same as flatten nested list\)
 * [x] Account Merge
 * [x] Friend circle \(num of province, uf\)
 * [x] number of connected components \(uf\)
 * [x] Open the Lock \(bfs, remember to check the first node\)
-* [ ] ~~shortest-path-visiting-all-nodes \(hard\)~~
 * [ ] bus-routes
 * [x] Reorganize String \(always use map\[ch - 'a'\]--\)
 * [ ] data-stream-as-disjoint-intervals
 * [ ] median in sliding widow
 * [x] decode ways \(watch out leading 0\)
 * [ ] Partition equal subset sum
-* [ ] common sub-sequence of two \(or more\) strings
 * [ ] regular-expression-matching & wild card matching
-* [ ] Right pointer
-* [ ] Rank in a stream
 * [ ] unique binary search trees
 * [x] maximum averge subtree
 * [ ] Queue with stacks
-* [ ] Iterator for Combination
-* [ ] Find Max Bandwidth
 * [ ] copy-list-with-random-pointer
-* [ ] shortest-unsorted-continuous-subarray
 * [x] Logger Rate Limiter \(hashmap \|\| queue + set \|\| lru\)
-* [ ] ~~Web Crawler~~
-* [ ] Number of Longest Increasing Subsequence
 * [x] Longest Substring Without Repeating Characters
 * [ ] Flood Fill
 * [x] Binary Tree Level Order Traversal II
 * [x] Longest Consecutive Sequence \(uf-alike set, push all into set, 2nd loop look up and down to see if can connect them, move boundary and remove connected piece\)
-* [ ] Robot Bounded In Circle
 * [ ] Maximum Frequency Stack
 * [ ] Valid Sudoku
 * [ ] Sudoku Solver
 * [x] Insert Delete GetRandom O\(1\)
-* [ ] Insert Delete GetRandom O\(1\) - Duplicates allowed
+* [x] Insert Delete GetRandom O\(1\) - Duplicates allowed
 * [x] First unique word in a stream 
   * [x] \(similar to LRU [https://leetcode.com/discuss/interview-question/124719/Find-the-first-word-in-a-stream-in-which-it-is-not-repeated-in-the-rest-of-the-stream/](https://leetcode.com/discuss/interview-question/124719/Find-the-first-word-in-a-stream-in-which-it-is-not-repeated-in-the-rest-of-the-stream/)\)
   * [x] [https://www.jiuzhang.com/problem/first-unique-number-in-data-stream-ii/](https://www.jiuzhang.com/problem/first-unique-number-in-data-stream-ii/)
@@ -103,7 +86,6 @@ Tasks
 * [x] Intersection of Two Arrays I \(2 hashset / sort + binary search/ sort + merge\)
 * [x] Intersection of Two Arrays II 
 * [x] LFU Cache
-* [ ] Divide Array in Sets of K Consecutive Numbers
 * [x] Encode and Decode TinyURL
 * [ ] Single Number
 * [x] Subtree of Another Tree \(double dc, because we might have duplicates\)
@@ -121,34 +103,39 @@ Tasks
   * [x] \([https://www.youtube.com/watch?v=nj5jFhglw8U](https://www.youtube.com/watch?v=nj5jFhglw8U)\)
   * [x] \([https://www.byte-by-byte.com/randombinarytree/](https://www.byte-by-byte.com/randombinarytree/)\)
 * [x] Minimum Cost to Connect Sticks \(pq\)
-* [x] add two numbers III \([https://leetcode.com/problems/add-strings/discuss/522194/follow-up-in-case-of-negative-numbers-python](https://leetcode.com/problems/add-strings/discuss/522194/follow-up-in-case-of-negative-numbers-python)\)
-
-Find target word
-
-https://www.1point3acres.com/bbs/thread-617156-1-1.html
-
-given list of tuples: \[\("a", "b"\), \("b", "c".....\] and a target word: "hello", 要 求 判 断 能 否 ⽤ tuples
-
-的 字 母 组 成 target 。 每 个 tuple 只 能 ⽤ ⼀ 次 ， tuple ⾥ 两 个 字 母 是 ⼆ 选 ⼀。
-
-LC 237. Delete Node in a Linked List
-
-hasNext\(\) & Next\(\)
-
-LC 284?
-
-给 ⼀ 个 sorted 的 list of list ， 实 现 bool hasNext\(\) 和 next\(\) ， 刚 开 始 提 出 priority queue ， ⾯ 试 官
-
-说 不 ⽤ 额 外 space ， 后 来 ⽤ pointer 做 的
+* [x] add two numbers III 
+  * [x] \([https://leetcode.com/problems/add-strings/discuss/522194/follow-up-in-case-of-negative-numbers-python](https://leetcode.com/problems/add-strings/discuss/522194/follow-up-in-case-of-negative-numbers-python)\)
+  * [x] [https://app.gitbook.com/@guomaitao/s/datastructure-and-algorithm/v/master/follow-ups\#add-strings-iii-add-2-numbers-with-linkedlist-substract-2-numbers](https://app.gitbook.com/@guomaitao/s/datastructure-and-algorithm/v/master/follow-ups#add-strings-iii-add-2-numbers-with-linkedlist-substract-2-numbers)
+* [x] peeking iterator
+  * [x] [https://stackoverflow.com/questions/52159526/iterator-for-a-list-of-sorted-lists-using-a-priority-queue](https://stackoverflow.com/questions/52159526/iterator-for-a-list-of-sorted-lists-using-a-priority-queue)
+* [ ] Delete Node in a Linked List
+* [x] write a iterator，based on percentage, return a list of string. e.g.\[foo, bar\] = \[1:1\]，total = 500, return 250 foo and 250 bar
+  * [x] OfInt iter = IntStream.range\(0, 10\).iterator\(\);
+  * [x] prefix sum as key
+  * [x] tree map hoding the key, val is String
+  * [x] using intstream to iterate thru the whole range, find ceilingKey as we iterate and return the string val
 
 Reviewed
 
-1. [ ] Robot Bounded In Circle \(dir = \(dir + 3\) % 4 / dir = \(dir + 1\) % 4\)
+1. [x] Robot Bounded In Circle \(dir = \(dir + 3\) % 4 / dir = \(dir + 1\) % 4\)
 2. [x] Rotting Oranges \(same as walls and gates, start from rotten oranges and keep fress counts\)
 3. [ ] Most Common Word\(replaceAll, split, set\)
 4. [ ] Find Peak Element \(nums\[mid\] &gt; nums\[mid + 1\], go to left, else go to right\)
 
+Others
 
+* [ ] sliding puzzle 
+* [ ] synonymous sentence
+* [ ] Web Crawler
+* [ ] shortest completing word
+* [ ] Iterator for Combination
+* [ ] ~~s~~hortest-path-visiting-all-nodes \(hard\)
+* [ ] valid palindrome III \(hard\)
+* [ ] Number of Longest Increasing Subsequence
+* [ ] Divide Array in Sets of K Consecutive Numbers
+* [ ] valid word abbreviation
+* [ ] shortest-unsorted-continuous-subarray
+* [ ] transform one string to another using minimum number of given operation
 
 OOD
 
@@ -164,9 +151,9 @@ OOD
 * [x] blackjack
 * [x] chess
 * [x] deck of cards
-* [ ] shopping cart \(similar to vending machine\)
-* [ ] ticket booking \(similar to restaurant reservation\)
-* [ ] phonebook \(similar to file system\)
+* [x] shopping cart \(similar to vending machine\)
+* [x] ticket booking \(similar to restaurant reservation\)
+* [x] phonebook \(similar to file system\)
 
 ## Linux Find
 
@@ -1405,12 +1392,12 @@ public class Solution {
 
     private void bubbleDown() {
         int i = 0;
-        while (i < nodes.length) {
+        while (i < size) {
             int smallest = i;
-            if (2 * i + 1 < nodes.length && nodes[2 * i + 1].key < nodes[smallest].key) {
+            if (2 * i + 1 < size && nodes[2 * i + 1].key < nodes[smallest].key) {
                 smallest = 2 * i + 1;
             }
-            if (2 * i + 2 < nodes.length && nodes[2 * i + 2].key < nodes[smallest].key) {
+            if (2 * i + 2 < size && nodes[2 * i + 2].key < nodes[smallest].key) {
                 smallest = 2 * i + 2;
             }
             if (smallest == i) {
