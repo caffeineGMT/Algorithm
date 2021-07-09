@@ -5,49 +5,48 @@
 Other coded
 
 1. [ ] 3sum\(fix 1 ptr, then 2sum\)
-2. [x] Random Pick with Weight\(prefixSum + binary search\)
-3. [x] write a function that 50% return 1, 50% return 0. follow up: utilize the function you just wrote, write another function 75% return 1 and 25% return 0 \(bit\) \([https://massivealgorithms.blogspot.com/2016/08/generate-0-and-1-with-25-and-75.html](https://massivealgorithms.blogspot.com/2016/08/generate-0-and-1-with-25-and-75.html)\)
-4. [x] \(bonus\) input is a TreeNode. update all the node values with the sum of its all children \(in-order traversal, update self from left and right, return sum\)
-5. [x] Minimum Path Sum \(dp on matrix\)
-6. [ ] Simplify Paths\(split + stack\)
-7. [ ] Pow\(x,y\) \(divideConquer / bit\)
-8. [ ] Evaluate Division \(graph dfs\)
-9. [ ] Minimum Genetic Mutation \(bfs / dfs, same as word ladder\)
-10. [x] First Unique Character in a String \(2 pass map, can be optimized based on different scenario in both space and time\)
-11. [ ] Interval List Intersections\(merge 2 sorted list + max & min for start and end\)
-12. [x] Count Good Nodes in Binary Tree\(preorder dfs\)
-13. [ ] Non-overlapping Intervals\(reverse thinking + sort based on end + dp\)
-14. [x] Design HashMap\(bucket + linkedlist\)
-15. [ ] Copy List with Random Pointer \(similar to clone graph \| O\(1\) space: change in-place, copy, then rewind\)
-16. [ ] Happy Number \(set / list cycle I O\(1\) space\)
-17. [x] Design In-Memory File System \(trie-like structure\)
-18. [x] Design File System\(same as trie\)
-19. [ ] Subarray Sum Equals K \(prefix sum\)
-20. [x] Longest Univalue Path \(l, r, leftMost, rightMost, global\)
-21. [x] Daily Temperatures \(push when t\[stack.peek\(\)\] &gt;= t\[i\], pop otherwise, remember push the last one in after popping\)
-22. [x] Single Element in a Sorted Array \(binary search, l &lt; r exit, remember to use clean boundary as we move mid instead of normal template\)
-23. [x] Next Greater Element II \(same as next greater element I, i % n, 2\*n loop\)
-24. [x] Remove All Adjacent Duplicates in String II \(pair \(ch, count\)\)
-25. [x] Number of Atoms \(similar to basic calculator I, store Map in stack\)
-26. [x] Sqrt\(x\) \(binary search, l, r need to be long to prevent overflow, cast into int when return\)
-27. [x] path sum I \(maintain sum along path, check sum == target at leaf\)
-28. [x] path sum II \(remember to backtrack at last level\)
-29. [x] path sum III \(prefix sum\)
-30. [x] coin change II \(dp\[i\]\[j\] = dp\[i - 1\]\[j\] + dp\[i\]\[j - coins\[i - 1\]\]\)
-31. [x] Insert Delete GetRandom O\(1\) \(swap with last item in list\)
+2. [ ] 4sum
+3. [ ] 3sum closest
+4. [x] Random Pick with Weight\(prefixSum + binary search\)
+5. [x] write a function that 50% return 1, 50% return 0. follow up: utilize the function you just wrote, write another function 75% return 1 and 25% return 0 \(bit\) \([https://massivealgorithms.blogspot.com/2016/08/generate-0-and-1-with-25-and-75.html](https://massivealgorithms.blogspot.com/2016/08/generate-0-and-1-with-25-and-75.html)\)
+6. [x] \(bonus\) input is a TreeNode. update all the node values with the sum of its all children \(in-order traversal, update self from left and right, return sum\)
+7. [x] Minimum Path Sum \(dp on matrix\)
+8. [x] Simplify Paths\(split + stack\)
+9. [ ] Pow\(x,y\) \(divideConquer / bit\)
+10. [x] Evaluate Division \(graph dfs\)
+11. [ ] Minimum Genetic Mutation \(bfs / dfs, same as word ladder\)
+12. [x] First Unique Character in a String \(2 pass map, can be optimized based on different scenario in both space and time\)
+13. [ ] Interval List Intersections\(merge 2 sorted list + max & min for start and end\)
+14. [x] Count Good Nodes in Binary Tree\(preorder dfs\)
+15. [ ] Non-overlapping Intervals\(reverse thinking + sort based on end + dp\)
+16. [x] Design HashMap\(bucket + linkedlist\)
+17. [x] Copy List with Random Pointer \(similar to clone graph \| O\(1\) space: change in-place, copy, then rewind\)
+18. [ ] Happy Number \(set / list cycle I O\(1\) space\)
+19. [x] Design In-Memory File System \(trie-like structure\)
+20. [x] Design File System\(same as trie\)
+21. [x] Subarray Sum Equals K \(prefix sum\)
+22. [x] Longest Univalue Path \(l, r, leftMost, rightMost, global\)
+23. [x] Daily Temperatures \(push when t\[stack.peek\(\)\] &gt;= t\[i\], pop otherwise, remember push the last one in after popping\)
+24. [x] Single Element in a Sorted Array \(binary search, l &lt; r exit, remember to use clean boundary as we move mid instead of normal template\)
+25. [x] Next Greater Element II \(same as next greater element I, i % n, 2\*n loop\)
+26. [x] Remove All Adjacent Duplicates in String II \(pair \(ch, count\)\)
+27. [x] Number of Atoms \(similar to basic calculator I, store Map in stack\)
+28. [x] Sqrt\(x\) \(binary search, l, r need to be long to prevent overflow, cast into int when return\)
+29. [x] path sum I \(maintain sum along path, check sum == target at leaf\)
+30. [x] path sum II \(remember to backtrack at last level\)
+31. [x] path sum III \(prefix sum\)
+32. [x] coin change II \(dp\[i\]\[j\] = dp\[i - 1\]\[j\] + dp\[i\]\[j - coins\[i - 1\]\]\)
+33. [x] Insert Delete GetRandom O\(1\) \(swap with last item in list\)
 
 Tasks
 
 * [x] balanced binary tree
 * [x] shortest word distance I 
 * [x] shortest word distance II \(merge sort\)
-* [ ] reverse bits
-* [ ] remove duplicates from sorted list
-* [ ] partition label \(greedy, shoot far, expand window, slide window\)
-* [ ] BST node distance
+* [x] remove duplicates from sorted list
+* [x] partition label \(greedy, shoot far, expand window, slide window\)
 * [x] longest increasing path in a matrix \(dfs + int\[\]\[\] memo\)
-* [ ] number of closed islands
-* [ ] next greater node in linked list
+* [x] number of closed islands
 * [x] search suggestion system \(build prefix hashmap / build trie and dfs\)
 * [x] minimum window substring
 * [x] valid palindrome I 
@@ -57,25 +56,20 @@ Tasks
 * [x] Friend circle \(num of province, uf\)
 * [x] number of connected components \(uf\)
 * [x] Open the Lock \(bfs, remember to check the first node\)
-* [ ] bus-routes
 * [x] Reorganize String \(always use map\[ch - 'a'\]--\)
-* [ ] data-stream-as-disjoint-intervals
 * [ ] median in sliding widow
 * [x] decode ways \(watch out leading 0\)
-* [ ] Partition equal subset sum
-* [ ] regular-expression-matching & wild card matching
-* [ ] unique binary search trees
 * [x] maximum averge subtree
-* [ ] Queue with stacks
-* [ ] copy-list-with-random-pointer
+* [x] Queue with stacks
+* [ ] copy list with random pointer
 * [x] Logger Rate Limiter \(hashmap \|\| queue + set \|\| lru\)
 * [x] Longest Substring Without Repeating Characters
-* [ ] Flood Fill
+* [x] Flood Fill \(bfs\)
 * [x] Binary Tree Level Order Traversal II
 * [x] Longest Consecutive Sequence \(uf-alike set, push all into set, 2nd loop look up and down to see if can connect them, move boundary and remove connected piece\)
-* [ ] Maximum Frequency Stack
-* [ ] Valid Sudoku
-* [ ] Sudoku Solver
+* [x] Maximum Frequency Stack
+* [x] Valid Sudoku
+* [x] Sudoku Solver
 * [x] Insert Delete GetRandom O\(1\)
 * [x] Insert Delete GetRandom O\(1\) - Duplicates allowed
 * [x] First unique word in a stream 
@@ -87,12 +81,12 @@ Tasks
 * [x] Intersection of Two Arrays II 
 * [x] LFU Cache
 * [x] Encode and Decode TinyURL
-* [ ] Single Number
+* [x] Single Number
 * [x] Subtree of Another Tree \(double dc, because we might have duplicates\)
 * [x] Tree Diameter \(2 bfs\)
 * [x] Binary Tree Paths
 * [x] The Maze
-* [ ] The Maze II
+* [x] The Maze II
 * [x] Analyze User Website Visit Pattern\(brute force count every occurence\)
 * [x] Number of Days Between Two Dates \(calc date from 1971\)
 * [x] triangle \(dp or divide conquer + memo\)
@@ -108,12 +102,17 @@ Tasks
   * [x] [https://app.gitbook.com/@guomaitao/s/datastructure-and-algorithm/v/master/follow-ups\#add-strings-iii-add-2-numbers-with-linkedlist-substract-2-numbers](https://app.gitbook.com/@guomaitao/s/datastructure-and-algorithm/v/master/follow-ups#add-strings-iii-add-2-numbers-with-linkedlist-substract-2-numbers)
 * [x] peeking iterator
   * [x] [https://stackoverflow.com/questions/52159526/iterator-for-a-list-of-sorted-lists-using-a-priority-queue](https://stackoverflow.com/questions/52159526/iterator-for-a-list-of-sorted-lists-using-a-priority-queue)
-* [ ] Delete Node in a Linked List
+* [x] Delete Node in a Linked List
 * [x] write a iterator，based on percentage, return a list of string. e.g.\[foo, bar\] = \[1:1\]，total = 500, return 250 foo and 250 bar
   * [x] OfInt iter = IntStream.range\(0, 10\).iterator\(\);
   * [x] prefix sum as key
   * [x] tree map hoding the key, val is String
   * [x] using intstream to iterate thru the whole range, find ceilingKey as we iterate and return the string val
+* [x] My Calendar III
+* [x] Max stack
+* [x] Implement Stack using Queues
+* [x] Implement Queue using Stacks
+* [x] Palindrome Linked List
 
 Reviewed
 
@@ -129,13 +128,23 @@ Others
 * [ ] Web Crawler
 * [ ] shortest completing word
 * [ ] Iterator for Combination
-* [ ] ~~s~~hortest-path-visiting-all-nodes \(hard\)
-* [ ] valid palindrome III \(hard\)
+* [ ] ~~s~~hortest path visiting all nodes
+* [ ] valid palindrome III 
 * [ ] Number of Longest Increasing Subsequence
 * [ ] Divide Array in Sets of K Consecutive Numbers
 * [ ] valid word abbreviation
-* [ ] shortest-unsorted-continuous-subarray
+* [ ] shortest unsorted continuous subarray
 * [ ] transform one string to another using minimum number of given operation
+* [ ] next greater node in linked list
+* [ ] Data Stream as Disjoint Intervals
+* [ ] reverse bits
+* [ ] regular-expression-matching & wild card matching
+* [ ] Critical Connections in a Network
+* [ ] Partition equal subset sum
+* [ ] unique binary search trees
+* [ ] min BST node distance
+* [ ] bus-routes
+* [ ] Rotate Array
 
 OOD
 
