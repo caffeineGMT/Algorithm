@@ -4,9 +4,9 @@
 
 Other coded
 
-1. [ ] 3sum\(fix 1 ptr, then 2sum\)
-2. [ ] 4sum
-3. [ ] 3sum closest
+1. [x] 3sum\(fix 1 ptr, then 2sum\)
+2. [x] 4sum
+3. [x] 3sum closest
 4. [x] Random Pick with Weight\(prefixSum + binary search\)
 5. [x] write a function that 50% return 1, 50% return 0. follow up: utilize the function you just wrote, write another function 75% return 1 and 25% return 0 \(bit\) \([https://massivealgorithms.blogspot.com/2016/08/generate-0-and-1-with-25-and-75.html](https://massivealgorithms.blogspot.com/2016/08/generate-0-and-1-with-25-and-75.html)\)
 6. [x] \(bonus\) input is a TreeNode. update all the node values with the sum of its all children \(in-order traversal, update self from left and right, return sum\)
