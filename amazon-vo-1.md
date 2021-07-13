@@ -12,16 +12,16 @@ Other coded
 6. [x] \(bonus\) input is a TreeNode. update all the node values with the sum of its all children \(in-order traversal, update self from left and right, return sum\)
 7. [x] Minimum Path Sum \(dp on matrix\)
 8. [x] Simplify Paths\(split + stack\)
-9. [ ] Pow\(x,y\) \(divideConquer / bit\)
+9. [x] Pow\(x,y\) \(divideConquer / bit\)
 10. [x] Evaluate Division \(graph dfs\)
-11. [ ] Minimum Genetic Mutation \(bfs / dfs, same as word ladder\)
+11. [x] Minimum Genetic Mutation \(bfs / dfs, same as word ladder\)
 12. [x] First Unique Character in a String \(2 pass map, can be optimized based on different scenario in both space and time\)
-13. [ ] Interval List Intersections\(merge 2 sorted list + max & min for start and end\)
+13. [x] Interval List Intersections\(merge 2 sorted list + max & min for start and end\)
 14. [x] Count Good Nodes in Binary Tree\(preorder dfs\)
-15. [ ] Non-overlapping Intervals\(reverse thinking + sort based on end + dp\)
+15. [x] Non-overlapping Intervals\(reverse thinking + sort based on end + dp\)
 16. [x] Design HashMap\(bucket + linkedlist\)
 17. [x] Copy List with Random Pointer \(similar to clone graph \| O\(1\) space: change in-place, copy, then rewind\)
-18. [ ] Happy Number \(set / list cycle I O\(1\) space\)
+18. [x] Happy Number \(set / list cycle I O\(1\) space\)
 19. [x] Design In-Memory File System \(trie-like structure\)
 20. [x] Design File System\(same as trie\)
 21. [x] Subarray Sum Equals K \(prefix sum\)
@@ -57,11 +57,11 @@ Tasks
 * [x] number of connected components \(uf\)
 * [x] Open the Lock \(bfs, remember to check the first node\)
 * [x] Reorganize String \(always use map\[ch - 'a'\]--\)
-* [ ] median in sliding widow
+* [x] median in sliding widow
 * [x] decode ways \(watch out leading 0\)
 * [x] maximum averge subtree
 * [x] Queue with stacks
-* [ ] copy list with random pointer
+* [x] copy list with random pointer
 * [x] Logger Rate Limiter \(hashmap \|\| queue + set \|\| lru\)
 * [x] Longest Substring Without Repeating Characters
 * [x] Flood Fill \(bfs\)
@@ -118,8 +118,8 @@ Reviewed
 
 1. [x] Robot Bounded In Circle \(dir = \(dir + 3\) % 4 / dir = \(dir + 1\) % 4\)
 2. [x] Rotting Oranges \(same as walls and gates, start from rotten oranges and keep fress counts\)
-3. [ ] Most Common Word\(replaceAll, split, set\)
-4. [ ] Find Peak Element \(nums\[mid\] &gt; nums\[mid + 1\], go to left, else go to right\)
+3. [x] Most Common Word\(replaceAll, split, set\)
+4. [x] Find Peak Element \(nums\[mid\] &gt; nums\[mid + 1\], go to left, else go to right\)
 
 Others
 
