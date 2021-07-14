@@ -8,7 +8,7 @@
 * [ ] Kth Smallest Element in a BST
 * [ ] LRU Cache
 * [x] Add Strings
-* [ ] K Closest Points to Origin 
+* [x] K Closest Points to Origin 
 * [ ] Binary Search Tree Iterator \(recursive + iterative\)
 * [ ] Minimum Cost For Tickets
 * [ ] All Nodes Distance K in Binary Tree
@@ -83,7 +83,7 @@
 * [ ] First Bad Version
 * [ ] Strobogrammatic Number 
 * [ ] Basic Calculator II
-* [ ] Kth Largest Element in an Array
+* [x] Kth Largest Element in an Array
 * [ ] Design Add and Search Words Data Structure
 * [ ] Course Schedule II
 * [ ] Number of Islands
