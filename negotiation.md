@@ -13,10 +13,10 @@ Question to ask
   * immediate projects I could work on and their timelines
   * tech stack, creating new tech/product or dealing with legacy code
   * expection for this position, what to learn, scope \(design, implementation, operational tasks\) what are the domain knowledge
-  * ramp up plan, on-boading, career path, looking for long-term relationship, green card policy within the team
+  * ramp up plan, on-boarding, career path, looking for long-term relationship, green card policy within the team
 * Teams
   * the history of the team
-  * how many people, distribution of different level and roles
+  * how many people, diversity, distribution of different level and roles
   * acceptable start date
 
 ## Negotiation
