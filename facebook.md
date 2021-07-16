@@ -30,8 +30,8 @@
 * [ ] Sliding Window Maximum
 * [ ] Read N Characters Given Read4 II - Call multiple times 
 * [ ] Find Minimum in Rotated Sorted Array II
-* [ ] Word Break II
-* [ ] Word Break
+* [x] Word Break II
+* [x] Word Break
 * [ ] Word Ladder
 * [ ] Word Ladder II
 * [ ] N-Queens II
@@ -52,7 +52,7 @@
 * [ ] Maximum Difference Between Node and Ancestor 
 * [ ] Max Consecutive Ones III
 * [ ] Vertical Order Traversal of a Binary Tree 
-* [ ] Interval List Intersections 
+* [x] Interval List Intersections 
 * [x] Squares of a Sorted Array 
 * [x] Check Completeness of a Binary Tree
 * [x] Verifying an Alien Dictionary 
@@ -80,12 +80,12 @@
 * [x] Nested List Weight Sum
 * [ ] Largest BST Subtree 
 * [ ] Coin Change 
-* [ ] First Bad Version
+* [x] First Bad Version
 * [ ] Strobogrammatic Number 
 * [ ] Basic Calculator II
 * [x] Kth Largest Element in an Array
 * [ ] Design Add and Search Words Data Structure
-* [ ] Course Schedule II
+* [x] Course Schedule II
 * [ ] Number of Islands
 * [ ] Missing Ranges
 * [ ] Min Stack 
@@ -98,8 +98,8 @@
 * [ ] Reverse Linked List II
 * [x] Sqrt\(x\) \(need to watch out int overflow\)
 * [ ] Add Binary
-* [ ] Insert Interval
-* [ ] Merge Intervals
+* [x] Insert Interval
+* [x] Merge Intervals
 * [ ] Combination Sum II
 * [ ] Combination Sum
 * [x] Divide Two Integers
@@ -111,6 +111,8 @@
 * [x] Convert Sorted Array to Binary Search Tree
 * [x] Convert Sorted List to Binary Search Tree
 * [ ] Palindrome Linked List
+* [x] Max Area of Island
+* [x] Making A Large Island
 
 _27，38，40，52，_98，_127，138,140，154，155，158，227_，235，236_，_239，246，273，278，282_，297，301，322，333，339_，348_，378，392_，408，415，438_，485，498，528，540，547，560_（变体，全是正数和带有负数两种情况），621，637，674，680，766，778, 785，824，919，921，938_，940，953_，958，973，977，986，987，1004，1026，1123，1197，1249_，1428_，1570\*，1574
 
