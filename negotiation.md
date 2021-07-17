@@ -27,7 +27,7 @@ Target:
 
 TC: 190k. Base: 150k. RSU: 40k: Sign-on: 40k per year
 
-
+Card 0: Ask for team, platform, interview feedback first
 
 Card 1: 3 year experience
 
