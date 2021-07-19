@@ -3,21 +3,21 @@
 * [x] Toeplitz Matrix
 * [x] Minimum Remove to Make Valid Parentheses 
 * [x] Merge Sorted Array
-* [ ] Implement Trie \(Prefix Tree\)   
+* [x] Implement Trie \(Prefix Tree\)   
 * [x] Find First and Last Position of Element in Sorted Array
-* [ ] Kth Smallest Element in a BST
-* [ ] LRU Cache
+* [x] Kth Smallest Element in a BST
+* [x] LRU Cache
 * [x] Add Strings
 * [x] K Closest Points to Origin 
 * [ ] Binary Search Tree Iterator \(recursive + iterative\)
-* [ ] Minimum Cost For Tickets
+* [x] Minimum Cost For Tickets
 * [ ] All Nodes Distance K in Binary Tree
 * [ ] Pow\(x, n\) \(decimal\)
 * [x] Trapping Rain Water 
 * [x] merge k sorted array \([https://www.lintcode.com/problem/486/](https://www.lintcode.com/problem/486/)\)
-* [ ] Diameter of Binary Tree
+* [x] Diameter of Binary Tree
 * [x] Subarray Sum Equals K
-* [ ] LCA I II III
+* [x] LCA I II III
 * [ ] Dot Product of Two Sparse Vectors \(binary search?\)
 * [ ] Compare strings stored in two Linked Lists
 * [x] Palindrome Permutation
@@ -29,14 +29,14 @@
 * [ ] Integer to English Words
 * [ ] Sliding Window Maximum
 * [ ] Read N Characters Given Read4 II - Call multiple times 
-* [ ] Find Minimum in Rotated Sorted Array II
+* [x] Find Minimum in Rotated Sorted Array I, II
 * [x] Word Break II
 * [x] Word Break
-* [ ] Word Ladder
+* [x] Word Ladder
 * [ ] Word Ladder II
 * [ ] N-Queens II
 * [ ] Longest Valid Parentheses
-* [ ] Longest Substring with At Most K Distinct Characters
+* [x] Longest Substring with At Most K Distinct Characters
 * [ ] Distinct Subsequences II
 * [ ] Longest Increasing Path in a Matrix
 * [x] Longest Palindromic Substring
@@ -51,7 +51,7 @@
 * [x] Two City Scheduling
 * [ ] Maximum Difference Between Node and Ancestor 
 * [ ] Max Consecutive Ones III
-* [ ] Vertical Order Traversal of a Binary Tree 
+* [x] Vertical Order Traversal of a Binary Tree 
 * [x] Interval List Intersections 
 * [x] Squares of a Sorted Array 
 * [x] Check Completeness of a Binary Tree
@@ -67,12 +67,12 @@
 * [x] Average of Levels in Binary Tree 
 * [ ] Task Scheduler
 * [x] Friend Circles \(number of provinces\)
-* [ ] Single Element in a Sorted Array
+* [x] Single Element in a Sorted Array
 * [ ] Random Pick with Weight
 * [x] Diagonal Traverse
 * [ ] Max Consecutive Ones 
-* [ ] Validate IP Address
-* [ ] Find All Anagrams in a String
+* [x] Validate IP Address
+* [x] Find All Anagrams in a String
 * [x] Valid Word Abbreviation
 * [ ] Is Subsequence
 * [ ] Kth Smallest Element in a Sorted Matrix
@@ -86,8 +86,8 @@
 * [x] Kth Largest Element in an Array
 * [ ] Design Add and Search Words Data Structure
 * [x] Course Schedule II
-* [ ] Number of Islands
-* [ ] Missing Ranges
+* [x] Number of Islands
+* [x] Missing Ranges
 * [ ] Min Stack 
 * [ ] Copy List with Random Pointer
 * [ ] Single Number
@@ -103,7 +103,7 @@
 * [ ] Combination Sum II
 * [ ] Combination Sum
 * [x] Divide Two Integers
-* [ ] Search in Rotated Sorted Array
+* [x] Search in Rotated Sorted Array I, II
 * [ ] Product of Array Except Self
 * [x] Binary Tree Right Side View
 * [ ] Remove All Adjacent Duplicates In String 
@@ -111,8 +111,8 @@
 * [x] Convert Sorted Array to Binary Search Tree
 * [x] Convert Sorted List to Binary Search Tree
 * [ ] Palindrome Linked List
+* [ ] Count and Say
+* [ ] Swim in Rising Water  
 * [x] Max Area of Island
 * [x] Making A Large Island
-
-_27，38，40，52，_98，_127，138,140，154，155，158，227_，235，236_，_239，246，273，278，282_，297，301，322，333，339_，348_，378，392_，408，415，438_，485，498，528，540，547，560_（变体，全是正数和带有负数两种情况），621，637，674，680，766，778, 785，824，919，921，938_，940，953_，958，973，977，986，987，1004，1026，1123，1197，1249_，1428_，1570\*，1574
 
