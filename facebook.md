@@ -50,7 +50,7 @@
 * [ ] Lowest Common Ancestor of Deepest Leaves
 * [x] Two City Scheduling
 * [ ] Maximum Difference Between Node and Ancestor 
-* [ ] Max Consecutive Ones III
+* [x] Max Consecutive Ones I, II, III
 * [x] Vertical Order Traversal of a Binary Tree 
 * [x] Interval List Intersections 
 * [x] Squares of a Sorted Array 
@@ -70,7 +70,6 @@
 * [x] Single Element in a Sorted Array
 * [ ] Random Pick with Weight
 * [x] Diagonal Traverse
-* [ ] Max Consecutive Ones 
 * [x] Validate IP Address
 * [x] Find All Anagrams in a String
 * [x] Valid Word Abbreviation
