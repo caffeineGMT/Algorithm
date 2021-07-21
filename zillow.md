@@ -4,12 +4,12 @@
 * [x] Flatten Nested List Iterator 
 * [x] Word Ladder
 * [x] Employee Free Time
-* [ ] Minimum Window Substring
+* [x] Minimum Window Substring
 * [x] fibonacci sum  [https://www.geeksforgeeks.org/sum-fibonacci-numbers/](https://www.geeksforgeeks.org/sum-fibonacci-numbers/)
 * [x] merge 2 sorted list
 * [x] max area of island
 * [x] Move zeros
-* [ ] Largest Rectangle in Histogram
+* [x] Largest Rectangle in Histogram
 * [x] Sort List
 * [x] Merge Interval
 * [x] Median of Two Sorted Arrays
