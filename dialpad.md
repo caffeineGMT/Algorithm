@@ -175,3 +175,54 @@ public boolean canCover(int[][] matrix, int radius) {
 
 ```
 
+```java
+
+
+
+
+
+Design a simplified version of Twitter where users can post tweets, follow/unfollow another user and is able to see the 10 most recent tweets in the user's news feed. Your design should support the following features:
+
+- post a new tweet.
+- Follower follows a followee.
+- Follower unfollows a followee.
+- get news feed: Retrieve the 10 most recent tweets in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent.
+
+func: as listed
+no-func: 10k DAU
+
+tweet: 
+id, user_id, timestamp, content, img_url
+
+user: 
+id, name, email, password, location, isCelebrity
+
+follow_table:
+follower_id, followee_id
+
+input: userId
+SELECT * from follow_table where follower_id == user_id 
+SELECT * from tweet_table where user_id == followee_id Desc Limit 10 
+10 friends -> 100 tweets, merge 10 sorted list based on timestamp -> get first 10 tweets
+user_id -> followees -> 
+
+avg: following 200 users
+assume: 140 chars for a tweet
+img: 5M
+read: 20 times refresh of newsfeed a day
+write: 2 tweets a day
+
+10m users
+
+read: 10^7 * (20 * 10 * 140 + 4 * 10 * 5 * 10 ^ 6) / 86400 
+10 ^ 7 * 20 * (n * 10)
+
+user_id -> List<Tweet> list 
+
+bob has 300 followers
+
+elon musk 2m followers
+
+
+```
+
