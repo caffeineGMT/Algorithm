@@ -10,7 +10,7 @@
 * [x] Kth Smallest Element in a BST
 * [x] LRU Cache
 * [x] Add Strings
-* [ ] K Closest Points to Origin 
+* [ ] K Closest Points to Origin \(O\(n\)\)
 * [x] Binary Search Tree Iterator
 * [x] Minimum Cost For Tickets
 * [x] All Nodes Distance K in Binary Tree
