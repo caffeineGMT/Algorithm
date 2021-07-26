@@ -122,7 +122,6 @@
 * [ ] Longest Arithmetic Subsequence
 * [ ] [Strobogrammatic Number](https://leetcode.com/problems/strobogrammatic-number) I, II
 * [ ] [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list)
-* [ ] 设计一个class，存一堆有序list，然后有hasNext和getNext, merge k, with iterator
 * [ ] 两个linked list，节点上存着不同的string，比较两个list的所有string合起来是不是equal，要求O\(1\)的空间复杂度
 * [ ] 一个schedule里面有working day和holiday，给定k天假期，问如何请假可以有连续最长的holiday。优化了下用slidin‍‌‍‍‌‍‌‌‌‍‍‍‍‍‌‍‍‍‌‌g window做的，O\(n\)
 * [ ] [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement)
