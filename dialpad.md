@@ -103,3 +103,75 @@ From above, removing ‘c/C’ results in the shortest DNA string ‘’. Theref
 */
 ```
 
+```java
+/*
+Problem:
+You're the fire marshal of your floor and you've been tasked with determining if the sprinkler setup covers the whole floor-plan. 
+Your boss gives you a map of your floor plan as a 2D array of 1's and 0's where 1's represent sprinkler locations. Given this 2D array 
+and a radius that each sprinkler can cover, determine if the given sprinkler layout covers the whole floor.
+For the sake of simplicity, assume the sprinklers spray in a cross rather than a circular pattern.
+ 
+Example 1:
+ 
+Radius: 2
+Floor plan:
+1 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 1 0
+0 0 0 0 0
+ 
+Output: False
+ 
+Explanation:
+The sprinkler layout only covers these spots (the ones with numbers)
+1 0 0 - -
+0 - - 0 -
+0 - - 0 -
+- 0 0 1 0
+- - - 0 -
+ 
+ 
+Example 2:
+ 
+Radius: 1
+0 0 0 0
+1 1 1 1
+0 0 0 0
+ 
+Output: True
+The sprinkler layout covers the whole floor plan
+*/
+
+public boolean canCover(int[][] matrix, int radius) {
+    if (matrix == null || matrix.length == 0 || matrix[0].length == 0 || radius <= 0) return false;
+    
+    int m = matrix.length, n = matrix[0].length;
+    
+    int[] dx = { -1, 1, 0, 0 };
+    int[] dy = { 0, 0, -1, 1 };
+    
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (matrix[i][j] != 1) continue;
+            for (int i = 0; i < 4; i++) { 
+                for (int j = 1; j <= radius; j++) {
+                    int nx = cur[0] + dx[i] * j, ny = cur[1] + dy[i] * j;
+                    if (nx < 0 || nx >= m || ny < 0 || ny >= n || matrix[nx][ny] == 1) continue;
+                    matrix[nx][ny] = 2;
+                }
+            }
+        }
+    }
+    
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (matrix[i][j] == 0) return false;
+        }
+    }
+    
+    return true;
+}
+
+```
+
