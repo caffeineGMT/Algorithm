@@ -27,7 +27,8 @@
 * [x] Remove Invalid Parentheses
 * [x] Serialize and Deserialize Binary Tree
 * [x] Expression Add Operators 
-* [x] Integer to English Words
+* [ ] Integer to English Words
+* [ ] English Words to Integer
 * [ ] Sliding Window Maximum
 * [x] Find Minimum in Rotated Sorted Array I, II
 * [x] Word Break II
@@ -112,9 +113,9 @@
 * [ ] Reconstruct Itinerary
 * [ ] Robot Room Cleaner
 * [ ] Find Peak Element 
-* [ ] Next Greater Element II
+* [ ] Next Greater Element I, II
 * [ ] 第二题 给一个array，中间有一部分array是unsorted的, 比如 \[0, 1, 2, 6, 5, 4, 7, 8\] 找出这个区间的长度, 这个是\[6, 5, 4\] 所以是3。 首先写出nlogn解法，然后还剩大概25分钟时间 小姐姐说you did really great job, 然后叫我尝试下优化到O\(n\), 也没别的问题了, 就用了点儿时间写了个O\(n\) 的解法。
-* [ ] longest increasing subsequence
+* [x] longest increasing subsequence
 * [ ] Longest Continuous Increasing Subsequence
 * [ ] insert a node into linked list
 * [ ] calculate taxes, input是一个income，和一个List\[List\], 代表每一段收入的税率。
@@ -129,7 +130,6 @@
 * [ ] Alien Dictionary
 * [ ] [Accounts Merge](https://leetcode.com/problems/accounts-merge)
 * [ ] Shortest Path in a Grid with Obstacles Elimination
-* [ ] translate an interger number to english words and vice versa
 * [ ] flatten a binary tree to circular doubly linked list in place with same order as in order tree tranversal and vice versa
 * [ ] [Angle Between Hands of a Clock](https://leetcode.com/problems/angle-between-hands-of-a-clock)
 * [ ] 第一问是给了两个string，target和source，问source中的字符能否组成target，source中的每个字符只能用一次。这一问很简单。第二问是刷题网 琪遛。
@@ -172,7 +172,6 @@ Task
 * [ ] Goat Latin 
 * [ ] Surrounded Regions
 * [ ] Binary Subarrays With Sum 
-* [ ] Longest Continuous Increasing Subsequence
 * [ ] Regular Expression Matching
 * [ ] Read N Characters Given Read4 II - Call multiple times
 * [ ] Remove Element
