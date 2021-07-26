@@ -152,13 +152,9 @@
 * [ ] Next Permutation
 * [ ] Group shifted strings
 * [x] Simplify Path
-* [ ] 第一轮 code 两道题
+* [ ] 第一题找出 local mininum, [https://www.geeksforgeeks.org/find-local-minima-array/](https://www.geeksforgeeks.org/find-local-minima-array/) 第二题实现一个hashmap，要求可以 set, get, 以及 getLast， [https://leetcode.com/discuss/int](https://leetcode.com/discuss/int) ... gh-Twitter-Question
 
-  第一题找出 local mininum, [https://www.geeksforgeeks.org/find-local-minima-array/](https://www.geeksforgeeks.org/find-local-minima-array/) 第二题实现一个hashmap，要求可以 set, get, 以及 getLast， [https://leetcode.com/discuss/int](https://leetcode.com/discuss/int) ... gh-Twitter-Question
-
-  第二轮 code 两道题
-
-  第一提类似 [https://leetcode.com/problems/simplify-path/](https://leetcode.com/problems/simplify-path/) 第二题 3 sum 变形，就是给一个矩阵，要求从矩阵找出 a^2 + b^2 = c^2 的三个数
+  第二题 3 sum 变形，就是给一个矩阵，要求从矩阵找出 a^2 + b^2 = c^2 的三个数
 
 * [ ] [Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii) 
 * [ ] 第二题比较特别，LC没有，但其实不难。大意是给两个array，跟两个已经排序array的iterator，叫我自己写一个新的iterator class，一样有hasNext\(\)跟next\(\)方法，每次呼叫的时候，要从两个given iterator之间挑那个小的数字返回。 例如given \[1, 2, 5\] & iterator1 + \[3, 6, 9\] & iterator2 写一个iterator3连call六次next\(\)分别会返回\[1, 2, 3, 5, 6, 9\]，前六次hasNext\(\)都是true最后一次会是false 可以参考"stack流出网/questions/92000巴陵"，比较数字的大小逻辑自己修正，我快速地写出一个workable的版本，在run test case时主动發现一些错误，有自己發现然后更正。整体来说这题应该是我答的最差的，code比较混乱，但小哥表示你的逻辑我
