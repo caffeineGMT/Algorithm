@@ -114,7 +114,8 @@
 * [ ] Find Peak Element 
 * [ ] Next Greater Element II
 * [ ] 第二题 给一个array，中间有一部分array是unsorted的, 比如 \[0, 1, 2, 6, 5, 4, 7, 8\] 找出这个区间的长度, 这个是\[6, 5, 4\] 所以是3。 首先写出nlogn解法，然后还剩大概25分钟时间 小姐姐说you did really great job, 然后叫我尝试下优化到O\(n\), 也没别的问题了, 就用了点儿时间写了个O\(n\) 的解法。
-* [ ] longest increasing subsequence 扫了一眼题干还以为是拿dp解， 结果很快发现他题里的subsequence是substring... 比如 \[1, 2, 3, 4, 0, 1, 2\] 结果就是‍‌‍‍‌‍‌‌‌‍‍‍‍‍‌‍‍‍‌‌4 也就是\[1,2,3,4\]. O\(n\)暴力解 搞定 壮汉大哥灰常满意
+* [ ] longest increasing subsequence
+* [ ] Longest Continuous Increasing Subsequence
 * [ ] insert a node into linked list
 * [ ] calculate taxes, input是一个income，和一个List\[List\], 代表每一段收入的税率。
 * [ ] Lowest Common Ancestor of a Binary Tree III \(O\(1\)\)
@@ -148,8 +149,8 @@
 * [ ] 给一系列的time ranges，返回有最多time ranges overlap的时间。这题又没见过想了一阵子，先是想用stack，觉得不靠谱，改用hashmap记录每一时间的count。然后在此基础上optimize，移除map种不再需要的数据。
 * [ ] K-diff pairs in an array
 * [x] Binary Tree Zigzag Level Order Traversal
-* [x] Next Permutation
-* [x] Group shifted strings
+* [ ] Next Permutation
+* [ ] Group shifted strings
 * [x] Simplify Path
 * [ ] 第一轮 code 两道题
 
