@@ -20,7 +20,7 @@
 * [x] Diameter of Binary Tree
 * [x] Subarray Sum Equals K
 * [x] LCA I II III
-* [ ] Dot Product of Two Sparse Vectors \(binary search?\)
+* [ ] Dot Product of Two Sparse Vectors
 * [x] Compare strings stored in two Linked Lists
 * [x] Palindrome Permutation
 * [x] Merge k Sorted Lists
