@@ -193,7 +193,34 @@ Task
 * Design short url
 * Design top k songs
 * Design Leetcode Contest / Hackerrank \(submission service, question service，ranking service\)
-* 设计一个系统，可以随时查找一定范围内所有的餐馆，返回餐馆的位置和评价等相关内容。一个阿三面的，面完之后感觉很不好。 
+* 设计一个系统，可以随时查找一定范围内所有的餐馆，返回餐馆的位置和评价等相关内容。一个阿三面的，面完之后感觉很不好。
+
+## Requirement:
+
+**The Product Design Interview**
+
+1. Possible Question topics Interviewers will focus on building a product or API at scale that supports an end user product or service. 
+
+* Storage data models
+* Scalability 
+* Design patterns
+* Data ownership 
+* Protocols 
+* Data formats 
+* Client-server design 
+* Designing for long term vs. complexity 
+* Accommodating possible product changes 
+* Design a service or product API 
+* Design a chat service or a feed API 
+* Design an email server
+
+2. Example Questions we might ask you to: 
+
+* Design a service or product API 
+* Design a chat service or a feed API 
+* Design an email server
+
+ 
 
  
 
