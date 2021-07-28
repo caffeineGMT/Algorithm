@@ -143,9 +143,8 @@
 * [ ] Evaluate Division
 * [ ] 第一题找list里有多少个pairs满足相加等于target，可以用o\(n\)找到每个数字的frequency解决 
 * [ ]  第一题是linked list去掉duplicates，自己写node的class，第二题是sorted matrix找target number，lc原题是每行每列都是sorted，面试官说只有每一列是sort的
-* [ ] [Longest Substring with At Most K Distinct Characters](https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters)
 * [ ] 第一题给一个sorted array和x，找出两个元素满足两数字相减等于x。想了一会儿，最后用了two pointer，左边指针从左到右，右边指针可以用binary search来找。
-* [ ] 给一系列的time ranges，返回有最多time ranges overlap的时间。这题又没见过想了一阵子，先是想用stack，觉得不靠谱，改用hashmap记录每一时间的count。然后在此基础上optimize，移除map种不再需要的数据。
+* [ ] meeting room I, II
 * [ ] K-diff pairs in an array
 * [x] Binary Tree Zigzag Level Order Traversal
 * [ ] Next Permutation
@@ -183,20 +182,18 @@ Task
 
 * Design Instagram
 * Design Facebook Status Search \(support updateStatus ans searchStatus\)
+* Desig‍‌‍‍‌‍‌‌‌‍‍‍‍‍‌‍‍‍‌‌n live comments for Facebook posts
+* Design youtube video service
 * Design Web Crawler
 * Design Newsfeed
+* Design FB messenger
 * Design translate system api
 * Design order food app api
 * Desing Typeahead/autocomplete
 * Design short url
-* Design Leetcode Contest / Hackerrank \(submission service + db，question service + db，还有ranking service 读submission db 然后ranking service和question service 和对应数据库之间放redis 因为两个都是read heavy service 然后submission db用cassandra或者dynamodb 因为该db为write heavy 并且easy to scale。然后service 用lb + 多个nodes 来分摊traffic\)
-* 骆驼骆驼骆驼点抗亩 主要功能 1.任意商品能查近期的价格history，2.用户可以subscribe，价格降低的时候邮件通知。 骆驼骆驼骆驼点抗亩 真有这个网站，大家去看看就知道了。面试的时候我没尝试访问这个网站。\(follow套路：明确要求，做好back-of-the-envelope计算 ,讲清楚api, db schema, 画清楚架构图, 讲讲某些选择的trade off，分析一下怎么处理某些component的failure，就差不多了。主要功能就是对于任意商品，可以查看历史价格，所以要有一个async batch processing job去定时抓取亚麻的商品信息。然后subscribe的用户可以收到价格降低的通知，我觉得可以聊聊message queue，或者看看其他notification service怎么设计的\)
-* design一个tiktok的feature，input是一个video，然后output可以把你的脸变成个pig
-* 设计一个系统，可以随时查找一定范围内所有的餐馆，返回餐馆的位置和评价等相关内容。一个阿三面的，面完之后感觉很不好。 
-* 设计一个拍卖系统
-* Desig‍‌‍‍‌‍‌‌‌‍‍‍‍‍‌‍‍‍‌‌n live comments for Facebook posts
 * Design top k songs
-* Design youtube video service
+* Design Leetcode Contest / Hackerrank \(submission service, question service，ranking service\)
+* 设计一个系统，可以随时查找一定范围内所有的餐馆，返回餐馆的位置和评价等相关内容。一个阿三面的，面完之后感觉很不好。 
 
  
 
