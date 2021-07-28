@@ -68,7 +68,7 @@
 * [x] Largest BST Subtree 
 * [ ] Coin Change 
 * [x] First Bad Version
-* [x] Basic Calculator II
+* [x] Basic Calculator I, II
 * [x] Kth Largest Element in an Array
 * [x] Design Add and Search Words Data Structure
 * [x] Course Schedule II
@@ -109,7 +109,7 @@
 * [ ] Roman to Integer
 * [ ] Reverse Nodes in k-Group
 * [x] Contiguous Array
-* [ ] shortest distance from all buildings
+* [x] shortest distance from all buildings
 * [ ] Reconstruct Itinerary
 * [ ] Robot Room Cleaner
 * [ ] Find Peak Element 
@@ -118,7 +118,7 @@
 * [x] longest increasing subsequence
 * [x] Longest Continuous Increasing Subsequence
 * [ ] insert a node into linked list
-* [ ] calculate taxes, input是一个income，和一个List\[List\], 代表每一段收入的税率。
+* [ ] calculate taxes
 * [ ] Lowest Common Ancestor of a Binary Tree III \(O\(1\)\)
 * [ ] Longest Arithmetic Subsequence
 * [ ] [Strobogrammatic Number](https://leetcode.com/problems/strobogrammatic-number) I, II
