@@ -108,7 +108,7 @@
 * [ ] Best time to sell stock I II III
 * [ ] Roman to Integer
 * [ ] Reverse Nodes in k-Group
-* [ ] Contiguous Array
+* [x] Contiguous Array
 * [ ] shortest distance from all buildings
 * [ ] Reconstruct Itinerary
 * [ ] Robot Room Cleaner
@@ -116,7 +116,7 @@
 * [ ] Next Greater Element I, II
 * [ ] 第二题 给一个array，中间有一部分array是unsorted的, 比如 \[0, 1, 2, 6, 5, 4, 7, 8\] 找出这个区间的长度, 这个是\[6, 5, 4\] 所以是3。 首先写出nlogn解法，然后还剩大概25分钟时间 小姐姐说you did really great job, 然后叫我尝试下优化到O\(n\), 也没别的问题了, 就用了点儿时间写了个O\(n\) 的解法。
 * [x] longest increasing subsequence
-* [ ] Longest Continuous Increasing Subsequence
+* [x] Longest Continuous Increasing Subsequence
 * [ ] insert a node into linked list
 * [ ] calculate taxes, input是一个income，和一个List\[List\], 代表每一段收入的税率。
 * [ ] Lowest Common Ancestor of a Binary Tree III \(O\(1\)\)
@@ -126,16 +126,16 @@
 * [ ] 两个linked list，节点上存着不同的string，比较两个list的所有string合起来是不是equal，要求O\(1\)的空间复杂度
 * [ ] 一个schedule里面有working day和holiday，给定k天假期，问如何请假可以有连续最长的holiday。优化了下用slidin‍‌‍‍‌‍‌‌‌‍‍‍‍‍‌‍‍‍‌‌g window做的，O\(n\)
 * [ ] [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement)
-* [ ] 3Sum Closest
+* [x] 3Sum Closest
 * [ ] Alien Dictionary
 * [ ] [Accounts Merge](https://leetcode.com/problems/accounts-merge)
 * [ ] Shortest Path in a Grid with Obstacles Elimination
 * [ ] flatten a binary tree to circular doubly linked list in place with same order as in order tree tranversal and vice versa
-* [ ] [Angle Between Hands of a Clock](https://leetcode.com/problems/angle-between-hands-of-a-clock)
+* [x] Angle Between Hands of a Clock
 * [ ] 第一问是给了两个string，target和source，问source中的字符能否组成target，source中的每个字符只能用一次。这一问很简单。第二问是刷题网 琪遛。
 * [ ] pairs of non-overlapping pairs of equal sums
 * [ ] 已留尔（改动是：整个array保证有且只有一个global peak，没有local peaks）。面试官提出直接写log\(N\)解法，因为behavior聊完后只剩下15分钟了，于是匆忙写了binary search的解法。
-* [ ] task Scheduler
+* [ ] Task Scheduler
 * [x] String to Integer \(atoi\)
 * [ ] [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas) 
 * [ ] input 是非负数整型数组 和一个整数k 要求找到 largest sum of any 2 non-overlapped k-size interval
@@ -149,7 +149,7 @@
 * [ ] K-diff pairs in an array
 * [x] Binary Tree Zigzag Level Order Traversal
 * [ ] Next Permutation
-* [ ] Group shifted strings
+* [x] Group shifted strings
 * [x] Simplify Path
 * [ ] 第一题找出 local mininum, [https://www.geeksforgeeks.org/find-local-minima-array/](https://www.geeksforgeeks.org/find-local-minima-array/) 第二题实现一个hashmap，要求可以 set, get, 以及 getLast， [https://leetcode.com/discuss/int](https://leetcode.com/discuss/int) ... gh-Twitter-Question
 
@@ -157,6 +157,9 @@
 
 * [ ] [Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii) 
 * [ ] 第二题比较特别，LC没有，但其实不难。大意是给两个array，跟两个已经排序array的iterator，叫我自己写一个新的iterator class，一样有hasNext\(\)跟next\(\)方法，每次呼叫的时候，要从两个given iterator之间挑那个小的数字返回。 例如given \[1, 2, 5\] & iterator1 + \[3, 6, 9\] & iterator2 写一个iterator3连call六次next\(\)分别会返回\[1, 2, 3, 5, 6, 9\]，前六次hasNext\(\)都是true最后一次会是false 可以参考"stack流出网/questions/92000巴陵"，比较数字的大小逻辑自己修正，我快速地写出一个workable的版本，在run test case时主动發现一些错误，有自己發现然后更正。整体来说这题应该是我答的最差的，code比较混乱，但小哥表示你的逻辑我
+* [x] First Unique Character in a String
+* [x] All Elements in Two Binary Search Trees
+* [ ] [Clone Graph](https://leetcode.com/problems/clone-graph)
 
 Task
 
@@ -181,8 +184,10 @@ Task
 * Design Instagram
 * Design Facebook Status Search \(support updateStatus ans searchStatus\)
 * Design Web Crawler
-* Desing Typeahead/autocomplete
 * Design Newsfeed
+* Design translate system api
+* Design order food app api
+* Desing Typeahead/autocomplete
 * Design short url
 * Design Leetcode Contest / Hackerrank \(submission service + db，question service + db，还有ranking service 读submission db 然后ranking service和question service 和对应数据库之间放redis 因为两个都是read heavy service 然后submission db用cassandra或者dynamodb 因为该db为write heavy 并且easy to scale。然后service 用lb + 多个nodes 来分摊traffic\)
 * 骆驼骆驼骆驼点抗亩 主要功能 1.任意商品能查近期的价格history，2.用户可以subscribe，价格降低的时候邮件通知。 骆驼骆驼骆驼点抗亩 真有这个网站，大家去看看就知道了。面试的时候我没尝试访问这个网站。\(follow套路：明确要求，做好back-of-the-envelope计算 ,讲清楚api, db schema, 画清楚架构图, 讲讲某些选择的trade off，分析一下怎么处理某些component的failure，就差不多了。主要功能就是对于任意商品，可以查看历史价格，所以要有一个async batch processing job去定时抓取亚麻的商品信息。然后subscribe的用户可以收到价格降低的通知，我觉得可以聊聊message queue，或者看看其他notification service怎么设计的\)

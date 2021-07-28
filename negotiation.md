@@ -27,6 +27,8 @@ Target:
 
 TC: 190k. Base: 150k. RSU: 40k: Sign-on: 40k per year
 
+Actual: base: 138k. Sign-on: 40 - 45k. RSU: 28 share. Relocation: 7k 
+
 Card 0: Ask for team, platform, interview feedback first
 
 Card 1: 3 year experience
