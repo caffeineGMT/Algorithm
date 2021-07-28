@@ -118,7 +118,7 @@
 * [x] longest increasing subsequence
 * [x] Longest Continuous Increasing Subsequence
 * [ ] insert a node into linked list
-* [ ] calculate taxes
+* [x] calculate taxes \(see IntelliJ\)
 * [ ] Lowest Common Ancestor of a Binary Tree III \(O\(1\)\)
 * [ ] Longest Arithmetic Subsequence
 * [ ] [Strobogrammatic Number](https://leetcode.com/problems/strobogrammatic-number) I, II
