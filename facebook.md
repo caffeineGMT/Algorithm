@@ -130,7 +130,6 @@
 * [ ] Alien Dictionary
 * [ ] [Accounts Merge](https://leetcode.com/problems/accounts-merge)
 * [ ] Shortest Path in a Grid with Obstacles Elimination
-* [ ] flatten a binary tree to circular doubly linked list in place with same order as in order tree tranversal and vice versa
 * [x] Angle Between Hands of a Clock
 * [ ] 第一问是给了两个string，target和source，问source中的字符能否组成target，source中的每个字符只能用一次。这一问很简单。第二问是刷题网 琪遛。
 * [ ] pairs of non-overlapping pairs of equal sums
