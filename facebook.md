@@ -20,7 +20,7 @@
 * [x] Diameter of Binary Tree
 * [x] Subarray Sum Equals K
 * [x] LCA I II III
-* [ ] Dot Product of Two Sparse Vectors
+* [x] Dot Product of Two Sparse Vectors
 * [x] Compare strings stored in two Linked Lists
 * [x] Palindrome Permutation
 * [x] Merge k Sorted Lists
@@ -103,6 +103,8 @@
 * [x] Construct Binary Tree from String
 * [x] Top K Frequent Elements
 * [x] Valid Number
+* [x] Kth Missing Positive Number
+* [ ] Knight Dialer
 * [ ] remove duplicates from sorted array
 * [ ] populating next right pointers in each node I, II
 * [ ] Best time to sell stock I II III
@@ -112,7 +114,7 @@
 * [x] shortest distance from all buildings
 * [ ] Reconstruct Itinerary
 * [ ] Robot Room Cleaner
-* [ ] Find Peak Element 
+* [ ] Find Peak Element \(only has global peak, no local peaks\)
 * [ ] Next Greater Element I, II
 * [ ] 第二题 给一个array，中间有一部分array是unsorted的, 比如 \[0, 1, 2, 6, 5, 4, 7, 8\] 找出这个区间的长度, 这个是\[6, 5, 4\] 所以是3。 首先写出nlogn解法，然后还剩大概25分钟时间 小姐姐说you did really great job, 然后叫我尝试下优化到O\(n\), 也没别的问题了, 就用了点儿时间写了个O\(n\) 的解法。
 * [x] longest increasing subsequence
@@ -121,7 +123,7 @@
 * [x] calculate taxes \(see IntelliJ\)
 * [ ] Lowest Common Ancestor of a Binary Tree III \(O\(1\)\)
 * [ ] Longest Arithmetic Subsequence
-* [ ] [Strobogrammatic Number](https://leetcode.com/problems/strobogrammatic-number) I, II
+* [x] Strobogrammatic Number
 * [ ] [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list)
 * [ ] 一个schedule里面有working day和holiday，给定k天假期，问如何请假可以有连续最长的holiday。优化了下用slidin‍‌‍‍‌‍‌‌‌‍‍‍‍‍‌‍‍‍‌‌g window做的，O\(n\)
 * [ ] [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement)
@@ -132,17 +134,17 @@
 * [x] Angle Between Hands of a Clock
 * [ ] 第一问是给了两个string，target和source，问source中的字符能否组成target，source中的每个字符只能用一次。这一问很简单。第二问是刷题网 琪遛。
 * [ ] pairs of non-overlapping pairs of equal sums
-* [ ] 已留尔（改动是：整个array保证有且只有一个global peak，没有local peaks）。面试官提出直接写log\(N\)解法，因为behavior聊完后只剩下15分钟了，于是匆忙写了binary search的解法。
 * [ ] Task Scheduler
 * [x] String to Integer \(atoi\)
-* [ ] [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas) 
+* [ ] Koko Eating Bananas
+* [x] Can Place Flowers 
 * [ ] input 是非负数整型数组 和一个整数k 要求找到 largest sum of any 2 non-overlapped k-size interval
 * [x] Missing Number
 * [ ] Evaluate Division
 * [ ] 第一题找list里有多少个pairs满足相加等于target，可以用o\(n\)找到每个数字的frequency解决 
 * [ ]  第一题是linked list去掉duplicates，自己写node的class，第二题是sorted matrix找target number，lc原题是每行每列都是sorted，面试官说只有每一列是sort的
 * [ ] 第一题给一个sorted array和x，找出两个元素满足两数字相减等于x。想了一会儿，最后用了two pointer，左边指针从左到右，右边指针可以用binary search来找。
-* [ ] meeting room I, II
+* [x] meeting room I, II
 * [ ] K-diff pairs in an array
 * [x] Binary Tree Zigzag Level Order Traversal
 * [ ] Next Permutation
@@ -152,7 +154,7 @@
 
   第二题 3 sum 变形，就是给一个矩阵，要求从矩阵找出 a^2 + b^2 = c^2 的三个数
 
-* [ ] [Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii) 
+* [x] Contains Duplicate II 
 * [ ] 第二题比较特别，LC没有，但其实不难。大意是给两个array，跟两个已经排序array的iterator，叫我自己写一个新的iterator class，一样有hasNext\(\)跟next\(\)方法，每次呼叫的时候，要从两个given iterator之间挑那个小的数字返回。 例如given \[1, 2, 5\] & iterator1 + \[3, 6, 9\] & iterator2 写一个iterator3连call六次next\(\)分别会返回\[1, 2, 3, 5, 6, 9\]，前六次hasNext\(\)都是true最后一次会是false 可以参考"stack流出网/questions/92000巴陵"，比较数字的大小逻辑自己修正，我快速地写出一个workable的版本，在run test case时主动發现一些错误，有自己發现然后更正。整体来说这题应该是我答的最差的，code比较混乱，但小哥表示你的逻辑我
 * [x] First Unique Character in a String
 * [x] All Elements in Two Binary Search Trees
