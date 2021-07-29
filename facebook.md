@@ -181,16 +181,18 @@ Task
 * Design Instagram
 * Design Facebook Status Search \(support updateStatus ans searchStatus\)
 * Desig‍‌‍‍‌‍‌‌‌‍‍‍‍‍‌‍‍‍‌‌n live comments for Facebook posts \(IGTV\)
-* Design youtube video service
+* Design youtube video service \(system, CDN, encoding, video metadata, follow youtuber, comments\)
 * Design Web Crawler \(system\)
 * Design Newsfeed \(product, data model, subscription, publisher\)
-* Design FB messenger \(chat, end-to-end, chat history, friendship\)
-* Design translate system api 
-* Design order food app api
-* Desing Typeahead/autocomplete
-* Design short url
-* Design top k songs
-* Design Leetcode Contest / Hackerrank \(submission service, question service，ranking service\)
+* Design FB messenger \(chat, end-to-end, chat history -&gt; post?, friendship, websocket\)
+* Design translate system api \(system\)
+* Design order food app api \(many-to-many, order - user, order - food\)
+* Desing Typeahead/autocomplete \(system design, key-value, redis\)
+* Design short url \(product, own url, mysql, 1-many, many-many, many-1, 1-1\)
+* Design top k songs \(system design\)
+* Design Leetcode Contest / Hackerrank \(submission service, question service, ranking service\) \(product design, async submit, mq + worker\)
+
+
 
 ## Requirement:
 
@@ -201,9 +203,9 @@ Task
 * Storage data models
 * Scalability 
 * Design patterns
-* Data ownership 
-* Protocols 
-* Data formats 
+* Data ownership. authn, authz
+* Protocols
+* Data formats \(json, xml, rest, soap, graphgl\)
 * Client-server design 
 * Designing for long term vs. complexity \(extensible, all layers\)
 * Accommodating possible product changes 

@@ -201,8 +201,9 @@ follow_table:
 follower_id, followee_id
 
 input: userId
+findK(id) 
 SELECT * from follow_table where follower_id == user_id 
-SELECT * from tweet_table where user_id == followee_id Desc Limit 10 
+SELECT * from tweet_table where user_id = followee_id Order_by timestamp Desc Limit 10 
 10 friends -> 100 tweets, merge 10 sorted list based on timestamp -> get first 10 tweets
 user_id -> followees -> 
 
