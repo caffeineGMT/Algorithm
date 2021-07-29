@@ -123,7 +123,6 @@
 * [ ] Longest Arithmetic Subsequence
 * [ ] [Strobogrammatic Number](https://leetcode.com/problems/strobogrammatic-number) I, II
 * [ ] [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list)
-* [ ] 两个linked list，节点上存着不同的string，比较两个list的所有string合起来是不是equal，要求O\(1\)的空间复杂度
 * [ ] 一个schedule里面有working day和holiday，给定k天假期，问如何请假可以有连续最长的holiday。优化了下用slidin‍‌‍‍‌‍‌‌‌‍‍‍‍‍‌‍‍‍‌‌g window做的，O\(n\)
 * [ ] [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement)
 * [x] 3Sum Closest
@@ -181,18 +180,17 @@ Task
 
 * Design Instagram
 * Design Facebook Status Search \(support updateStatus ans searchStatus\)
-* Desig‍‌‍‍‌‍‌‌‌‍‍‍‍‍‌‍‍‍‌‌n live comments for Facebook posts
+* Desig‍‌‍‍‌‍‌‌‌‍‍‍‍‍‌‍‍‍‌‌n live comments for Facebook posts \(IGTV\)
 * Design youtube video service
-* Design Web Crawler
-* Design Newsfeed
-* Design FB messenger
-* Design translate system api
+* Design Web Crawler \(system\)
+* Design Newsfeed \(product, data model, subscription, publisher\)
+* Design FB messenger \(chat, end-to-end, chat history, friendship\)
+* Design translate system api 
 * Design order food app api
 * Desing Typeahead/autocomplete
 * Design short url
 * Design top k songs
 * Design Leetcode Contest / Hackerrank \(submission service, question service，ranking service\)
-* 设计一个系统，可以随时查找一定范围内所有的餐馆，返回餐馆的位置和评价等相关内容。一个阿三面的，面完之后感觉很不好。
 
 ## Requirement:
 
@@ -207,7 +205,7 @@ Task
 * Protocols 
 * Data formats 
 * Client-server design 
-* Designing for long term vs. complexity 
+* Designing for long term vs. complexity \(extensible, all layers\)
 * Accommodating possible product changes 
 * Design a service or product API 
 * Design a chat service or a feed API 
