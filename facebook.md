@@ -30,7 +30,7 @@
 * [ ] Integer to English Words
 * [ ] English Words to Integer
 * [ ] Sliding Window Maximum
-* [ ] [Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring)
+* [ ] Minimum Window Substring
 * [x] Find Minimum in Rotated Sorted Array I, II
 * [x] Word Break II
 * [x] Word Break
@@ -139,18 +139,12 @@
 * [x] Can Place Flowers 
 * [x] Missing Number
 * [ ] Evaluate Division
-* [ ]  第一题是linked list去掉duplicates，自己写node的class
-* [ ] 第一题给一个sorted array和x，找出两个元素满足两数字相减等于x。想了一会儿，最后用了two pointer，左边指针从左到右，右边指针可以用binary search来找。
 * [x] meeting room I, II
 * [ ] K-diff pairs in an array
 * [x] Binary Tree Zigzag Level Order Traversal
 * [ ] Next Permutation
 * [x] Group shifted strings
 * [x] Simplify Path
-* [ ] 第一题找出 local mininum, [https://www.geeksforgeeks.org/find-local-minima-array/](https://www.geeksforgeeks.org/find-local-minima-array/) 第二题实现一个hashmap，要求可以 set, get, 以及 getLast， [https://leetcode.com/discuss/int](https://leetcode.com/discuss/int) ... gh-Twitter-Question
-
-  第二题 3 sum 变形，就是给一个矩阵，要求从矩阵找出 a^2 + b^2 = c^2 的三个数
-
 * [x] Contains Duplicate II 
 * [ ] stack流出网/questions/92000巴陵
 * [x] First Unique Character in a String
@@ -162,6 +156,12 @@ Question？
 * [ ] pairs of non-overlapping pairs of equal sums
 * [ ] input 是非负数整型数组 和一个整数k 要求找到 largest sum of any 2 non-overlapped k-size interval
 * [ ] 第一题找list里有多少个pairs满足相加等于target，可以用o\(n\)找到每个数字的frequency解决 
+* [ ] 第一题找出 local mininum, [https://www.geeksforgeeks.org/find-local-minima-array/](https://www.geeksforgeeks.org/find-local-minima-array/) 第二题实现一个hashmap，要求可以 set, get, 以及 getLast， [https://leetcode.com/discuss/int](https://leetcode.com/discuss/int) ... gh-Twitter-Question
+
+  第二题 3 sum 变形，就是给一个矩阵，要求从矩阵找出 a^2 + b^2 = c^2 的三个数
+
+* [ ] 第一题是linked list去掉duplicates，自己写node的class
+* [ ] 第一题给一个sorted array和x，找出两个元素满足两数字相减等于x。想了一会儿，最后用了two pointer，左边指针从左到右，右边指针可以用binary search来找。
 
 Task
 
