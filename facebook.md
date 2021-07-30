@@ -121,7 +121,7 @@
 * [x] longest increasing subsequence
 * [x] Longest Continuous Increasing Subsequence
 * [x] Shortest Unsorted Continuous Subarray
-* [ ] insert a node into linked list
+* [x] insert a node into circular linked list
 * [x] calculate taxes \(see IntelliJ\)
 * [ ] Lowest Common Ancestor of a Binary Tree III \(O\(1\)\)
 * [x] Longest Arithmetic Subsequence
@@ -139,8 +139,7 @@
 * [x] Can Place Flowers 
 * [x] Missing Number
 * [ ] Evaluate Division
-* [ ] 第一题找list里有多少个pairs满足相加等于target，可以用o\(n\)找到每个数字的frequency解决 
-* [ ]  第一题是linked list去掉duplicates，自己写node的class，第二题是sorted matrix找target number，lc原题是每行每列都是sorted，面试官说只有每一列是sort的
+* [ ]  第一题是linked list去掉duplicates，自己写node的class
 * [ ] 第一题给一个sorted array和x，找出两个元素满足两数字相减等于x。想了一会儿，最后用了two pointer，左边指针从左到右，右边指针可以用binary search来找。
 * [x] meeting room I, II
 * [ ] K-diff pairs in an array
@@ -162,6 +161,7 @@ Question？
 
 * [ ] pairs of non-overlapping pairs of equal sums
 * [ ] input 是非负数整型数组 和一个整数k 要求找到 largest sum of any 2 non-overlapped k-size interval
+* [ ] 第一题找list里有多少个pairs满足相加等于target，可以用o\(n\)找到每个数字的frequency解决 
 
 Task
 
