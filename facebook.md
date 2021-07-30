@@ -30,6 +30,7 @@
 * [ ] Integer to English Words
 * [ ] English Words to Integer
 * [ ] Sliding Window Maximum
+* [ ] [Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring)
 * [x] Find Minimum in Rotated Sorted Array I, II
 * [x] Word Break II
 * [x] Word Break
@@ -96,7 +97,7 @@
 * [x] Convert Sorted Array to Binary Search Tree
 * [x] Convert Sorted List to Binary Search Tree
 * [x] Max Area of Island
-* [ ] Making A Large Island
+* [x] Making A Large Island
 * [x] Backspace String Compare
 * [x] Intersection of Three Sorted Arrays
 * [x] Maximum Swap
@@ -104,8 +105,9 @@
 * [x] Top K Frequent Elements
 * [x] Valid Number
 * [x] Kth Missing Positive Number
-* [ ] Knight Dialer
-* [ ] remove duplicates from sorted array
+* [x] Knight Dialer
+* [x] remove duplicates from sorted array
+* [ ] Read N Characters Given Read4 I, II
 * [ ] populating next right pointers in each node I, II
 * [ ] Best time to sell stock I II III
 * [ ] Roman to Integer
@@ -116,29 +118,25 @@
 * [ ] Robot Room Cleaner
 * [ ] Find Peak Element \(only has global peak, no local peaks\)
 * [ ] Next Greater Element I, II
-* [ ] 第二题 给一个array，中间有一部分array是unsorted的, 比如 \[0, 1, 2, 6, 5, 4, 7, 8\] 找出这个区间的长度, 这个是\[6, 5, 4\] 所以是3。 首先写出nlogn解法，然后还剩大概25分钟时间 小姐姐说you did really great job, 然后叫我尝试下优化到O\(n\), 也没别的问题了, 就用了点儿时间写了个O\(n\) 的解法。
 * [x] longest increasing subsequence
 * [x] Longest Continuous Increasing Subsequence
+* [x] Shortest Unsorted Continuous Subarray
 * [ ] insert a node into linked list
 * [x] calculate taxes \(see IntelliJ\)
 * [ ] Lowest Common Ancestor of a Binary Tree III \(O\(1\)\)
-* [ ] Longest Arithmetic Subsequence
+* [x] Longest Arithmetic Subsequence
 * [x] Strobogrammatic Number
-* [ ] [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list)
-* [ ] 一个schedule里面有working day和holiday，给定k天假期，问如何请假可以有连续最长的holiday。优化了下用slidin‍‌‍‍‌‍‌‌‌‍‍‍‍‍‌‍‍‍‌‌g window做的，O\(n\)
+* [x] Remove Nth Node From End of List
 * [ ] [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement)
 * [x] 3Sum Closest
 * [ ] Alien Dictionary
 * [ ] [Accounts Merge](https://leetcode.com/problems/accounts-merge)
 * [ ] Shortest Path in a Grid with Obstacles Elimination
 * [x] Angle Between Hands of a Clock
-* [ ] 第一问是给了两个string，target和source，问source中的字符能否组成target，source中的每个字符只能用一次。这一问很简单。第二问是刷题网 琪遛。
-* [ ] pairs of non-overlapping pairs of equal sums
-* [ ] Task Scheduler
+* [x] Task Scheduler
 * [x] String to Integer \(atoi\)
-* [ ] Koko Eating Bananas
+* [x] Koko Eating Bananas
 * [x] Can Place Flowers 
-* [ ] input 是非负数整型数组 和一个整数k 要求找到 largest sum of any 2 non-overlapped k-size interval
 * [x] Missing Number
 * [ ] Evaluate Division
 * [ ] 第一题找list里有多少个pairs满足相加等于target，可以用o\(n\)找到每个数字的frequency解决 
@@ -155,10 +153,15 @@
   第二题 3 sum 变形，就是给一个矩阵，要求从矩阵找出 a^2 + b^2 = c^2 的三个数
 
 * [x] Contains Duplicate II 
-* [ ] 第二题比较特别，LC没有，但其实不难。大意是给两个array，跟两个已经排序array的iterator，叫我自己写一个新的iterator class，一样有hasNext\(\)跟next\(\)方法，每次呼叫的时候，要从两个given iterator之间挑那个小的数字返回。 例如given \[1, 2, 5\] & iterator1 + \[3, 6, 9\] & iterator2 写一个iterator3连call六次next\(\)分别会返回\[1, 2, 3, 5, 6, 9\]，前六次hasNext\(\)都是true最后一次会是false 可以参考"stack流出网/questions/92000巴陵"，比较数字的大小逻辑自己修正，我快速地写出一个workable的版本，在run test case时主动發现一些错误，有自己發现然后更正。整体来说这题应该是我答的最差的，code比较混乱，但小哥表示你的逻辑我
+* [ ] stack流出网/questions/92000巴陵
 * [x] First Unique Character in a String
 * [x] All Elements in Two Binary Search Trees
-* [ ] [Clone Graph](https://leetcode.com/problems/clone-graph)
+* [x] Clone Graph
+
+Question？
+
+* [ ] pairs of non-overlapping pairs of equal sums
+* [ ] input 是非负数整型数组 和一个整数k 要求找到 largest sum of any 2 non-overlapped k-size interval
 
 Task
 
@@ -175,7 +178,6 @@ Task
 * [ ] Surrounded Regions
 * [ ] Binary Subarrays With Sum 
 * [ ] Regular Expression Matching
-* [ ] Read N Characters Given Read4 II - Call multiple times
 * [ ] Remove Element
 
 ## System Design
