@@ -92,7 +92,7 @@
 * [x] Search in Rotated Sorted Array I, II
 * [x] Product of Array Except Self
 * [x] Binary Tree Right Side View
-* [ ] Remove All Adjacent Duplicates In String I, II
+* [x] Remove All Adjacent Duplicates In String I, II
 * [x] Convert Binary Search Tree to Sorted Doubly Linked List
 * [x] Convert Sorted Array to Binary Search Tree
 * [x] Convert Sorted List to Binary Search Tree
@@ -114,35 +114,32 @@
 * [ ] Reverse Nodes in k-Group
 * [x] Contiguous Array
 * [x] shortest distance from all buildings
-* [ ] Reconstruct Itinerary
 * [ ] Robot Room Cleaner
-* [ ] Find Peak Element \(only has global peak, no local peaks\)
-* [ ] Next Greater Element I, II
+* [x] Find Peak Element \(only has global peak, no local peaks\)
+* [x] Next Greater Element I, II
 * [x] longest increasing subsequence
 * [x] Longest Continuous Increasing Subsequence
 * [x] Shortest Unsorted Continuous Subarray
 * [x] insert a node into circular linked list
 * [x] calculate taxes \(see IntelliJ\)
-* [ ] Lowest Common Ancestor of a Binary Tree III \(O\(1\)\)
+* [x] Lowest Common Ancestor of a Binary Tree III \(O\(1\)\)
 * [x] Longest Arithmetic Subsequence
 * [x] Strobogrammatic Number
 * [x] Remove Nth Node From End of List
-* [ ] [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement)
+* [x] Longest Repeating Character Replacement
 * [x] 3Sum Closest
-* [ ] Alien Dictionary
+* [x] Alien Dictionary
 * [ ] [Accounts Merge](https://leetcode.com/problems/accounts-merge)
-* [ ] Shortest Path in a Grid with Obstacles Elimination
 * [x] Angle Between Hands of a Clock
 * [x] Task Scheduler
 * [x] String to Integer \(atoi\)
 * [x] Koko Eating Bananas
 * [x] Can Place Flowers 
 * [x] Missing Number
-* [ ] Evaluate Division
 * [x] meeting room I, II
-* [ ] K-diff pairs in an array
 * [x] Binary Tree Zigzag Level Order Traversal
-* [ ] Next Permutation
+* [x] Next Permutation
+* [x] previous permuation with one swap
 * [x] Group shifted strings
 * [x] Simplify Path
 * [x] Contains Duplicate II 
@@ -154,12 +151,12 @@
 Question？
 
 * [ ] pairs of non-overlapping pairs of equal sums
+* [ ] K-diff pairs in an array
+* [ ] Shortest Path in a Grid with Obstacles Elimination
+* [ ] Reconstruct Itinerary
+* [ ] Evaluate Division
 * [ ] input 是非负数整型数组 和一个整数k 要求找到 largest sum of any 2 non-overlapped k-size interval
 * [ ] 第一题找list里有多少个pairs满足相加等于target，可以用o\(n\)找到每个数字的frequency解决 
-* [ ] 第一题找出 local mininum, [https://www.geeksforgeeks.org/find-local-minima-array/](https://www.geeksforgeeks.org/find-local-minima-array/) 第二题实现一个hashmap，要求可以 set, get, 以及 getLast， [https://leetcode.com/discuss/int](https://leetcode.com/discuss/int) ... gh-Twitter-Question
-
-  第二题 3 sum 变形，就是给一个矩阵，要求从矩阵找出 a^2 + b^2 = c^2 的三个数
-
 * [ ] 第一题是linked list去掉duplicates，自己写node的class
 * [ ] 第一题给一个sorted array和x，找出两个元素满足两数字相减等于x。想了一会儿，最后用了two pointer，左边指针从左到右，右边指针可以用binary search来找。
 
