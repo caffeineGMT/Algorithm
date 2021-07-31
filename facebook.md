@@ -111,7 +111,6 @@
 * [ ] populating next right pointers in each node I, II
 * [ ] Best time to sell stock I II III
 * [ ] Roman to Integer
-* [ ] Reverse Nodes in k-Group
 * [x] Contiguous Array
 * [x] shortest distance from all buildings
 * [ ] Robot Room Cleaner
@@ -155,6 +154,7 @@ Question？
 * [ ] Shortest Path in a Grid with Obstacles Elimination
 * [ ] Reconstruct Itinerary
 * [ ] UTF-8 Validation
+* [ ] Reverse Nodes in k-Group
 * [ ] Evaluate Division
 * [ ] input 是非负数整型数组 和一个整数k 要求找到 largest sum of any 2 non-overlapped k-size interval
 * [ ] 第一题找list里有多少个pairs满足相加等于target，可以用o\(n\)找到每个数字的frequency解决 
