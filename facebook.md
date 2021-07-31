@@ -38,7 +38,7 @@
 * [x] Word Ladder II
 * [x] Longest Valid Parentheses
 * [x] Longest Substring with At Most K Distinct Characters
-* [ ] Longest Increasing Path in a Matrix
+* [x] Longest Increasing Path in a Matrix
 * [x] Longest Palindromic Substring
 * [x] String Compression 
 * [x] Leftmost Column with at Least a One
