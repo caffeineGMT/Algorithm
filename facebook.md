@@ -10,7 +10,7 @@
 * [x] Kth Smallest Element in a BST
 * [x] LRU Cache
 * [x] Add Strings
-* [ ] K Closest Points to Origin \(O\(n\)\)
+* [x] K Closest Points to Origin \(O\(n\)\)
 * [x] Binary Search Tree Iterator
 * [x] Minimum Cost For Tickets
 * [x] All Nodes Distance K in Binary Tree
@@ -27,8 +27,8 @@
 * [x] Remove Invalid Parentheses
 * [x] Serialize and Deserialize Binary Tree
 * [x] Expression Add Operators 
-* [ ] Integer to English Words
-* [ ] English Words to Integer
+* [x] Integer to English Words
+* [x] English Words to Integer
 * [ ] Sliding Window Maximum
 * [ ] Minimum Window Substring
 * [x] Find Minimum in Rotated Sorted Array I, II
@@ -110,7 +110,7 @@
 * [ ] Read N Characters Given Read4 I, II
 * [ ] populating next right pointers in each node I, II
 * [ ] Best time to sell stock I II III
-* [ ] Roman to Integer
+* [x] Roman to Integer
 * [x] Contiguous Array
 * [x] shortest distance from all buildings
 * [ ] Robot Room Cleaner
@@ -128,7 +128,7 @@
 * [x] Longest Repeating Character Replacement
 * [x] 3Sum Closest
 * [x] Alien Dictionary
-* [ ] [Accounts Merge](https://leetcode.com/problems/accounts-merge)
+* [x] Accounts Merge
 * [x] Angle Between Hands of a Clock
 * [x] Task Scheduler
 * [x] String to Integer \(atoi\)
@@ -142,7 +142,7 @@
 * [x] Group shifted strings
 * [x] Simplify Path
 * [x] Contains Duplicate II 
-* [ ] stack流出网/questions/92000巴陵
+* [x] merge k sorted iterator \(see IntelliJ\)
 * [x] First Unique Character in a String
 * [x] All Elements in Two Binary Search Trees
 * [x] Clone Graph
