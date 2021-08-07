@@ -29,8 +29,8 @@
 * [x] Expression Add Operators 
 * [x] Integer to English Words
 * [x] English Words to Integer
-* [ ] Sliding Window Maximum
-* [ ] Minimum Window Substring
+* [x] Sliding Window Maximum
+* [x] Minimum Window Substring
 * [x] Find Minimum in Rotated Sorted Array I, II
 * [x] Word Break II
 * [x] Word Break
@@ -67,7 +67,7 @@
 * [x] Design Tic-Tac-Toe 
 * [x] Nested List Weight Sum
 * [x] Largest BST Subtree 
-* [ ] Coin Change 
+* [ ] ~~Coin Change~~ 
 * [x] First Bad Version
 * [x] Basic Calculator I, II
 * [x] Kth Largest Element in an Array
@@ -81,7 +81,7 @@
 * [x] Binary Tree Maximum Path Sum
 * [x] Flatten Binary Tree to Linked List
 * [x] Validate Binary Search Tree
-* [ ] Reverse Linked List II
+* [x] Reverse Linked List II
 * [x] Sqrt\(x\) \(need to watch out int overflow\)
 * [x] Add Binary
 * [x] Insert Interval
@@ -108,12 +108,12 @@
 * [x] Knight Dialer
 * [x] remove duplicates from sorted array
 * [ ] Read N Characters Given Read4 I, II
-* [ ] populating next right pointers in each node I, II
-* [ ] Best time to sell stock I II III
+* [ ] ~~populating next right pointers in each node I, II~~
+* [x] Best time to sell stock I II
 * [x] Roman to Integer
 * [x] Contiguous Array
 * [x] shortest distance from all buildings
-* [ ] Robot Room Cleaner
+* [ ] ~~Robot Room Cleaner~~
 * [x] Find Peak Element \(only has global peak, no local peaks\)
 * [x] Next Greater Element I, II
 * [x] longest increasing subsequence
@@ -147,6 +147,8 @@
 * [x] All Elements in Two Binary Search Trees
 * [x] Clone Graph
 * [x] Surrounded Regions
+* [x] Search 2D matrix I, II
+* [x] multiply strings
 
 Question？
 
@@ -160,7 +162,6 @@ Question？
 * [ ] input 是非负数整型数组 和一个整数k 要求找到 largest sum of any 2 non-overlapped k-size interval
 * [ ] 第一题找list里有多少个pairs满足相加等于target，可以用o\(n\)找到每个数字的frequency解决 
 * [ ] 第一题是linked list去掉duplicates，自己写node的class
-* [ ] 第一题给一个sorted array和x，找出两个元素满足两数字相减等于x。想了一会儿，最后用了two pointer，左边指针从左到右，右边指针可以用binary search来找。
 
 Task
 
