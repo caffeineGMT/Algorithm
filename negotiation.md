@@ -41,8 +41,6 @@ Card 4: Other offer, interview with other firms
 
 Card 5: promise Day1 Green Card close the deal if you can give me that number, I will sign today
 
-
-
 ## Facebook Question:
 
 1. Menlo Park vs Seattle
