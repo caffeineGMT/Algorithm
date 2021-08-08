@@ -195,8 +195,6 @@ Task
 * Design top k songs \(system design\)
 * Design Leetcode Contest / Hackerrank \(submission service, question service, ranking service\) \(product design, async submit, mq + worker\)
 
-
-
 ## Requirement:
 
 **The Product Design Interview**
