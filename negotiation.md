@@ -1,6 +1,6 @@
-# Team Match & Negotiation
+# Team Match & Negotiation & Miscellaneous
 
-## Team Match
+## Amazon Team Match
 
 Self-intro:
 
@@ -19,7 +19,7 @@ Question to ask
   * how many people, diversity, distribution of different level and roles
   * acceptable start date
 
-## Negotiation
+## Amazon Negotiation
 
 SDE 1, Seattle
 
@@ -43,11 +43,21 @@ Card 5: promise Day1 Green Card close the deal if you can give me that number, I
 
 
 
-Facebook:
+## Facebook Question:
 
 1. Menlo Park vs Seattle
 2. salary negotiation \(email vs phone\)
 3. how to turn down other offer \(family issue, go back home\)
 4. perm, h1b transfer
-5. team?  
+5. team
+
+## Facebook Negotiation
+
+E4, Seattle
+
+inital TC: 161k base, 10% bonus, 330k RSU, 50k sign-on, 16k relocation = 309k
+
+target TC: 165k base, 10% bonus, 350k RSU, 70k sign-on = 338k
+
+##  
 
