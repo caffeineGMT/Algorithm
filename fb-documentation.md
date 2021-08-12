@@ -1,5 +1,7 @@
 # FB documentation
 
+## Phone Interview
+
 ```java
 Welcome to Facebook!
 
@@ -115,5 +117,144 @@ public int maxArea(int[][] matrix) {
   
   // O(m * n) 
 }  
+```
+
+## Round2
+
+```java
+Welcome to Facebook!
+
+This is just a simple shared plaintext pad, with no execution capabilities.
+
+When you know what language you would like to use for your interview,
+simply choose it from the dropdown in the top bar.
+
+Enjoy your interview!
+
+1. Given a root to a binary tree, implement an iterator to support the pre order traversal. 
+
+   1
+  / \
+  2 3
+  /
+ 4 
+Preorder - 1, 2, 4, 3
+s: 
+1243
+class Node {
+    Value value;
+    Node left;
+    Node right;
+}
+
+class PreOrderIterator {
+    Stack<Node> stack;
+  
+    PreOrderIterator(Node root) {
+      stack = new Stack<>();
+      stack.push(root);
+    }
+  
+    boolean hasNext() {
+        // Returns true if has next value to iterate.
+      return !stack.isEmpty();
+    }
+    
+    Value next() {
+        // returns next value and updates iterator.
+        // throw exception when there is no next element.
+      if (!hasNext()) throw new NoSuchElementException();
+      
+      Node node = stack.pop();
+      Value res = node.value;
+      
+      if (node.right != null) {
+        stack.push(node.right);
+      }
+      if (node.left != null) {
+        stack.push(node.left);
+      }
+      
+      return res;
+    }
+
+}
+
+2. You're given a calendar year represented as a char array that contains either H or W where:
+H = Holiday W = Workday
+Given a number of Personal Time-Off days (PTO), maximize the length of the longest vacation you can take.
+
+example: [W, H, H, W, W, H, W], PTO = 2 --> Your maximum vacation is 5 days.
+
+int maxVacation(char[] arr, int PTO) {
+  if (arr == null || arr.length == 0 || PTO < 0) throw new IllegalArgumentException();
+  
+  int max = 0, j = 0, count = 0;
+  for (int i = 0; i < arr.length; i++) {
+    while (j < arr.length && count <= PTO) {
+      if (arr[j] == 'W') {
+        if (count + 1 <= PTO) {
+          count++;
+        } else {
+          break;
+        }
+      }
+      max = Math.max(max, j - i + 1);
+      j++;
+    }
+    
+    if (arr[i] == 'W') count--;
+  }
+  
+  return max;
+}
+```
+
+## Round3
+
+![](.gitbook/assets/round3.png)
+
+## Round4
+
+```java
+Welcome to Facebook!
+
+This is just a simple shared plaintext pad, with no execution capabilities.
+
+When you know what language you would like to use for your interview,
+simply choose it from the dropdown in the top bar.
+
+Enjoy your interview!
+
+  
+  
+Given a list of sorted integers, return a list of its squares, also sorted.
+
+[1, 2, 3, 5] -> [1, 4, 9, 25]
+[-5, -3, 1, 2, 3, 5]
+1  4  9  9  25  25
+  
+[-5, 0, 1, 1, 2, 3, 5]
+    r l
+     0 1 1 4 9 25 25
+  
+int[] sortedSquare(int[] nums) {
+  if (nums == null || nums.length == 0) return new int[0];
+  
+  int l = 0, r = nums.length - 1, idx = nums.length - 1;
+  int[] res = new int[nums.length];
+  
+  while (l <= r) {
+    if (Math.abs(nums[l]) >= Math.abs(nums[r])) {
+      res[idx--] = nums[l] * nums[l];
+      l++;
+    } else {
+      res[idx--] = nums[r] * nums[r];
+      r--;
+    }
+  }
+  
+  return res;
+}
 ```
 
