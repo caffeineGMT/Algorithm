@@ -1,4 +1,4 @@
-# Facebook Phone + VO
+# Facebook VO
 
 ## Coding
 
