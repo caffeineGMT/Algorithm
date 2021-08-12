@@ -1,4 +1,8 @@
-# Dialpad
+# Dialpad documentation
+
+## 07/26/2021
+
+### Phone Interview
 
 ```java
 import java.io.*;
@@ -103,6 +107,8 @@ From above, removing ‘c/C’ results in the shortest DNA string ‘’. Theref
 */
 ```
 
+### Round1
+
 ```java
 /*
 Problem:
@@ -174,6 +180,8 @@ public boolean canCover(int[][] matrix, int radius) {
 }
 
 ```
+
+### Round2
 
 ```java
 
