@@ -41,14 +41,6 @@ Card 4: Other offer, interview with other firms
 
 Card 5: promise Day1 Green Card close the deal if you can give me that number, I will sign today
 
-## Facebook Question:
-
-1. Menlo Park vs Seattle
-2. salary negotiation \(email vs phone\)
-3. how to turn down other offer \(family issue, go back home\)
-4. perm, h1b transfer
-5. team
-
 ## Facebook Negotiation
 
 E4, Seattle
