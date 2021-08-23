@@ -56,5 +56,9 @@ Amazon: 165k base, 85 units RSU, 90k sign-on
 3. I want to make a promise: as soon as you could help me that target number, I would like to reject my other offers on the same day and sign the facebook offer on the same today. 
 4. Amazon ddl is on Thursday.
 
-##  
+## Job Transfer
+
+* when and how could I get W2 from old employee
+* remaining PTO
+* return device
 
