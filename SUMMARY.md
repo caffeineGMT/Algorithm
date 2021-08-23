@@ -14,5 +14,4 @@
 * [Dialpad documentation](dialpad.md)
 * [Follow-ups](follow-ups.md)
 * [Team Match & Negotiation & Miscellaneous](negotiation.md)
-* [Job](job.md)
 
