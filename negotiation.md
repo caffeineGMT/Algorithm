@@ -51,6 +51,8 @@ target TC: hitting target, 350k RSU, 70k sign-on = 334k
 
 Amazon: 165k base, 85 units RSU, 90k sign-on
 
+final: 165k base, 10% bonus, 350k / 4 RSU, 70k / 4 sign-on, 16k relocation = 302.5k per year
+
 1. I would like to go with Seattle
 2. cancelled final virtual on-site
 3. I want to make a promise: as soon as you could help me that target number, I would like to reject my other offers on the same day and sign the facebook offer on the same today. 
@@ -61,4 +63,5 @@ Amazon: 165k base, 85 units RSU, 90k sign-on
 * when and how could I get W2 from old employee
 * remaining PTO
 * return device
+* remaining benefit, esop, profit sharing and vision plan
 
