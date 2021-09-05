@@ -64,4 +64,5 @@ final: 165k base, 10% bonus, 350k / 4 RSU, 70k / 4 sign-on, 16k relocation = 302
 * remaining PTO
 * return device
 * remaining benefit, esop, profit sharing and vision plan
+* hr contact for future
 
