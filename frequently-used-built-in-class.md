@@ -1,21 +1,17 @@
 # Frequently-used Built-in Class
 
-## Note
-
-This is a repo recording notes for method and implementation of frequently used built-in Java class.
-
-## Package
+### Package
 
 * java.util.\*
 * java.lang.\*
 
-## Array
+### Array
 
 * [documentation](https://docs.oracle.com/javase/specs/jls/se7/html/jls-10.html)
 * `public final field length`
   * contains the number of components of the array. length may be positive or zero.
 
-## Stack
+### Stack
 
 The Stack class represents a last-in-first-out \(LIFO\) stack of objects. It extends class Vector with five operations that allow a vector to be treated as a stack. The usual push and pop operations are provided, as well as a method to peek at the top item on the stack, a method to test for whether the stack is empty, and a method to search the stack for an item and discover how far it is from the top. When a stack is first created, it contains no items.
 
@@ -33,13 +29,13 @@ A more complete and consistent set of LIFO stack operations is provided by the D
 * `public E pop()`
   * Removes the object at the top of this stack and returns that object as the value of this function.
 
-## Queue
+### Queue
 
 A collection designed for holding elements prior to processing. Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations. Each of these methods exists in two forms: one throws an exception if the operation fails, the other returns a special value \(either null or false, depending on the operation\). The latter form of the insert operation is designed specifically for use with capacity-restricted Queue implementations; in most implementations, insert operations cannot fail.
 
 * [documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Queue.html)
 
-## Deque
+### Deque
 
 A linear collection that supports element insertion and removal at both ends. The name deque is short for "double ended queue" and is usually pronounced "deck". Most Deque implementations place no fixed limits on the number of elements they may contain, but this interface supports capacity-restricted deques as well as those with no fixed size limit.
 
@@ -51,7 +47,7 @@ Deques can also be used as LIFO \(Last-In-First-Out\) stacks. This interface sho
 
 * [documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html)
 
-## ArrayDeque
+### ArrayDeque
 
 Resizable-array implementation of the Deque interface. Array deques have no capacity restrictions; they grow as necessary to support usage. Null elements are prohibited. This class is likely to be faster than Stack when used as a stack, and faster than LinkedList when used as a queue. Most ArrayDeque operations run in amortized constant time. Exceptions include remove, removeFirstOccurrence, removeLastOccurrence, contains, iterator.remove\(\), and the bulk operations, all of which run in linear time.
 
@@ -71,7 +67,7 @@ Resizable-array implementation of the Deque interface. Array deques have no capa
 * `public E pop()`
   * Pops an element from the stack represented by this deque.
 
-## List
+### List
 
 An ordered collection \(also known as a sequence\). The user of this interface has precise control over where in the list each element is inserted. The user can access elements by their integer index \(position in the list\), and search for elements in the list.
 
@@ -85,7 +81,7 @@ The List interface provides two methods to efficiently insert and remove multipl
 
 * [documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html)
 
-## ArrayList
+### ArrayList
 
 Resizable-array implementation of the List interface. Implements all optional list operations, and permits all elements, including null. In addition to implementing the List interface, this class provides methods to manipulate the size of the array that is used internally to store the list.
 
@@ -111,7 +107,7 @@ Each ArrayList instance has a capacity. The capacity is the size of the array us
 * `public boolean isEmpty()`
   * Returns true if this list contains no elements.
 
-## LinkedList
+### LinkedList
 
 Doubly-linked list implementation of the List and Deque interfaces. Implements all optional list operations, and permits all elements \(including null\).
 
@@ -139,11 +135,11 @@ All of the operations perform as could be expected for a doubly-linked list. Ope
   * Replaces the element at the specified position in this list with the specified element.
   * O\(n\) worst case
 
-## Set
+### Set
 
 * [documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html)
 
-## HashSet
+### HashSet
 
 This class implements the Set interface, backed by a hash table \(actually a HashMap instance\). It makes no guarantees as to the iteration order of the set; in particular, it does not guarantee that the order will remain constant over time. This class permits the null element.
 
@@ -161,9 +157,9 @@ This class offers constant time performance for the basic operations \(add, remo
 * `public boolean remove​(Object o)`
   * Removes the specified element from this set if it is present. More formally, removes an element e such that Objects.equals\(o, e\), if this set contains such an element. Returns true if this set contained the element \(or equivalently, if this set changed as a result of the call\). \(This set will not contain the element once the call returns.\)
 
-## Map
+### Map
 
-## HashMap
+### HashMap
 
 Hash table based implementation of the Map interface. This implementation provides all of the optional map operations, and permits null values and the null key. This class makes no guarantees as to the order of the map; in particular, it does not guarantee that the order will remain constant over time.
 
@@ -187,11 +183,11 @@ As a general rule, the default load factor \(.75\) offers a good tradeoff betwee
   * [document for entry](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.Entry.html)
 * `public V remove(Object key)` Removes the mapping for the specified key from this map if present.
 
-## TreeNode
+### TreeNode
 
-## PriorityQueue
+### PriorityQueue
 
-## Arrays - java.util.Arrays
+### Arrays - java.util.Arrays
 
 This class contains various methods for manipulating arrays \(such as sorting and searching\). This class also contains a static factory that allows arrays to be viewed as lists. The methods in this class all throw a NullPointerException, if the specified array reference is null, except where noted.
 
@@ -202,7 +198,7 @@ The documentation for the methods contained in this class includes brief descrip
   * Sorts the specified array into ascending numerical order.
   * Implementation note: The sorting algorithm is a Dual-Pivot Quicksort by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm offers O\(n log\(n\)\) performance on many data sets that cause other quicksorts to degrade to quadratic performance, and is typically faster than traditional \(one-pivot\) Quicksort implementations.
 
-## String
+### String
 
 The String class represents character strings. All string literals in Java programs, such as "abc", are implemented as instances of this class.
 
@@ -254,7 +250,7 @@ Strings are constant; their values cannot be changed after they are created. Str
   * Returns the string representation of the int argument.
   * "" + int = String
 
-## StringBuilder
+### StringBuilder
 
 * `public boolean equals​(Object obj)`
   * For any non-null reference value x, x.equals\(null\) should return false.
@@ -269,7 +265,7 @@ Strings are constant; their values cannot be changed after they are created. Str
 * `public StringBuilder deleteCharAt(int index)` Removes the char at the specified position in this sequence. This sequence is shortened by one char. Note: If the character at the given index is a supplementary character, this method does not remove the entire character. If correct handling of supplementary characters is required, determine the number of chars to remove by calling Character.charCount\(thisSequence.codePointAt\(index\)\), where thisSequence is this sequence.
 * `public StringBuilder reverse()` Causes this character sequence to be replaced by the reverse of the sequence.
 
-## Integer
+### Integer
 
 * [documentation](https://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html)
 * `public static int parseInt(String s)`
@@ -284,7 +280,7 @@ Strings are constant; their values cannot be changed after they are created. Str
 
   A constant holding the minimum value an int can have, -231.
 
-## Character
+### Character
 
 * [documentation](https://docs.oracle.com/javase/7/docs/api/java/lang/Character.html)
 * `public static char toLowerCase(char ch)`
@@ -301,7 +297,7 @@ Strings are constant; their values cannot be changed after they are created. Str
 
   Determines if the specified character is a letter.
 
-## Collections
+### Collections
 
 * [documentation](https://docs.oracle.com/javase/7/docs/api/java/util/Collections.html)
 * `public static void reverse(List<?> list)`
@@ -310,7 +306,7 @@ Strings are constant; their values cannot be changed after they are created. Str
 
   This method runs in linear time.
 
-## Math
+### Math
 
 * [documentation](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html#max-int-int-)
 * `public static int max(int a, int b)`
@@ -321,7 +317,7 @@ Strings are constant; their values cannot be changed after they are created. Str
 
   Returns the smaller of two int values. That is, the result the argument closer to the value of Integer.MIN\_VALUE. If the arguments have the same value, the result is that same value.
 
-## Object
+### Object
 
 * `public boolean equals​(Object obj)`
   * For any non-null reference value x, x.equals\(null\) should return false.
